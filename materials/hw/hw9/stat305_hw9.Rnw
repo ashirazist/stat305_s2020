@@ -1,0 +1,147 @@
+\documentclass[11pt]{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+\usepackage{pdfpages} 
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{ulem}
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{graphicx, fancyhdr}
+\usepackage{amsmath, amsfonts}
+\usepackage{color}
+\usepackage{hyperref}
+
+\newcommand{\blue}[1]{{\color{blue} #1}}
+
+\setlength{\topmargin}{-.5 in} 
+\setlength{\textheight}{9 in}
+\setlength{\textwidth}{6.5 in} 
+\setlength{\evensidemargin}{0 in}
+\setlength{\oddsidemargin}{0 in} 
+\setlength{\parindent}{0 in}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+
+\lhead{STAT 305}
+\chead{Homework \# 9} 
+\rhead{Due Thursday, Nov. $21^{st}$ in the class}
+\lfoot{Fall 2019} 
+\cfoot{\thepage} 
+\rfoot{} 
+\renewcommand{\headrulewidth}{0.4pt} 
+\renewcommand{\footrulewidth}{0.4pt} 
+
+\def\Exp#1#2{\ensuremath{#1\times 10^{#2}}}
+\def\Case#1#2#3#4{\left\{ \begin{tabular}{cc} #1 & #2 \phantom
+{\Big|} \\ #3 & #4 \phantom{\Big|} \end{tabular} \right.}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\pagestyle{fancy} 
+
+Show \textbf{all} of your work on this assignment and answer each question fully in the given context.\\
+
+\emph{Note:}You can email your homework only if you cannot attend the class to submit your homewok. If you do so, email your homework by the noon of the due date. 
+
+
+\emph{Please} staple your assignment!
+
+
+\begin{enumerate}
+	
+    \item \textbf{[ Ch 5.5, Exercise 3, pg. 322]:} The random number generator supplied on a calculator is not terribly well chosen, in that values it generates are not adequately described by a uniform distribution on the interval $(0,1)$. Suppose instead that a probability density
+    $$
+    f(x) = \begin{cases} k(5 - x) & 0 < x< 1 \\ 0 & \text{otherwise}\end{cases}
+    $$
+    
+    is a more appropriate model for $X =$ the next value produced by this random number generator.\\
+    
+    Consider  this random number generator. Suppose that it is used to generate $25$ random numbers and that these may reasonable be thought of as independent random variables with common individual (marginal) distribution as above.\\
+Let $\overline{X}$ be the sample mean of these $25$ values.
+
+    \begin{enumerate}
+          \item What are the mean and standard deviation of the random variable $\overline{X}$?[5 pts]
+          \item What is the approximate probability distribution of $\overline{X}$?[5 pts]
+          \item Approximate the probability that $\overline{X}$ exceeds $0.5$.[5 pts]
+          \item Approximate the probability that $\overline{X}$ takes a value within $0.02$ of its mean.[5 pts]
+          \item Redo parts a) through d) using a sample size of $100$ instead of $25$.[10 pts]
+    \end{enumerate}    
+    
+    \item \textbf{ [Ch 5, Exercise 10, pg. 324]:} Suppose that the thickness of sheets of a certain weight of book paper have mean $0.1$ mm and a standard deviation of $0.003$ mm. A particular textbook will be printed on 370 sheets of this paper. Find  values for the mean and standard deviation of the thicknesses of copies of the text (excluding the books' cover). That is, find the mean and standard deviation of the whole thickness of the 370 sheets.[10 pts]
+    
+  
+    
+ \item \textbf{[Ch 5, Exercise 20, pg. 326] :}Suppose that the raw daily oxygen purities delivered by an air-products supplier have a standard deviation $\sigma \approx .1$ (percent), and it is plausible to think of daily purities as independent random variables. Approximate the probability that the sample mean $\overline{X}$ of $n = 25$ delivered purities falls within $0.03$ (percent) of the raw daily purity mean, $\mu$.[5 pts]   
+
+  \item  Suppose that $Z_1, Z_2, \ldots, Z_n$ are $n$ independent standard normal random variables. It may be helpful to recall that $E(a Z_i + b) = a E(Z_i) + b$ and that $Var(a Z_i + b) = a^2 Var(Z_i)$ for any constants $a, b$ in addition to knowing that $\sum_{i=1}^{n} i = \frac{n(n+1)}{2}$ and $\sum_{i=1}^n i^2 = \frac{n(n+1)(2n+1)}{6}$.
+        
+        \begin{enumerate}
+                \item Find the expected value and variance of $X$ where $X = 3 Z_1 + 5$[5 pts]
+              
+                 \item Find the expected value and variance of $Y$ where $Y = Z_1 - Z_2$[5 pts]
+              
+                 \item Find the expected value and variance of $U$ where $U = Z_1 + Z_2$[5 pts]
+              
+                 \item Find the expected value and variance of $W$ where $W = \sum_{i=1}^n \frac{i}{n} \left(Z_i + \frac{i}{n}\right)$.[10 pts]
+        \end{enumerate}         
+
+  \item An iid sample of n observations is drawn from a population with mean equal to 20 and standard deviation equal to $16$. Let $\overline{X}$ be the sample mean.
+      \begin{enumerate}
+            \item Given $n= 64$, find $P(\overline{X} < 16)$[5 pts]
+            \item Given $n=64$, find $P(16 < \overline{X} \le 23)$[5 pts]
+            \item What is the smallest sample size so that the chance that $\vert \overline{X} -20 \vert > 0.5$ is at most $0.05$.[5 pts]
+            
+            \end{enumerate}      
+
+\end{enumerate}
+Total: 85 pts
+
+
+
+\end{document}

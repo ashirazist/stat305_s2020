@@ -1,0 +1,160 @@
+\documentclass[11pt]{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+\usepackage{pdfpages} 
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{ulem}
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{graphicx, fancyhdr}
+\usepackage{amsmath, amsfonts}
+\usepackage{color}
+\usepackage{hyperref}
+
+\newcommand{\blue}[1]{{\color{blue} #1}}
+
+\setlength{\topmargin}{-.5 in} 
+\setlength{\textheight}{9 in}
+\setlength{\textwidth}{6.5 in} 
+\setlength{\evensidemargin}{0 in}
+\setlength{\oddsidemargin}{0 in} 
+\setlength{\parindent}{0 in}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+
+\lhead{STAT 305}
+\chead{Homework \# 8} 
+\rhead{Due Thursday, Nov. $8^{th}$ in the class}
+\lfoot{Fall 2019} 
+\cfoot{\thepage} 
+\rfoot{} 
+\renewcommand{\headrulewidth}{0.4pt} 
+\renewcommand{\footrulewidth}{0.4pt} 
+
+\def\Exp#1#2{\ensuremath{#1\times 10^{#2}}}
+\def\Case#1#2#3#4{\left\{ \begin{tabular}{cc} #1 & #2 \phantom
+{\Big|} \\ #3 & #4 \phantom{\Big|} \end{tabular} \right.}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\pagestyle{fancy} 
+
+Show \textbf{all} of your work on this assignment and answer each question fully in the given context. \\
+
+
+\emph{Please} staple your assignment!
+
+
+\begin{enumerate}
+	
+    \item \textbf{Ch. 5, Exercise 7, pg. 323:} In a grinding operation, there is an upper specification of $3.150$ in. on a dimensions of a certain part after grinding. Suppose that the standard deviation of this normally distributed dimension for parts of this type ground to any particular mean dimension $\mu$ is $\sigma = 0.002$ in. Suppose further that you desire to have no more than $3\%$ of the parts fail to meet specifications. What is the maximum (minimum machining cost) $\mu$ that can be used if this $3$\% requirement is to be met?[10 pts]\\
+    Hint: the question is giving you information on $P(X> 3.15)\leq 0.03$.
+    
+    \item \textbf{Ch 5, Exercise 42, pg. 332:} Suppose that engineering specifications on the shelf depth of a certain slug to be turned on a CNC lathe are from $0.0275$ in. to $0.0278$ in. and that values of this dimension produced on the lathe can be described using a normal distribution with mean $\mu$ and standard deviation $\sigma$.
+        \begin{enumerate}
+              \item If $\mu = 0.0276$ and $\sigma = 0.0001$, about what fraction of shelf depths are in specifications?[10 pts]
+              
+              \item What machine precision (as measured by $\sigma$) would be required in order to produce about $98$\% of shelf depths within engineering specifications (assuming that $\mu$ is at the midpoint of the specifications)?[10 pts]\\
+              Hint: you are looking for the value of $\sigma$ in this question.
+        \end{enumerate}
+ \item \textbf{Ch 5.4, Exercise 2, pg. 300:} Quality audit records are kept on numbers of major and minor failures of circuit packs during burn-in of large electronic switching devices. They indicate that for a device of this type, the random variables
+    $$
+    X = \text{ the number of major failures}
+    $$
+    and
+    $$
+    Y = \text{ the number of minor failures}
+    $$
+    can be described at least approximately by the accompanying joint distribution.
+
+
+
+ \begin{table}[h!]
+     \centering
+     \begin{tabular}{|l|p{1cm}|p{1cm}|p{1cm}|}
+     \hline
+         \textbf{Y | X}& \textbf{0} & \textbf{1}  & \textbf{2}  \\\hline \hline
+     0 & 0.15  & 0.05  & 0.01  \\
+     \hline
+     1 & 0.1   & 0.08  &0.01  \\
+     \hline
+     2 & 0.1   & 0.14  & 0.02  \\
+     \hline
+     3 & 0.1   & 0.08  & 0.03  \\
+     \hline
+     4 & 0.05  & 0.05  & 0.03  \\
+     \hline
+     \end{tabular}
+  \end{table}
+          \begin{enumerate}
+            \item Find the marginal probability functions for both $X$ and $Y$ ($f_x(x)$ and $f_y(y)$, respectively).[10 pts]
+            \item Are $X$ and $Y$ independent? Explain.[5pts]
+            \item Find the mean and variance of $X$ ($\text{E}X$ and $\text{Var}X$)[10 pts]
+            \item Find the mean and variance of $Y$ ($\text{E}Y$ and $\text{Var}Y$)[10 pts]
+            \item Find the conditional probability function for $Y$, given that $X = 0$ -- i.e., that there are no major circuit pack failures ($f_{Y|X}(y|0)$). What is the mean of this conditional distribution?[10 pts]
+            \end{enumerate}
+  
+  \item \textbf{Ch. 5.2, Exercise 3, pg. 263:} Suppose that $X$ is a normal random variable with mean $43$ and standard deviation $3.6$. Evaluate the following probabilities involving $X$:
+      \begin{enumerate}
+              \item $P[X < 45.2]$ [5 pts]
+              \item $P[|X - 43| \le 2]$ [5 pts]
+              \item $P[|X - 43| > 1.7]$  [5 pts]
+      
+    Now find numbers \# such that the following statements involving $X$ are true:
+    
+              \item $P[X < \#] = .95$ [5 pts]
+              \item $P[|X - 43| > \#] = .05$ [5 pts]
+
+  
+\end{enumerate}
+Total: 90 pts
+
+
+
+\end{document}

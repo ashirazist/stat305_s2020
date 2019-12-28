@@ -1,0 +1,169 @@
+\documentclass[11pt]{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+\usepackage{pdfpages} 
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{ulem}
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{graphicx, fancyhdr}
+\usepackage{amsmath, amsfonts}
+\usepackage{color}
+\usepackage{hyperref}
+
+\newcommand{\blue}[1]{{\color{blue} #1}}
+
+\setlength{\topmargin}{-.5 in} 
+\setlength{\textheight}{9 in}
+\setlength{\textwidth}{6.5 in} 
+\setlength{\evensidemargin}{0 in}
+\setlength{\oddsidemargin}{0 in} 
+\setlength{\parindent}{0 in}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+
+\lhead{STAT 305}
+\chead{Homework \# 6} 
+\rhead{Due Thursday, Oct. $17^{th}$ in the class}
+\lfoot{Fall 2019} 
+\cfoot{\thepage} 
+\rfoot{} 
+\renewcommand{\headrulewidth}{0.4pt} 
+\renewcommand{\footrulewidth}{0.4pt} 
+
+\def\Exp#1#2{\ensuremath{#1\times 10^{#2}}}
+\def\Case#1#2#3#4{\left\{ \begin{tabular}{cc} #1 & #2 \phantom
+{\Big|} \\ #3 & #4 \phantom{\Big|} \end{tabular} \right.}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\pagestyle{fancy} 
+
+Show \textbf{all} of your work on this assignment and answer each question fully in the given context. \\
+
+
+\emph{Please} staple your assignment!
+
+\begin{enumerate}
+	
+
+	
+	\item Ch. 5.1, Exercise 1, pg. 243 A discrete random variable $X$ can be described using the probability function, $f(x)$:
+
+
+ \begin{table}[h!]
+     \centering
+     \begin{tabular}{llllll}
+        \hline
+         x  & 2  & 3 &  4  & 5 & 6     \\\hline \hline
+         f(x) & 0.1 &  0.2 & 0.3  & 0.3 &  0.1  \\\hline \hline
+
+     \end{tabular}
+  \end{table}
+    
+    \begin{enumerate}
+          \item  Plot $F(x)$, the cumulative probability function for $X$.[5 pts]
+          
+          \item Find the mean and standard deviation of $X$.[10 pts]
+    \end{enumerate}      
+    	
+	
+	
+	\item Ch. 5, Exercise 1, pg. 322: Suppose $90\%$ of all students taking a beginning programming class fail to get their first program to run on first submission. Use a binomial distribution and assign probabilities to the possibilities that among a group of six such students,
+	\begin{enumerate}
+        \item all fail on their first submissions[5 pts]
+        \item  at least four fail on their first submissions[5 pts]
+        \item  less than four fail on their first submissions [5 pts] 
+    
+Continuing to using this binomial model,
+        \item what is the mean number who will fail?[5 pts]
+        \item what are the variance and standard deviation of the number who will fail?[5 pts]
+  \end{enumerate}
+
+
+% \item Let $X$ be a random variable with the probability function given by
+% $$f(x) = (.3)^x \cdot (.7)^{1-x}$$
+% for $x = 0, 1$ and 0 otherwise.\\
+% Find the expected value and variance of $X$.[10 pts]
+
+\item Ch. 5, Exercise 2, pg. 322: Suppose that for single launches of a space shuttle, there is a constant probability of O-ring failure (say $.15$), Consider ten future launches, and let $X$ be the number of those involving an O-ring failure. Use an appropriate probability model and evaluate all of the following:
+    \begin{enumerate}
+          \item Precisely state the distribution of $X$, giving the values of any parameters necessary.[5 pts]
+          \item $P[X = 2]$[5 pts]
+          \item $P[X \ge 1]$[5 pts]
+          \item $\text{E}X$[5 pts]
+          \item $\text{Var} X$[5 pts]
+          \item the standard deviation of $X$[5 pts]
+    \end{enumerate}
+
+\item Ch. 5.1, Exercise 6, pg. 244: Suppose that an eddy current nondestructive evaluation technique for identifying cracks in critical metal parts has a probability of about $.20$ of detecting a single crack of length $.003$in. in a certain material. Let $Y$ be the number of specimens inspected in order to obtain the first crack detection. Use an appropriate probability model and evaluate all of the following:
+    \begin{enumerate}
+        \item Precisely state the distribution of $X$, giving the values of any parameters necessary.[5 pts]
+        \item $P[Y = 5]$[5 pts]
+        \item $P[Y \le 4]$[5 pts]
+        \item $\text{E}Y$[5 pts]
+        \item $\text{Var}Y$[5 pts]
+        \item $\text{SD}(Y)$[5 pts]
+    \end{enumerate}
+
+
+\end{enumerate}
+
+
+Total: 100 pts
+
+
+
+
+
+
+
+
+
+\end{document}

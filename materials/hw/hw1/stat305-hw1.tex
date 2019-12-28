@@ -1,0 +1,198 @@
+\documentclass[11pt]{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{ulem}
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{graphicx, fancyhdr}
+\usepackage{amsmath, amsfonts}
+\usepackage{color}
+\usepackage{hyperref}
+
+\newcommand{\blue}[1]{{\color{blue} #1}}
+
+\setlength{\topmargin}{-.5 in} 
+\setlength{\textheight}{9 in}
+\setlength{\textwidth}{6.5 in} 
+\setlength{\evensidemargin}{0 in}
+\setlength{\oddsidemargin}{0 in} 
+\setlength{\parindent}{0 in}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+
+\lhead{STAT 305}
+\chead{Homework 1} 
+\rhead{Due Thursday, September 5th in the class}
+\lfoot{Fall 2019} 
+\cfoot{\thepage} 
+\rfoot{} 
+\renewcommand{\headrulewidth}{0.4pt} 
+\renewcommand{\footrulewidth}{0.4pt} 
+
+\def\Exp#1#2{\ensuremath{#1\times 10^{#2}}}
+\def\Case#1#2#3#4{\left\{ \begin{tabular}{cc} #1 & #2 \phantom
+{\Big|} \\ #3 & #4 \phantom{\Big|} \end{tabular} \right.}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+\pagestyle{fancy} 
+
+Show \textbf{all} of your work on this assignment and answer each question fully in the given context. 
+Each individual part is worth 5 points and partial credit is awarded for close answers. 
+Regardless of the total number of points on this homework, it will have the same weight as all other homeworks in terms of its impact on course grade. 
+So, if a specific homework has 50 points and you lose 5, then your grade on that homework will be 45/50=90\%.
+If there are 10 points on a homework and you lose 5, then your grade on that homework will be 5/10=50\%.
+The average of those two homeworks would be $(90 + 50)/2 = 70$.
+
+\emph{Please} staple your assignment!
+
+\begin{itemize}
+
+\item \textbf{Problem1: Chapter 1, Section 2, Exercise 2 (page 13)} \\
+
+\item \textbf{Problem2: Chapter 1, Section 2, Exercise 3 (page 13)}\\
+
+\item \textbf{Problem3: Chapter 1, End of chapter execise, Exercise 8 (page 24)}\\
+
+\item \textbf{Problem4: Chapter 2, Section 2, Exercise 3 (page 37)}\\
+
+
+\item \textbf{Problem5: Hockey game attendance.}
+
+Caroline performs the following study to see if outside temperature
+has an effect on attendance at her college's hockey games. For each
+hockey game at her college, Caroline records the outside temperature and the attendance. Here are her results:
+
+\hspace{1in}
+\begin{tabular}{|cr@{/}r|c|c|} \hline
+\multicolumn{3}{|c|}{\emph{Day of Week}} & \emph{Temperature, deg. F} & \emph{Attendance} \\ \hline
+Friday & 12&14 & 35 & 840 \\
+Wednesday & 12&19 & 20 & 560 \\
+Tuesday & 1&8 & $\!-5$ & 340 \\
+Friday & 1&11 & 23 & 775 \\
+Wednesday & 1&23 & 14 & 680 \\
+Saturday & 2&2 & 30 & 950 \\
+Friday & 2&8 & 28 & 950 \\
+\hline
+\end{tabular}
+ 
+\ben 
+\item Is this an experiment or observational study?
+
+\item What type of variable is attendance?
+
+\een
+
+Caroline analyzes her results and finds that
+outside temperature and attendance have a strong
+positive correlation (i.e., as one increases, the other also increases).
+She concludes that higher game day temperatures causes higher
+attendance at their college's hockey games.
+
+\ben
+\addtocounter{enumii}{2}
+\item Did she come to a proper conclusion for this study? Why or why not?
+
+\item Look at the day of the week of the hockey games.
+What type of variable is this?
+ 
+\item 
+Rewrite the data table, adding a new column ``School Night" (using the values ``no" if the game is on a Friday or Saturday, and ``yes" if the game is on any other day).
+How does Attendance relate to School Night?
+
+\een
+
+\item \textbf{Problem6: Washer stretching.}
+  
+George works for a company that manufactures 
+rubber washers.  He randomly selects 1000 
+washers off the assembly line throughout two weeks
+for a study on the durability of these washers under  
+stretching.  To make sure that the washers 
+are fit to be used in the real world, George must test 
+the washers.  Holding heat constant, 
+George subjects each washer to one of various methods of 
+stretching.  The washers are randomly assigned to be stretched under one of five different forces (low, medium-low, medium, medium-high, and high).
+After each test, George classifies 
+a washer as either defective or non-defective. 
+ 
+\ben 
+\item Is this an experiment or observational study? 
+
+\item What type of variable is heat? 
+ 
+\item What type of variable is the amount of stretching? 
+ 
+\item What type of variable is response to the stretching method?
+ 
+\item
+The 1000 selected washers constitutes the sample. What is the population? 
+
+\item George analyzes the results and finds that the defect rate
+increases with the amount of stretching.
+Can George conclude that the amount of stretching 
+causes a change in the defect rate of the washers?
+Why or why not?
+
+%Remember, though, that there always exists the chance that the sample
+%was not properly representative of the population, and perhaps 
+%the 100 washers he selected 
+%were some of the few washers in the population
+%that showed no effect. 
+%But through proper
+%experimental design, this chance is minimized and George can 
+%be highly confident in the results. More on confidence in Chapter 6.
+\een
+
+
+\end{itemize}
+
+
+\end{document}

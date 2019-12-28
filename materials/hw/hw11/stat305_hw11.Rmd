@@ -1,0 +1,94 @@
+---
+title: "STAT 305- Homework 11"
+subtitle: "This homework is optional"
+date: "Due December 12, 2019 in class"
+output: 
+  pdf_document:
+    number_sections: true
+geometry: margin=1in
+
+---
+\begin{center}\emph{I will drop the lowest HW grade. So, this homework is optional to turn in}\end{center}
+
+Show \textbf{all} of your work on this assignment and answer each question fully in the given context.
+
+\emph{Note:}You can email your homework only if you cannot attend the class to submit your homewok. If you do so, email your homework by the noon of the due date. 
+
+
+\emph{Please} staple your assignment!
+
+```{r setup, echo=FALSE, message=FALSE}
+library(knitr)
+library(tidyverse)
+library(xtable)
+
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, fig.height = 2)
+theme_set(theme_bw(base_family = "serif"))
+```
+
+1. [Ch 6, Exercise 2, pg. 427] Consider the situation of Example 1.1 in Chapter 1 in the notes (involving the heat treatment of gears):
+
+```{r gears-load}
+gears <- read_csv("../../data/gears.csv")
+```
+A process engineer is faced with the question, "How should gears be loaded into a continuous carburizing furnace in order to minimize distortion during heat treating?" The engineer conducts a well-thought-out study and obtains the runout values for `r gears %>% filter(Arrangement == "laid") %>% nrow()` gears laid and `r gears %>% filter(Arrangement == "hung") %>% nrow()` gears hung.
+
+```{r, results='asis'}
+gears %>%
+  group_by(Arrangement) %>%
+  summarise(Values = paste(Runout, collapse = ", ")) %>%
+  spread(Arrangement, Values) %>%
+  xtable(align = c("c", "p{1in}", "p{1in}"), caption = "Thrust face runouts (.0001 in.)") %>%
+  print(include.rownames = FALSE, xtable.comment = FALSE, comment=FALSE)
+```
+     
+  a) Use the six-step significance-testing format to assess the strength of the evidence collected in this study to the effect that the laying method is superior to the hanging method in terms of mean runouts produced.[5 pts]
+    
+  b) Make and interpret 90% two-sided and one-sided condifence intervals for the improvement in mean runout produced by the laying method over the hanging method (for the one-sided interval, give a lower bound for $\mu_{\text{hung}} - \mu_{\text{laid}}$).[5 pts]
+    
+  c) Make and interpret a 90% two-sided confidence interval for the mean runout for laid gears.[5 pts]
+    
+  
+    
+    
+2. [Ch. 6, Exercise 6, pg. 428] Losen, Cahoy, and Lewis measured the lengths of some spanner bushings of a particular type purchased from a local machine shop. Two students measures each ff the outside diameters of each of the sixteen bushings, with the results below.
+
+    ```{r}
+    bushings <- data.frame(Bushing = 1:16,
+                           Student_A = c(.369, .369, .369, .370, .3695, .370, .3695, .369, .369, .3695, .369, .369, .3695, .37, .369, .369),
+                           Student_B = c(.369, .3695, .3695, .3695, .3695, .37, .37, .369, .37, .369, .3695, .3695, .369, .3695, .369, .369))   
+    kable(t(bushings)[, 1:8])
+    kable(t(bushings)[, 9:16])
+    ```
+    
+    a) If you want to compare the two students' average measurements, the methods of Two-sample data are inappropriate. Why?[5 pts]
+    
+    b) Make a 90% two-sided confidence interval for the mean difference in outside diameter measurements for the two students.[5 pts]
+    
+<!-- 1. [Ch. 6, Exercise 10, pg. 429] T. Johnson tested properties of several brands of 10 lb test monofilament fishing line. Part of his study involved measuring the stretch of a fixed length of line under a 3.5 kg load. Test results for three pieaces of two of the brands follow. The units are cm., and it it fair to assume stretch of a fixed length of line under a 3.5 kg follows a normal distribution. -->
+
+<!--     ```{r} -->
+<!--     stretch <- data.frame(Brand_B = c(.86, .88, .88), -->
+<!--                           Brand_D = c(1.06, 1.02, 1.04)) -->
+<!--     kable(stretch) -->
+<!--     ``` -->
+
+<!--     e) Compare the Brand B and Brand D mean stretch values using a appropriate 90% two-sided confidence interval. Does this interval give clear indication of a difference in mean stretch values for the two brands? -->
+<!--     f) Carry out a formal significance test of the hypothesis that the two brands have the same mean stretch values. Does the concludion you reach here agree with your answer to part e)? -->
+
+
+3. [Ch. 9.1, Exercise 1, pg. 674] Return to the data from Homework 4, Exercise 1. The article "Polyglycol Modified Poly (Ethylene EtherCarbonate) Polyols by Molecular Weight Advancement" by R. Harris (*Journal of Applied Polymer Science*, 1990) contains some data on the effect of reaction temperature on the molecular weight of resulting poly polyols. The data for eight experimental runs at temperature 165°C and above are as follows (see website for `polyols.csv`):
+
+    ```{r}
+    polyols <- read_csv("../../data/polyols.csv")
+    
+    kable(polyols, col.names = c("Pot temperature (°C)", "Average molecular weight"))
+    ```
+    
+    a) Find $s_{LF}$ for these data. What does this intend to measure in the context of the engineering problem?[5 pts]
+    
+    c) Give a 90% two-sided confidence interval for the increase in mean average molecular weight that accompanies a 1°C increase in temperature here.[5 pts]
+    
+    d) Give individual two-sided confidence intervals for the mean average molecular weight at 212°C and also at 250°C.[5 pts]
+    
+Total: 40 pts
