@@ -1,0 +1,229 @@
+---
+title: 'Final Exam'
+course: STAT 305
+section: 3
+semester: Fall 2018
+date: December 14, 2018 # April 11, 2019
+number: "Final"
+time:
+  start: '12:00'
+  stop: '2:00pm'
+  length: 120 minutes
+output:
+  pdf_document:
+    keep_tex: true
+    template: ../../../templates/exam-template.tex
+    latex_engine: pdflatex
+...
+
+```{r echo=FALSE, cache=FALSE, include = FALSE}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(xtable)
+
+options(scipen=999)
+
+theme_bw()
+
+Qfun <- function(x,p = NULL){
+   x <- x[order(x)]
+
+   n <- length(x)
+
+   qs <- ((1:n) - .5)/n
+
+   if(is.null(p)) return(qs)
+
+   i <- floor(n*p + .5)
+
+   Qp <- x[i] + (n*p + 0.5 - i)*(x[i+1] - x[i])
+
+   return(Qp)
+}
+
+IQRange <- function(x) Qfun(x,.75) - Qfun(x,.25)
+
+samp <- round(rgamma(24, .1*10, .1),0)
+```
+
+\question
+Portable pneumatic pumps have long been used by hobby machinists, but are gaining renewed interest as robotics are becoming a more common part of our daily lives.
+Specifically, drones can make use of such pumps due to their weight benefits over hydraulic pumps with equivalent strength.
+Amazon is experimenting with using such pumps in its delivery drones and is interested in factors effecting the lifetime of the pumps.
+
+A team of engineers working for Amazon has been tasked with developing pumps for delivery drones that improve both time-in-flight (measured in hours) and the number of pump-actions (the number of times the drone uses the pump).
+With those goals in mind, the team designed three pumps: a single-piston/single-stage design, a dual-piston/single-stage design, and a dual-piston/dual-stage design.
+The engineers are testing the pumps with three types of compressed gas: OFN (oxygen-free nitrogen), Carbon dioxide, and Oxygen.
+Concerned about environmental effects, the engineers selected four locations to test the drones in - San Antonio, Seattle, Lexington, and Amherst in which to test the drones.
+
+In all four locations they tested the every design-gas combination in five drones (45 drones in each location).
+The drones delivered 5 pound packages from an initial location to a location 2000 meters away, retrieved the package, and returned it to the original point.
+The number of deliveries and the flight time were recorded for each drone.
+
+Note: \((\text{3 designs}) \cdot (\text{3 gas types}) \cdot (\text{5 drones}) \cdot (\text{4 locations}) = \text{180 total drones}\)
+
+The goal is to determine is to identify how to maximize both flight time and number of deliveries.
+
+\qparts{
+\part[2] Is this an experiment or an observational study? Explain. \vspace{2cm}
+\part Identify each of the following and describe them as numeric (in which case, identify whether it is continuous or discrete) or categorcial (in which case list the possible levels). \vspace{1cm}
+\begin{subparts}
+   \subpart[2] Identify the response variable(s): \vspace{2cm}
+   \subpart[2] Identify the experimental variable(s): \vspace{2cm}
+   \subpart[2] Blocking variable(s): \vspace{2cm}
+\end{subparts}
+\part[2] Identify two controlled variables used in this process. \vspace{2cm}
+}
+
+
+\newpage
+\question
+
+```{r echo=FALSE, cache=FALSE, include = TRUE}
+# Internally flawless, Ideal cut, colorless or nearly colorless
+dmnds <- diamonds %>% filter(clarity=="IF", cut == "Ideal", color %in% c("D", "E", "F"))
+
+dmnds$price <- dmnds$price/1000
+
+saveRDS(file = "dmnds.rds", dmnds)
+
+dmndscsv <- dmnds[,c("carat", "price", "depth")]
+#dmndscsv$carat_sq <- dmndscsv$carat^2
+
+write.csv(dmndscsv, file = "dmnds.csv", row.names=FALSE)
+
+dmnds <- readRDS("dmnds.rds")
+
+nrows <- nrow(dmnds)
+
+sum_x <- sum(dmnds$carat)
+
+sum_x_sq <- sum(dmnds$carat*dmnds$carat)
+
+sum_y <- sum(dmnds$price)
+
+sum_y_sq <- sum(dmnds$price*dmnds$price)
+
+sum_xy <- sum(dmnds$carat*dmnds$price)
+
+obstopred <- dmnds[35,c("carat", "price")]
+obstopred.depth <- dmnds[35,c("depth", "price")]
+
+names(obstopred) <- c("x", "y")
+names(obstopred.depth) <- c("x", "y")
+
+```
+
+The quality of a diamond is often described in terms of the four C's:
+- carat (the diamonds mass, with 1 carat = 200 milligrams), 
+- cut (a description of how well the diamond has been shaped),
+- color (the less color the more rare),
+- clarity (a description of the flaws in the diamond).
+Of these, carat is the most easily understood in terms of its impact on the diamonds value: all things being equal, the larger the diamond the higher its value.
+
+The following plot shows the sale price of `r nrow(dmnds)` diamonds (in thousands of dollars), which were appraised by experts as having an ideal cut, the depth, internally flawless clarity, and being colorless or essentially colorless.
+
+```{r fig.width=8, fig.height=6, out.width='.5\\linewidth', fig.cap='Plot depicting the sale price of 375 diamonds with the same quality of cut, clarity, and color. There is a general pattern indicating that higher carat (i.e., the mass) is associated with higher price.', fig.pos="h", fig.align = "center", echo=FALSE}
+ggplot(data = dmnds, aes(x = carat, y = price)) + geom_point() + theme_bw()
+ggplot(data = dmnds, aes(x = depth, y = price)) + geom_point() + theme_bw()
+
+```
+
+
+
+\newpage
+
+The JMP output below comes from fitting a this quadratic relationship using price as the response 
+(\verb!price!) and carat (\verb!carat!) and depth (\verb!depth!)  as the model variables. 
+\vspace{1cm}
+\centerline{\includegraphics[scale=1.5]{carat_depth}}
+\vspace{1cm}
+
+\qparts{
+\part[3] Using the JMP output, write the equation of the fitted linear relationship between carat, depth and price. \vspace{3cm}
+\part[3] Using the fitted line, what do we suppose the price would be for a `r obstopred[,"x"]` carat and `r obstopred.depth[, "x"]` depth diamond? \vspace{3cm}
+\part[3] The actual price of a `r obstopred[,"x"]` carat with `r obstopred.depth[, "x"]` depth diamond in the data is `r obstopred[,"y"]` thousand dollars. What is the residual for this specific diamond using the linear model? \vspace{3cm}
+\part[3] For the linear relationship, find \(r\), the sample correlation coeffecient and \(R^2\), the coeffecient of determination. \vspace{3cm}
+\part[3] Provide an estimate for $\sigma^2$. \vspace{3cm}
+\part[3] Provide an estimate for the variance of the coefficient of *depth*. \vspace{3cm}
+\part[5] Calculate and intepret the 95\% two-sided confidence interval for the coefficient of *depth*. \vspace{6cm}
+\newpage
+\part[10] Conduct a formal hypothesis test at the $\alpha = 0.05$ significance level to determine if there is significance relationship between price (y) and  **carat** $(x_1)$, holding depth constant. \\
+\emph{Note: Write down all six steps for full credit.}
+}
+
+
+\newpage
+\question
+An arctic research station recently did a major overhaul to their server system hardware and the technicians are checking to make sure that there has been no loss in download speed.
+The previous download speed had an average of 63.4 Mbps.
+A systems analyst took 10 readings on the download speeds during the course of a day to check. 
+Her results are below (in Mbps):
+
+```{r echo=FALSE, cache=TRUE, include = TRUE}
+dwnld_speeds <- round(rnorm(10, 0, 0.2) + 63.0, 2)
+```
+\begin{center} `r dwnld_speeds` \end{center}
+The sample average is `r round(mean(dwnld_speeds),2)` and the sample variance is `r round(var(dwnld_speeds),3)`.
+
+\qparts{
+\part[5] Provide a 90\% confidence interval for the mean download speed. \vspace{2cm}
+\part[5] Provide a 95\% lower confidence bound for the mean download speed. \vspace{2cm}
+\part[10] Conduct a hypothesis test at the 95\% confidence level for the null hypothesis $\mu \ge 63.4$ against the alternative $\mu < 63.4$. Include your hypothesis statement, the choice of test statistic, the p-value, and your conclusion.
+}
+
+\newpage
+\question A group of scientists are trying to understand the effects of temperature on two O-ring designs for a rocket. By placing the O-ring (attached to a valve) in a chamber and slowly lowering the chamber's temperature, the scientists are able to record the temperature at which the O-ring fails by monitoring when the valve begins to leak.
+After testing 10 O-rings for each type, the scientists find the mean failure temperature for the first O-ring design sample to be $50$ K with a sample variance of 10 and the mean failure temperature of the second O-ring sample to be $53$ K with a sample variance of $20$.
+\qparts{
+\part[4] Provide a 95\% confidence interval for the true failure temperature of the first O-ring design. \vspace{3cm}
+\part[4] Provide a 95\% confidence interval for the true failure temperature of the second O-ring design. \vspace{3cm}
+\part[10] Conduct a hypothesis test at the 90\% confidence level to see if the true failure temperature of the first sample is equal to that of second sample.  
+
+}
+\newpage
+\question
+Let $X$ be a normal random variable with a mean of 5 and a varaince of 4 (i.e., $X \sim N(5,4)$) and let $Z$ be a random variable following a standard normal distribution.
+Find the following probabilities (note: the attached standard normal probability table may be helpful):
+\qparts{
+   \part[2] $P(Z \le 1.5)$ \vspace{2cm}
+   \part[2] $P(|Z| \ge 1.25)$ \vspace{2cm}
+   \part[2] $P(1 \le X < 9)$ \vspace{2cm}
+   \part[2] $P(|X| \le 5)$ \vspace{2cm}
+}
+
+\question 
+Suppose that $X$ is a continuous random variable with probability density function (pdf):
+$$f(x) = \begin{cases} 0 &  x < 0 \\ 2 e^{-2x} &  x \ge 0 \end{cases}$$
+ 
+\qparts{
+ \part[3] Find F(x), the cumulative probability function. \vspace{3cm}
+ \part[3] What is the probability that $X$ takes a value less than 1? \vspace{2cm}
+ \part[3] What is the probability that $X$ takes a value greater than 2? \vspace{2cm}
+}
+ 
+\newpage
+ 
+\question
+ Suppose that $X$ is a discrete random variable with the following probability function:
+   $$f(x) = \begin{cases} \dfrac{x^2}{c} & x = -3, -2, -1, 0, 1, 2, 3 \\ 0 & o.w \end{cases}$$
+   
+   where $c$ is a constant.
+\qparts{
+   \part[4] Find the value of $c$ that makes $f(x)$ a valid probability function. \vspace{4cm}
+   \part[3] Find $P(X \ge 2)$. \vspace{4cm}
+   \part[3] Find $E(X)$.
+}
+
+\newpage
+
+\question
+Let $X$ be a random variable with Binomial distribution $x\sim Binomial(n=10, p=0.2)$ and Y be a Normally distributed random variable with mean $\mu=1$ and variance $\sigma^2=4$. 
+
+\qparts{
+\part[2] Find the expected value of $2^{-1}X + 3Y -4$\vspace{3cm}
+\part[4] Find the **standard deviation** of $3 X + 2^{-1}Y + 1/2$
+
+}
+

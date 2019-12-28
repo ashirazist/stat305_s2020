@@ -1,0 +1,39 @@
+\question \textbf{Twin Cinema}
+
+A professor of theoretical sociology is convinced that horror movies contribute to anxiety.
+In order to test his hypothesis, the professor arranged to have to students in his class go to a movie showing on campus for extra credit. 
+However, he randomly told half the students to see a movie in one location (location A) showing a scary movie!
+The other half of his students, he sent to a second location (location B) showing a romantic comedy.
+In order to fund this experiment throught the National Institute of Health, the professor added a nutrition component: in order to examine the effect of diet on anxiety, he gave the students a voucher which could be redeemed for either a high caffeine soda, a tub of popcorn, or a candy snack.
+At the end of the movies, he recorded which movie the student had seen, which snack they had chosen, and then gave the student a questionairre that scored the student as having low, medium, or high anxiety.
+
+\begin{parts}
+   \part[2] Is this an experiment or an observational study? Explain.
+
+  \vspace{2cm}
+
+   \part Identify the following (if there was not one, simply put "not used").
+
+  \vspace{1cm}
+
+   \begin{subparts}
+      \subpart[2] Response variable(s):
+
+      \vspace{2cm}
+
+      \subpart[2] Experimental variable(s):
+
+      \vspace{2cm}
+
+      \subpart[2] Blocking variable(s):
+
+      \vspace{2cm}
+
+   \end{subparts}
+
+   \part[2] Was replication used in this experiment? If so, where was it applied? If not, how could we have applied it?
+
+  \vspace{2cm}
+
+\end{parts}
+\pagebreak

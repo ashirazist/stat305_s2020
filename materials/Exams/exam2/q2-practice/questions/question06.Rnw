@@ -1,0 +1,106 @@
+\question \textbf{Champions Red Wine}
+%-- : R code (Code in Document)
+<<echo=FALSE, cache=FALSE, include = TRUE>>=
+   options(scipen=999)
+
+   source('../test-functions.R')
+
+   if(file.exists('../data/question06.csv')){
+
+      d <- read.csv('../data/question06.csv')
+
+   }else{
+
+      r <- runif(342, 70, 150)
+      w <- runif(500-342, 70, 150)
+
+      pr <- 20 + 1.8*r + 0.2*sapply(r, function(x) max(c(0, x - 100))^2) + rnorm(342, 0, 30)
+      pw <- 20 + 1.8*w + 0.1*sapply(w, function(x) max(c(0, x - 100))^2) + rnorm(500-342, 0, 20)
+
+      d <- data.frame(
+         'type'= rep(c('red', 'white'), times=c(342, 500-342)),
+         'guide'=round(c(r, w),2),
+         'auction'=c(pr, pw)
+      )
+
+      d <- d[sample(1:500),]
+         
+      write.csv(d, 'data/question06.csv', row.names=FALSE)
+
+   }
+
+@
+
+Oenophiles, or connoisseurs of fine wines, have been benefitted by sort of open information sharing we have in the days of online auctions. 
+By monitoring the prices for which sought after bottles actually sell for, wine enthusiasts are able to both determine whether or not they are getting a fair price and whether or not they might make a nice profit by selling off a few of the bottles they have in storage.
+Before this era of easy and free data though, there was one source of information that stood above all the others: \textit{Le Champions de vin rouge}, a guide to the world of fine wines published in 1997.
+While the information contained it in is largely still relevant in general, the price index has become somewhat outdated.
+
+Or has it? 
+Is it possible that the prices from the guide in 1997 could help us understand the market today?
+A certain statistician decided to do a deep analysis of the relationship between the cost of wine bottles in the 1997 book and the actual prices the same bottles fetched on open auction sites recently. 
+The dataset he created consists of the last 500 bottles with publically available auction prices that were also listed in \textit{Le Champions de vin rouge} price index.
+
+\begin{center}
+<<cache=FALSE,fig.width=5, fig.height=5, out.width='.5\\linewidth', echo=FALSE>>=
+   qplot(guide, auction, data=d, xlab="1997 Guide Price",ylab="Recent Auction Price", shape=type) + coord_fixed(.1)
+@
+\end{center}
+
+Here are some summaries of the dataset with the 1997 Guide Price as $x$ and the Recent Auction Price as $y$.
+
+$$
+\sum_{i=1}^{500} x_i = \Sexpr{round(sum(d$guide))} \hspace{3cm} \sum_{i=1}^{500} x_i^2 = \Sexpr{round(sum(d$guide^2))} \\
+$$
+
+$$
+\sum_{i=1}^{500} y_i = \Sexpr{round(sum(d$auction))} \hspace{3cm} \sum_{i=1}^{500} y_i^2 = \Sexpr{round(sum(d$auction^2))} \\
+$$
+
+$$
+\sum_{i=1}^{500} x_i y_i = \Sexpr{round(sum(d$guide*d$auction))}
+$$
+
+\pagebreak
+
+\begin{parts}
+   \part Using the summaries, fit a linear relationship between \textbf{1997 Guide Price} (x) and \textbf{Recent Auction Price} (y). 
+   \begin{subparts}
+      \subpart[5] Write the equation of the fitted linear relationship. 
+      \vspace{4cm}
+      \subpart[5] Find and interpret the value of $R^2$ for the fitted linear relationship.
+      \vspace{3cm}
+      \subpart[5] Using the fitted line, provide a predicted Recent Auction Price when the 1997 Guide Price was \$120.
+      \vspace{3cm}
+      \subpart[5] Sketch what you believe the plot of residuals vs 1997 Guide Price would look like. Why would this be a problem?
+      \vspace{3cm}
+      \subpart[3] The points in the plot have different shapes based on whether the wine is "Red" or "White." Is there a reason to believe that white wines and red wines should not be modeled together? Explain why.
+      \vspace{2cm}
+   \end{subparts}
+
+\pagebreak
+
+   \part 
+   The JMP output below comes from fitting a quadratic model using $x$ and $x^2$ for \textit{Red Wine Only} (left) and \textit{White Wine Only} (right).
+
+  \begin{figure}[!h]
+  \begin{subfigure}
+  \includegraphics[scale=.3]{figure/red-wine-quadratic}
+  \end{subfigure}
+  \begin{subfigure}
+  \includegraphics[scale=.3]{figure/white-wine-quadratic}
+  \end{subfigure}
+  \end{figure}
+
+   \begin{subparts}
+      \subpart[5] Write the equation of the fitted quadratic relationship \textit{for Red Wines}. 
+      \vspace{2cm}
+      \subpart[5] Write the equation of the fitted quadratic relationship \textit{for White Wines}. 
+      \vspace{2cm}
+      \subpart[5] Interpret the value of $R^2$ for the two fitted quadratic relationships.
+      \vspace{2cm}
+      \subpart[5] Using the fitted quadratic relationship, provide a predicted value of Recent Auction Price for a red wine with 1997 Guide Price of \$120.
+   \end{subparts}
+\end{parts}
+
+

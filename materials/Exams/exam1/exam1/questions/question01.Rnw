@@ -1,0 +1,25 @@
+\question[2] 
+Circle the \textbf{bold face} term that makes the following statement true: \\
+
+A measurement device that reports the measurements which are close to each other when repeatedly measuring the same thing is (\textbf{precise} or \textbf{accurate}).
+\vspace{1cm}
+
+\question[2] 
+A number of issues concerning measurement must be addressed in the following order:\\
+(1) precision, validity, accuracy \hspace{1cm} (2) accuracy, precision, validity\\
+(3) validity, accuracy, precision \hspace{1cm} (4) validity, precision, accuracy
+
+\vspace{1cm}
+
+\question[2]
+For a complete(full) factorial study with three factors, each with 4 levels, the number of all possible combinations (i.e the least number of observation) is:\\
+
+(1) 12\hspace{0.5cm} (2)64\hspace{0.5cm} (3)81\hspace{0.5cm} (4) none of these
+
+\vspace{1cm}
+
+\question[2]
+In a series of experiments to study the priority of a chemical product, the reactor temperature is set fixed at $\ang{550}C$. The variable "reactor temperature" is a \\
+(1) response variable\hspace{1cm} (2) controlled variable\\
+(3) blocking variable\hspace{1cm} (4) experimental variable
+\vspace{1cm}

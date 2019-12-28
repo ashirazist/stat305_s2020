@@ -1,0 +1,251 @@
+% For LaTeX-Box: root = stat105_F15_exam1B.tex 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  File Name: stat105_F15_exam1B.tex
+%  Purpose:
+%
+%  Creation Date: 24-09-2015
+%  Last Modified: Thu Oct  1 00:18:14 2015
+%  Created By:
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentclass[addpoints]{examsetup}
+
+\usepackage{etoolbox}
+\usepackage{tikz,pgfplots}
+
+%\input{stat105_exam1_info.tex}
+\newcommand{\course}[1]{\ifstrempty{#1}{STAT 305}{STAT 305, Section #1}}
+\newcommand{\sectionNumber}{3}
+\newcommand{\examDate}{October 17, 2019}
+\newcommand{\semester}{FALL 2019}
+\newcommand{\examNumber}{II}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+%-- : R code (Code in Document)
+<<echo=FALSE, cache=FALSE, include=FALSE>>=
+   library(ggplot2)
+library(tidyverse)
+  # theme_set(theme_bw())
+@
+
+
+\examCoverPage
+
+\begin{questions}
+
+
+
+\question
+
+Professional engineers often encounter issues relating to \textit{human resources} as they advance in their careers
+(building a better team of employees is after all not too different than improving any other system, at least on paper).
+However, many of the "laws" governing human behavior are very different than the strict laws of physics.
+For instance, a phenomenon known as the Dunning-Kruger effect states that for a given skill incompetent people will
+\begin{itemize}
+   \item fail to recognize their own lack of skill
+   \item fail to recognize genuine skill in others
+   \item fail to recognize the extremity of their inadequacy
+   \item recognize and acknowledge their own lack of skill, after they are exposed to training for that skill
+\end{itemize}
+
+A group of 50 job applicants are asked to estimate their skill in technical writing. 
+They are told they will be taking a test with a mean score of 50 and asked to guess what their score will be.
+Then they are given the test and get an actual score. 
+
+%-- : R code (Code in Document)
+<<echo=FALSE, cache=FALSE, include = TRUE>>=
+   options(scipen=999)
+
+   #ability <- runif(50,0,10) - 6
+
+   #predicted <- sapply(1:50, function(i) rnorm(1,ability[i]^2,1)) + 50
+
+   #actual <- sapply(1:50, function(i) rnorm(1,(ability[i]-min(ability))^2,1)) + 10
+
+   #thug = data.frame(actual = actual, predicted = predicted)
+   #write.csv(thug,file="DK.csv",row.names=FALSE)
+   link<-"C:/Users/4M1N/Box Sync/Courses/Fall 2019/STAT 305/materials/exams/exam2-f19/q2/DK.csv"
+   d <- read.csv(link)
+   actual <- round(d$actual,2)
+   predicted <- round(d$predicted,2)
+@
+
+The results are depicted below (using the actual score on the x-axis):
+\begin{center}
+<<fig.width=5, fig.height=4, out.width='.5\\linewidth', echo=FALSE, fig=TRUE>>=
+   
+   df<-data.frame(d)
+  p<- df %>% ggplot(aes(actual, predicted))+ geom_point()+ xlab("Person's Actual Score on Test")+ ylab("Predicted")+
+      xlim (0,100)+ ylim(0,100)
+
+   p
+@
+\end{center}
+\pagebreak
+Here are some summaries of the data (again using the actual score as the x-value and the person's evaluation of their score as the y-value):
+
+$$
+   \sum_{i=1}^{50} x_i = \Sexpr{round(sum(actual))} \hspace{3cm} \sum_{i=1}^{50} x_i^2 = \Sexpr{round(sum(actual^2))} \\
+$$
+
+$$
+   \sum_{i=1}^{50} y_i = \Sexpr{round(sum(predicted))} \hspace{3cm} \sum_{i=1}^{50} y_i^2 = \Sexpr{round(sum(predicted^2))} \\
+$$
+
+$$
+   \sum_{i=1}^{50} x_i y_i = \Sexpr{round(sum(predicted*actual))}
+$$
+
+\begin{parts}
+   \part Using the summaries above, fit a linear relationship between \textbf{the actual score} (x) and \textbf{the guessed score} (y). 
+   \begin{subparts}
+      \subpart[5] Write the equation of the fitted linear relationship. 
+      
+      \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $\hat y =$ \hspace{10cm}}
+      \vspace{7cm}
+      \subpart[5] Find and interpret the value of $R^2$ for the fitted linear relationship.
+                  \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $R^2=$ \hspace{2cm}}
+
+      \vspace{7cm}
+      \subpart[5] Using the fitted line, what do we suppose a person will guess their score will be if they actually scored a \Sexpr{actual[30]}.
+      
+      
+            \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $\hat y =$ \hspace{10cm}}
+
+      \vspace{3cm}
+      \subpart[2] A person who scored a \Sexpr{actual[30]} on the test predicted that they would score \Sexpr{predicted[30]}. What is the residual for this person using the linear relationship?
+      
+      
+                  \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $e =$ \hspace{5cm}}
+
+      \vspace{2cm}
+      
+      
+   \end{subparts}
+
+ 
+
+   \part The JMP output below comes from fitting a quadratic model using the actual score ("\verb!actual_score!") and the square of the actual score (\verb!actual_score^2!).
+
+   \centerline{\includegraphics[scale=.2]{FitDK}}
+
+   \begin{subparts}
+      \subpart[5] Write the equation of the fitted quadratic relationship.
+      
+\hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $\hat y =$ \hspace{10cm}}
+
+      \vspace{1cm}
+      \subpart[5] Find and interpret the value of $R^2$ for the fitted quadratic relationship.
+                        \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $R^2=$ \hspace{3cm}}
+
+      \vspace{5cm}
+\pagebreak      
+      \subpart[5] Using the fitted quadratic relationship, what do we suppose a person will guess their score will be if they actually scored a \Sexpr{actual[10]}.
+      
+                  \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $\hat y =$ \hspace{10cm}}
+
+      \vspace{2cm}
+     
+      \subpart[2] A person who scored a \Sexpr{actual[10]} on the test predicted that they would score \Sexpr{predicted[10]}. What is the residual for this person using the quadratic relationship?
+      
+\hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $e =$ \hspace{5cm}}
+
+      \vspace{2cm}
+   \end{subparts}
+\end{parts}
+
+\question
+Suppose the following is the probability distribution for $X$. 
+ \begin{table}[h!]
+     \centering
+     \begin{tabular}{llllll}
+        \hline
+         x  & -2  & 0 &  1  & 2 & 3     \\\hline \hline
+         f(x) & 0.1 &  a & 0.2  & 0.2 &  0.3  \\\hline \hline
+
+     \end{tabular}
+  \end{table}
+         \begin{subparts}
+               \subpart[3] Find the value of $a$ that makes this a valid probability distribution.
+                                       \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $a=$ \hspace{2cm}}
+         
+               \vspace{4cm}
+               
+               \subpart[6] Calculate the expected value and the standard deviation of $X$.
+                     \vskip
+                     \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip
+                     -0.4cm E(X)= \hspace{3cm}}
+                     \vskip
+                     \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip
+                     -0.4cm SD(X)=\hspace{2.9cm}}
+                     \vskip
+                     
+               \vspace{5cm}   
+               
+               \subpart[2] Find the probability that $P(\vert{X}\vert =2)$
+               \hfill \fbox{$P(\vert{X}\vert =2)=$\hspace{3cm}} 
+               \vspace
+               
+               
+         \end{subparts}
+         
+\pagebreak
+
+\question
+As the discussion in the class, King Joffrey was poisoned and Tyrion was found guilty  for his death. Tyrion then decided to let the gods decide his fate and demanded a trial by combats. Then it was supposed to have five completely independent combats to decide on his guilt or innnocence. The one who fought for him (his combatant) had $p= 0.7$ probability of success in each combat.  Let $X$ be the random variable associated with the number of combats his combatant wins out of the five combats.
+
+         \begin{subparts}
+               \subpart[2] Precisely specify the probability distribution associated with this trial.
+               \vspace{2cm}
+               
+               \subpart[3] What is the probability that his combatant wins all combats?
+               \hfill \fbox{$p=$ \hspace{3cm}}
+               \vspace{4cm}
+               
+               \subpart[3] What is the probability that his combatant wins at least two combats?
+               \hfill \fbox{$p=$ \hspace{3cm}}
+               \vspace{6cm}       
+               
+               \subpart[2] What is the expected value of this random variable $X$?
+               \hfill \fbox{$E(X)=$ \hspace{3cm}}
+               \vspace{2cm}       
+                              
+               \subpart[2] What is the variance  of this random variable $X$?
+               \hfill \fbox{$Var(X)=$ \hspace{3cm}}
+               \vspace{2cm}          
+         
+         \end{subparts}
+
+\pagebreak
+\question
+Suppose that an eddy current nondestructive evaluation technique for identifying cracks in critical metal parts has a probability of about $.20$ of detecting a single crack of length $.003$in. in a certain material. Let $Y$ be the number of specimens inspected in order to obtain the first crack detection.
+\vspace{1cm}
+         \begin{subparts}
+                  \subpart[2] Precisely state the distribution of $Y$, giving the values of any parameters necessary.
+                  \vspace{2cm}
+                  
+                  \subpart[3] Find the probability that $P(Y = 5)$
+                  \hfill \fbox{$P(Y = 5)=$ \hspace{3cm}}
+                  \vspace{5cm}
+                  
+                  \subpart[3] Find the probability that $P(Y \le 4)$
+                  \hfill \fbox{$P(Y \le 4)=$ \hspace{3cm}}
+                  \vspace{5cm}
+                  
+                  \subpart[2] What is $\text{E}Y$?
+                  \hfill \fbox{$\text{E}(Y)= $ \hspace{3cm}}
+                  \vspace{2cm}
+                  
+                  
+                  \subpart[2] What is $SD{(Y)}$ (the standard deviation of $Y$)?
+                  \hfill \fbox{$\text{SD(Y)}= $ \hspace{3cm}}
+                  \vspace{2cm}                                    
+                           
+         \end{subparts}
+
+\end{questions}
+
+\end{document}

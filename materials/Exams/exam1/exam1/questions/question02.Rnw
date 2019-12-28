@@ -1,0 +1,51 @@
+\question
+%-- : R code (Code in Document)
+<<echo=FALSE, cache=FALSE, include=TRUE>>=
+   q1 <- c(110,100,105,103,105,115) 
+@
+
+A sample of size 5 was drawn from a population and the resulting observations are reported below. 
+\begin{center}
+\Sexpr{paste(q1,collapse=", ")}
+\end{center}
+Using these observed values, report the following:
+\vspace{1cm}
+
+\begin{parts}
+
+   \part[2] the mean  
+   \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $\bar{x}=$ \hspace{2cm}}
+   \vspace{3cm}
+
+
+
+   \part[2] the median 
+      \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $Med.=$ \hspace{2cm}}
+
+   \vspace{3cm}
+
+   \part[2] the variance 
+      \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $s^2=$ \hspace{2cm}}
+
+   \vspace{4cm}
+
+   \part[2] the standard deviation 
+      \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $s=$ \hspace{2cm}}
+
+   \vspace{2cm}
+   
+   \part[2] the value of $Q(.75)$
+         \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $Q(.75)=$ \hspace{2cm}}
+
+   \vspace{4cm}
+
+   \part[2] the interquartile range
+            \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $IQR=$ \hspace{2cm}}
+
+   \vspace{4cm}
+
+   
+   \part[5] draw a boxplot for this data. Carefully label numbers on the plot
+
+   \vspace{6cm}
+\end{parts}

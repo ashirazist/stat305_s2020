@@ -1,0 +1,226 @@
+% For LaTeX-Box: root = stat305-pexam1.Rnw
+\documentclass[addpoints]{examsetup}
+
+\usepackage{etoolbox}
+\usepackage{tikz,pgfplots}
+
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+\usepackage{pdfpages} 
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{ulem}
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{graphicx, fancyhdr}
+\usepackage{amsmath, amsfonts}
+\usepackage{color}
+\usepackage{hyperref}
+
+\newcommand{\blue}[1]{{\color{blue} #1}}
+
+\setlength{\topmargin}{-.5 in} 
+\setlength{\textheight}{9 in}
+\setlength{\textwidth}{6.5 in} 
+\setlength{\evensidemargin}{0 in}
+\setlength{\oddsidemargin}{0 in} 
+\setlength{\parindent}{0 in}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+
+
+%\input{stat105_exam1_info.tex}
+\newcommand{\course}[1]{\ifstrempty{#1}{STAT 305}{STAT 305, Section #1}}
+\newcommand{\sectionNumber}{3}
+\newcommand{\examDate}{November 14, 2019}
+\newcommand{\semester}{FALL 2019}
+\newcommand{\examNumber}{III}
+
+\usepackage{Sweave}
+\begin{document}
+\input{stat305-q3-concordance}
+
+%-- : R code (Code in Document)
+
+
+\examCoverPage
+
+\begin{questions}
+\question 
+
+Suppose that $X$ is a continuous random variable with cumulative density function (\emph{cdf}):
+$$
+F(x) = 
+\begin{cases}
+    0 &  x < 0 \\
+   1 - e^{-3x} &  x \ge 0
+\end{cases}
+$$
+
+            \begin{parts}
+            
+            \part[3] What is the probability that $X$ takes a value greater than 2?
+            \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $P=$ \hspace{2cm}}
+
+                 \vspace{4cm}
+            
+            \part[3] Derive f(x), the probability density function.
+            
+                 \vspace{5cm}
+            \part[4] Find the expected value of X.
+            \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $\text{E}(X)=$ \hspace{2cm}}
+            
+                 \vspace{5cm}            
+            \end{parts}
+\newpage
+\question
+ Suppose that $X_1, X_2, X_3, X_4, X_5$ and $Y_1, Y_2, Y_3, Y_4, Y_5$ are all independent random variables where for any $i$
+   $$E(X_i) = \mu_X$$
+   $$Var(X_i) = \sigma_X^2$$
+   $$E(Y_i) = \mu_Y$$
+   $$Var(Y_i) = \sigma_Y^2$$
+   Suppose that we define a random variable $U$ to help compare the values taken by $X_i$s and the values taken by the $Y_i$s by pairing the random variables like this:
+   $$U = \frac{1}{5}(X_1 - Y_1) + \frac{1}{5}(X_2 - Y_2) + \frac{1}{5}(X_3 - Y_3) + \frac{1}{5}(X_4 - Y_4) + \frac{1}{5}(X_5 - Y_5) $$
+       \begin{parts}
+           \part[3] Find the mean of $U$ (hint: it will include $\mu_X$ and $\mu_Y$.) \vspace{5cm}
+            \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $\text{E}(U)=$ \hspace{2cm}}
+           
+           \vspace{4cm}
+        
+           \part[4] Find the standard deviation of $U$ (hint: it will include $\sigma_X^2$ and $\sigma_Y^2$)
+            \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $\text{SD}(U)=$ \hspace{2cm}}
+           
+           \vspace{4cm}
+       \end{parts}
+\newpage
+
+
+\question
+Consider the following joint distribution for two random variables X and Y:
+
+ \begin{table}[h!]
+     \centering
+     \begin{tabular}{lllll}
+        \hline
+         Y \textbackslash  X  &  0    &  1   & 2 & 3 \\\hline \hline
+         0      &  0.1 &  0.2 & 0.1 & 0   \\
+         1      &  0.4  & 0 & 0 & 0.2   \\ \hline\hline
+
+     \end{tabular}
+  \end{table}
+   \begin{parts}
+   
+      \part[4] Find the marginal pmfs of X and Y
+
+            \begin{tabular}{c|c m{1cm} c m{1cm} c c c c c c c}
+               
+               x  & & &  & & &  & & & &\\ 
+               \hline
+               f(x)  & & &  & & &  & & & &\\
+            \end{tabular}
+           \quad   \quad   \quad \quad   \quad   \quad \quad   \quad   \quad
+            \begin{tabular}{c|c m{1cm} c m{1cm} c c c c c c c}
+               
+               y  & & &  & & &  & & & &\\ 
+               \hline
+               f(y)  & & &  & & &  & & & &\\
+            \end{tabular}
+      \vspace{4cm}
+      
+      \part[4] Find the conditional distribution of $f_{X\vert Y}(x\vert y=1)$
+      \begin{table}[h]
+            \centering
+            \begin{tabular}{c|c m{5cm} c  c  c c c c c c}
+               
+               x  & & &  & & &  & & & &\\ 
+               \hline
+               f_{X\vert Y}(x\vert y=1)  & & &  & & &  & & & &\\
+            \end{tabular}
+      \end{table}
+      \vspace{4cm}
+      
+      \part[3] Find the conditional expected value of $x\vert y=1$. That is $\text{E}_{(X\vert Y)}(x\vert y=1)$\\
+      \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $\text{E}_{(X\vert Y)}(x\vert y=1)=$ \hspace{4cm}}
+      \vspace{3cm}
+      
+      \part[4] Find the conditional variance  of $x\vert y=1$. That is $\text{Var}_{(X\vert Y)}(x\vert y=1)$\\
+      \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $\text{Var}_{(X\vert Y)}(x\vert y=1)=$ \hspace{4cm}}
+      \vspace{6cm}
+       \part[3] Are X and Y independent? Why or why not?
+       \vspace{4cm}
+   \end{parts}
+
+\question
+Let $X$ be a normal random variable with a mean of -2 and a varaince of 16 (i.e., $X \sim N(-2, 16)$) Find the following probabilities (note: the attached standard normal probability table may be helpful):
+
+          \begin{parts}
+          \part[3] $P(-8 \le X < 1)$
+          \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $\text{P}=$ \hspace{2cm}}
+          \vspace{4cm}
+          \part[4] $P(|X + 2| \ge 4)$ 
+          \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $\text{P}=$ \hspace{2cm}}
+          \vspace{5cm}
+          \part[4] Find the value of c such that $P(|X + 1| \le c) = 0.95$
+          \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $\text{c}=$ \hspace{2cm}}
+          \end{parts}
+\newpage
+\question
+Seventy independent messages are sent from an electronic transmission center.  Messages are processed sequentially, one after another.  Transmission time of each message is Exponential with parameter $\alpha = 5$min.  
+\begin{parts}
+\part[3] what are the expected value and variance of the sample mean of all 70 messages? 
+
+\hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $\text{E}(\overline{X}) =$ \hspace{2.35cm}}
+
+\hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $\text{Var}(\overline{X}) =$ \hspace{2cm}}
+\vspace{4cm}
+
+\part[3] Find the probability that the average of all 70 messages are transmitted in less than 12 minutes. 
+\hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $\text{P} =$ \hspace{2cm}}
+\vspace{4cm}
+
+
+\end{questions}
+\end{document}

@@ -1,0 +1,51 @@
+\question
+
+An environmental engineer is testing four methods for reducing the concentration of a certain lake pollutant found in Iowa lakes.
+To do this he first randomly selected 20 Iowa lakes from which he took water samples,
+then split each of the 20 samples into 4 portions, 
+and randomly labeled the four portions 1, 2, 3, and 4. 
+Finally, he attempted to reduce the concentration of each 
+of the portions labeled 1 using the the first method, 
+of each of the portions labeled 2 using the second method, 
+of each of the portions labeled 3 using the third method, 
+and of each of the portions labeled portion 4 using the fourth method. 
+After the methods had been applied, he measured the change in concentration. \\
+
+\begin{parts}
+   \part[2] Is this an experiment or an observational study? Explain.
+
+  \vspace{3cm}
+
+   \part Identify the following (if there was not one, simply put "not used").
+
+  \vspace{1cm}
+
+   \begin{subparts}
+      \subpart[2] Response variable(s):
+
+      \vspace{2cm}
+
+      \subpart[2] Experimental variable(s):
+
+      \vspace{2cm}
+      \subpart[2] What type of variable was (were) the experimental variable(s) in previous question (circle one):\\
+      
+      \textbf{Quantitative}\hspace{2cm} \textbf{Qualitative}
+
+      \vspace{2cm}
+
+      \subpart[2] Blocking variable(s):
+
+      \vspace{2cm}
+
+   \end{subparts}
+
+   \part[2] Was replication used in this experiment? If so, where was it applied? If not, how could we have applied it?
+
+  \vspace{2cm}
+
+\end{parts}
+
+\pagebreak
+
+

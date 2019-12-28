@@ -1,0 +1,51 @@
+% For LaTeX-Box: root = stat305-pexam1.Rnw
+\documentclass[addpoints]{examsetup}
+
+\usepackage{etoolbox}
+\usepackage{tikz,pgfplots}
+
+%\input{stat105_exam1_info.tex}
+\newcommand{\course}[1]{\ifstrempty{#1}{STAT 305}{STAT 305, Section #1}}
+\newcommand{\sectionNumber}{D}
+\newcommand{\examDate}{February 21, 2019}
+\newcommand{\semester}{FALL 2019}
+\newcommand{\examNumber}{I}
+
+\begin{document}
+
+%-- : R code (Code in Document)
+<<echo=FALSE, cache=FALSE, include = FALSE>>=
+   library(ggplot2)
+   theme_bw()
+   if(FALSE){ 
+      knitr::knit("stat305-exam1.Rnw")
+      system('pdflatex stat305-exam1.tex')
+   }
+@
+
+
+\examCoverPage
+
+\begin{questions}
+
+<<child='questions/question01.Rnw',echo=FALSE, cache=FALSE, include=TRUE>>=
+@
+
+<<child='questions/question02.Rnw',echo=FALSE, cache=FALSE, include=TRUE>>=
+@
+
+<<child='questions/question03.Rnw',echo=FALSE, cache=FALSE, include=TRUE>>=
+@
+
+<<child='questions/question04.Rnw',echo=FALSE, cache=FALSE, include=TRUE>>=
+@
+
+<<child='questions/question05.Rnw',echo=FALSE, cache=FALSE, include=TRUE>>=
+@
+
+%% <<child='questions/question06.Rnw',echo=FALSE, cache=FALSE, include=TRUE>>=
+%% @
+
+\end{questions}
+
+\end{document}

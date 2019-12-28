@@ -1,0 +1,250 @@
+% For LaTeX-Box: root = stat305-pexam1.Rnw
+\documentclass[addpoints]{examsetup}
+
+\usepackage{etoolbox}
+\usepackage{tikz,pgfplots}
+
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+\usepackage{pdfpages} 
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{ulem}
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{graphicx, fancyhdr}
+\usepackage{amsmath, amsfonts}
+\usepackage{color}
+\usepackage{hyperref}
+
+\newcommand{\blue}[1]{{\color{blue} #1}}
+
+\setlength{\topmargin}{-.5 in} 
+\setlength{\textheight}{9 in}
+\setlength{\textwidth}{6.5 in} 
+\setlength{\evensidemargin}{0 in}
+\setlength{\oddsidemargin}{0 in} 
+\setlength{\parindent}{0 in}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+
+
+%\input{stat105_exam1_info.tex}
+\newcommand{\course}[1]{\ifstrempty{#1}{STAT 305}{STAT 305, Section #1}}
+\newcommand{\sectionNumber}{3}
+\newcommand{\examDate}{November 14, 2018}
+\newcommand{\semester}{FALL 2019}
+\newcommand{\examNumber}{III}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+%-- : R code (Code in Document)
+<<echo=FALSE, cache=FALSE, include = FALSE>>=
+   library(ggplot2)
+   #theme_bw()
+   if(FALSE){ 
+      knitr::knit("stat305-exam1.Rnw")
+      system('pdflatex stat305-exam1.tex')
+   }
+@
+
+
+\examCoverPage
+
+\begin{questions}
+\question
+
+Let $X$ be a normal random variable with a mean of 2 and a varaince of 9 (i.e., $X \sim N(2,9)$) and let $Z$ be a random variable following a standard normal distribution.
+
+\begin{parts}
+ \part Find the following probabilities (note: Table B-3 may be helpful):
+  \begin{subparts}
+     \subpart[2] $P(Z \le 2)$
+
+     \vspace{2cm}
+
+     \subpart[2] $P(|Z| \ge 1)$
+
+     \vspace{2cm}
+
+     \subpart[2] $P(0 \le Z < 3)$
+
+     \vspace{2cm}
+
+     \subpart[2] $P(X < 3)$
+
+     \vspace{2cm}
+
+     \subpart[2] $P(|X| \le 4.5)$
+
+     \vspace{2cm}
+
+  \end{subparts}
+
+  \part[5] Find the value $a$ so that $P(- a + 2 < X < a + 2) = .95$ (approximate as needed).
+
+\end{parts}
+
+\newpage
+\question 
+
+Suppose that $X$ is a continuous random variable with probability density function (pdf):
+$$
+f(x) = 
+\begin{cases}
+    0 &  x < 0 \\
+    c x^2 &  -2  < x < 2 \\
+    0 & x \ge 2
+\end{cases}
+$$
+where $c$ is a constant.
+
+\begin{parts}
+
+\part[2] What is the value of $c$ if $f(x)$ is a valid probability density function?
+
+     \vspace{2cm}
+
+
+\part[4] What is the cumulative density function, $F(x)$?
+
+     \vspace{3cm}
+
+\part[2] What is the probability that $X$ takes a value greater than 1?
+
+     \vspace{2cm}
+
+\part[2] What is the probability that $X$ takes a value between 0 and 1?
+
+     \vspace{2cm}
+
+
+\end{parts}
+
+\newpage
+
+\question
+Let $X$, $Y$ and $Z$ be random variables with expected value and standard deviations given below:
+
+
+ \begin{table}[h!]
+     \centering
+     \begin{tabular}{lll}
+        \hline
+           & Expected Value  & Standard Deviation    \\\hline \hline
+         X &    1.5          &  3.2   \\
+         Y &    0            &  8.1   \\
+         Z &    6            &  2.7   \\\hline \hline
+
+     \end{tabular}
+  \end{table}
+    
+\begin{parts}
+
+   \part[3] Find $E(8 + 2X + Y - Z)$
+   \vspace{3cm}
+   \part[3] Find $Var(\frac{Z}{3} - 2Y + 3X )$
+   \vspace{3cm}
+   
+\end{parts}
+
+\question
+Let X be the the number of crankshafts that fail in a given test of a certain type of vehicle $(X = 0, 1, 2)$. Let $Y = 1$ if the clutch fails during that same test and $Y = 0$ otherwise. Consider the joint distribution of X and Y :
+
+ \begin{table}[h!]
+     \centering
+     \begin{tabular}{llll}
+        \hline
+         Y \textbackslash  X  &  0    &  1   & 2 \\\hline \hline
+         0      &  0.35 &  0.1 & 0.05   \\
+         1      &  0.2  & 0.25 & 0.05   \\ \hline\hline
+
+     \end{tabular}
+  \end{table}
+   \begin{parts}
+   
+      \part[2] Find $P(X= 1, Y= 1) $
+      \vspace{2cm}
+      \part[2] $P(x > 0\ \  \text{and}\ \  Y=1) $
+      \vspace{2cm}
+      \part[2] Find the marginal pmfs of X and Y
+      
+
+            \begin{tabular}{c|c m{1cm} c m{1cm} c c c c c c c}
+               
+               x  & & &  & & &  & & & &\\ 
+               \hline
+               f(x)  & & &  & & &  & & & &\\
+            \end{tabular}
+           \quad   \quad   \quad \quad   \quad   \quad \quad   \quad   \quad
+            \begin{tabular}{c|c m{1cm} c m{1cm} c c c c c c c}
+               
+               y  & & &  & & &  & & & &\\ 
+               \hline
+               f(y)  & & &  & & &  & & & &\\
+            \end{tabular}
+      \newpage
+            
+      \part[2] Find the conditional distribution of $f_{X\vert Y}(x\vert y=1)$
+      \begin{table}[h]
+            \centering
+            \begin{tabular}{c|c m{5cm} c  c  c c c c c c}
+               
+               x  & & &  & & &  & & & &\\ 
+               \hline
+               f_{X\vert Y}(x\vert y=1)  & & &  & & &  & & & &\\
+            \end{tabular}
+      \vspace{4cm}
+      \end{table}
+       \part[2] Are X and Y independent? Why or why not?
+       \vspace{5cm}
+   \end{parts}
+
+\question[4]
+Let $X_1, X_2, \cdots, X_{41}$ are iid random variables with Exponential distribution with parameter 1/4. (i.e $\sim\text{Exp}(\alpha= 1/4)$). Find the probability that $P(\vert\overline{X}- 1\vert < 2)$.
+\end{questions}
+\end{document}

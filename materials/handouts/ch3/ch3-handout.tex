@@ -1,0 +1,181 @@
+\documentclass[11pt]{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+	\ifdim\Gin@nat@width>\linewidth
+	\linewidth
+	\else
+	\Gin@nat@width
+	\fi
+}
+\makeatother
+\usepackage{pdfpages} 
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{ulem}
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+	\def\at@end@of@kframe{}%
+	\ifinner\ifhmode%
+	\def\at@end@of@kframe{\end{minipage}}%
+\begin{minipage}{\columnwidth}%
+	\fi\fi%
+	\def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+		\colorbox{shadecolor}{##1}\hskip-\fboxsep
+		% There is no \\@totalrightmargin, so:
+		\hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+	\MakeFramed {\advance\hsize-\width
+		\@totalleftmargin\z@ \linewidth\hsize
+		\@setminipage}}%
+{\par\unskip\endMakeFramed%
+	\at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{graphicx, fancyhdr}
+\usepackage{amsmath, amsfonts}
+\usepackage{color}
+\usepackage{hyperref}
+
+\newcommand{\blue}[1]{{\color{blue} #1}}
+
+\setlength{\topmargin}{-.5 in} 
+\setlength{\textheight}{9 in}
+\setlength{\textwidth}{6.5 in} 
+\setlength{\evensidemargin}{0 in}
+\setlength{\oddsidemargin}{0 in} 
+\setlength{\parindent}{0 in}
+\newcommand{\ben}{\begin{enumerate}}
+	\newcommand{\een}{\end{enumerate}}
+
+
+\lhead{STAT 305}
+\chead{Handout Ch 3} 
+\rhead{September $10^{th}$}
+\lfoot{Fall 2019} 
+\cfoot{\thepage} 
+\rfoot{} 
+\renewcommand{\headrulewidth}{0.4pt} 
+\renewcommand{\footrulewidth}{0.4pt} 
+
+\def\Exp#1#2{\ensuremath{#1\times 10^{#2}}}
+\def\Case#1#2#3#4{\left\{ \begin{tabular}{cc} #1 & #2 \phantom
+		{\Big|} \\ #3 & #4 \phantom{\Big|} \end{tabular} \right.}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+	\pagestyle{fancy} 
+	
+The following data were gathered for an analysis on Manganese in some engineering system. Read the data and answer the questions based on the data. 
+\begin{center}
+			\begin{tabular}{cccc}
+			74& 79& 77& 81\\         
+		    68& 79& 81& 76\\         
+		    81& 80& 80& 78\\         
+		    88& 83& 79& 91\\         
+		    79& 75& 74& 73\\ 
+
+			\end{tabular}
+\end{center}
+
+\begin{itemize}
+		
+		\item \textbf{Draw the stem and leaf diagram:} \\
+\vspace{2 in}
+		\item \textbf{ Make a frequency table }			
+\begin{center}
+	\begin{tabular}{p{2cm}| p{2cm}|p{3cm}|p{2cm}|p{2cm}|p{2cm}}
+		Class & Interval Center& Tally & Frequency & Relative Frequency & Cumulative r.f \\
+		\hline
+		& & & & & \vspace{0.3cm}  \\
+		  
+		\hline      
+		& & & & &\vspace{0.3cm} \\        
+		\hline
+		& & & &  &\vspace{0.3cm}\\         
+		\hline
+		& & & & &\vspace{0.3cm} \\         
+		\hline
+		& & & & &\vspace{0.3cm} \\ 
+				\hline
+		& & & & &\vspace{0.3cm} \\ 
+	\end{tabular}
+\end{center}
+
+		\item \textbf{Draw the Histogram of the data}
+		\pagebreak
+		
+		\item \textbf{Calculate the quantiles }
+\begin{center}
+	\begin{tabular}{p{1cm} p{1cm}p{1cm}p{1cm}p{1cm}p{1cm} p{1cm}p{1cm}p{1cm}p{1cm}p{1cm}}
+		i &1 & 2 &  3&  4& 5 & 6  &7  &8 &9 &10  \\
+		\hline
+		Data& 68 &73& 74& 74& 75& 76& 77& 78& 79& 79\\
+		\hline
+		\vspace{.15cm}
+		$\frac{i- 0.5}{n}$\vspace{.15cm}\\
+		\hline
+		\vspace{.15cm}
+		Q(p)\vspace{.15cm}\\
+		\hline
+				\vspace{.15cm}
+		$Q_N(p)$\vspace{.15cm}\\
+		\hline
+		
+	\end{tabular}
+\end{center}		
+
+\begin{center}
+	\begin{tabular}{p{1cm} p{1cm}p{1cm}p{1cm}p{1cm}p{1cm} p{1cm}p{1cm}p{1cm}p{1cm}p{1cm}}
+		i &11 & 12 &  13&  14& 15 & 16  &17  &18 &19 &20  \\
+		\hline
+		Data& 79& 79& 80& 80& 81& 81& 81& 83& 88& 91\\
+		\hline
+				\vspace{.15cm}
+		$\frac{i- 0.5}{n}$\vspace{.15cm}\\
+		\hline
+		\vspace{.15cm}
+		Q(p)\vspace{.15cm}\\
+		\hline
+		\vspace{.15cm}
+		$Q_N(p)$\vspace{.15cm}\\
+		\hline
+
+	\end{tabular}
+\end{center}			
+	 	
+	 	\item \textbf{Find the median, $1^{st}$ quartile and   $3^{rd}$ quartile }	\\
+
+		
+
+\vspace{1.5cm}
+	
+		\item \textbf{Find the Normal quantiles and add them to the quantile table above}
+		
+		\item \textbf{Plot the Normal quantiles vs. the data quantiles}
+		\vspace{7cm}
+		\item \textbf{Draw the boxplot}
+		
+		
+		
+		
+			\end{itemize}
+\end{document}

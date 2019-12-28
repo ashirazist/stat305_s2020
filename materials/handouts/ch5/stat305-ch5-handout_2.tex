@@ -1,0 +1,153 @@
+\documentclass[11pt]{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+\usepackage{pdfpages} 
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{ulem}
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{graphicx, fancyhdr}
+\usepackage{amsmath, amsfonts}
+\usepackage{color}
+\usepackage{hyperref}
+
+\newcommand{\blue}[1]{{\color{blue} #1}}
+
+\setlength{\topmargin}{-.5 in} 
+\setlength{\textheight}{9 in}
+\setlength{\textwidth}{6.5 in} 
+\setlength{\evensidemargin}{0 in}
+\setlength{\oddsidemargin}{0 in} 
+\setlength{\parindent}{0 in}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+
+\lhead{STAT 305}
+\chead{Chapter 5} 
+\rhead{Handout II}
+\lfoot{Fall 2019} 
+\cfoot{\thepage} 
+\rfoot{} 
+\renewcommand{\headrulewidth}{0.4pt} 
+\renewcommand{\footrulewidth}{0.4pt} 
+
+\def\Exp#1#2{\ensuremath{#1\times 10^{#2}}}
+\def\Case#1#2#3#4{\left\{ \begin{tabular}{cc} #1 & #2 \phantom
+{\Big|} \\ #3 & #4 \phantom{\Big|} \end{tabular} \right.}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\usepackage{Sweave}
+\begin{document}
+\input{stat305-ch5-handout_2-concordance}
+\pagestyle{fancy} 
+
+
+\begin{enumerate}
+	\item A lab network consisting of 20 computers was attacked by a computer virus.  This virus enters each computer with probability $p= 0.4$, independently of other computers.  
+           \begin{enumerate}
+             \item Is the random variable associated with this random experiment \textbf{discrete} or \textbf{continuous}?
+             
+           \item \textbf{Precisely} specify the probability distribution that best matches with this random experiment.\vspace{0.7cm}
+           
+           Find the probability that
+           \item the virus entered exactly none or only one computer.
+           \vspace{1.5cm}
+           
+           \item the virus entered at least two computers.
+           \vspace{1.5cm}
+           \item What is the standard deviation of the number of times the virus enters?
+           \vspace{0.5cm}
+           \end{enumerate}
+           
+  \item Suppose that the average number of log-ins to a Statistics department server is 6 per minute.  Let $X$ be the random variable describing the average number of log-ins.
+          \begin{enumerate}
+              \item What are possible values of $X$? Does it take \textbf{discrete} or \textbf{continous} values?
+              \vspace{1cm}
+              \item \textbf{Precisely} specify the probability distribution that best matches with the average number of log-ins.\vspace{1cm}
+              What is the probability of 
+              \item No log-ins in a 1-minute period?
+              \vspace{2cm}
+              \item Maximum log-ins of two in a 1-minute period?
+              \vspace{3cm}
+              \item At least three log-ins in a 1-minute period?
+              \vspace{2cm}
+              \item What is the expected value and variance of the average number of log-ins?
+          \end{enumerate}
+  \item A representative from the National Football League's Marketing Division randomly selects people on a random street in Kansas City, Kansas until he finds a person who attended the last home football game. Let $p$, the probability that he succeeds in finding such a person, equal $0.20$. And, let $X$ denote the number of people he selects until he finds his first success. 
+          \begin{enumerate}
+                \item What is the distribution of $X$?
+                \vspace{1cm}
+                \item What is the probability that the marketing representative must select 4 people before he finds one who attended the last home football game?
+                \vspace{3cm}
+                \item What is the probability that he finds someone who attended the last home football game after he approaches 21 people?
+                \vspace{3cm}
+          \end{enumerate}
+  \item An experiment was conducted to examine aluminum alloy for surface flaws. The average number of sheets with a given number of flaws per sheet was 3. 
+        \begin{enumerate}
+            \item \textbf{Precisely} specify the probability distribution that best describes this experiment. 
+            \vspace{1cm}
+            
+            \item What is the probability of finding a sheet chosen at random which contains 3 or more surface flaws?
+            \vspace{1.5cm}
+            \item Find the expected value and variance of flaws.
+        \end{enumerate}
+        
+  \item A safety engineer feels that $35\%$ of all industrial accidents in her plant are caused by failure of employees to follow instructions. She decides to look at the accident reports (selected randomly and replaced in the pile after reading) until she finds one that shows an accident caused by failure of employees to follow instructions. 
+      \begin{enumerate}
+      \item On average, how many reports would the safety engineer expect to look at until she finds a report showing an accident caused by employee failure to follow instructions? 
+
+      \item  Find $P(X\ge 3)$
+      \end{enumerate}
+
+
+
+   \end{enumerate}
+
+
+
+\end{document}

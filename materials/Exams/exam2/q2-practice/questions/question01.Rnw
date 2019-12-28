@@ -1,0 +1,9 @@
+\question[2] 
+Circle the \textbf{bold face} term that makes the following statement true: \\
+
+A measurement device that reports the measurements which are close to each other when repeatedly measuring the same thing is (\textbf{precise} or \textbf{accurate}).
+\vspace{1cm}
+
+\question[2] 
+When dealing with qualitative data, the best way to describe the common value is using the (\textbf{mode} or \textbf{mean} or \textbf{median}).
+\vspace{1cm}

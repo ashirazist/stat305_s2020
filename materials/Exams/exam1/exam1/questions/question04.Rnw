@@ -1,0 +1,50 @@
+\question
+
+In the field of psychology, the Dunning–Kruger effect is a cognitive bias in which people of low ability overestimate their ability and students with high ability underestimate their ability.
+In order to study this phenomenon, a team of psychologists at Iowa State asked students from the College of Liberal Arts and Sciences to estimate the score they would receive on a standardized grammar test (as a percentage from 0 to 100).
+They recorded the student's sex, age, and major. 
+The students were then given the standardized grammar test with 50 questions and the number of correct answers was recorded.
+
+\begin{parts}
+   \part[2] Is this an experiment or an observational study?
+   \vspace{2cm}
+   
+   \part[2] What is the population under study?
+   \vspace{2cm}
+
+   \part For each of the following variables, 
+
+   \begin{itemize}
+
+      \item Identify whether it is qualitative or quantitative variable, and 
+
+      \item If it is qualitative, provide the values it can take (if there are more than three, list at least three).
+
+      \item If it is quantitative, is it continuous or discrete?
+
+   \end{itemize}
+
+   \begin{subparts}
+
+      \subpart the number of questions the student answered correctly on the standardized test.
+
+      \vspace{2cm}
+
+      \subpart The score the student predicted they would recieve on the standardized test.
+
+      \vspace{2cm}
+
+      \subpart The student's sex.
+
+      \vspace{2cm}
+
+      \subpart The student's age.
+
+      \vspace{2cm}
+
+      \subpart The student's major.
+
+   \end{subparts}
+
+\end{parts}
+\pagebreak

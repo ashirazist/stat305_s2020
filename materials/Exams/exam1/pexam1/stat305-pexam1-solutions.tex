@@ -1,0 +1,294 @@
+% For LaTeX-Box: root = stat305-pexam1.Rnw
+\documentclass[addpoints]{examsetup}
+
+\usepackage{etoolbox}
+\usepackage{tikz,pgfplots}
+
+%\input{stat105_exam1_info.tex}
+\newcommand{\course}[1]{\ifstrempty{#1}{STAT 305}{STAT 305, Section #1}}
+\newcommand{\sectionNumber}{3}
+\newcommand{\examDate}{September, 2018}
+\newcommand{\semester}{FALL 2018}
+\newcommand{\examNumber}{ I}
+
+\usepackage{Sweave}
+\begin{document}
+\input{stat305-pexam1-solutions-concordance}
+
+%-- : R code (Code in Document)
+
+\examCoverPage
+
+\begin{questions}
+
+
+\question[2] 
+ Which of the following best describes the methods for handling extraneous variables:
+
+(1) blocking and replication \hspace{1cm}(2) randomization and
+replication \\ (3) randomization and blocking \hspace{0.5cm}(4)
+randomization, blocking, and replication\\
+\begin{solution}
+Common Advice: Block what you can control and randomize the rest (common, not necessarily good though- what can be controlled not universal). Replication also reduce the variablity. So, the answer is 4.
+\end{solution}
+
+
+
+% Circle the \textbf{bold face} term that makes the following statement true: \\
+% 
+% A measurement device that reports the true measurement of the item on which the device is being used is (\textbf{precise} or \textbf{accurate}).
+
+\vspace{1cm}
+
+\question 
+
+%-- : R code (Code in Document)
+
+A sample of size 5 was drawn from a population and the resulting observations are reported below. 
+\begin{center}
+12, 15, 18, 19, 26
+\end{center}
+Using these observed values, report the following:
+\vspace{1cm}
+
+\begin{parts}
+
+   \part[3] the mean  
+   \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $\bar{x}= 18$ \hspace{2cm}}
+
+      \begin{solution}
+         \begin{align*}
+         \bar{x} = \frac{1}{n} \sum_{i=1}^n x_i &= \frac{1}{5} (x_1 + x_2 + x_3 + x_4 + x_5)  \\
+                                                &= \frac{1}{5} (12 + 15 + 18 + 19 + 26) \\
+                                                &= \frac{1}{5} (90) \\
+                                                &= 18 
+         \end{align*}
+      \end{solution}
+
+   \part[3] the median 
+      \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $Med.=18$ \hspace{2cm}}
+%-- : R code (Code in Document)
+   
+   \begin{solution} 
+      We will need to use the quantile function.\\
+
+      In this case, $i = \lfloor n p + 0.5 \rfloor = \lfloor 5 \cdot 0.25 + 0.5 \rfloor = \lfloor 1.75 \rfloor = 1$.
+
+      \begin{align*}
+         Q(.50) &= x_i + (n p + 0.5 - i ) \cdot (x_{i+1} - x_i) \\
+                &= x_{3} + (5 \cdot 0.50 + 0.5 - 3) \cdot (x_{4} - x_{3}) \\
+                &= 18 + (0) \cdot (19 - 18) \\
+                &= 18 + (0) \cdot (1) \\
+                &= 18 + 0 \\
+                &= 18 \\
+      \end{align*} 
+      
+   \end{solution}
+
+
+   \part[3] the variance 
+      \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $s^2= 27.5$ \hspace{2cm}}
+
+\begin{solution}
+      Since this is a sample, we must $s^2$:\\
+
+      \begin{align*}
+         s^2 &= \frac{1}{n-1} \sum_{i = 1}^{n} (x_i - \bar{x})^2 \\
+             &= \frac{1}{5-1} \sum_{i = 1}^{5} (x_i - \bar{x})^2 \\
+             &= \frac{1}{4} \left( (x_1 - \bar{x})^2+ (x_2 - \bar{x})^2 + (x_3 - \bar{x})^2 + (x_4 - \bar{x})^2 + (x_5 - \bar{x})^2 \right) \\
+             &= \frac{1}{4} \left( (12 - 18)^2+ (15 - 18)^2 + (18 - 18)^2 + (19 - 18)^2 + (26 - 18)^2 \right) \\
+             &= \frac{1}{4} \left( (-6)^2 + (-3)^2 + (0)^2 + (1)^2 + (8)^2 \right) \\
+             &= \frac{1}{4} \left( 36 + 9 + 0 + 1 + 64 \right) \\
+             &= \frac{1}{4} \left( 110 \right) \\
+             &= 27.5 \\
+      \end{align*}
+
+   \end{solution}
+
+   \part[3] the standard deviation 
+      \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $s= 5.24$ \hspace{2cm}}
+
+ \begin{solution}
+      We must use the sample standard deviation, $s$:\\
+
+      \begin{align*}
+         s &= \sqrt{s^2} = \sqrt{27.5} = 5.24404424085076 \\
+      \end{align*}
+
+   \end{solution}
+
+   \part[3] the value of $Q(.72)$
+         \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $Q(.72)= 19.7$ \hspace{2cm}}
+
+%-- : R code (Code in Document)
+   
+   \begin{solution} 
+      We will need to use the quantile function.\\
+
+      \begin{align*}
+         Q(.72) &= x_i + (n p + 0.5 - i ) \cdot (x_{i+1} - x_i) \\
+                &= x_{4} + (5 \cdot 0.72 + 0.5 - 4) \cdot (x_{5} - x_{4}) \\
+                &= 19 + (0.0999999999999996) \cdot (26 - 19) \\
+                &= 19 + (0.0999999999999996) \cdot (7) \\
+                &= 19 + 0.699999999999998 \\
+                &= 19.7 \\
+      \end{align*} 
+      
+   \end{solution}
+
+   
+   \part[3] the value of $Q(.25)$
+         \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $Q(.25)= 14.25$ \hspace{2cm}}
+
+%-- : R code (Code in Document)
+   
+   \begin{solution} 
+      We will need to use the quantile function.\\
+
+      \begin{align*}
+         Q(.25) &= x_i + (n p + 0.5 - i ) \cdot (x_{i+1} - x_i) \\
+                &= x_{1} + (5 \cdot 0.25 + 0.5 - 1) \cdot (x_{2} - x_{1}) \\
+                &= 12 + (0.75) \cdot (15 - 12) \\
+                &= 12 + (0.75) \cdot (3) \\
+                &= 12 + 2.25 \\
+                &= 14.25 \\
+      \end{align*} 
+      
+   \end{solution}
+
+   \part[3] the range
+            \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $R= 14$ \hspace{2cm}}
+%-- : R code (Code in Document)
+      \begin{solution}
+         
+         \begin{align}
+         $R$ &= $max(x)$- $min(x)$\\
+           &= $26 - 12$\\
+           &= 14
+         \end{align}
+      \end{solution}
+
+   \part[3] give the coordinates (on a regular graph paper) of the upper right and lower left point that would appear on a normal plot of the data.
+
+\hfill \fbox{upper right point = $( \;\; 0.9 \;\;  \;\; , \;\; 26 \;\;
+\;\; )$ }
+
+\hfill \fbox{lower left point = $( \;\; 0.1 \;\;  \;\; , \;\; -1.28 \;\;
+\;\;  )$}
+%-- : R code (Code in Document)
+   \begin{solution}
+   The cooridinates on the upper right on \textbf{a reqular graph paper} just means the largest quantile of the data. And, the lower left point that would appear on \textbf{a Normal plot} asks for the corresponding normal smallest normal quantile.\\
+   $i= 5$ and $\frac{i- 0.5}{5}= \frac{5- 0.5}{5}= 0.9  $.\\
+   Also $i= 1$ and $\frac{i- 0.5}{5}= \frac{1- 0.5}{5}= 0.1  $\\
+   
+   We are looking for the pair of $(p= 0.9, Q(0.9))$ for the upper right coordinate and $(p= 0.1, Q_{Normal}(0.1))$ for the lower coordinate. Using the quantile function:\\
+   
+      \begin{align*}
+         Q(.9) &= x_i + (n p + 0.5 - i ) \cdot (x_{i+1} - x_i) \\
+                &= x_{5} + (5 \cdot 0.9 + 0.5 - 5) \cdot (x_{5} - x_{5}) \\
+                &= 26 + (0) \cdot (26 - 26) \\
+                &= 26 + (0) \cdot (0) \\
+                &= 26 + 0 \\
+                &= 26 \\
+      \end{align*} 
+      So, the upper right coordinate on a regular paper is $(0.9 , 26)$. Using a normal quantile table, the $Q_{N}(0.1)= -1.28$. Thus, the lower left coordinate on a normal graph paper is $(0.1, -1.28)$
+   \end{solution}
+   
+   
+
+   
+   \part[5] draw a boxplot for this data. Carefully label numbers on the plot
+\begin{solution}
+Need to have firtst, third quartiles and also median. By part (b) and (f) we have $Q(.25)$ and median. Just need to calculate the third quartile (Q(.75)) and then find the interquartile range (IQR) to be able to draw the whiskers.
+
+%-- : R code (Code in Document)
+   
+
+      We will need to use the quantile function.\\
+
+      \begin{align*}
+         Q(.75) &= x_i + (n p + 0.5 - i ) \cdot (x_{i+1} - x_i) \\
+                &= x_{4} + (5 \cdot 0.75 + 0.5 - 4) \cdot (x_{5} - x_{4}) \\
+                &= 19 + (0.25) \cdot (26 - 19) \\
+                &= 19 + (0.25) \cdot (7) \\
+                &= 19 + 1.75 \\
+                &= 20.75 \\
+      \end{align*} 
+
+The IQR is then $Q(.75)- Q(.25)= 6.5$ and the whisker is $1.5 * IQR=  9.75$     
+
+
+
+  \end{solution}
+  
+\end{parts}
+
+\pagebreak
+
+\question
+
+Aisha recently discovered she has the opportunity to upgrade her smart phone.
+She narrowed her choices down to two phones (we will call them phone A and phone B) but had a hard time making her final decision.
+She decided to interviewed people she knew who had one of the phones to rate their satisfaction from 0\% to 100\%.
+She also asked them if they would prefer to have the other phone.
+In order to help put their feelings in perspective, she also made note of how negative she thought they were in general (since critical people might be harsher in their criticism in general),
+using three descriptions: the interviewee's personality was classified as overly critical, appropriately critical, or not critical enough. 
+
+\begin{parts}
+   \part[2] Is this an experiment or an observational study?
+   \begin{solution}
+   It is an observational study. Aisha only records information she can observer (even if she may be a biased observer, or her sample of people she interviews may be biased).
+   \end{solution}
+
+   \part[2] What is the population under study?
+   \begin{solution}
+   The population under study is people Aisha knows who have one of the two phones.
+   \end{solution}
+
+   \part[2] Identify the response variable(s).
+   \begin{solution}
+   There are multiple response variables. (1) The interviewee's satisfaction, (2) whether or not the interviewee would have preferred the other phone, (3) Aisha's rating of their negativity, and (4) which of the phones the individual owns (since that is information we are collecting from each sampling unit and it is information that will change between sampling units). Note: it could be argued that since this is not an experiment, there is no response variable at all and all the variables are just "variables of interest" - tread lightly with that response though, since it seems a lot like word play instead of an honest attempt at the problem...
+   \end{solution}
+
+   \part For each of the following variables, 
+
+   \begin{itemize}
+
+      \item Identify whether it is qualitative or quantitative variable, and 
+
+      \item If it is qualitative, what are the possible values it can take? If it is quantitative, is it continuous or discrete?
+
+   \end{itemize}
+
+   \begin{subparts}
+
+      \subpart[2] the individual's reported phone satisfaction percentage.
+      \begin{solution}
+      This is quantitative and continuous.
+      \end{solution}
+
+      \subpart[2] Aisha's appraisal of the interviewee's negativity.
+      \begin{solution}
+      This is qualitative with three levels: overly critical, appropriately critical, not critical enough.
+      \end{solution}
+
+      \subpart[2] whether or not the interviewee would prefer to have the other phone.
+      \begin{solution}
+      This is qualitative with two levels: yes or no.
+      \end{solution}
+
+      \subpart[2] the type of phone the interviewee currently owns.
+      \begin{solution}
+      This is qualitative with two levels: Phone A or Phone B.
+      \end{solution}
+
+   \end{subparts}
+
+\end{parts}
+\pagebreak
+
+
+
+\end{questions}
+
+\end{document}

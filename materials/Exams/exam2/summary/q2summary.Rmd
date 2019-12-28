@@ -1,0 +1,90 @@
+---
+title: "STAT 305 Quiz II Summary"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, error = FALSE, warning = FALSE, message = FALSE)
+```
+
+```{r}
+library(tidyverse)
+```
+```{r echo=FALSE, cache=FALSE, include = FALSE}
+   mode_values <- function(x){
+      tbl <- table(x)
+      names(which(tbl == max(tbl)))
+   }
+
+   print_multiple <- function(x){
+      if(length(x) == 1){
+         x
+      }else{
+         xfirst <- x[1:(length(x)-1)]
+         paste(paste0(xfirst,collapse = ", "),"and",x[length(x)])
+      }
+   }
+
+   my_quantile <- function(p,x){
+      x <- x[order(x)]
+      
+      n <- length(x)
+
+      raw.i <- n*p + .5
+      floor.i <- floor(raw.i)
+      if(floor.i == raw.i){
+         x[floor.i]
+      }else{
+         x[floor.i] + (n*p - floor.i + .5)*(x[floor.i+1] - x[floor.i])
+      }
+   }
+```
+
+### Exam Summary
+
+```{r}
+df<-readr::read_csv( "C:/Users/4M1N/Desktop/stat305.github.io/materials/Exams/exam2/summary/q2_sat305-f19.csv")
+
+df<- df %>% filter(Quiz2 > 0)
+
+
+```
+#### Top 5 grades
+```{r}
+round(head(sort(df$Quiz2, decreasing = T),5), 2)
+```
+#### Quantiles
+```{r}
+summary(df$Quiz2)
+```
+
+
+
+```{r, fig.height= 6}
+
+p1<-df %>% ggplot(aes(x=Quiz2))+geom_histogram(binwidth = 4)+theme(panel.background = element_rect(fill = "lightgray", colour = "#6D9EC1", size = 2, linetype = "solid"))
+
+# p2<-df %>% ggplot(aes(y=Quiz1))+geom_boxplot(width=1 )+theme(panel.background = element_rect(fill = "lightgray", colour = "#6D9EC1", size = 2, linetype = "solid"))+ coord_flip()
+
+
+p= seq(0.1,1, length.out = length(df$Quiz2))
+qp<-my_quantile(p,x =  df$Quiz2)
+
+df1<- data.frame(p, qp)
+names(df1)<- c( "p", "Q(p)")
+library(magrittr)
+library(ggplot2)
+p2<-df1 %>% ggplot(aes(x = p, y = `Q(p)`))+ geom_point(color= "red")+ylim(70,100)
+
+
+
+gridExtra::grid.arrange(p1, p2, nrow=2)
+
+```
+
+
+
+
+
+
+

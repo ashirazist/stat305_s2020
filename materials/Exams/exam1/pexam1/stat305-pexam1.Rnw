@@ -1,0 +1,162 @@
+% For LaTeX-Box: root = stat305-pexam1.Rnw
+\documentclass[addpoints]{examsetup}
+
+\usepackage{etoolbox}
+\usepackage{tikz,pgfplots}
+
+%\input{stat105_exam1_info.tex}
+\newcommand{\course}[1]{\ifstrempty{#1}{STAT 305}{STAT 305, Section #1}}
+\newcommand{\sectionNumber}{3}
+\newcommand{\examDate}{September, 2018}
+\newcommand{\semester}{FALL 2018}
+\newcommand{\examNumber}{ I}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+%-- : R code (Code in Document)
+<<echo=FALSE, cache=FALSE, include = FALSE>>=
+   library(ggplot2)
+#   theme_bw()
+   if(FALSE) 
+      knitr::knit("stat305-pexam1.Rnw")
+@
+
+\examCoverPage
+
+\begin{questions}
+
+
+\question[2] 
+ Which of the following best describes the methods for handling extraneous variables:
+
+(1) blocking and replication \hspace{1cm}(2) randomization and
+replication \\ (3) randomization and blocking \hspace{0.5cm}(4)
+randomization, blocking, and replication
+
+% Circle the \textbf{bold face} term that makes the following statement true: \\
+% 
+% A measurement device that reports the true measurement of the item on which the device is being used is (\textbf{precise} or \textbf{accurate}).
+
+\vspace{1cm}
+
+\question 
+
+%-- : R code (Code in Document)
+<<echo=FALSE, cache=FALSE, include=TRUE>>=
+   q1 <- c(12,15,18,19,26) 
+@
+
+A sample of size 5 was drawn from a population and the resulting observations are reported below. 
+\begin{center}
+\Sexpr{paste(q1,collapse=", ")}
+\end{center}
+Using these observed values, report the following:
+\vspace{1cm}
+
+\begin{parts}
+
+   \part[3] the mean  
+   \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $(\bar{x})=$ \hspace{2cm}}
+   \vspace{3cm}
+
+   \part[3] the median 
+      \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $Med.=$ \hspace{2cm}}
+
+   \vspace{3cm}
+
+   \part[3] the variance 
+      \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $s^2=$ \hspace{2cm}}
+
+   \vspace{4cm}
+
+   \part[3] the standard deviation 
+      \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $s=$ \hspace{2cm}}
+
+   \vspace{2cm}
+
+   \part[3] the value of $Q(.72)$
+         \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $Q(.72)=$ \hspace{2cm}}
+
+   \vspace{4cm}
+   
+   \part[3] the value of $Q(.25)$
+         \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $Q(.25)=$ \hspace{2cm}}
+
+   \vspace{4cm}
+
+   \part[3] the range
+            \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $R=$ \hspace{2cm}}
+
+   \vspace{2cm}
+
+   \part[3] give the coordinates (on a regular graph paper) of the upper right and lower left point that would appear on a normal plot of the data.
+
+\hfill \fbox{upper right point = $( \;\;  \;\;  \;\; , \;\;  \;\;
+\;\; )$ }
+
+\hfill \fbox{lower left point = $( \;\;  \;\;  \;\; , \;\;  \;\;
+\;\;  )$}
+
+   \vspace{4cm}
+   
+   \part[5] draw a boxplot for this data. Carefully label numbers on the plot
+
+   \vspace{6cm}
+
+\end{parts}
+
+\pagebreak
+\question
+
+Aisha recently discovered she has the opportunity to upgrade her smart phone.
+She narrowed her choices down to two phones (we will call them phone A and phone B) but had a hard time making her final decision.
+She decided to interviewed people she knew who had one of the phones to rate their satisfaction from 0\% to 100\%.
+She also asked them if they would prefer to have the other phone.
+In order to help put their feelings in perspective, she also made note of how negative she thought they were in general (since critical people might be harsher in their criticism in general),
+using three descriptions: the interviewee's personality was classified as overly critical, appropriately critical, or not critical enough. 
+
+\begin{parts}
+   \part[2] Is this an experiment or an observational study?
+
+   \vspace{2cm}
+   \part[2] What is the population under study?
+
+   \vspace{2cm}
+   \part[2] Identify the response variable(s).
+
+   \vspace{2cm}
+   \part For each of the following variables, 
+
+   \begin{itemize}
+
+      \item Identify whether it is qualitative or quantitative variable, and 
+
+      \item If it is qualitative, what are the possible values it can take? If it is quantitative, is it continuous or discrete?
+
+   \end{itemize}
+
+   \begin{subparts}
+
+      \subpart the individual's reported phone satisfaction percentage.
+
+      \vspace{2cm}
+
+      \subpart Aisha's appraisal of the interviewee's negativity.
+
+      \vspace{2cm}
+
+      \subpart whether or not the interviewee would prefer to have the other phone.
+
+      \vspace{2cm}
+
+      \subpart the type of phone the interviewee currently owns.
+
+   \end{subparts}
+
+\end{parts}
+\pagebreak
+
+\end{questions}
+
+\end{document}

@@ -1,0 +1,37 @@
+\question
+%-- : R code (Code in Document)
+<<echo=FALSE, cache=FALSE, include=TRUE>>=
+   q1 <- c(110,100,105,103,105,115) 
+@
+
+A sample of size 5 was drawn from a population and the resulting observations are reported below. 
+\begin{center}
+\Sexpr{paste(q1,collapse=", ")}
+\end{center}
+Using these observed values, report the following:
+\vspace{1cm}
+
+\begin{parts}
+
+   \part[2] the mean  
+   \vspace{1.5cm}
+
+   \part[2] the mode
+   \vspace{1.5cm}
+
+   \part[2] the median 
+   \vspace{1.5cm}
+
+   \part[2] the variance 
+   \vspace{1.5cm}
+
+   \part[2] the standard deviation 
+   \vspace{1.5cm}
+
+   \part[2] the value of $Q(.75)$
+   \vspace{1.5cm}
+
+   \part[2] the interquartile range
+   \vspace{1.5cm}
+
+\end{parts}

@@ -1,0 +1,29 @@
+---
+title: "Stat 305 3 - Quiz II Topic Outline"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+\begin{enumerate}
+\item Relationships between variables (Ch. 4.1-4.2)
+        \begin{enumerate}
+                \item Fitting and interpreting a regression line with least squares (SLR by hand)
+                \item Checking model usefulness with correlation and $R^2$
+                \item Calculating $R^2$ based on different output using appropriate formula.
+                \item Analyzing and interpreting computer output for fitted polynomial regression and multiple regression equations.
+                \item Finding residuals.
+        \end{enumerate}
+\item  Discrete random variables (Ch. 5.1)
+    \begin{enumerate}
+            \item Probability mass functions (pmf)
+            \item Cumulative distribution functions (CDF)
+            \item Expected value, variance, and standard deviation
+            \item Special discrete random variables:
+                \begin{enumerate}
+                    \item Binomial($n, p$)
+                    \item Geometric($p$)
+                    \item Poisson($\lambda$)
+                \end{enumerate}
+    \end{enumerate}            
+\end{enumerate}

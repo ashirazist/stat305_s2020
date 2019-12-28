@@ -1,0 +1,140 @@
+\documentclass[11pt]{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+\usepackage{pdfpages} 
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{ulem}
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{graphicx, fancyhdr}
+\usepackage{amsmath, amsfonts}
+\usepackage{color}
+\usepackage{hyperref}
+
+\newcommand{\blue}[1]{{\color{blue} #1}}
+
+\setlength{\topmargin}{-.5 in} 
+\setlength{\textheight}{9 in}
+\setlength{\textwidth}{6.5 in} 
+\setlength{\evensidemargin}{0 in}
+\setlength{\oddsidemargin}{0 in} 
+\setlength{\parindent}{0 in}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+
+\lhead{STAT 305}
+\chead{Chapter 5} 
+\rhead{Handout III}
+\lfoot{Fall 2019} 
+\cfoot{\thepage} 
+\rfoot{} 
+\renewcommand{\headrulewidth}{0.4pt} 
+\renewcommand{\footrulewidth}{0.4pt} 
+
+\def\Exp#1#2{\ensuremath{#1\times 10^{#2}}}
+\def\Case#1#2#3#4{\left\{ \begin{tabular}{cc} #1 & #2 \phantom
+{\Big|} \\ #3 & #4 \phantom{\Big|} \end{tabular} \right.}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\usepackage{Sweave}
+\begin{document}
+\input{stat305-ch5-handout_3-concordance}
+\pagestyle{fancy} 
+
+
+\begin{enumerate}
+	\item Find the expected value and variance of a continuous distribution with follwing probability density:
+	
+$$
+	f(x)=
+	\begin{cases}
+	   0.3 & 0< x< 1 \\
+	    0.7 & 1< x< 2 \\
+	    0  & o.w 
+	\end{cases}
+$$
+\vspace{5cm}
+
+\item $X$ has a continuous distribution with the following $pdf$.
+  $$
+	f(x)=
+	\begin{cases}
+	   c \exp({-2x}) & 0< x< \infty \\
+	    0  & o.w 
+	\end{cases}
+$$
+    \begin{enumerate}
+        \item Find $c$ such that $f(x)$ is a pdf.
+        \vspace{2cm}
+        \item Find $P(X \ge 5)$
+        \vspace{2cm}
+        \item Find the $E(X)$
+    \end{enumerate}
+    
+  \newpage
+  \item Suppose that $X$ is a NOrmal random variable with mean $\mu = 10.2$ and standard deviation $\sigma= 0.7$. Evaluate the following probabilities:
+      \begin{enumerate}
+            \item $P(X\leq 10.1)$
+            \vspace{3cm}
+            \item $P(9.0 < X \leq 10.3)$
+            \vspace{3cm}
+            \item $P(\vert X- 10.2\vert\leq 0.25)$
+            \vspace{5cm}
+            
+      \end{enumerate}
+      Find numbers $\#$ such that the following statement s about $X$ are true:
+      \begin{enumerate}
+            \item $P(\vert X- 10.2\vert\ge \#)= 0.8$
+            \vspace{5cm}
+            \item $P(X< \#)= 0.8$
+      \end{enumerate}    
+\end{enumerate}
+
+
+
+\end{document}

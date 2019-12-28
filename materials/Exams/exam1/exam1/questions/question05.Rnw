@@ -1,0 +1,132 @@
+\question \textbf{From Blown Speakers}
+
+%-- Problem setup code
+<<echo=FALSE, cache=FALSE, include=TRUE>>=
+   source('../test-functions.R')
+
+   if(file.exists('../data/question05.csv')){
+      samp <- read.csv('../data/question05.csv')$x
+   }else{
+      samp <- boxplot_data(35, s=6)
+      write.csv(samp, 'data/question05.csv', row.names=FALSE)
+   }
+
+   Q1 <- quantile_function(samp, 0.25)
+   Q2 <- quantile_function(samp, 0.50)
+   Q3 <- quantile_function(samp, 0.75)
+@
+
+In car audio speakers, large changes in the intensity of sound produced by the speaker may cause a speaker component known as a cone to vibrate non-uniformly. 
+The non-uniform vibrations of the cone cause the cone to add stress to the materials surrounding the cone. 
+The damage to the surrounding materials results in the sound produced by the speakers becoming crackly - a state in which the speaker is "blown out".
+
+Audio engineers working on ways to stabilize the cone during large changes in intensity are reviewing data that a 
+new "smart" audio system collects and reports information when a blown speaker is detected. 
+The following is a list of the \textbf{change in intensity} (as measured in decibels) from the first 35 audio systems that sent a blown speaker report.
+
+%-- : R code (Code in Document)
+<<cache=FALSE, echo = FALSE, comment = NA, include = TRUE>>=
+samp
+@
+
+In this case, the range is \Sexpr{max(samp) - min(samp)}, Q1 is \Sexpr{Q1}, Q2 is \Sexpr{Q2}, and the IQR is \Sexpr{Q3 - Q1}.
+
+\begin{parts}
+  \part[5] Fill in the values for the 5-number summary table: \\
+  \begin{table}[h!]
+     \centering
+     \begin{tabular}{|l|p{3cm}|p{3cm}|p{3cm}|p{4cm}|}
+     \hline
+     \textbf{Minimum} & \textbf{First Quartile} & \textbf{Median} & \textbf{Third Quartile} & \textbf{Maximum} \\ \hline \hline
+                      &                         &                 &                         &                  \\
+                      &                         &                 &                         &                  \\
+                      &                         &                 &                         &                  \\
+     \hline
+     \end{tabular}
+  \end{table}
+  
+  \part[10] Complete the following frequency table using 8 equal length intervals for the value range (it should include all the data): \\
+
+  \begin{table}[h!]
+     \centering
+     \begin{tabular}{|l|p{3cm}|p{3cm}|p{4cm}|}
+     \hline
+                          & \textbf{Frequency} & \textbf{Relative}  & \textbf{Cumulative}  \\
+     \textbf{Value Range} &                    & \textbf{Frequency} & \textbf{Relative Frequency} \\\hline \hline
+     &  &  &  \\
+     &  &  &  \\
+     \hline
+     &  &  &  \\
+     &  &  &  \\
+     \hline
+     &  &  &  \\
+     &  &  &  \\
+     \hline
+     &  &  &  \\
+     &  &  &  \\
+     \hline
+     &  &  &  \\
+     &  &  &  \\
+     \hline
+     &  &  &  \\
+     &  &  &  \\
+     \hline
+     &  &  &  \\
+     &  &  &  \\
+     \hline
+     &  &  &  \\
+     &  &  &  \\
+     \hline
+     \end{tabular}
+  \end{table}
+
+  \pagebreak
+
+  \part[5] Create a \textbf{frequency histogram} to summarize the data. Carefully label the axes.
+
+  \vspace{4cm}
+
+  \part[10] Create a box plot to summarize the data. Carefully label the axes.
+
+  \vspace{4cm}
+
+  \part[4] Are there any unusually observations? If so what were the speeds for those observations?
+
+  \vspace{3cm}
+
+  \part[10] The engineers also get information about how far the base of the cone was displaced during the blowout. Here are some of the displacements:
+
+%-- : R code (Code in Document)
+<<echo=FALSE, cache=FALSE, include = TRUE>>=
+   if(file.exists('../data/question05-2.csv')){
+      displacement <- read.csv('../data/question05-2.csv')$x
+   }else{
+      displacement <- round(rweibull(10, .5, scale = 1), 1)
+      write.csv(displacement, '../data/question05-2.csv', row.names=FALSE)
+   }
+
+   # Get the associated normal quantiles
+   p <- (1:length(displacement) - 0.5)/length(displacement)
+   Qps <- round(qnorm(p), 2)
+   
+@
+
+\begin{center}
+   \Sexpr{paste0(displacement[order(displacement)], collapse = ", ")}
+\end{center}
+
+Create a theoretical Q-Q plot using the following quantiles from the normal distribution as the theoretical quantiles. Carefully label your axes.
+What does this graph tell us about the upload speeds?
+
+\begin{table}[h!]
+   \centering
+   \begin{tabular}{ccccccccccc}
+             & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\ \hline
+      $p$    & \Sexpr{p[1]} & \Sexpr{p[2]} & \Sexpr{p[3]} & \Sexpr{p[4]} & \Sexpr{p[5]} & \Sexpr{p[6]} & \Sexpr{p[7]} & \Sexpr{p[8]}  & \Sexpr{p[9]} & \Sexpr{p[10]} \\
+      $Q(p)$ & \Sexpr{Qps[1]} & \Sexpr{Qps[2]} & \Sexpr{Qps[3]} & \Sexpr{Qps[4]} & \Sexpr{Qps[5]} & \Sexpr{Qps[6]} & \Sexpr{Qps[7]} & \Sexpr{Qps[8]} & \Sexpr{Qps[9]} & \Sexpr{Qps[10]} \\ \hline
+   \end{tabular}
+\end{table}
+
+
+\end{parts}
+\pagebreak
