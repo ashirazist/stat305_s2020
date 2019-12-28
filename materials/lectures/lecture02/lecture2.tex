@@ -1,0 +1,526 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{}
+    \pretitle{\vspace{\droptitle}}
+  \posttitle{}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
+
+\begin{document}
+
+\section{STAT 305: Lecture 2}\label{stat-305-lecture-2}
+
+\subsection{Why Engineers Study
+Statistics}\label{why-engineers-study-statistics}
+
+\subsubsection{Chapter 1: Introduction,
+Continued}\label{chapter-1-introduction-continued}
+
+\subsubsection{Chapter 2: Data
+Collection}\label{chapter-2-data-collection}
+
+\subsection{\texorpdfstring{.footnote{[}Course page:
+\href{https://ashirazist.github.io/stat305.github.io/}{ashirazist.github.io/stat305.github.io}{]}}{.footnote{[}Course page: ashirazist.github.io/stat305.github.io{]}}}\label{footnotecourse-page-ashirazist.github.iostat305.github.io}
+
+\section{Section 1.2}\label{section-1.2}
+
+\subsection{\#\# Basic Terminology,
+Continued}\label{basic-terminology-continued}
+
+layout:false .left-column{[} \#\# What and Why \#\# Terms \#\# Data
+Structures{]} .right-column{[} \#\# Types of Data Structures
+
+The most basic way to think about data is to imagine how the the raw
+observations could be organized once collected.
+
+Collected data can be referred to as a \textbf{data set}. If the data
+set is simple enough, we can store it in a \textbf{data table} or
+\textbf{flat file}. Traditional data tables store values relating to a
+single observation/unit/individual as a row of the table. Each column in
+the table represents a value for some observed characterstic observed.
+
+\textbf{Example}: Failure time of lightbulbs
+
+A single brand and model of lightbulb is being examined for average
+failure time. Five bulbs were run until they burned out and their
+lifetime was recorded in hours. The first bult lasted 521.4 hours, the
+second bulb lasted 501.2 hours, the third bulb lasted 541.8 hours, the
+fourth bulb lasted 498.1 hours, and the fifth bulb lasted 528.2 hours.
+{]} --- layout:false .left-column{[} \#\# What and Why \#\# Terms \#\#
+Data Structures{]} .right-column{[} \#\# Types of Data Structures
+
+\textbf{Example}: Failure time of lightbulbs, continued
+
+Assembling the results in a data table could look like this:
+
+\begin{verbatim}
+Bulb Number       Failure Time (hours)
+1                 521.4
+2                 501.2
+3                 541.8
+4                 498.1
+5                 528.2
+\end{verbatim}
+
+Each bulb tested gets its own row - which row is attached to which bulb
+is identified by the first column. The only feature being observed is
+failure time - so only one column of observations are recorded for each
+bulb.
+
+Notice:
+
+\begin{itemize}
+\tightlist
+\item
+  Failure Time is a \textbf{quantitative continuous} variable.
+\item
+  This is a \textbf{univariate data set}.
+\end{itemize}
+
+\subsection{{]}}\label{section}
+
+layout:false .left-column{[} \#\# What and Why \#\# Terms \#\# Data
+Structures{]} .right-column{[} \#\# Types of Data Structures
+
+\textbf{Example}: Type of bill, date of payment, and payment amount for
+Mediacom
+
+\begin{verbatim}
+Customer      Type      Date          Amount
+John Doe      Internet  01-05-2015    110.00
+John Doe      Phone     01-15-2015     10.00
+John Doe      Internet  02-05-2015    110.00
+John Doe      Phone     02-15-2015     10.00
+John Doe      Internet  03-05-2015    110.00
+John Doe      Phone     03-15-2015     10.00
+...           ...       ...           ...
+John Doe      Internet  01-05-2016    110.00
+John Doe      Phone     01-15-2016     10.00
+Jane Doe      Internet  04-12-2015     90.00
+Jane Doe      Internet  05-12-2015     90.00
+...           ...       ...           ...
+Jane Doe      Internet  01-12-2016     90.00
+\end{verbatim}
+
+Notice:
+
+\begin{itemize}
+\tightlist
+\item
+  Type of bill is is a \textbf{Qualitative} variable.
+\item
+  Amount paid is \textbf{quantitative discrete}.
+\item
+  Date is \ldots{} {]} --- layout:false .left-column{[} \#\# What and
+  Why \#\# Terms \#\# Data Structures{]} .right-column{[} \#\# Types of
+  Data Structures
+\end{itemize}
+
+\textbf{Example}: Machine Parts \textgreater{} Suppose we get a shipment
+of 5000 machine parts and would like to verify that the shipment meets
+the standards the machinist agreed to. We take out 100 parts and examine
+them carefully. To verify that the parts are as strong as we
+anticipated, we measure the ``Rockwell hardness'' with a machine that is
+accurate to the first decimal place. We also examine each part for
+scratches and record it weight. Further, we run the part in a test
+machine to determine if it works correctly.
+
+In this case, we are gathering \textbf{4} values on each part. So for
+instance, the first of the 100 parts we examine could have a measured
+Rockwell hardness of 3.2, no scratches, a weight of 1.7562 g, and it
+works correctly. The second of the 100 parts we examine could have a
+measured Rockwell hardness of 3.1, no scratches, a weight of 1.7901 g,
+and does not work correctly. {]} --- layout:false .left-column{[} \#\#
+What and Why \#\# Terms \#\# Data Structures{]} .right-column{[} \#\#
+Types of Data Structures
+
+The data as recorded by the researcher might look like this
+
+\begin{verbatim}
+Part identifier: 1/100
+  Rockwell Hardness: 3.2
+  scratches: no
+  weight (g): 1.7562
+  functioning: yes
+
+Part identifier: 2/100
+  Rockwell Hardness: 3.1
+  scratches: no
+  weight (g): 1.7901
+  functioning: no
+
+...
+
+Part identifier: 100/100
+  Rockwell Hardness: 3.4
+  scratches: no
+  weight (g): 1.7651
+  functioning: yes
+\end{verbatim}
+
+\subsection{{]}}\label{section-1}
+
+layout:false .left-column{[} \#\# What and Why \#\# Terms \#\# Data
+Structures{]} .right-column{[} \#\# Types of Data Structures
+
+Which we could turn into structured data table like this: The data as
+recorded by the researcher might look like this
+
+\begin{verbatim}
+part rockwell_hardness   weight scratches functioning
+1                  3.2   1.7562        no         yes
+2                  3.1   1.7901        no          no
+.                    .        .         .           .
+.                    .        .         .           .
+.                    .        .         .           .
+100                3.4   1.7651        no         yes
+\end{verbatim}
+
+When data is arranged like this, with each sampling unit on its own row,
+the data is said to be in \textbf{wide format}. {]} --- layout:false
+.left-column{[} \#\# What and Why \#\# Terms \#\# Data Structures{]}
+.right-column{[} \#\# Types of Data Structures
+
+However, we could also structure a data table like this:
+
+\begin{verbatim}
+part    measurement    value
+1       Rockwell         3.2
+1       weight        1.7562
+1       scratches         no
+1       functioning      yes
+2       Rockwell         3.1
+2       weight        1.7901
+2       scratches         no
+2       functioning       no
+.       .                  .
+.       .                  .
+.       .                  .
+100     functioning      yes
+\end{verbatim}
+
+When data is arranged like this, with each sampling unit on its own row,
+the data is said to be in \textbf{long format}. Long format matches each
+recorded value to a unique set of identifiers called \textbf{keys} - in
+this case, for example, the first row matches the recorded value 3.2
+uniquely to the measurement Rockwell hardness and the first part in our
+sample. {]}
+
+layout:false .left-column{[} \#\# What and Why \#\# Terms \#\# Data
+Structures{]} .right-column{[} \#\# Factorial Studies
+
+\begin{quote}
+\textbf{Factorial Studies} involve scenarios in which several process
+variables are indentified as being of interest and data are collected
+under different settings of these process variables.
+\end{quote}
+
+\begin{quote}
+We call the process variables \textbf{factors} and the possible settings
+for a process variable its \textbf{levels}
+\end{quote}
+
+\begin{quote}
+\textbf{Complete Factorial Studies} are factorial studies where data is
+collected from each possible combination of the levels of the factors.
+\end{quote}
+
+\begin{quote}
+\textbf{Partial Factorial Studies} are factorial studies where data is
+collected from some (but not all) possible combinations of the levels of
+the factors.
+\end{quote}
+
+\subsection{{]}}\label{section-2}
+
+layout:false .left-column{[} \#\# What and Why \#\# Terms \#\# Data
+Structures{]} .right-column{[}
+
+\subsection{Factorial Studies Example}\label{factorial-studies-example}
+
+\begin{quote}
+A pair of chemists, Walter and Jessie, are attempting to synthesize a
+chemical product and consider purity to be the most important quality.
+There are three environments available to them (a winnebago, a basement,
+and a laboratory) and two precursors (pseudoephedrine/methylamine). They
+are both willing to take the role of ``lead cook'' and will try all
+their options in order to get the best results.
+\end{quote}
+
+\begin{itemize}
+\item
+  What parts of this synthesis are being treated as variables which can
+  be controlled at the start of the experiment?
+\item
+  What are the possible values for each of these variables?
+\item
+  How many ways can the variables be combined? {]}
+\end{itemize}
+
+???
+
+lead cook - Walter, Jessie environment - winnebago, basement, lab
+precursor - pseudo, methylamine
+
+2 x 3 x 2 = 12
+
+\subsection{WRITE OUT THE LEVELS AFTER SOME TIME FOR THEM TO WRITE THEM
+OUT}\label{write-out-the-levels-after-some-time-for-them-to-write-them-out}
+
+layout:false .left-column{[} \#\# What and Why \#\# Terms \#\# Data
+Structures{]} .right-column{[}
+
+Factorial Studies Example, cont
+
+Here are all the possible combinations of the factors:
+
+\[
+\scriptsize{
+(\text{# of Cooks}) \cdot  
+(\text{# of Environments}) \cdot  
+(\text{# of Precursors}) = 2 \cdot 3 \cdot 2  
+= 12}
+\]
+
+\begin{verbatim}
+         cook     environment    precursor
+         walter   winnebago      psuedoephedrine
+         walter   winnebago      methylamine
+         walter   basement       psuedoephedrine
+         walter   basement       methylamine
+         walter   lab            psuedoephedrine
+         walter   lab            methylamine
+         jessie   winnebago      psuedoephedrine
+         jessie   winnebago      methylamine
+         jessie   basement       psuedoephedrine
+         jessie   basement       methylamine
+         jessie   lab            psuedoephedrine
+         jessie   lab            methylamine
+\end{verbatim}
+
+If we collect data from each of these combinations, we have performed a
+\textbf{A Complete Factorial Study} {]}
+
+\subsection{???}\label{section-3}
+
+layout:false .left-column{[} \#\# What and Why \#\# Terms \#\# Data
+Structures{]} .right-column{[}
+
+Factorial Studies Example, cont
+
+After testing each scenario, Walter and Jessie decide that the best
+combination to use is Walt as cook in the lab with methylamine. However,
+a new ``chemist'' Victor has joined the group and is going to try to be
+the cook and ``follow the recipe'' in the lab. Jessie also tries a new
+environment, South America, where only methylamine is available.
+
+\begin{itemize}
+\item
+  If we consider the all the past combinations to be part of this new
+  study, how many combinations of factor levels are now possible?
+\item
+  Victor never works in the Winnebago, the basement, or South America.
+  Walter never works in South America. {]} --- layout:false
+  .left-column{[} \#\# What and Why \#\# Terms \#\# Data Structures{]}
+  .right-column{[}
+\end{itemize}
+
+Factorial Studies Example, cont
+
+\begin{verbatim}
+     cook     env         precursor
+1.   walt     winne       pseudo
+2.   walt     winne       methylamine
+3.   walt     basement    pseudo
+4.   walt     basement    methylamine
+5.   walt     lab         pseudo
+6.   walt     lab         methylamine
+7.   jessie   winne       pseudo
+8.   jessie   winne       methylamine
+9.   jessie   basement    pseudo
+10.  jessie   basement    methylamine
+11.  jessie   lab         pseudo
+12.  jessie   lab         methylamine
+13.  jessie   so. am.     methylamine
+14.  victor   lab         methylamine
+\end{verbatim}
+
+In this case, we would have a \textbf{Fractional Factorial Study} - a
+factorial study in which no data is collected for some possible
+combinations. {]}
+
+???
+
+\section{Section 1.3}\label{section-1.3}
+
+\subsection{\#\# Measurement: It's Importance and
+Difficulty}\label{measurement-its-importance-and-difficulty}
+
+layout:false .left-column{[} \#\# What and Why \#\# Terms \#\# Measure
+\#\#\# Key Words{]} .right-column{[}
+
+\subsection{If You Can't Measure, You Can't Do
+Statistics}\label{if-you-cant-measure-you-cant-do-statistics}
+
+\subsubsection{Or Engineering For That
+Matter}\label{or-engineering-for-that-matter}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Validity}: faithfully representing the aspect of interest
+\item
+  \textbf{Precision}: the amount of variation in repeated measures
+\item
+  \textbf{Accuracy}: aka ``unbiasedness''; how close a measurement is to
+  the true value ``on average''
+\end{itemize}
+
+We \textbf{calibrate} to improve accuracy {]}
+
+???
+
+\section{Section 1.4}\label{section-1.4}
+
+\subsection{\#\# Mathematical Models}\label{mathematical-models}
+
+layout:false .left-column{[} \#\# What and Why \#\# Terms \#\# Measure
+\#\# Math Models{]} .right-column{[}
+
+\subsection{Mathematical Models and Data
+Analysis}\label{mathematical-models-and-data-analysis}
+
+\begin{quote}
+\textbf{Mathematical Model}: A description of a physical system using
+mathematical concepts and language.
+\end{quote}
+
+Identifying mathematical relationships between parts of a system allows
+us to describe complexity in simple terms.
+
+\textbf{Example}: Height of an Object in Projectile Motion
+
+We can describe the relationship between height of a projectile
+\textbackslash{}(y\textbackslash{}) and time
+\textbackslash{}(t\textbackslash{}) as \textbackslash{}{[} y = h\_0 +
+v\_h \cdot t - \frac{1}{2} g t\^{}2, \text{ } t \ge 0,
+\textbackslash{}{]} where - \textbackslash{}(h\_0\textbackslash{}) is
+the initial height, - \textbackslash{}(v\_h\textbackslash{}) is the
+initial vertical velocity, and - \textbackslash{}(g\textbackslash{}) is
+the (constant) acceleration due to gravity {]}
+
+???
+
+\begin{center}\rule{0.5\linewidth}{\linethickness}\end{center}
+
+layout:false .left-column{[} \#\# What and Why \#\# Terms \#\# Measure
+\#\# Math Models{]} .right-column{[}
+
+\textbf{Example}: Height of an Object in Projectile Motion, cont.
+
+\textbackslash{}{[} y = h\_0 + v\_h \cdot t - \frac{1}{2} g t\^{}2,
+\text{   } t \ge 0, \textbackslash{}{]}
+
+However, this is not what we see in real life for a variety of reasons.
+This model assumes
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbackslash{}(g\textbackslash{}) is constant as the ball falls,
+  while \textbackslash{}(g\textbackslash{}) actually depends on the
+  distance between the object and earth,
+\item
+  \textbackslash{}(g\textbackslash{}) is a known to infinite accuracy,
+  while we would be using a value that is estimated,
+\item
+  Gravity is the only force acting on the object, ignoring drag force,
+  electrical attractions, etc.
+\item
+  There are no other changes in the system (for instance, changes in air
+  pressure)
+\end{enumerate}
+
+We can fix these by writing a better relationship \emph{or} we can
+accept that some things won't be known and use a \textbf{stochastic
+model} - a mathematical model that specifically allows for variation (or
+``randomness''). Understanding how these \textbf{stochastic models} work
+is a major focus of this course. {]}
+
+
+\end{document}
