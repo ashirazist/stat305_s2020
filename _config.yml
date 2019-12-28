@@ -1,0 +1,21 @@
+# Site settings
+name: Stat 305 at ISU
+title: Engineering Statisitcs
+email: ashirazi@iastate.edu
+description: All models are wrong, but some are useful. (George E. P. Box)
+# Build settings
+markdown: kramdown
+url: http://localhost:4000
+markdown: kramdown
+navigation:
+
+- text: Amin Shirazi 
+  url: "https://ashirazist.github.io/"
+- text: Schedule
+  url: "https://ashirazist.github.io/stat305_s2020.github.io/schedule.html"
+- text: Syllabus
+  url: "https://ashirazist.github.io/stat305_s2020.github.io/syllabus.html"
+- text: Homework
+  url: "https://ashirazist.github.io/stat305_s2020.github.io/homework.html"
+- text: Exam Material
+  url: "https://ashirazist.github.io/stat305_s2020.github.io/exam_material.html"
