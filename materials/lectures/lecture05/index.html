@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>STAT 305: Lecture 5</title>
+   <meta name="keywords" content="statistics,engineering,iastate,isu"/>
+   <meta name="description" content="Lecture 5"/>
+
+   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+   <!-- add css: fonts shamelessly copied from remark demo presentation -->
+   <link href="../global/css/stat305.css" type="text/css" rel="stylesheet">
+   <style type="text/css">
+   @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+   @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+   @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+   </style>
+</head>
+<body>
+
+<textarea id="source"> </textarea>
+
+<!-- load and configure remark -->
+<script src="https://remarkjs.com/downloads/remark-latest.min.js" type="text/javascript"></script>
+<script>
+   var slideshow = remark.create({
+      sourceUrl: 'lecture5.md',
+      highlightStyle: 'monokai',
+      highlightLanguage: 'remark'
+   });
+   var hljs = remark.highlighter.engine;
+</script>
+
+<!-- load and configure mathjax -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=onload" type="text/javascript"></script>
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+   tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+   }
+});
+</script>
+
+<!-- Get the printing dimensions -->
+<script>
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css";
+  s.innerHTML = "@page { size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();
+</script>
+
+<!-- load and configure mathjax with delay -->
+<!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML&delayStartupUntil=configured" type="text/javascript"></script>
+-->
+<!--
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+   tex2jax: {
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+      inlineMath: [['$','$'], ['\\(','\\)']],
+      displayMath: [['$$', '$$'], ['\\[', '\\]']]
+   }
+});
+MathJax.Hub.Queue(function() {
+   $(MathJax.Hub.getAllJax()).map(function(index, elem) {
+      return(elem.SourceElement());
+   }).parent().addClass('has-jax');
+});
+</script>
+<script type="text/javascript">
+MathJax.Hub.Configured();
+</script>
+-->
+
+</body>
+</html>

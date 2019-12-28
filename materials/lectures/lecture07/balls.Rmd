@@ -1,0 +1,87 @@
+```{r}
+library('ggplot2')
+library('dplyr')
+library('tidyr')
+```
+
+## Example: Manufacturing Ball Bearings
+
+Controlling surface roughness is an important part of the manufacture of bearing balls. 
+The key step in this smoothing the balls involves the use of a spinning weighted disc.
+Two important aspects of this are the rotation speed of the disc and the weight applied to the disc.
+Since higher weights and higher rotation speed are all known to cause shorter lifetimes for the discs (which requires halts in production, costs of new discs, and so on), a team of engineers are attempting to better understand the relationship between the rotation speed, the weight, and the resulting surface roughness of the balls produced.
+
+## Experiment 1: Constant speed, changing applied weight
+With the disc rotation speed locked at 50 rotations/second, the team of engineers created 60 batches of balls using differently weighted discs (0.025 g, 0.050 g, 0.075 g, 0.100 g, ..., 0.500 g) and randomly selected one ball from each batch. 
+The results are recorded in the dataset "balls-001.csv" on the course page.
+
+```{r}
+weight <- seq(0.025, 0.500, by=0.025)
+speed <- 50
+d <- expand.grid(replication=1:3, weight=weight, speed=speed)
+d$surface_roughness <- 650 -120*d$weight - .1*d$speed - .05*d$speed*d$speed + rnorm(nrow(d), 0, 8)
+write.csv(d, file='balls-001.csv', row.names=FALSE)
+qplot(weight, surface_roughness, data=d, color=speed)
+```
+
+## Experiment 2: Changing speed, constant applied weight
+With an better understanding of the relationship between weight and surface roughness, the team turned their attention to rotation speed.
+This time the produced 3 batches for each of 15 rotation speeds (25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, and 95 rotations per second). 
+The results are recorded in the dataset "balls-002.csv" on the course page.
+```{r}
+weight <- 0.500
+speed <- seq(25,100,by=5)
+d <- expand.grid(replication=1:3, weight=weight, speed=speed)
+d$surface_roughness <- 650 -120*d$weight - .1*d$speed - .05*d$speed*d$speed + rnorm(nrow(d), 0, 8)
+write.csv(d, file='balls-002.csv', row.names=FALSE)
+qplot(speed, surface_roughness, data=d)
+```
+
+
+## Experiment 3: Changing speed changing applied weight
+
+With a better understanding of the relationship between weight and surface roughness, the team turned their attention to rotation speed.
+This time the produced 3 batches for each combination of 20 weights 
+(0.025 g, 0.050 g, 0.075 g, 0.100 g, ..., 0.500 g)
+and 15 rotation speeds (25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, and 95 rotations per second).
+The results are recorded in the dataset "balls-002.csv"
+
+```{r}
+weight <- seq(0.025, 0.500, by=0.025)
+speed <- seq(25,100,by=5)
+d <- expand.grid(replication=1:3, weight=weight, speed=speed)
+d$surface_roughness <- 650 -120*d$weight - .1*d$speed - .05*d$speed*d$speed + rnorm(nrow(d), 0, 8)
+write.csv(d, file='balls-003.csv', row.names=FALSE)
+qplot(speed, surface_roughness, data=d, color=as.factor(weight))
+qplot(weight, surface_roughness, data=d, color=as.factor(speed))
+```
+
+
+## Experiment 4: Changing categorical speed changing applied weight
+
+Now that they have a complete model, what if they had attempted this experiment with a machine in which rotation speed only consisted of "low, medium, and high"?
+
+Again, time the produced 3 batches for each combination of 20 weights 
+(0.025 g, 0.050 g, 0.075 g, 0.100 g, ..., 0.500 g)
+and three rotation speeds (low, medium, high).
+The results are recorded in the dataset "balls-004.csv"
+
+```{r}
+weight <- seq(0.025, 0.500, by=0.025)
+speed <- c(25,50, 100)
+d <- expand.grid(replication=1:3, weight=weight, speed=speed)
+d$surface_roughness <- 650 -120*d$weight - .1*d$speed - .05*d$speed*d$speed + rnorm(nrow(d), 0, 8)
+d$cspeed <- 1
+d$cspeed[d$speed == 50] <- 2
+d$cspeed[d$speed == 100] <- 3
+d$speed <- d$cspeed
+d$cspeed <- factor('low', levels=c('low', 'medium', 'high'))
+d$cspeed[d$speed == 2] <- 'medium'
+d$cspeed[d$speed == 3] <- 'high'
+
+d <- d[,c("replication","weight","speed", "cspeed", "surface_roughness")]
+
+write.csv(d, file='balls-004.csv', row.names=FALSE)
+qplot(speed, surface_roughness, data=d, color=as.factor(weight))
+qplot(weight, surface_roughness, data=d, color=as.factor(speed))
+```

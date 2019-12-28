@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>STAT 305: Lecture 8</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Amin Shirazi" />
+    <meta name="date" content="2019-09-09" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# STAT 305: Lecture 8
+### Amin Shirazi
+### 2019-09-09
+
+---
+
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# STAT 305: Lecture 8
+## Describing Relationships
+### and
+## Fitting Mathematical Relationships
+.footnote[Course page: [ashirazist.github.io/stat305.github.io](https://ashirazist.github.io/stat305.github.io)]
+---
+# Continuing from Lecture 7
+---
+layout:false
+
+.left-column[
+## Describing Relationships
+### Recap
+
+]
+.right-column[
+
+** Last lecture example: Strain on Bars **
+
+We introduced data from an experiment:
+
+|                                      |      |      |      |      |      |      |      |      |      |      |
+|--------------------------------------|------|------|------|------|------|------|------|------|------|------|
+| **stress** \\((\text{kg/mm}^2)\\)    |  2.5 |  5.0 | 10.0 | 15.0 | 17.5 | 20.0 | 25.0 | 30.0 | 35.0 | 40.0 |
+| **lifetime** (hours)                 |  63  |  58  |  55  |  61  |  62  |  37  |  38  |  45  |  46  |  19  |
+
+Judging from the plot, it seems reasonable to assume that there could be an underlying linear relationship between lifetime \\(y\\) and strain (\\(x\\))
+
+&lt;center&gt;
+   &lt;img src="figure/stress_lifetime_plot.png" alt="dmc logo" height="325"&gt; 
+&lt;/center&gt;
+
+]
+---
+.left-column[
+## Describing Relationships
+### Recap
+
+]
+.right-column[
+
+** Last lecture example: Strain on Bars **
+
+
+|                                      |      |      |      |      |      |      |      |      |      |      |
+|--------------------------------------|------|------|------|------|------|------|------|------|------|------|
+| **stress** \\((\text{kg/mm}^2)\\)    |  2.5 |  5.0 | 10.0 | 15.0 | 17.5 | 20.0 | 25.0 | 30.0 | 35.0 | 40.0 |
+| **lifetime** (hours)                 |  63  |  58  |  55  |  61  |  62  |  37  |  38  |  45  |  46  |  19  |
+
+**Theoretical Relationship**
+\\[
+ y = \beta_0 + \beta_1 \cdot x
+\\]
+
+**Observed Relationship**
+`\begin{align}
+y &amp;= \beta_0 + \beta_1 \cdot x + \text{errors} \\\\
+  &amp;= \text{signal} + \text{noise} 
+\end{align}`
+
+**Fitted Relationship**:
+\\[
+\hat{y} = b\_0 + b\_1 \cdot x 
+\\]
+
+]
+---
+.left-column[
+## Describing Relationships
+### Idea
+### Ex: Bars
+### Fitting Lines
+### Best Estimate
+]
+.right-column[
+
+### Deriving the Least Squares Estimates
+
+We can rewrite the target we want to minimize so that the variables are less tangled together:
+
+&lt;span style = "font-size: 70%"&gt;
+`\begin{align}
+\sum\_{i = 1}^n (y\_i - \hat{y}\_i)^2 &amp;= \sum\_{i = 1}^n \left(y\_i - (b\_0 + b\_1 x\_i ) \right)^2 \\\\
+                                      &amp;= \sum\_{i = 1}^n \left(y\_i^2 - 2 y\_i (b\_0 + b\_1 x\_i ) + (b\_0 + b\_1 x\_i )^2\right) \\\\
+                                      &amp;= \sum\_{i = 1}^n y\_i^2 - \sum\_{i = 1}^n 2 y\_i (b\_0 + b\_1 x\_i ) + \sum\_{i = 1}^n (b\_0 + b\_1 x\_i )^2 \\\\
+                                      &amp;= \sum\_{i = 1}^n y\_i^2 - \sum\_{i = 1}^n (2 y\_i b\_0 + 2 y\_i b\_1 x\_i ) + \sum\_{i = 1}^n \left(b\_0^2 + 2 b\_0 b\_1 x\_i + (b\_1 x\_i )^2 \right) \\\\
+                                      &amp;= \sum\_{i = 1}^n y\_i^2 - \sum\_{i = 1}^n 2 y\_i b\_0 - \sum\_{i = 1}^n 2 y\_i b\_1 x\_i + \sum\_{i = 1}^n b\_0^2 + \sum\_{i = 1}^n 2 b\_0 b\_1 x\_i + \sum\_{i = 1}^n b\_1^2 x\_i^2  \\\\
+                                      &amp;= \sum\_{i = 1}^n y\_i^2 - 2 b\_0 \sum\_{i = 1}^n y\_i - 2 b\_1 \sum\_{i = 1}^n y\_i x\_i + n b\_0^2 + 2 b\_0 b\_1 \sum\_{i = 1}^n x\_i + b\_1^2 \sum\_{i = 1}^n x\_i^2  \\\\
+\end{align}`
+&lt;/span&gt;
+]
+---
+.left-column[
+## Describing Relationships
+### Idea
+### Ex: Bars
+### Fitting Lines
+### Best Estimate
+]
+.right-column[
+
+### Deriving the Least Squares Estimates (continued)
+
+We set both partial derivatives equal to 0 and solve them at the same time:
+
+`\begin{align}
+-2 \sum\_{i = 1}^n y\_i + 2 n b\_0 + 2 b\_1 \sum\_{i = 1}^n x\_i &amp;= 0 \\\\
+-2 b\_0 \sum\_{i = 1}^n y\_i x\_i + 2 b\_0 \sum\_{i = 1}^n x\_i + 2 b\_1 \sum\_{i = 1}^n x\_i^2 &amp;=0 \\\\
+\end{align}`
+
+We can rewrite the first equation as:
+`\begin{align}
+b\_0 &amp;= \frac{1}{n} \sum\_{i = 1}^n y\_i - b\_1 \frac{1}{n} \sum\_{i = 1}^n x\_i  \\\\
+     &amp;= \bar{y} - b\_1 \bar{x}
+\end{align}`
+
+and then replace all \\(b\_0\\) in the second equation (there is some algebra type stuff along the way, of course)
+]
+---
+.left-column[
+## Describing Relationships
+### Idea
+### Ex: Bars
+### Fitting Lines
+### Best Estimate
+]
+.right-column[
+
+### Deriving the Least Squares Estimates (continued)
+
+After a little simplification we arrive at our estimates:
+
+**Least Squares Estimates for Linear Fit**
+
+`\begin{align}
+b\_0 &amp;= \bar{y}- b\_1 \bar{x} \\\\
+b\_1 &amp;= \frac{\sum\_{i = 1}^n y\_i x\_i - n \bar{x} \bar{y}}{\sum\_{i = 1}^n x\_i^2 - n \bar{x}^2} \\\\
+     &amp;= \frac{\sum\_{i = 1}^n (x\_i - \bar{x})(y\_i - \bar{y})}{\sum\_{i = 1}^n (x\_i - \bar{x})^2}
+\end{align}`
+
+**Wrap Up**
+-  Don't try to memorize the derivation. I will never ask you to do that on an exam.
+-  Try to understand the simplification steps - the ones that moved constants out of summations for example.
+-  This is one rule - there are others, but **Least Squares Estimates** have some useful properties that will make it the obvious best choice as we continue the course.
+
+]
+---
+.left-column[
+## Describing Relationships
+### Recap
+
+]
+.right-column[
+
+** Last lecture example: Strain on Bars **
+
+|                                      |      |      |      |      |      |      |      |      |      |      |
+|--------------------------------------|------|------|------|------|------|------|------|------|------|------|
+| **stress** \\((\text{kg/mm}^2)\\)    |  2.5 |  5.0 | 10.0 | 15.0 | 17.5 | 20.0 | 25.0 | 30.0 | 35.0 | 40.0 |
+| **lifetime** (hours)                 |  63  |  58  |  55  |  61  |  62  |  37  |  38  |  45  |  46  |  19  |
+
+Estimating the best slope and intercept using least squares:
+
+&lt;span style = "font-size: 70%"&gt;
+
+`\begin{align}
+b_0 &amp;= \bar{y}- b_1 \bar{x} \\\\
+b_1 &amp;= \frac{\sum_{i = 1}^n y_i x_i - n \bar{x} \bar{y}}{\sum_{i = 1}^n x_i^2 - n \bar{x}^2} \\\\
+     &amp;= \frac{\sum_{i = 1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i = 1}^n (x_i - \bar{x})^2}
+\end{align}`
+&lt;/span&gt;
+
+In our case we have the following:
+
+
+&lt;span style = "font-size: 65%"&gt;
+`\begin{align}
+\sum_{i = 1}^{10} y_i = 484,  
+\sum_{i = 1}^{10} x_i = 200,  
+\sum_{i = 1}^{10} x_i y_i = 8407.5,  
+\sum_{i = 1}^{10} x_i^2 = 5412.5, 
+\end{align}`
+&lt;/span&gt;
+
+
+]
+---
+.left-column[
+## Describing Relationships
+### Recap
+
+]
+.right-column[
+
+** Last lecture example: Strain on Bars **
+
+
+|                                      |      |      |      |      |      |      |      |      |      |      |
+|--------------------------------------|------|------|------|------|------|------|------|------|------|------|
+| **stress** \\((\text{kg/mm}^2)\\)    |  2.5 |  5.0 | 10.0 | 15.0 | 17.5 | 20.0 | 25.0 | 30.0 | 35.0 | 40.0 |
+| **lifetime** (hours)                 |  63  |  58  |  55  |  61  |  62  |  37  |  38  |  45  |  46  |  19  |
+
+
+
+&lt;span style = "font-size: 65%"&gt;
+`\begin{align}
+\sum_{i = 1}^{10} y_i = 484, 
+\sum_{i = 1}^{10} x_i = 200, 
+\sum_{i = 1}^{10} x_i y_i = 8407.5, 
+\sum_{i = 1}^{10} x_i^2 = 5412.5, 
+\end{align}`
+&lt;/span&gt;
+
+Using this we can estimate \\(b_1\\):
+
+&lt;span style = "font-size: 80%"&gt;
+`\begin{align}
+b_1 &amp;= \frac{\sum_{i = 1}^n y_i x_i - n \bar{x} \bar{y}}{\sum_{i = 1}^n x_i^2 - n \bar{x}^2} \\\\
+     &amp;= \frac{8407.5 - 10 \left(\frac{200}{10}\right) \left(\frac{484}{10}\right)}{5412.5 - 10 \left(\frac{200}{10}\right)^2} \\\\
+     &amp;= \frac{-1272.5}{1412.5} \\\\
+     &amp;\approx -0.9009
+\end{align}`
+&lt;/span&gt;
+
+]
+---
+.left-column[
+## Describing Relationships
+### Recap
+]
+.right-column[
+
+** Last lecture example: Strain on Bars **
+
+
+|                                      |      |      |      |      |      |      |      |      |      |      |
+|--------------------------------------|------|------|------|------|------|------|------|------|------|------|
+| **stress** \\((\text{kg/mm}^2)\\)    |  2.5 |  5.0 | 10.0 | 15.0 | 17.5 | 20.0 | 25.0 | 30.0 | 35.0 | 40.0 |
+| **lifetime** (hours)                 |  63  |  58  |  55  |  61  |  62  |  37  |  38  |  45  |  46  |  19  |
+
+
+
+&lt;span style = "font-size: 70%"&gt;
+`\begin{align}
+\sum_{i = 1}^{10} y_i = 484, 
+\sum_{i = 1}^{10} x_i = 200, 
+\sum_{i = 1}^{10} x_i y_i = 8407.5, 
+\sum_{i = 1}^{10} x_i^2 = 5412.5, 
+\end{align}`
+&lt;/span&gt;
+
+And using \\(b_1\\) we can estimate \\(b_0\\):
+
+&lt;span style = "font-size: 80%"&gt;
+`\begin{align}
+b_0 &amp;= \bar{y} - b_1 \bar{x} \\\\
+     &amp;= \left(\frac{484}{10}\right) - b_1 \left(\frac{200}{10}\right) \\\\
+     &amp;= 48.4 - \left(\frac{-1272.5}{1412.5}\right) 20.0\\\\
+     &amp;= 66.4177
+\end{align}`
+&lt;/span&gt;
+
+Which gives us the **Fitted Relationship**:
+
+\\[
+\hat{y} = 66.4177 - 0.9009 x
+\\]
+]
+---
+.left-column[
+## Describing Relationships
+### Recap
+### Using JMP
+]
+.right-column[
+
+**Topics to be covered in JMP**
+
+-  Fitting linear relationships
+-  Describing quality of fit (correlation, \\(R^2\\))
+-  Fitting relationships using multiple variables
+-  Fitting non-linear relationships
+
+]
+---
+## Example: Manufacturing Ball Bearings
+
+Controlling surface roughness is an important part of the manufacture of bearing balls. 
+The key step in this smoothing the balls involves the use of a spinning weighted disc.
+Two important aspects of this are the rotation speed of the disc and the weight applied to the disc.
+Since higher weights and higher rotation speed are all known to cause shorter lifetimes for the discs (which requires halts in production, costs of new discs, and so on), a team of engineers are attempting to better understand the relationship between the rotation speed, the weight, and the resulting surface roughness of the balls produced.
+---
+## Experiment 1: Constant speed, changing applied weight
+With the disc rotation speed locked at 50 rotations/second, the team of engineers created 60 batches of balls using differently weighted discs (0.025 g, 0.050 g, 0.075 g, 0.100 g, ..., 0.500 g) and randomly selected one ball from each batch. 
+The results are recorded in the dataset "balls-001.csv" on the course page.
+---
+## Experiment 2: Changing speed, constant applied weight
+With an better understanding of the relationship between weight and surface roughness, the team turned their attention to rotation speed.
+This time the produced 3 batches for each of 15 rotation speeds (25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, and 95 rotations per second). 
+The results are recorded in the dataset "balls-002.csv" on the course page.
+---
+## Experiment 3: Changing speed changing applied weight
+
+With a better understanding of the relationship between weight and surface roughness, the team turned their attention to rotation speed.
+This time the produced 3 batches for each combination of 20 weights 
+(0.025 g, 0.050 g, 0.075 g, 0.100 g, ..., 0.500 g)
+and 15 rotation speeds (25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, and 95 rotations per second).
+The results are recorded in the dataset "balls-003.csv"
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
