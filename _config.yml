@@ -11,10 +11,10 @@ navigation:
 
 - text: Amin Shirazi 
   url: "https://ashirazist.github.io/"
-- text: Schedule
-  url: "https://ashirazist.github.io/stat305_s2020.github.io/schedule.html"
 - text: Syllabus
   url: "https://ashirazist.github.io/stat305_s2020.github.io/syllabus.html"
+- text: Schedule
+  url: "https://ashirazist.github.io/stat305_s2020.github.io/schedule.html"
 - text: Homework
   url: "https://ashirazist.github.io/stat305_s2020.github.io/homework.html"
 - text: Exam Material
