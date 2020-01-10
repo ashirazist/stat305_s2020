@@ -30,7 +30,13 @@
 \newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
 \newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
 \newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
-
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+}
 \usepackage{framed}
 \makeatletter
 \newenvironment{kframe}{%
@@ -71,9 +77,9 @@
 \begin{document}
 
 \begin{center}
-   {\bf Statistics 305 \\ Engineering Statistics- Section 3}
+   {\bf Statistics 305 \\ Engineering Statistics}
 \end{center}
-\centerline{\textbf{Tue-Thu 09:30 - 10:50 AM, PEARSON 2115}}
+\centerline{\textbf{TR 02:10 - 03:30 PM, Agronomy Hall 2020}}
 
 \setlength{\unitlength}{1in}
 
@@ -103,109 +109,119 @@ By the end of this course, students should learn basic concepts of statistics an
 
 \noindent\textbf{Resources}:
 \begin{center} \begin{minipage}{6.5in}
-\begin{flushleft}
-Office hours \dotfill Tue 11:00-12:00, Fri 02:00-03:00 PM in 3220 Snedecor Hall. \\
-TA \dotfill Li, Yusi (yusi1409@iastate.edu, office hours: Mon 12:00- 01:00, Wed  09:00- 10:00, 2404 Snedecore Hall) \\
-Course page \dotfill https://ashirazist.github.io/stat305.github.io/index.html \\
-Canvas\dotfill For grades (https://canvas.iastate.edu)\\
-Software \dotfill JMP (free download at https://www.stat.iastate.edu/statistical-software)
-\end{flushleft}
-\end{minipage}
+		\begin{flushleft}
+			Office hours \dotfill T \& R 03:30-04:30 PM in 3220 Snedecor Hall. \\
+			TA \dotfill  Huo, Yonghui (huoyh@iastate.edu, office hours: Wed 02:00- 03:00, Fri  09:00- 10:00,  Snedecore Hall) \\
+			Course page \dotfill \href{https://ashirazist.github.io/stat305_s2020.github.io/index.html}{$https://ashirazist.github.io/stat305_s2020.github.io/index.html$}\\
+			Canvas\dotfill For grades \href{https://canvas.iastate.edu}{$https://canvas.iastate.edu$}\\
+			Software \dotfill JMP (free download at \href{https://www.stat.iastate.edu/statistical-software}{$https://www.stat.iastate.edu/statistical-software$}
+		\end{flushleft}
+	\end{minipage}
 \end{center}
 \vskip.25in
 
 \noindent\textbf{Class attendance: }
-You are responsible for all material presented in lecture and assigned as required reading. No Class during Nov 25-29 (Fall break)
+You are responsible for all material presented in lecture and assigned as required reading. No Class during March 16-20 (Spring break)\\
+Grades do not directly depend on attendance - still, experience shows that attendance and course performance are significantly related to each other. In order to get the most out of this course and do his or her personal best, it is necessary for a student to treat attendance as if it were mandatory.
 \vskip.25in
+
 
 \noindent\textbf{Important Dates}:
 \begin{center} \begin{minipage}{6.5in}
-\begin{flushleft}
-Quiz 1  \dotfill September 26, Thursday \\
-Quiz 2  \dotfill October 17, Thursday \\
-Quiz 3  \dotfill November 14, Thursday \\
-Fall break \dotfill Monday - Friday, November 25-29\\
-Quiz 4 \dotfill December 5, Thursday \\
-Course Final \dotfill December 18, Wednesday 09:45- 11:45., location TBA\\
-\end{flushleft}
-\end{minipage}
+		\begin{flushleft}
+			Quiz 1  \dotfill February 6, Thursday \\
+			Quiz 2  \dotfill February 27, Thursday \\
+			Spring break \dotfill Monday - Friday, March 16-20\\
+			Quiz 3  \dotfill April 2, Thursday \\
+			Quiz 4 \dotfill April 23
+			, Thursday \\
+			Course Final \dotfill May 5, Tuesday 02:15- 04:15., location:  Agronomy Hall 2020\\
+		\end{flushleft}
+	\end{minipage}
 \end{center}
 \vskip.25in
 
+
 \noindent\textbf{Assessment Policy:} Grades (include plus/minus) will be determined based on the following:
 \begin{center} 
-\begin{minipage}{6.5in}
-\begin{flushleft}
-\textbf{Homework:} 
-Most weeks, homework will be assigned to be collected the following week in class. To accommodate unexpected events that may impact students ability to complete this assignments on time I will drop the lowest of the homework grades from the overall average.\\
-\end{flushleft}
-\end{minipage}
+	\begin{minipage}{6.5in}
+		\begin{flushleft}
+			\textbf{Homework:} 
+			\begin{itemize}
+				\item 	Most weeks, homework will be assigned to be collected the following week in class. To accommodate unexpected events that may impact students ability to complete this assignments on time I will drop the lowest of the homework grades from the overall average.
+				\item 	You are encouraged to work on homework with your peers. However, your problem sets must be written by you and only you, in your own words, and only with the calculations that you yourself did.
+				\item Weekly homework assignments, along with their respective due dates, are be posted at \href{https://ashirazist.github.io/stat305_s2020.github.io/homework.html}{$https://ashirazist.github.io/stat305_s2020.github.io/homework.html$}. Homeworks will be due on Thursdays in class, unless otherwise notified in class and/or via email. Submission must be in hard copy form (printed + stapled) except under extenuating circumstances.
+				\item  If you cannot attend class on the due date, please arrange to submit your homework prior to the due date.
+				\item \textbf{No late homework will be accepted.} If you are unable to attend class on the day the homework is due it is your responsibility to turn it in before the due date.
+		\end{itemize}
+		\end{flushleft}
+	\end{minipage}
 \end{center}
 
 \begin{center} 
-\begin{minipage}{6.5in}
-\begin{flushleft}
-\textbf{Quizzes:} 
-There will be four semester quizzes and a comprehensive final. The semester quizzes will be given during the lecture period and will be closed book. The final exam is comprehensive, and will be on December 18, Wednesday 09:45- 11:45. The location will be announced.
-\end{flushleft}
-\end{minipage}
+	\begin{minipage}{6.5in}
+		\begin{flushleft}
+			\textbf{Quizzes:} 
+			There will be four semester quizzes and a comprehensive final. The semester quizzes will be given during the lecture period and will be closed book. The final exam is comprehensive, and will be on May 5, Tuesday 02:15- 04:15. Location:  Agronomy Hall 2020 .
+		\end{flushleft}
+	\end{minipage}
 \end{center}
 
 
 
 \begin{center} 
-\begin{minipage}{6.5in}
-\begin{flushleft}
-\textbf{Weight:} The components of a student's grade have the following weights:\\
-\begin{center} 
-\begin{minipage}{6in}
-\begin{flushleft}
-Homework \dotfill 12\%  (assigned weekly) \\
-Quizzes \dotfill 48\%  (4 Quizzes, 12\% each) \\
-Final Exam \dotfill 40\% (December 18, Wednesday 09:45- 11:45., location TBA) \\
-\end{flushleft}
-\end{minipage}
-\end{center}
-\end{flushleft}
-\end{minipage}
-\end{center}
-
-\begin{center} 
-\begin{minipage}{6.5in}
-\begin{flushleft}
-\textbf{Letter grades:} 
-Letter grades will be assigned based on the following ranges: A = 100-93, A- = 90-93, B+ = 87-90, B = 83-87, B- = 80-83, C+ = 77-80, C = 73-77, C- = 70-73, D+ = 67-70, D = 63-67, D- = 60-63, F = 60-0
-\end{flushleft}
-\end{minipage}
+	\begin{minipage}{6.5in}
+		\begin{flushleft}
+			\textbf{Weight:} The components of a student's grade have the following weights:\\
+			\begin{center} 
+				\begin{minipage}{6in}
+					\begin{flushleft}
+						Homework \dotfill 12\%  (assigned weekly) \\
+						Quizzes \dotfill 48\%  (4 Quizzes, 12\% each) \\
+						Final Exam \dotfill 40\% (May 5, Tuesday 02:15- 04:15., location:  Agronomy Hall 2020) \\
+					\end{flushleft}
+				\end{minipage}
+			\end{center}
+		\end{flushleft}
+	\end{minipage}
 \end{center}
 
-\noindent\textbf{Course Outline:} 
+\begin{center} 
+	\begin{minipage}{6.5in}
+		\begin{flushleft}
+			\textbf{Letter grades:} 
+			Letter grades will be assigned based on the following ranges: A = 100-93, A- = 90-93, B+ = 87-90, B = 83-87, B- = 80-83, C+ = 77-80, C = 73-77, C- = 70-73, D+ = 67-70, D = 63-67, D- = 60-63, F = 60-0
+		\end{flushleft}
+	\end{minipage}
+\end{center}
+
+\noindent\textbf{Course Outline (tentative):} 
 \begin{center} \begin{minipage}{6.5in}
-\begin{flushleft}
-Introduction, Data Collection (Ch.1, 2) \dotfill Read syllabus carefully, HW1 assigned\\
-Descriptive Statistics (sec. 3.1 3.2)  \dotfill HW1 due, HW2 assigned\\
-Descriptive Statistics, Line Fitting  (Ch. 3.3, 4.1, 4.2) \dotfill HW2 due, HW3 assigned\\
-Curve and Surface Fitting (sec. 4.2) \dotfill JMP, HW3 due, HW4 assigned \\
-Random Variables (sec. 5.1) \dotfill \textbf{Quiz 1}, No homework assigned\\
-Random Variables (sec. 5.1) \dotfill HW4 due, HW5 assigned, covering Ch. 1 - 4 \\
-Random Variables (sec. 5.2) \dotfill HW5 due, HW6 assigned  \\
-Random Variables (sec. 5.2) \dotfill HW6 due, HW7 assigned  \\
-Random Variables (sec. 5.4, 5.5) \dotfill \textbf{Quiz 2}, No homework assigned\\
-Random Variables, Simple Inference (sec. 5.5, 6.1) \dotfill HW7 due, HW8 assigned \\
-Simple Inference (6.1, 6.2) \dotfill HW8 due, HW9 assigned  \\
-Simple Inference (6.2, 6.3) \dotfill \textbf{Quiz 3}, covering Ch. 5 \\
-Simple Inference (6.2, 6.3) \dotfill HW9 due, HW10 assigned  \\
-Simple Inference (6.3, 6.6) \dotfill HW10 due, No homework assigned\\
-Fall  break \dotfill No homework assigned \\
-One Way Model CI's for Linear Functions of Means (7.1, 7.2) \dotfill \textbf{Quiz 4} HW11 assigned  \\
-One Way ANOVA, Control Charts, Review (7.4, 7.5) \dotfill HW11 due \\
-\textbf{Final Exam} \dotfill  December 18, Wednesday 09:45- 11:45., location TBA.
-\end{flushleft}
-\end{minipage}
+		\begin{flushleft}
+			Introduction, Data Collection (Ch.1, 2) \dotfill Read syllabus carefully, HW1 assigned\\
+			Descriptive Statistics (sec. 3.1 3.2)  \dotfill HW1 due, HW2 assigned\\
+			Descriptive Statistics, Line Fitting  (Ch. 3.3, 4.1, 4.2) \dotfill HW2 due, No homework assigned \\
+			Curve and Surface Fitting (sec. 4.2) \textbf{Quiz 1}, HW3 assigned\\
+			Random Variables (sec. 5.1) \dotfill  \dotfill JMP, HW3 due, HW4 assigned \\
+			Random Variables (sec. 5.1) \dotfill HW4 due, No homework assigned\\
+			Random Variables (sec. 5.2) \dotfill \textbf{Quiz 2}, HW5 assigned\\
+			Random Variables (sec. 5.2) \dotfill HW5 due, HW6 assigned   \\
+			Random Variables (sec. 5.4, 5.5) \dotfill  HW6 due, HW7 assigned \\
+			Spring  break \dotfill No homework assigned \\			
+			Random Variables, Simple Inference (sec. 5.5, 6.1) \dotfill HW7 due, No homework assigned  \\
+			Simple Inference (6.1, 6.2) \dotfill \textbf{Quiz 3},  HW8 assigned \\
+			Simple Inference (6.2, 6.3) \dotfill HW8 due, HW9 assigned\\
+			Simple Inference (6.2, 6.3) \dotfill HW9 due, HW10 assigned  \\
+			Simple Inference (6.3, 6.6) \dotfill \textbf{Quiz 4} HW10 due, No homework assigned\\
+			One Way Model CI's for Linear Functions of Means (7.1, 7.2) \dotfill  HW11 assigned  \\
+			One Way ANOVA, Control Charts, Review (7.4, 7.5) \dotfill HW11 due \\
+			\textbf{Final Exam} \dotfill  December 18, Wednesday 09:45- 11:45., location TBA.
+		\end{flushleft}
+	\end{minipage}
 \end{center}
 
-\noindent\textbf{Attendance}:  
-Grades do not directly depend on attendance - still, experience shows that attendance and course performance are significantly related to each other. In order to get the most out of this course and do his or her personal best, it is necessary for a student to treat attendance as if it were mandatory.
+
+
 
 \vskip.25in
 \noindent\textbf{Academic Honesty}:  
@@ -216,11 +232,6 @@ Questions related to course assignments and the academic honesty policy should b
 \vskip.25in
 \noindent\textbf{Extra Help}:  
 Do not hesitate to come to my office during office hours or schedule an appointment to discuss a homework problem or any aspect of the course. If you want to hire an outsider tutor (i.e., for a fee), you can find possible tutors through the statistics department.
-
-\vskip.25in
-\noindent\textbf{Accessibility Statement}: 
-
-Iowa State University is committed to assuring that all educational activities are free from discrimination and harassment based on disability status.  Students requesting accommodations for a documented disability are required to work directly with staff in Student Accessibility Services (SAS) to establish eligibility and learn about related processes before accommodations will be identified.  After eligibility is established, SAS staff will create and issue a Notification Letter for each course listing approved reasonable accommodations.  This document will be made available to the student and instructor either electronically or in hard-copy every semester.  Students and instructors are encouraged to review contents of the Notification Letters as early in the semester as possible to identify a specific, timely plan to deliver/receive the indicated accommodations. Reasonable accommodations are not retroactive in nature and are not intended to be an unfair advantage.  Additional information or assistance is available online at www.sas.dso.iastate.edu, by contacting SAS staff by email at accessibility@iastate.edu, or by calling 515-294-7220. Student Accessibility Services is a unit in the Dean of Students Office located at 1076 Student Services Building.
 
 \vskip.25in
 \noindent\textbf{Disability Accommodation}:  
