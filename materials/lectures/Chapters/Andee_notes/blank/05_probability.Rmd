@@ -1,0 +1,1596 @@
+---
+output: 
+  pdf_document:
+    number_sections: true
+    includes:
+      in_header: 00_header.tex
+fontsize: 12pt
+fig_caption: true
+geometry: margin=1in
+linestretch: 1.5
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(knitr)
+library(tidyverse)
+library(xtable)
+library(MASS)
+
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, fig.height = 2)
+theme_set(theme_bw(base_family = "serif"))
+
+set.seed(305)
+```
+
+\setcounter{section}{4}
+
+# Probability: the mathematics of randomness
+
+The theory of probability is the mathematician's description of random variation. This chapter introduces enough probability to serve as a minimum background for making formal statistical inferences.
+
+\vspace{2in}
+
+## (Discrete) random variables
+
+The concept of a random variable is introduced in general terms and the special case of discrete data is considered.
+
+\vspace{1in}
+
+### Random variables and distributions
+
+It is helpful to think of data values as subject to chance influences. Chance is commonly introduced into the data collection process through 
+
+1. 
+2.
+3.
+
+\vspace{.1in}
+\begin{df}
+A \emph{random variable} is a quantity that (prior to observation) can be thought of as dependent on chance phenomena.
+\end{df}
+
+\vspace{2in}
+
+\begin{df}
+A \emph{discrete random variable} is one that has isolated or separated possible values (rather than a continuum of available outcomes).
+\end{df}
+
+\vspace{.1in}
+
+\begin{df}
+A \emph{continuous random variable} is one that can be idealized as having an entire (continuous) interval of numbers as its set of values.
+\end{df}
+
+\vspace{1in}
+
+\begin{ex}[Roll of a die]
+
+\end{ex}
+\newpage
+
+\begin{df}
+To specify a \emph{probability distribution} for a random variable is to give its set of possible values and (in one way or another) consistently assign numbers between $0$ and $1$ - called \emph{probabilities} - as measures of the likelihood that the various numerical values will occur
+\end{df}
+
+\begin{ex}[Roll of a die, cont'd]
+
+\end{ex}
+\vspace{3in}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c c c c c }
+$x$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline
+$P[X = x]$ & $1/6$ & $1/6$ & $1/6$ & $1/6$ & $1/6$ & $1/6$
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c c c c c }
+$y$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline
+$P[Y = y]$ & $5/22$ & $7/44$ & $1/22$ & $7/44$ & $2/11$ & $5/22$
+\end{tabular}
+\end{table}
+
+```{r, fig.show='hold', fig.width=3}
+x <- rep(1/6, 6)
+y <- c(5/22, 7/44, 1/22, 7/44, 2/11, 5/22)
+
+ggplot() +
+  geom_bar(aes(factor(1:6), x), stat = "identity") +
+  xlab("x") + ylab("P[X = x]")
+
+ggplot() +
+  geom_bar(aes(factor(1:6), y), stat = "identity") +
+  xlab("y") + ylab("P[Y = y]")
+```
+
+\newpage
+
+\begin{ex}[Shark attacks]
+Suppose $S$ is the number of provoked shark attacks off FL next year. This has an infinite number of possible values. Here is one possible (made up) distribution:
+\end{ex}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c c c c c}
+$s$ & 1 & 2 & 3 & $\cdots$ & k & $\cdots$ \\
+\hline
+$P[S = s]$ & $\frac{6}{\pi^2}$ & $\frac{1}{2^2}\frac{6}{\pi^2}$ & $\frac{1}{3^2}\frac{6}{\pi^2}$ & $\cdots$ & $\frac{1}{k^2}\frac{6}{\pi^2}$ & $\cdots$
+\end{tabular}
+\end{table}
+
+
+```{r}
+s <- 1/(1:10)^2*(6/pi^2)
+ggplot() +
+  geom_bar(aes(factor(1:10), s), stat = "identity") +
+  xlab("s") + ylab("P[S = s]")
+```
+
+\vspace{1in}
+
+
+
+### Probability mass functions and cumulative distribution functions
+
+The tool most often used to describe a discrete probability distribution is the *probability mass function*.
+
+\vspace{.1in}
+\begin{df}
+A \emph{probability mass function (pmf)} for a discrete random variable $X$, having possible values $x_1, x_2, \dots$, is a non-negative function $f(x)$ with $f(x_1) = P[X = x_1]$, the probability that $X$ takes the value $x_1$.
+\end{df}
+
+\newpage
+
+Properties of a mathematically valid probability mass function:
+
+\begin{enumerate}
+\itemsep .2in
+\item 
+\item
+\end{enumerate}
+
+\vspace{.2in}
+A probability mass function $f(x)$ gives probabilities of occurrence for individual values. Adding the appropriate values gives probabilities associated with the occurrence of multiple values.
+\vspace{.2in}
+
+\begin{ex}[Torque]
+Let $Z = $ the torque, rounded to the nearest integer, required to loosen the next bolt on an apparatus.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c c c c c c c c c }
+$z$ & $11$ & $12$ & $13$ & $14$ & $15$ & $16$ & $17$ & $18$ & $19$ & $20$ \\
+\hline
+$f(z)$ & $0.03$ & $0.03$ & $0.03$ & $0.06$ & $0.26$ & $0.09$ & $0.12$ & $0.20$ & $0.15$ & $0.03$
+\end{tabular}
+\end{table}
+
+Calculate the following probabilities:
+
+\vspace{.2in}
+
+\begin{itemize}
+\itemsep .7in
+\item[] $P(Z \le 14)$
+\item[] $P(Z > 16)$
+\item[] $P(Z \text{ is even})$
+\item[] $P(Z \text{ in } \{15, 16, 18\})$
+\end{itemize}
+\end{ex}
+
+\newpage
+
+Another way of specifying a discrete probability distribution is sometimes used.
+
+\vspace{.2in}
+\begin{df}
+The \emph{cumulative probability distribution (cdf)} for a random variable $X$ is a function $F(x)$ that for each number $x$ gives the probability that $X$ takes that value or a smaller one, $F(x) = P[X \le x]$.
+\end{df}
+\vspace{.2in}
+
+Since (for discrete distributions) probabilities are calculated by summing values of $f(x)$,
+
+$$
+F(x) = P[X \le x] = \sum\limits_{y \le x} f(y)
+$$
+
+\vspace{.2in}
+
+Properties of a mathematically valid cumulative distribution function:
+
+\begin{enumerate}
+\itemsep .2in
+\item 
+\item
+\item
+\item
+\end{enumerate}
+
+\newpage
+
+\begin{ex}[Torque, cont'd]
+
+Let $Z = $ the torque, rounded to the nearest integer, required to loosen the next bolt on an apparatus.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c c c c c c c c c }
+$z$ & $11$ & $12$ & $13$ & $14$ & $15$ & $16$ & $17$ & $18$ & $19$ & $20$ \\
+\hline
+$F(z)$ & $0.03$ & $0.06$ & $0.09$ & $0.15$ & $0.41$ & $0.50$ & $0.62$ & $0.82$ & $0.97$ & $1$
+\end{tabular}
+\end{table}
+
+```{r torque_cdf, fig.show='hide', results='asis'}
+z <- 10:20
+F_z <- c(0, 0.03, 0.06, 0.09, 0.15, 0.41, 0.50, 0.62, 0.82, 0.97, 1)
+
+ggplot() +
+  geom_segment(aes(x = z, xend = z + 1), y = F_z, yend = F_z) +
+  geom_point(aes(z[-1], F_z[-1])) +
+  geom_point(aes(z[-length(z)] + 1, F_z[-length(F_z)]), pch = 1) +
+  ylab(expression("F(z)"))
+```
+\begin{figure}[H]
+\centering
+\includegraphics{05_probability_files/figure-latex/torque_cdf-1.pdf}
+\caption{Cdf function for torques.}
+\end{figure}
+
+Calculate the following probabilities using the {\bf cdf only}:
+
+\vspace{.1in}
+
+\begin{itemize}
+\itemsep .7in
+\item[] $F(10.7)$
+\item[] $P(Z \le 15.5)$
+\item[] $P(12.1 < Z \le 14)$
+\item[] $P(15 \le Z < 18)$
+\end{itemize}
+\end{ex}
+
+\newpage
+
+\begin{ex}
+Say we have a random variable $Q$ with pmf:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c}
+$q$ & $f(q)$ \\
+\hline
+$1$ & $0.34$ \\
+$2$ & $0.1$ \\
+$3$ & $0.22$ \\
+$7$ & $0.34$
+\end{tabular}
+\end{table}
+
+Draw the cdf.
+\end{ex}
+\newpage
+
+### Summaries
+
+Almost all of the devices for describing relative frequency (empirical) distributions in Ch. 3 have versions that can describe (theoretical) probability distributions.
+
+1. 
+2. 
+3.
+
+\vspace{.5in}
+
+\begin{df}
+The \emph{mean} or \emph{expected value} of a discrete random variable $X$ is
+
+$$
+\text{E}X = \sum\limits_x xf(x)
+$$
+\end{df}
+
+\newpage
+
+\begin{ex}[Roll of a die, cont'd]
+
+Calculate the expected value of a toss of a fair and unfair die.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c c c c c }
+$x$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline
+$P[X = x]$ & $1/6$ & $1/6$ & $1/6$ & $1/6$ & $1/6$ & $1/6$
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c c c c c }
+$y$ & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline
+$P[Y = y]$ & $5/22$ & $7/44$ & $1/22$ & $7/44$ & $2/11$ & $5/22$
+\end{tabular}
+\end{table}
+\end{ex}
+
+\newpage
+
+\begin{ex}[Torque, cont'd]
+Let $Z = $ the torque, rounded to the nearest integer, required to loosen the next bolt on an apparatus.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c c c c c c c c c c }
+$z$ & $11$ & $12$ & $13$ & $14$ & $15$ & $16$ & $17$ & $18$ & $19$ & $20$ \\
+\hline
+$f(z)$ & $0.03$ & $0.03$ & $0.03$ & $0.06$ & $0.26$ & $0.09$ & $0.12$ & $0.20$ & $0.15$ & $0.03$
+\end{tabular}
+\end{table}
+
+Calculate the expected torque required to loosen the next bolt.
+\end{ex}
+
+\vspace{3in}
+
+\begin{df}
+The \emph{variance} of a discrete random variable $X$ is
+$$
+\text{Var}X = \sum\limits_x(x - \text{E}X)^2f(x) = \sum\limits_x x^2f(x) - (\text{E}X)^2.
+$$
+The \emph{standard deviation} of $X$ is $\sqrt{\text{Var}X}$. 
+\end{df}
+\newpage
+
+\begin{ex}
+Say we have a random variable $Q$ with pmf:
+
+\begin{table}[H]
+\centering
+\begin{tabular}{c c}
+$q$ & $f(q)$ \\
+\hline
+$1$ & $0.34$ \\
+$2$ & $0.1$ \\
+$3$ & $0.22$ \\
+$7$ & $0.34$
+\end{tabular}
+\end{table}
+
+Calculate the variance and the standard deviation.
+\end{ex}
+
+\newpage
+
+\begin{ex}[Roll of a die, cont'd]
+Calculate the variance and standard deviation of a roll of a fair die.
+\end{ex}
+
+\vspace{4in}
+
+### Special discrete distributions
+
+Discrete probability distributions are sometimes developed from past experience with a particular physical phenomenon. 
+
+On the other hand, sometimes an easily manipulated set of mathematical assumptions having the potential to describe a variety of real situations can be put together.
+
+One set of assumptions is that of independent identical success-failure trials where
+
+1. 
+2.
+
+\newpage
+
+Consider a variable
+$$
+X = \text{ the number of successes in } n  \text{ independent identical success-failure trials}
+$$
+
+\begin{df}
+The \emph{binomial($n, p$) distribution} is a discrete probability distribution with pmf
+$$
+f(x) = \left\{\begin{matrix}\frac{n!}{x!(n-x)!} p^x (1-p)^{n -x} & x = 0, 1, \dots, n \\ 0 & \text{otherwise}\end{matrix}\right.
+$$
+for $n$ a positive integer and $0 < p < 1$.
+\end{df}
+
+Examples that could follow a binomial($n, p$) distribution:
+
+\vspace{2in}
+
+```{r, fig.height = 4}
+expand.grid(n = c(5, 10, 20), p = c(.2, .5, .8)) %>%
+  group_by(n, p) %>%
+  do(data.frame(data = rbinom(200, .$n, .$p))) %>%
+  ggplot() +
+  geom_histogram(aes(data), binwidth = 1) +
+  facet_grid(n ~ p)
+```
+
+\newpage
+
+For $X$ a binomial($n, p$) random variable,
+\begin{align*}
+\mu &= \text{E}X = \sum\limits_{x = 0}^n x \frac{n!}{x!(n-x)!}p^x(1-p)^{n-x}) = np \\
+\sigma^2 &= \text{Var}X = \sum\limits_{x = 0}^n (x-np)^2 \frac{n!}{x!(n-x)!}p^x(1-p)^{n-x}) = np(1-p)
+\end{align*}
+
+\begin{ex}[10 component machine]
+Suppose you have a machine with 10 independent components in series. The machine only works if all the components work. Each component succeeds with probability $p = 0.95$ and fails with probability $1 - p = 0.05$.
+
+Let $Y$ be the number of components that succeed in a given run of the machine. Then
+$$
+Y \sim  \text{Binomial}(n = 10, p = 0.95)
+$$
+Question: what is the probability of the machine working properly?
+\end{ex}
+
+\newpage
+
+\begin{ex}[10 component machine, cont'd]
+What if I arrange these 10 components in parallel? This machine succeeds if at least 1 of the components succeeds.
+
+What is the probability that the new machine succeeds?
+\end{ex}
+
+\vspace{5in}
+
+\begin{ex}[10 component machine, cont'd]
+Calculate the expected number of components to succeed and the variance.
+\end{ex}
+
+\newpage
+
+Consider a variable
+$$
+X = \text{ the number of trials required to first obtain a success result }
+$$
+
+\begin{df}
+The \emph{geometric($p$) distribution} is a discrete probability distribution with pmf
+$$
+f(x) = \left\{\begin{matrix}p(1-p)^{x-1} & x = 1, \dots \\ 0 & \text{otherwise}\end{matrix}\right.
+$$
+for $0 < p < 1$.
+\end{df}
+
+Examples that could follow a geometric($p$) distribution:
+
+\vspace{2in}
+
+```{r, fig.height = 4}
+expand.grid(p = c(.2, .5, .8)) %>%
+  group_by(p) %>%
+  do(data.frame(data = rgeom(200, .$p))) %>%
+  ggplot() +
+  geom_histogram(aes(data), binwidth = 1) +
+  facet_grid(~ p)
+```
+
+\newpage
+
+For $X$ a geometric($p$) random variable,
+\begin{align*}
+\mu &= \text{E}X = \sum\limits_{x = 1}^\infty x p(1-p)^{x-1} = \frac{1}{p} \\
+\sigma^2 &= \text{Var}X = \sum\limits_{x = 1}^\infty \left(x-\frac{1}{p}\right)^2 p(1-p)^{x-1} = \frac{1-p}{p^2}
+\end{align*}
+
+
+Cdf derivation:
+\newpage
+
+\begin{ex}[NiCad batteries]
+An experimental program was successful in reducing the percentage of manufactured NiCad cells with internal shorts to around 1\%. Let $T$ be the test number at which the first short is discovered. Then, $T \sim \text{Geom}(p)$.
+
+Calculate
+
+\begin{itemize}
+\itemsep 2in
+\item[] $P(\text{1st or 2nd cell tested has the 1st short})$
+\item[] $P(\text{at least 50 cells tested w/o finding a short})$
+\end{itemize}
+
+\vspace{2in}
+Calculate the expected test number at which the first short is discovered and the variance in test numbers at which the first short is discovered.
+\end{ex}
+
+\newpage
+
+It's often important to keep track of the total number of occurrences of some relatively rare phenomenon.
+
+Consider a variable
+$$
+X = \text{ the count of occurences of a phenomenon across a specified interval of time or space }
+$$
+
+\begin{df}
+The \emph{Poisson($\lambda$) distribution} is a discrete probability distribution with pmf
+$$
+f(x) = \left\{\begin{matrix}\frac{e^{-\lambda}\lambda^x}{x!} & x = 0, 1, \dots \\ 0 & \text{otherwise}\end{matrix}\right.
+$$
+for $\lambda > 0$.
+\end{df}
+
+These occurrences must:
+
+1.
+2.
+3.
+
+\vspace{1in}
+
+Examples that could follow a Poisson($\lambda$) distribution:
+
+\vspace{2in}
+
+```{r, fig.height = 4}
+expand.grid(lambda = c(0.5, 2, 5)) %>%
+  group_by(lambda) %>%
+  do(data.frame(data = rpois(200, .$lambda))) %>%
+  ggplot() +
+  geom_histogram(aes(data), binwidth = 1) +
+  facet_grid(~ lambda)
+```
+\vspace{.5in}
+
+For $X$ a Poisson($\lambda$) random variable,
+\begin{align*}
+\mu &= \text{E}X = \sum\limits_{x = 0}^\infty x \frac{e^{-\lambda}\lambda^x}{x!} = \lambda \\
+\sigma^2 &= \text{Var}X = \sum\limits_{x = 0}^\infty \left(x-\lambda\right)^2 \frac{e^{-\lambda}\lambda^x}{x!} = \lambda
+\end{align*}
+
+\newpage
+
+\begin{ex}[Arrivals at the library]
+Some students' data indicate that between 12:00 and 12:10pm on Monday through Wednesday, an average of around 125 students entered Parks Library at ISU. Consider modeling
+$$
+M = \text{the number of students entering the ISU library between 12:00 and 12:01pm next Tuesday}
+$$
+Model $M \sim \text{Poisson}(\lambda)$. What would a reasonable choice of $\lambda$ be?
+
+\vspace{1in}
+
+Under this model, the probability that between $10$ and $15$ students arrive at the library between 12:00 and 12:01 PM is:
+
+\end{ex}
+
+\newpage
+
+\begin{ex}[Shark attacks]
+Let $X$ be the number of unprovoked shark attacks that will occur off the coast of Florida next year. Model $X \sim \text{Poisson}(\lambda)$. From the shark data at http://www.flmnh.ufl.edu/fish/sharks/statistics/FLactivity.htm, 246 unprovoked shark attacks occurred from 2000 to 2009.
+
+What would a reasonable choice of $\lambda$ be?
+
+\vspace{1in}
+
+Under this model, calculate the following:
+
+\begin{itemize}
+\itemsep 1.5in
+\item[]$P[\text{no attacks next year}]$
+\item[]$P[\text{at least 5 attacks}]$
+\item[]$P[\text{more than 10 attacks}]$
+\end{itemize}
+
+\end{ex}
+
+\newpage
+
+## Continuous random variables
+
+It is often convenient to think of a random variable as having a whole (continuous) interval for its set of possible values.
+
+The devices used to describe continuous probability distributions differ from those that describe discrete probability distributions.
+
+Examples of continuous random variables:
+
+\newpage
+
+### Probability density functions and cumulative distribution functions
+
+A *probability density function (pdf)* is the continuous analogue of a discrete random variable's probability mass function (pmf).
+
+\vspace{.1in}
+\begin{df}
+A \emph{probability density function (pdf)} for a continuous random variable $X$ is a nonnegative function $f(x)$ with
+$$
+\int\limits_{-\infty}^{\infty} f(x) = 1
+$$
+and such that for all $a \le b$,
+$$
+P[a \le X \le b] = \int\limits_a^bf(x)dx.
+$$
+\end{df}
+
+\vspace{.2in}
+
+1. 
+2. 
+3. 
+
+\vfill
+
+```{r, fig.height=3}
+x <- seq(-5, 22, length.out = 200)
+f <- .6*dnorm(x, 3, 2) + .3*dnorm(x, 9, 1) + .1*dnorm(x, 19, .4)
+shade <- rbind(data.frame(x = x[x >= 2 & x <= 6], y = f[x >= 2 & x <= 6]),
+               data.frame(x = rev(x[x >= 2 & x <= 6]), y = 0))
+
+qplot(x, f, geom = "line") +
+  geom_polygon(aes(x, y), data = shade, fill = "blue", alpha = .4) +
+  ylab(expression("f(x)"))
+```
+
+\newpage
+
+\begin{ex}[Compass needle]
+Consider a de-magnetized compass needle mounted at its center so that it can spin freely.  It is spun clockwise and when it comes to rest the angle, $\theta$, from the vertical, is measured. Let 
+$$
+Y = \text{the angle measured after each spin in radians}
+$$
+
+\vspace{.2in}
+
+What values can $Y$ take?
+
+\vspace{.2in}
+
+What form makes sense for $f(y)$?
+
+\vspace{3in}
+
+If this form is adopted, that what must the pdf be?
+
+\newpage
+
+Using this pdf, calculate the following probabilities:
+
+\begin{enumerate}
+\itemsep 1.5in 
+\item $P[Y < \frac{\pi}{2}]$
+\item $P[\frac{\pi}{2} < Y < 2\pi]$
+\item $P[\frac{\pi}{6} < Y < \frac{\pi}{4}]$
+\item $P[Y = \frac{\pi}{6}]$
+\end{enumerate}
+\vspace{1in}
+
+
+
+\end{ex}
+
+\newpage
+
+\begin{df}
+The \emph{cumulative distribution function (cdf)} of a continuous random variable $X$ is a function $F$ such that
+$$
+F(x) = P[X \le x] = \int\limits_{-\infty}^x f(t) dt
+$$
+\end{df}
+
+$F(x)$ is obtained from $f(x)$ by integration, and applying the fundamental theorem of calculus yields
+
+$$
+\frac{d}{dx}F(x) = f(x).
+$$
+
+That is, $f(x)$ is obtained from $F(x)$ by differentiation.
+
+As with discrete random variables, $F$ has the following properties:
+
+\begin{enumerate}
+\itemsep .75in
+\item
+\item
+\item
+\item
+\end{enumerate}
+
+\newpage
+
+\begin{ex}[Compass needle, cont'd]
+Recall the compass needle example, with
+$$
+f(y) = \begin{cases} \frac{1}{2\pi} & 0 \le y \le 2\pi \\ 0 & \text{otherwise}\end{cases}
+$$
+Find the cdf.
+
+\vspace{.2in}
+For $y < 0$
+
+\vspace{1in}
+For $0 \le y \le 2\pi$
+
+\vspace{1in}
+For $y > 2\pi$
+\vfill
+
+
+\newpage
+
+Calculate the following using the cdf:
+
+$F(1.5)$
+
+\vfill
+
+$P[Y \le \frac{4\pi}{5}]$
+
+\vfill
+
+$P[Y > 5]$
+
+\vfill
+
+$P[\frac{\pi}{3} < Y \le \frac{\pi}{2}]$
+
+\vfill
+
+\end{ex}
+
+\newpage
+
+### Quantiles
+
+**Recall:** 
+
+\vspace{.5in}
+
+\begin{df}
+The \emph{$p$-quantile of a random variable}, $X$, is the number $Q(p)$ such that $P[X \le Q(p)] = p$.
+\end{df}
+
+\vspace{.2in}
+
+In terms of the cumulative distribution function (for a continuous random variable), 
+
+\vspace{1in}
+
+\begin{ex}[Compass needle, cont'd]
+Recall the compass needle example, with
+$$
+f(y) = \begin{cases} \frac{1}{2\pi} & 0 \le y \le 2\pi \\ 0 & \text{otherwise}\end{cases}
+$$
+$Q(.95)$:
+
+\newpage
+
+You can also calculate quantiles directly from the cdf.
+
+$$
+F(y) = \begin{cases} 0 & y < 0 \\
+\frac{1}{2\pi}y & 0 \le y \le 2\pi \\ 1 & \text{otherwise}\end{cases}
+$$
+$Q(.25)$:
+
+\vfill
+
+$Q(.5)$
+
+\vfill
+
+\end{ex}
+
+\newpage
+
+### Means and variances for continuous distributions
+
+It is possible to summarize continuous probability distributions using
+
+1.
+2.
+3.
+
+\vspace{.2in}
+
+\begin{df}
+The \emph{mean} or \emph{expected value} of a continuous random variable $X$ is
+$$
+\text{E}X = \int\limits_{-\infty}^{\infty} x f(x)dx.
+$$
+\end{df}
+
+\vspace{.4in}
+
+\begin{ex}[Compass needle, cont'd]
+Calculate $\text{E}Y$ where $Y$ is the angle from vertical in radians that a spun needle lands on.
+
+$$
+f(y) = \begin{cases} \frac{1}{2\pi} &0 \le y \le 2\pi \\ 0 & \text{otherwise}\end{cases}
+$$
+\end{ex}
+
+\newpage
+
+\begin{ex}
+Calculate $\text{E}X$ where $X$ follows the following distribution
+
+$$
+f(x) = \begin{cases} 0 & x < 0 \\ \frac{1}{3}e^{-x/3} & x \ge 0 \end{cases}
+$$
+\end{ex}
+\vspace{5in}
+
+\begin{df}
+The \emph{variance} of a continuous random variable $X$ is 
+
+$$
+\text{Var} X = \int\limits_{-\infty}^\infty(x - \text{E}X)^2 f(x)dx = \int\limits_{-\infty}^\infty x^2 f(x)dx - (\text{E}X)^2.
+$$
+
+The \emph{standard deviation} of $X$ is $\sqrt{\text{Var}X}$.
+\end{df}
+
+\newpage
+
+\begin{ex}[Library books]
+Let $X$ denote the amount of time for which a book on $2$-hour hold reserve at a college library is checked out by a randomly selected student and suppose its density function is
+$$
+f(x) = \begin{cases}0.5x & 0 \le x \le 2\\ 0 & \text{otherwise} \end{cases}
+$$
+Calculate $\text{E}X$ and $\text{Var}X$.
+\end{ex}
+
+\newpage
+
+\begin{ex}[Ecology]
+An ecologist wishes to mark off a circular sampling region having radius $10$m. However, the radius of the resulting region is actually a random variable $R$ with pdf
+$$
+f(r) = \begin{cases} \frac{3}{2}(10 - r)^2 & 9 \le r \le 11 \\ 0 & \text{otherwise}\end{cases}
+$$
+Calculate $\text{E}R$ and $\text{SD}(R)$.
+\end{ex}
+
+\newpage
+
+Why does $\text{E}(X^2) = \int\limits_{-\infty}^\infty x^2f(x) dx$?
+\vspace{5in}
+
+\begin{ex}[Ecology, cont'd]
+Calculate the expected \emph{area} of the circular sampling region.
+
+\end{ex}
+\newpage
+
+For a linear function, $g(X) = aX + b$, where $a$ and $b$ are constants,
+
+$\text{E}(aX + b)$
+
+\vspace{2.5in}
+
+$\text{Var}(aX + b)$
+
+\vspace{3in}
+
+\begin{ex}[Ecology, cont'd]
+Calculate the expected value and variance of the \emph{diameter} of the circular sampling region.
+\end{ex}
+
+\newpage
+
+\begin{df}
+\emph{Standardization} is the process of transforming a random variable, $X$, into the signed number of standard deviations by which it is is above its mean value.
+$$
+Z = \frac{X - \text{E}X}{\text{SD}(X)}
+$$
+\end{df}
+
+\vspace{.2in}
+
+$Z$ has mean $0$
+
+\vfill
+
+$Z$ has variance (and standard deviation) $1$
+
+\vfill
+
+
+\newpage
+
+### A special continuous distribution
+
+Just as there are a number of useful discrete distributions commonly applied to engineering problems, there are a number of standard continuous probability distributions. 
+
+\vspace{.2in}
+
+\begin{df}
+The \emph{exponential$(\alpha)$ distribution} is a continuous probability distribution with probability density function
+$$
+f(x) = \begin{cases} \frac{1}{\alpha}e^{-x/\alpha} & x > 0 \\ 0 & \text{otherwise}\end{cases}
+$$
+for $\alpha > 0$.
+\end{df}
+
+```{r, fig.height=3}
+data.frame(x = seq(0, 5, length.out = 200)) %>%
+  mutate(`0.5` = dexp(x, 1/.5),
+         `1` = dexp(x, 1),
+         `2` = dexp(x, 1/2)) %>%
+  gather(alpha, f, -x) %>%
+  ggplot() +
+  geom_line(aes(x, f, colour = alpha, lty = alpha)) +
+  scale_colour_discrete(expression(alpha)) +
+  scale_linetype_discrete(expression(alpha)) +
+  ylab("f(x)")
+
+
+```
+
+An $\text{Exp}(\alpha)$ random variable measures the waiting time until a specific event that has an equal chance of happening at any point in time.
+
+Examples: 
+
+\newpage
+
+It is straightforward to show for $X \sim \text{Exp}(\alpha)$, 
+\begin{enumerate}
+\itemsep .2in
+\item $\mu = \text{E}X = \int\limits_{0}^\infty x \frac{1}{\alpha}e^{-x/\alpha} dx = $
+\item $\sigma^2 = \text{Var}X = \int\limits_{0}^\infty (x - \alpha)^2 \frac{1}{\alpha}e^{-x/\alpha} dx = $
+\end{enumerate}
+
+\vspace{.2in}
+
+Further, $F(x)$ has a simple formulation:
+
+
+
+\newpage
+
+\begin{ex}[Library arrivals, cont'd]
+Recall the example the arrival rate of students at Parks library between 12:00 and 12:10pm early in the week to be about $12.5$ students per minute. That translates to a $1/12.5 = .08$ minute average waiting time between student arrivals. 
+
+Consider observing the entrance to Parks library at exactly noon next Tuesday and define the random variable
+
+$$
+T = \text{the waiting time (min) until the first student passes through the door.}
+$$
+
+Using $T \sim \text{Exp}(.08)$, what is the probability of waiting more than $10$ seconds (1/6 min) for the first arrival?
+
+\vfill
+
+What is the probability of waiting less than $5$ seconds?
+\vfill
+
+\end{ex}
+
+\newpage
+### The Normal distribution
+
+We have already seen the normal distribution as a "bell shaped" distribution, but we can formalize this.
+
+\vspace{.2in}
+
+\begin{df}
+The \emph{normal} or \emph{Gaussian}$(\mu, \sigma^2)$ distribution is a continuous probability distribution with probability density
+$$
+f(x) = \frac{1}{\sqrt{2\pi\sigma^2}}e^{-(x - \mu)^2/{2\sigma^2}} \qquad \text{for all } x
+$$
+for $\sigma > 0$.
+\end{df}
+
+A normal random variable is (often) a finite average of many repeated, independent, identical trials.
+
+\vfill
+
+It is not obvious, but
+\begin{enumerate}
+\itemsep .5in
+\item $\int\limits_{-\infty}^\infty f(x) dx = \int\limits_{-\infty}^\infty \frac{1}{\sqrt{2\pi\sigma^2}}e^{-(x - \mu)^2/{2\sigma^2}} dx = $
+\item $\text{E}X = \int\limits_{-\infty}^\infty x \frac{1}{\sqrt{2\pi\sigma^2}}e^{-(x - \mu)^2/{2\sigma^2}} dx = $
+\item $\text{Var}X = \int\limits_{-\infty}^\infty (x - \mu)^2 \frac{1}{\sqrt{2\pi\sigma^2}}e^{-(x - \mu)^2/{2\sigma^2}} dx = $
+\end{enumerate}
+
+
+\newpage
+The Calculus I methods of evaluating integrals via anti-differentiation will fail when it comes to normal densities. They do not have anti-derivatives that are expressible in terms of elementary functions.
+
+\vspace{.5in}
+
+The use of tables for evaluating normal probabilities depends on the following relationship. If $X \sim \text{Normal}(\mu, \sigma^2)$,
+$$
+P[a \le X \le b] = \int\limits_a^b\frac{1}{\sqrt{2\pi\sigma^2}} e^{-(x - \mu)^2/{2\sigma^2}}dx = \int\limits_{(a- \mu)/\sigma}^{(b-\mu)/\sigma}\frac{1}{\sqrt{2\pi}} e^{-z^2/2}dz = P\left[\frac{a - \mu}{\sigma} \le Z \le \frac{b - \mu}{\sigma}\right]
+$$
+where $Z \sim \text{Normal}(0, 1)$.
+
+\vfill
+
+\begin{df}
+The normal distribution with $\mu = 0$ and $\sigma = 1$ is called the \emph{standard normal distribution}.
+\end{df}
+
+So, we can find probabilities for all normal distributions by tabulating probabilities for only the standard normal distribution. We will use a table of the **standard normal cumulative probability function**.
+
+$$
+\Phi(z) = F(z) = \int\limits_{-\infty}^z\frac{1}{\sqrt{2\pi}}e^{-t^2}dt.
+$$
+
+\newpage
+
+\begin{ex}[Standard normal probabilities]
+$P[Z < 1.76]$
+\vfill
+$P[.57 < Z < 1.32]$
+\vfill
+We can also do it in reverse, find $z$ such that $P[-z < Z < z] = .95$.
+\end{ex}
+
+\newpage
+
+\begin{ex}[Baby food]
+J. Fisher, in his article Computer Assisted Net Weight Control (\emph{Quality Progress}, June 1983), discusses the filling of food containers with strained plums and tapioca by weight. The mean of the values portrayed is about $137.2$g, the standard deviation is about $1.6$g, and data look bell-shaped. Let 
+$$
+W = \text{the next fill weight.}
+$$
+
+\vspace{.5in}
+
+Let's find the probability that the next jar contains less food by mass than it's supposed to (declared weight = $135.05$g).
+
+\vspace{3in}
+
+\includegraphics{images/head_normal_cdf.png}
+\end{ex}
+
+\newpage
+
+\begin{ex}[More normal probabilities]
+Using the standard normal table, calculate the following:
+
+$P(X \le 3), X \sim \text{Normal}(2, 64)$
+\vfill
+$P(X > 7), X \sim \text{Normal}(6, 9)$
+\vfill
+$P(|X - 1| > 0.5), X \sim \text{Normal}(2, 4)$
+\vfill
+\end{ex}
+
+\newpage
+We can find standard normal quantiles by using the standard normal table in reverse.
+
+\begin{ex}[Baby food, cont'd]
+For the jar weights $X \sim \text{Normal}(137.2, 1.62^2)$, find $Q(0.1)$.
+\vfill
+\includegraphics{images/head_normal_cdf.png}
+\end{ex}
+\newpage
+
+\begin{ex}[Normal quantiles]
+Find:
+
+
+$Q(0.95)$ of $X \sim \text{Normal}(9, 3)$ .
+\vfill
+
+$c$ such that $P(|X - 2| > c) = 0.01$, $X \sim \text{Normal}(2, 4)$ 
+\vfill
+
+\end{ex}
+
+\newpage
+
+## Joint distributions and independence (discrete)
+
+Most applications of probability to engineering statistics involve not one but several random variables. In some cases, the application is intrinsically multivariate.
+
+\vspace{.2in}
+
+\begin{ex}
+Consider the assembly of a ring bearing with nominal inside diameter $1.00$ in. on a rod with nominal diameter $.99$ in. If
+\begin{align*}
+X &= \text{the ring bearing inside diameter} \\
+Y &= \text{the rod diameter}
+\end{align*}
+One might be interested in
+$$
+P[\text{there is an interference in assembly}] = \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad
+$$
+\end{ex}
+
+\vspace{.2in}
+
+Even when a situation is univariate, samples larger than size $1$ are essentially always used in engineering applications. The $n$ data values in a sample are usually thought of as subject to chance and their simultaneous behavior must then be modeled.
+
+\vfill
+
+This is actually a very broad and difficult subject, we will only cover a brief introduction to the topic: **jointly discrete random variables**.
+
+\newpage
+
+### Joint distributions
+
+For several discrete random variable, the device typically used to specify probabilities is a *joint probability function*. The two-variable version of this is defined.
+
+\vspace{.2in}
+
+\begin{df}
+A \emph{joint probability function (joint pmf)} for discrete random variables $X$ and $Y$ is a nonnegative function $f(x, y)$, giving the probability that (simultaneously) $X$ takes the values $x$ and $Y$ takes the values $y$. That is,
+$$
+f(x, y) = P[X = x \text{ and } Y = y]
+$$
+\end{df}
+
+\vspace{.2in}
+
+Properties:
+
+\begin{enumerate}
+\itemsep .5in
+\item
+\item
+\end{enumerate}
+
+\vspace{.3in}
+
+For the discrete case, it is useful to give $f(x,y)$ in a **table**.
+
+\newpage
+
+\begin{ex}[Two bolt torques, cont'd]
+Recall the example of measure the bolt torques on the face plates of a heavy equipment component to the nearest integer. With
+
+\begin{align*}
+X &= \text{the next torque recorded for bolt }3\\
+Y &= \text{the next torque recorded for bolt }4
+\end{align*}
+the joint probability function, $f(x,y)$, is
+
+```{r, results='asis'}
+bolt <- expand.grid(x = 11:20, y = 20:13)
+bolt$f <- c(rep(0, 7), "2/34", "2/34", "1/34",
+            rep(0, 6), "2/34", rep(0, 3),
+            rep(0, 2), "1/34", "1/34", 0, 0, "1/34", "1/34", "1/34", 0,
+            rep(0, 4), "2/34", "1/34", "1/34", "2/34", 0, 0,
+            rep(0, 3), "1/34", "2/34", "2/34", 0, 0, "2/34", 0,
+            rep("1/34", 2), rep(0, 2), "3/34", rep(0, 5),
+            rep(0, 4), "1/34", 0, 0, "2/34", 0, 0,
+            rep(0, 4), "1/34", rep(0, 5))
+
+bolt %>%
+  spread(x, f) %>%
+  arrange(desc(y)) %>%
+  rename(`y\\x` = y) %>%
+  xtable() %>%
+  print(include.rownames = FALSE, comment = FALSE)
+
+```
+\vspace{.2in}
+$P[X = 18 \text{ and } Y = 17]$
+
+
+\vspace{.4in}
+$P[X = 14 \text{ and } Y = 19]$
+\vspace{.4in}
+
+By summing up certain values of $f(x, y)$, probabilities associated with $X$ and $Y$ with patterns of interest can be obtained.
+
+\newpage
+
+Consider:
+$$
+P[X \ge Y]
+$$
+
+```{r, results='asis'}
+bolt %>% dplyr::select(-f) %>%
+  mutate(g = "") %>%
+  spread(x, g) %>%
+  arrange(desc(y)) %>%
+  rename(`y\\x` = y) %>%
+  xtable(align = paste0("|", paste(rep("c", ncol(.) + 1), collapse = "|"), "|")) %>%
+  print(include.rownames = FALSE, comment = FALSE, hline.after = -1:nrow(.))
+```
+$$
+P[|X - Y| \le 1]
+$$
+
+```{r, results='asis'}
+bolt %>% dplyr::select(-f) %>%
+  mutate(g = "") %>%
+  spread(x, g) %>%
+  arrange(desc(y)) %>%
+  rename(`y\\x` = y) %>%
+  xtable(align = paste0("|", paste(rep("c", ncol(.) + 1), collapse = "|"), "|")) %>%
+  print(include.rownames = FALSE, comment = FALSE, hline.after = -1:nrow(.))
+```
+
+$$
+P[X = 17]
+$$
+```{r results='asis'}
+bolt %>% dplyr::select(-f) %>%
+  mutate(g = "") %>%
+  spread(x, g) %>%
+  arrange(desc(y)) %>%
+  rename(`y\\x` = y) %>%
+  xtable(align = paste0("|", paste(rep("c", ncol(.) + 1), collapse = "|"), "|")) %>%
+  print(include.rownames = FALSE, comment = FALSE, hline.after = -1:nrow(.))
+
+```
+
+\end{ex}
+
+### Marginal distributions
+
+In a bivariate problem, one can add down columns in the (two-way) table of $f(x, y)$ to get values for the probability function of $X$, $f_X(x)$ and across rows in the same table to get values for the probability distribution of $Y$, $f_Y(y)$.
+
+\begin{df}
+The individual probability functions for discrete random variables $X$ and $Y$ with joint probability function $f(x, y)$ are called \emph{marginal probability functions}. They are obtained by summing $f(x, y)$ values over all possible values of the other variable.
+
+\begin{align*}
+f_X(x) &= \sum\limits_y f(x, y) \\
+f_Y(y) &= \sum\limits_x f(x, y)
+\end{align*}
+\end{df}
+
+\begin{ex}[Torques, cont'd]
+Find the marginal probability functions for $X$ and $Y$ from the following joint pmf.
+
+
+```{r, results='asis'}
+bolt %>%
+  spread(x, f) %>%
+  arrange(desc(y)) %>%
+  rename(`y\\x` = y) %>%
+  xtable() %>%
+  print(include.rownames = FALSE, comment = FALSE)
+
+```
+\end{ex}
+
+\newpage
+
+Getting marginal probability functions from joint probability functions begs the question whether the process can be reversed. **Can we find joint probability functions from marginal probability functions?**
+
+\vspace{2in}
+
+
+### Conditional distributions
+
+When working with several random variables, it is often useful to think about what is expected of one of the variables, given the values assumed by all others.
+
+\vspace{1in}
+
+\begin{df}
+For discrete random variables $X$ and $Y$ with joint probability function $f(x, y)$, the \emph{conditional probability function of $X$ given $Y = y$} is the function of $x$
+$$
+f_{X|Y}(x|y) = \frac{f(x, y)}{f_{Y}(y)} = \frac{f(x, y)}{\sum\limits_{x}f(x, y)}
+$$
+and the \emph{conditional probability function of $Y$ given $X = x$} is the function of $y$
+$$
+f_{Y|X}(y|x) = \frac{f(x, y)}{f_{X}(x)} = \frac{f(x, y)}{\sum\limits_{y}f(x, y)}.
+$$
+\end{df}
+
+\newpage
+
+\begin{ex}[Torque, cont'd]
+
+For the torque example with the following joint distribution, find the following:
+\begin{enumerate}
+\item $f_{Y|X}(20|18)$
+\item $f_{Y|X}(y|15)$
+\item $f_{Y|X}(y|20)$
+\item $f_{X|Y}(x|18)$
+\end{enumerate}
+
+```{r, results='asis'}
+bolt %>%
+  mutate(f = vapply(f, function(num) eval(parse(text = num)), numeric(1))*34) %>%
+  spread(x, f) %>%
+  arrange(desc(y)) %>%
+  rename(`$y\\backslash x$` = y) %>%
+  rbind(colSums(.)) %>%
+  bind_cols(data.frame(rowSums(.[,-1]))) -> bolt_dsn
+
+names(bolt_dsn)[ncol(bolt_dsn)] <- "$f_Y(y)$"
+
+bolt_dsn_table <- bolt_dsn
+bolt_dsn_table[, -1] <- apply(bolt_dsn[, -1], 2, function(col) paste0(col, "/34"))
+bolt_dsn_table[nrow(bolt_dsn_table), 1] <- "$f_X(x)$"
+
+bolt_dsn_table %>%
+  xtable(align = paste0(paste(rep("c", ncol(.)), collapse = ""), "|c")) %>%
+  print(include.rownames = FALSE, comment = FALSE, 
+        sanitize.text.function = function(x){x},
+        hline.after = c(-1, 0, nrow(.) - 1, nrow(.)))
+
+
+```
+
+\end{ex}
+
+\newpage
+
+### Independence
+
+Recall the following joint distribution:
+
+```{r, results='asis'}
+toy <- expand.grid(x = 1:3, y = 1:3)
+toy$f <- c(.16, .16, .08, .16, .16, .08, .08, .08, .04)
+
+toy %>%
+  spread(x, f) %>%
+  arrange(desc(y)) %>%
+  rename(`$y\\backslash x$` = y) -> toy_dsn
+
+toy_dsn$`$f_Y(y)$` <- rowSums(toy_dsn[, -1])
+toy_dsn[nrow(toy_dsn) + 1, -1] <- colSums(toy_dsn[, -1])
+toy_dsn[nrow(toy_dsn), 1] <- "$f_X(x)$"
+
+toy_dsn %>%
+  xtable(align = paste0(paste(rep("c", ncol(.)), collapse = ""), "|c")) %>%
+  print(include.rownames = FALSE, comment = FALSE, 
+        sanitize.text.function = function(x){x},
+        hline.after = c(-1, 0, nrow(.) - 1, nrow(.)))
+
+```
+
+**What do you notice?**
+
+\vfill
+
+\begin{df}
+Discrete random variables $X$ and $Y$ are \emph{independent} if their joint distribution function $f(x, y)$ is the product of their respective marginal probability functions. This is, independence means that
+$$
+f(x, y) = f_X(x)f_Y(y) \qquad \text{for all } x, y.
+$$
+If this does not hold, then $X$ and $Y$ are \emph{dependent.}
+\end{df}
+
+**Alternatively**, discrete random variables $X$ and $Y$ are independent if for all $x$ and $y$,
+
+\vspace{.5in}
+
+If $X$ and$Y$ are not only independent but also have the same marginal distribution, then they are **independent and identically distributed (iid)**.
+
+\newpage
+
+## Functions of several random variables
+
+We've now talked about ways to simultaneously model several random variables. An important engineering use of that material is in the analysis of system output that are functions of random inputs.
+
+### Linear combinations
+
+For engineering purposes, it often suffices to know the mean and variance for a function of several random variables, $U = g(X_1, X_2, \dots, X_n)$ (as opposed to knowing the whole distribution of $U$). When $g$ is **linear**, there are explicit functions.
+
+\vspace{.2in}
+
+\begin{prop}
+\label{prop:linear}
+If $X_1, X_2, \dots, X_n$ are $n$ independent random variables and $a_0, a_1, \dots, a_n$ are $n + 1$ constants, then the random variable $U = a_0 + a_1X_1 + a_2X_2 + \cdots + a_nX_n$ has mean
+$$
+\text{E}U = a_0 + a_1\text{E}X_1 + a_2\text{E}X_2 + \cdots + a_n\text{E}X_3
+$$
+and variance
+$$
+\text{Var}U = a_1^2\text{Var}X_1 + a_2^2\text{Var}X_2 + \cdots + a_n^2\text{Var}X_3
+$$
+\end{prop}
+
+\newpage
+
+\begin{ex}
+Say we have two independent random variables $X$ and $Y$ with $\text{E}X = 3.3, \text{Var}X = 1.91, \text{E}Y = 25$, and $\text{Var}Y = 65$. Find the mean and variance for 
+\begin{align*}
+U &= 3 + 2X - 3Y \\
+V &= -4X + 3Y \\
+W &= 2X - 5Y \\
+Z &= -4X - 6Y
+\end{align*}
+\end{ex}
+
+\newpage
+
+\begin{ex}
+Say $X \sim Binomial(n= 10,p= 0.5)$ and $Y\sim Poisson(\lambda= 3)$. Calculate the mean and variance of $Z = 5 + 2X - 7Y$.
+\end{ex}
+
+\newpage
+
+A particularly important use of Proposition \ref{prop:linear} concerns $n$ iid random variables where each $a_i = \frac{1}{n}$. 
+
+\vspace{1in}
+
+We can find the mean and variance of the random variable
+
+$$
+\overline{X} = \frac{1}{n} X_1 + \cdots \frac{1}{n}X_n = \frac{1}{n}\sum\limits_{i=1}^n X_i
+$$
+
+as they relate to the population parameters $\mu = \text{E}X_i$ and $\sigma^2 = \text{Var}X_i$.
+
+For independent variables $X_1, \dots, X_n$ with common mean $\mu$ and variance $\sigma^2$,
+
+$\text{E}\overline{X} =$
+
+\vfill
+
+$\text{Var}\overline{X} =$
+
+\vfill
+ 
+\newpage 
+
+\begin{ex}[Seed lengths]
+One botanist measured the length of $10$ seeds from the same plant. The seed lengths measurements are $X_1,X_2, \dots,X_{10}$. Suppose it is known that the seed lengths are iid with mean $\mu= 5$ mm and variance $\sigma^2= 2$mm.
+
+Calculate the mean and variance of the average of $10$ seed measurements.
+\end{ex}
+
+\vspace{4in}
+
+### Central limit theorem
+
+One of the most frequently used statistics in engineering applications is the sample mean. We can relate the mean and variance of the probability distribution of the sample mean to those of a single observation when an iid model is appropriate.
+
+\newpage
+
+\begin{prop}
+If $X_1, \dots, X_n$ are iid random variable (with mean $\mu$ and variance $\sigma^2$), then for large $n$, the variable $\overline{X}$ is approximately normally distributed. That is,
+
+$$
+\overline{X} \stackrel{\cdot}{\sim} Normal\left(\mu, \frac{\sigma^2}{n}\right)
+$$
+\end{prop}
+
+This is one of the **most important** results in statistics.
+
+\vspace{0.2in}
+
+\begin{ex}[Tool serial numbers]
+Consider selecting the last digit of randomly selected serial numbers of pneumatic tools. Let
+
+\begin{align*}
+W_1 &= \text{ the last digit of the serial number observed next Monday at 9am} \\
+W_2 &= \text{ the last digit of the serial number observed the following Monday at 9am}
+\end{align*}
+\end{ex}
+
+A plausible model for the pair of random variables $W_1, W_2$ is that they are independent, each with the marginal probability function 
+
+$$
+f(w) = \begin{cases} .1 & w = 0, 1, 2, \dots, 9 \\ 0 & \text{otherwise}\end{cases}
+$$
+
+```{r}
+w <- 0:9
+f <- rep(1/length(w), length(w))
+
+ggplot() + 
+  geom_bar(aes(w, f), stat = "identity") +
+  ylab("f(w)")
+
+```
+
+With $\text{E}W = 4.5$ and $\text{Var}W = 8.25$.
+
+\newpage
+
+Using such a distribution, it is possible to see that $\overline{W} = \frac{1}{2}(W_1 + W_2)$ has probability distribution
+
+```{r, results='asis'}
+w1 <- w2 <- 0:9
+probs <- matrix(rep(0, length(w1)^2), nrow = length(w1))
+
+for(i in seq_along(w1)) {
+  for(j in seq_along(w2)) {
+    probs[i, j] <- f[i]*f[j]
+  }
+}
+
+expand.grid(w1 = w1, w2 = w2) %>%
+  mutate(w_bar = .5*(w1 + w2),
+         f = as.numeric(probs)) %>%
+  group_by(w_bar) %>%
+  summarise(f = sum(f)) -> w_bar_dsn
+
+w_bar_dsn %>%
+  rename(`$\\overline{w}$` = w_bar,
+         `$f(\\overline{w})$` = f) -> w_bar_dsn_tab
+
+cbind(w_bar_dsn_tab[1:4,], w_bar_dsn_tab[5:8,], w_bar_dsn_tab[9:12,], w_bar_dsn_tab[13:16,], rbind(w_bar_dsn_tab[17:19,], c("", ""))) %>%
+  xtable(align = "ccc|cc|cc|cc|cc") %>%
+  print(include.rownames = FALSE,
+        comment = FALSE,
+        sanitize.text.function = function(x){x})
+```
+
+```{r}
+w_bar_dsn %>%
+  ggplot() +
+  geom_bar(aes(w_bar, f), stat = "identity") +
+  xlab(expression(bar(w))) + ylab(expression(f(bar(w))))
+
+```
+
+```{r, cache = TRUE}
+w <- 0:9
+
+library(gganimate)
+
+get_means <- function(i) {
+  samps <- matrix(sample(w, size = 1000*i, replace = TRUE), nrow = 1000)
+  apply(samps, 1, mean)
+}
+
+data.frame(iter = 1:40) %>%
+  group_by(iter) %>%
+  do(data.frame(means = get_means(.$iter))) -> clt
+
+
+data.frame(iter = 1:40) %>%
+  group_by(iter) %>%
+  do(data.frame(x = seq(0, 9, length.out = 200))) %>%
+  mutate(f = dnorm(x, 4.5, sqrt(8.25/iter))) -> norm_approx
+
+
+p <- ggplot(clt, aes(frame = factor(iter))) +
+  geom_density(aes(means), colour = "blue", fill = "blue", alpha = 0.1) +
+  geom_line(aes(x, f), data = norm_approx)
+
+
+gganimate(p, filename = "images/clt_animate.mp4", interval = .2)
+```
+
+Comparing the two distributions, it is clear that even for a completely flat/uniform distribution of $W$ and a small sample size of $n = 2$, the probability distribution of $W$ looks more bell-shaped than the underlying distribution.
+
+Now consider larger and larger sample sizes, $n = 1, \dots, 40$:
+
+\begin{center}
+\begin{figure}[ht]
+\includemovie[poster, text={Click for video...}]{6in}{3in}{images/clt_animate.mp4}
+\end{figure}
+\end{center}
+
+\newpage
+
+\begin{ex}[Stamp sale time]
+Imagine you are a stamp salesperson (on eBay). Consider the time required to complete a stamp sale as $S$, and let 
+$$
+\overline{S} = \text{the sample mean time required to complete the next 100 sales}
+$$
+Each individual sale time should have an $Exp(\alpha= 16.5 s)$ distribution. We want to consider approximating $P[\overline{S} > 17]$. 
+\end{ex}
+
+\newpage
+
+\begin{ex}[Cars]
+Suppose a bunch of cars pass through certain stretch of road. Whenever a car comes, you look at your watch and record the time. Let $X_i$ be the time (in minutes) between when the $i^{th}$ car comes and the $(i+ 1)^{th}$ car comes for $i= 1,\dots,44$. Suppose you know the average time between cars is $1$ minute. Find the probability that the average time gap between cars exceeds 1.05 minutes.
+\end{ex}
+
+\newpage
+
+\begin{ex}[Baby food jars, cont'd]
+The process of filling food containers appears to have an inherent standard deviation of measured fill weights on the order of $1.6g$. Suppose we want to calibrate the filling machine by setting an adjustment knob and filling a run of $n$ jars. Their sample mean net contents will serve as an indication of the process mean fill level corresponding to that knob setting.
+
+You want to choose a sample size, $n$, large enough that there is an $80$\% chance the sample mean is within $.3$g of the actual process mean. 
+\end{ex}
+
+\newpage
+
+\begin{ex}[Printing mistakes]
+Suppose the number of printing mistakes on a page follows some unknown distribution with a mean of $4$ and a variance of $9$. Assume that number of printing mistakes on a printed page are iid.
+
+\begin{enumerate}
+\item What is the approximate probability distribution of the average number of printing mistakes on 50 pages?
+\vfill
+\item Can you find the probability that the number of printing mistakes on a single page is less than 3.8?
+\vfill
+\item Can you find the probability that the average number of printing mistakes on 10 pages is less than 3.8?
+\vfill
+\item Can you find the probability that the average number of printing mistakes on 50 pages is less than 3.8?
+\vfill
+\end{enumerate}
+\end{ex}
+
+\newpage
+
+\includepdf[pages=-]{../../tables/standard-normal.pdf}

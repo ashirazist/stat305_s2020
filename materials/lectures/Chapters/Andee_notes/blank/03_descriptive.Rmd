@@ -1,0 +1,725 @@
+---
+output: 
+  pdf_document:
+    number_sections: true
+    fig_caption: true
+    includes:
+      in_header: 00_header.tex
+fontsize: 12pt
+geometry: margin=1in
+linestretch: 1.5
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(knitr)
+library(tidyverse)
+library(xtable)
+library(MASS)
+
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, fig.height = 2)
+theme_set(theme_bw(base_family = "serif"))
+
+set.seed(305)
+```
+
+\setcounter{section}{2}
+
+# Descriptive statistics
+
+Engineering data are always variable. Given precise enough measurement, even constant process conditions produce different responses. Thus, it is not the individual data values that are important, but their **distribution**. We will discuss simple methods that describe important distributional characteristics of data.
+
+\vspace{.25in}
+\begin{df}
+\emph{Descriptive statistics} is the use of plots and numerical summaries to describe data without drawing any formal conclusions.
+\end{df}
+
+\vspace{.25in}
+
+Through the use of *descriptive statistics*, we seek to find the following features of data sets:
+
+\vspace{.25in}
+\begin{enumerate}
+\itemsep .5in
+\item Center 
+\item Spread
+\item Shape 
+\item Outliers
+\end{enumerate}
+
+\newpage
+
+## Graphical and tabular displays of quantitative data
+
+Almost always, the place to start a data analysis is with appropriate graphical and tabular displays. When only a few samples are involved, a good plot can tell most of the story about data and drive an analysis.
+
+### Dot diagrams and stem-and-leaf plots
+
+When a study produces a small or moderate amount of **univariate quantitative data**, a *dot diagram* can be useful.
+
+\vspace{.25in}
+\begin{df}
+A \emph{dot diagram} shows each observation as a dot placed at the position corresponding to its numerical value along a number line.
+\end{df}
+
+```{r gears-load}
+gears <- read_csv("../../data/gears.csv")
+```
+\vspace{.25in}
+\begin{ex}[Heat treating gears, cont'd]
+Recall the example from Chapter 1. A process engineer is faced with the question, "How should gears be loaded into a continuous carburizing furnace in order to minimize distortion during heat treating?" The engineer conducts a well-thought-out study and obtains the runout values for `r gears %>% filter(Arrangement == "laid") %>% nrow()` gears laid and `r gears %>% filter(Arrangement == "hung") %>% nrow()` gears hung.
+
+\vspace{.25in}
+```{r gear-dotplot, fig.show='hide', results='asis'}
+gears %>%
+  ggplot() +
+  geom_dotplot(aes(Runout)) +
+  facet_wrap(~Arrangement)
+```
+\begin{figure}[H]
+\centering
+\includegraphics{03_descriptive_files/figure-latex/gear-dotplot-1.pdf}
+\caption{Dot diagrams of runouts.}
+\end{figure}
+\end{ex}
+
+\newpage
+
+
+```{r bullets-load}
+bullets <- read_csv("../../data/bullets.csv")
+```
+\begin{ex}[Bullet penetration depth, pg. 67]
+Sale and Thom compared penetration depths for several types of .45 caliber bullets fired into oak wood from a distance of 15 feet. They recorded the penetration depths (in mm from the target surface to the back of the bullets) for two bullet types.
+
+```{r, results='asis'}
+bullets %>%
+  mutate(grain = paste(grain, "grain jacketed bullets")) %>%
+  group_by(grain) %>%
+  summarise(Values = paste(penetration, collapse = ", ")) %>%
+  spread(grain, Values) %>%
+  xtable(align = c("c", "p{2in}", "p{2in}"), caption = "Bullet penetration depths (mm)") %>%
+  print(include.rownames = FALSE)
+```
+
+\vspace{.25in}
+```{r bullets-dotplot, fig.show='hide', results='asis'}
+bullets %>%
+  mutate(grain = paste(grain, "grain jacketed bullets")) %>%
+  ggplot() +
+  geom_dotplot(aes(penetration)) +
+  facet_wrap(~grain)
+```
+\begin{figure}[H]
+\centering
+\includegraphics{03_descriptive_files/figure-latex/bullets-dotplot-1.pdf}
+\caption{Dot diagrams of penetration depths.}
+\end{figure}
+\end{ex}
+
+\newpage
+
+Dot diagrams are good for getting a general feel for the data (and can be done with pencil and paper), but do not allow the recovery of the exact values used to make them.
+
+\vspace{.25in}
+\begin{df}
+A \emph{stem-and-leaf plot} is made by using the last few digits of each data point to indicated where it falls.
+\end{df}
+
+\vspace{.25in}
+\begin{ex}[Heat treating gears, cont'd]
+~\\
+```{r, results='asis'}
+gears %>%
+  group_by(Arrangement) %>%
+  summarise(Values = paste(Runout, collapse = ", ")) %>%
+  spread(Arrangement, Values) %>%
+  xtable(align = c("c", "p{2in}", "p{2in}"), caption = "Thrust face runouts (.0001 in.)") %>%
+  print(include.rownames = FALSE)
+```
+\end{ex}
+
+\newpage
+
+### Frequency tables and histograms
+
+Dot diagrams and stem-and-leaf plots are useful for getting to know a data set, but they are not commonly used in papers and presentations. 
+
+\vspace{.1in}
+\begin{df}
+A \emph{frequency table} is made by first breaking an interval containing all the data into an appropriate number of smaller intervals of equal length. Then tally marks can be recorded to indicate the number of data points falling into each interval. Finally, frequencies, relative frequencies, and cumulative relative frequencies can be added.
+\end{df}
+
+\vspace{.1in}
+\begin{ex}[Heat treating gears, cont'd]
+~\\[-.2in]
+\begin{table}[ht]
+\centering
+\begin{tabular}{p{2cm} l l p{2cm} p{2cm}}
+  \hline
+  Runout (.0001 in) & Tally & Frequency & Relative Frequency & Cumulative Relative Frequency \\
+  \hline
+  5-8 &  \tally 3 & $3$ & $.079$ & $.079$ \\
+  9-12 & \tally 18 & $18$ & $.474$ & $.553$ \\
+  13-16 & \tally 12 & $12$ & $.316$  & $.868$ \\
+  17-20 & \tally 4 & $4$ & $.105$ & $.974$ \\
+  21-24 &  & $0$ & $0$ & $.974$ \\
+  25-28 & \tally 1 & $1$ & $.026$ &  $1.000$ \\
+  \hline
+  & & $38$ & $1.000$ &
+\end{tabular}
+\caption{Frequency table for laid gear thrust face runouts.} 
+\end{table}  
+\end{ex}
+
+\vspace{.25in}
+\begin{ex}[Bullet penetration depth, cont'd]
+~\\[-.2in]
+\begin{table}[ht]
+\centering
+\begin{tabular}{p{2.25cm} l l p{2cm} p{2cm}}
+  \hline
+  Runout (.0001 in) & Tally & Frequency & Relative Frequency & Cumulative Relative Frequency \\
+  \hline
+  58-59.99 &  \tally 5 & $5$ & $.25$ & $.25$ \\
+  60.00-61.99 & \tally 3 & $3$ & $.15$ & $.40$ \\
+  62.00-63.99 & \tally 6 & $6$ & $.30$  & $.70$ \\
+  64.00-65.99 & \tally 3 & $3$ & $.15$ & $.85$ \\
+  66.00-67.99 & \tally 1 & $1$ & $.05$ & $.90$ \\
+  68.00-69.99 &  & $0$ & $0$ &  $.90$ \\
+  70.00-71.99 & \tally 2 & $2$ & $.10$ &  $1.000$ \\
+  \hline
+  & & $20$ & $1.000$ &
+\end{tabular}
+\caption{Frequency table for 200 grain penetration depths.} 
+\end{table}  
+\end{ex}
+
+\newpage
+
+After making a frequency table, it is common to use the organization provided by the table to create a histogram. 
+
+\vspace{.2in}
+\begin{df}
+A \emph{(frequency or relative frequency) histogram} is a kind of bar chart used to portray the shape of a distribution of data points. 
+\end{df}
+\vspace{.2in}
+
+Guidelines for making histograms:
+\vspace{2in}
+
+\vspace{.25in}
+\begin{ex}[Bullet penetration depth, cont'd]
+~\\
+```{r bullets-hist, fig.show='hide', results='asis', fig.height=3.5}
+bullets %>%
+  filter(grain == 200) %>%
+  ggplot() +
+  geom_histogram(aes(penetration), breaks = seq(58, 72, by = 2)) +
+  xlab("Penetration depth (mm)") + ylab("Frequency")
+```
+\begin{figure}[H]
+\centering
+\includegraphics{03_descriptive_files/figure-latex/bullets-hist-1.pdf}
+\caption{Histogram of the $200$ grain penetration depths.}
+\end{figure}
+\end{ex}
+
+\newpage
+\begin{ex}[Histogram]
+Suppose you have the following data: $$74, 79, 77, 81, 68, 79, 81, 76, 81, 80, 80, 78, 88, 83, 79, 91, 79, 75, 74, 73$$. Create the corresponding \emph{frequency table} and \emph{frequency histogram}.
+\end{ex}
+\newpage
+
+
+Why do we plot data? Information on location, spread, and shape is portrayed clearly in a histogram and can give hints as to the functioning of the physical process that is generating the data.
+
+\vspace{.25in}
+
+```{r data-shape, fig.cap="Common distributional shapes."}
+shapes <- data.frame(shape = "Bell-shaped", data = rnorm(1000))
+shapes %>%
+  bind_rows(data.frame(shape = "Right-skewed", data = rbeta(1000, 2, 5))) %>%
+  bind_rows(data.frame(shape = "Left-skewed", data = rbeta(1000, 5, 2))) %>%
+  bind_rows(data.frame(shape = "Uniform", data = runif(10000))) %>%
+  bind_rows(data.frame(shape = "Bimodal", data = c(rnorm(500), rnorm(500, 5, 2)))) %>%
+  bind_rows(data.frame(shape = "Truncated", data = rnorm(2000)) %>% filter(data < 0)) -> shapes
+                     
+                  
+shapes %>%
+  ggplot() +
+  geom_histogram(aes(data)) +
+  facet_wrap(~shape, nrow = 2, scales = "free") +
+  theme_void(base_family = "serif")
+
+```
+
+If data on the diameters of machined metal cylinders purchased from a vendor produce a histogram that is decidedly **bimodal**, this suggests  
+
+
+\vspace{2in}
+
+If the histogram is **truncated**, this might suggest 
+
+\newpage
+
+### Scatter plots
+
+Dot-diagrams, stem-and-leaf plots, frequency tables, and histograms are univariate tools. But engineering questions often concern multivariate data and *relationships between the variables*.
+
+\vspace{.25in}
+\begin{df}
+A \emph{scatterplot} is a simple and effective way of displaying potential relationships between two quantitative variable by assigning each variable to either the $x$ or $y$ axis and plotting the resulting coordinate points.
+\end{df}
+
+\vspace{.25in}
+\begin{ex}[Orange trees]
+Jim and Jane want to know the relationship between an orange tree's age (in days since 1968-12-31) and its circumference (in mm). They recorded the data for $35$ orange trees.
+
+```{r orange-scatter, fig.show='hide', results='asis', fig.height=3.5}
+Orange %>%
+  ggplot() +
+  geom_point(aes(age, circumference)) +
+  xlab("Age (in days since 1968-12-31)") + ylab("Circumference (in mm)")
+```
+\begin{figure}[H]
+\centering
+\includegraphics{03_descriptive_files/figure-latex/orange-scatter-1.pdf}
+\caption{Scatterplot of $35$ trees' age and circumference.}
+\end{figure}
+\end{ex}
+
+\newpage
+
+There are three typical association/relationship between two variables:
+
+\vspace{.5in}
+```{r, fig.height=4}
+data <- data.frame(relationship = "Positive", 
+                   mvrnorm(25, c(0, 0), matrix(c(1, .9, .9, 1), nrow = 2)))
+data %>%
+  bind_rows(data.frame(relationship = "Negative", 
+                   mvrnorm(25, c(0, 0), matrix(c(1, -.9, -.9, 1), nrow = 2)))) %>%
+  bind_rows(data.frame(relationship = "No association", 
+                   mvrnorm(25, c(0, 0), matrix(c(1, 0, 0, 1), nrow = 2)))) -> data
+
+data %>%
+  rename(x = X1, y = X2) %>%
+  ggplot() +
+  geom_point(aes(x, y)) +
+  facet_wrap(~ relationship) +
+  theme(strip.background = element_blank(),
+       strip.text.x = element_blank())
+```
+
+\newpage
+
+\begin{df}
+A \emph{run chart} is a basic graph that displays data values in a time sequence in the order in which the data were generated. 
+\end{df}
+
+\vspace{.2in}
+\begin{ex}[Office hours]
+A professor collects data on the number of students that come to her office hours per week during the course of the semester. 
+
+
+```{r, results='asis'}
+office <- data.frame(Week = 1:15,
+                     Attendance = c(0, 1, 4, 5, 40, 2, 5, 10, 7, 30, 0, 4, 3, 19, 60))
+
+office %>%
+  xtable(caption = "Weekly attendance in office hours for a semester.") %>%
+  print(include.rownames = FALSE)
+```
+
+\end{ex}
+
+\newpage
+
+## Quantiles
+
+Most people are probably familiar with the idea of *percentiles*. 
+
+\vspace{.2in}
+\begin{df}
+The \emph{$p^{th}$ percentile} of a data set is a number greater than $p$\% of the data and less than the rest.
+\end{df}
+
+> "You scored at the $90^{th}$ percentile on the SAT" means that your score was higher than 90% of the students who took the test and lower than the other 10% 
+
+> "Zorbit was positioned at the $80^{th}$ percentile of the list of fastest growing companies compiled by INC magazine.” means Zorbit was growing faster than 80% of the companies in the list and slower than the other 20%.
+
+It is often more convenient to work in terms of fractions between $0$ and $1$ than percentages.
+
+\vspace{.2in}
+\begin{df}
+For a data set consisting of $n$ values that when ordered are $x_1 \le x_2 \le \cdots \le x_n$,
+\begin{enumerate}
+\item if $p = \frac{i - .5}{n}$ for a positive integer $i \le n$, the $p$ \emph{quantile} of the data set is 
+$$Q(p) = Q\left(\frac{i-.5}{n}\right) = x_i$$ (the $i$th smallest data point will be called the $\frac{i-.5}{n}$ quantile)
+\item for any number $p$ between $\frac{.5}{n}$ and $\frac{n-.5}{n}$ that is not of the form $\frac{i-.5}{n}$ for an integer $i$, the $p$ \emph{quantile} of the data set will be obtained by linear interpolation between the two values of $Q\left(\frac{i-.5}{n}\right)$ with corresponding $\frac{i-.5}{n}$ that bracket $p$.
+\end{enumerate}
+In both cases, the notation $Q(p)$ will denote the $p$ quantile.
+\end{df}
+
+\newpage
+
+```{r towels-load}
+towels <- read_csv("../../data/towels.csv")
+```
+
+\begin{ex}[Breaking strengths of paper towels, pg. 79]
+Here is a study of the dry breaking strength (in grams) of generic paper towels.
+
+```{r, results='asis'}
+towels %>%
+  xtable(caption = "Ten paper towls breaking strengths (in grams).") %>%
+  print(include.rownames = FALSE)
+```
+
+\end{ex}
+
+\newpage
+
+\begin{df}
+$Q\left(\frac{1-.5}{n}\right)$ is called the \emph{minimum} and $Q\left(\frac{n-.5}{n}\right)$ is called the \emph{maximum} of a distribution.
+\end{df}
+
+\vspace{.2in}
+\begin{df}
+$Q(.5)$ is called the \emph{median} of a distribution. $Q(.25)$ and $Q(.75)$ are called the \emph{first (or lower) quartile} and \emph{third (or upper) quartile} of a distribution, respectively.
+\end{df}
+
+\vspace{.2in}
+\begin{df}
+The \emph{interquartile range (IQR)} is defined as $IQR = Q(.75) - Q(.25)$.
+\end{df}
+
+\vspace{.2in}
+\begin{df}
+An \emph{outlier} is a data point that is larger than $Q(.75) + 1.5*IQR$ or smaller than $Q(.25) - 1.5*IQR$.
+\end{df}
+
+### Boxplots
+
+Quantiles are useful in making *boxplots*, an alternative to dot diagrams or histograms. The boxplot shows less information, but many can be placed side by side on a single page for comparisons.
+
+\vspace{1in}
+
+```{r, fig.height=1, fig.width=5}
+x <- c(rnorm(100), 5, 7, -10)
+
+qplot(1, x, geom="boxplot") + 
+  coord_flip() +
+  theme_void(base_family = "serif")
+```
+
+\newpage
+
+
+\begin{ex}[Bullet penetration depths, cont'd]
+~\\
+```{r, results='asis'}
+bullets %>% 
+  filter(grain == 200) %>%
+  dplyr::select(penetration) %>%
+  arrange(penetration) %>% 
+  rename(`200 grain bullets` = penetration) %>%
+  mutate(i = 1:n(),
+         `$\\frac{i-.5}{20}$` = (i -.5)/n()) %>%
+  dplyr::select(2, 3, 1) %>%
+  bind_cols(bullets %>% 
+              filter(grain == 230) %>% 
+              dplyr::select(penetration) %>% 
+              arrange(penetration) %>% 
+              rename(`230 grain bullets` = penetration)) %>%
+  xtable(digits = 3, caption = "Quantiles of the bullet penetration depth distributions.") %>%
+  print(include.rownames = FALSE, sanitize.text.function=function(x){x})
+```
+
+\end{ex}
+
+\newpage
+
+\mbox{}
+\newpage
+
+### Quantile-quantile (Q-Q) plots
+
+Often times, we want to compare the shapes of two distributions.
+
+\vspace{.5in}
+
+A more sensitive way is to make a single plot based on the quantile functions for two distributions.
+
+\vspace{.5in}
+
+\begin{df}
+A \emph{Q-Q plot} for two data sets with respective quantile functions $Q_1$ and $Q_2$ is a plot of ordered pairs $(Q_1(p), Q_2(p))$ for appropriate values of $p$. When two data sets of size $n$ are involved, the values of $p$ used to make the plot will be $\frac{i-.5}{n}$ for $i = 1, \dots, n$. 
+\end{df}
+
+\vspace{.2in}
+
+\begin{ex}[Bullet penetration depth, cont'd]
+~\\
+```{r bullets-qq, results='asis', fig.show='hide', fig.height=4}
+bullets %>% filter(grain == 200) %>% dplyr::select(penetration) %>% arrange(penetration) %>% rename(`200 grain bullets` = penetration) %>%
+  bind_cols(bullets %>% filter(grain == 230) %>% dplyr::select(penetration) %>% arrange(penetration) %>% rename(`230 grain bullets` = penetration)) %>%
+  ggplot() +
+  geom_point(aes(`200 grain bullets`, `230 grain bullets`))
+```
+\begin{figure}[H]
+\centering
+\includegraphics{03_descriptive_files/figure-latex/bullets-qq-1.pdf}
+\caption{Q-Q plot for the bullet penetration depths.}
+\end{figure}
+\end{ex}
+
+\newpage
+
+To make a Q-Q plot for two data sets of the same size,
+
+1. order each from the smallest observation to the largest,
+2. pair off corresponding values in the two data sets
+3. plot ordered pairs, with the horizontal coordinated coming from the first data set and the vertical ones from the second.
+
+\vspace{.2in}
+
+\begin{ex}[Q-Q plot by hand]
+Make a Q-Q plot for the following small artificial data sets.
+
+```{r, results='asis'}
+data <- data.frame(data_set = c(rep("Data set 1", 5), rep("Data set 2", 5)),
+                   values = c(3, 5, 4, 7, 3, 15, 7, 9, 7, 11))
+
+data %>%
+  group_by(data_set) %>%
+  summarise(values = paste(values, collapse=", ")) %>%
+  spread(data_set, values) %>%
+  xtable(caption = "Two artificial data sets") %>%
+  print(include.rownames = FALSE)
+```
+
+\end{ex}
+
+
+\newpage
+
+### Theoretical quantile-quantile plots
+
+Q-Q plots are useful when comparing two finite data sets, but a Q-Q plot can also be used to compare a data set and an expected shape, or *theoretical distribution*.
+
+\vspace{.2in}
+\begin{df}
+A \emph{theoretical Q-Q plot} for a data set of size $n$ and a theoretical distribution, with respective quantile functions $Q_1$ and $Q_2$ is a plot of ordered pairs $(Q_1(p), Q_2(p))$ for $p = \frac{i-.5}{n}$ where $i = 1, \dots, n$.
+\end{df}
+
+The most famous theoretical Q-Q plot occurs when quantiles for the *standard Normal* or *Gaussian* distribution are used. A simple numerical approximation to the quantile function for the Normal distribution is 
+
+$$
+Q(p) \approx 4.9(p^{.14} - (1-p)^{.14}).
+$$
+
+The standard Normal quantiles can be used to make a theoretical Q-Q plot as a way of assessing how bell-shaped a data set is. The resulting plot is called a *normal Q-Q plot*.
+
+\vspace{.2in}
+
+```{r normal-dist, fig.show='hold', fig.width=3.5, fig.height=3, fig.cap= "Histogram and approximate quantile function for a standard Normal distirbution."}
+norm <- rnorm(1000)
+p <- seq(0, 1, length.out = 1000)
+
+#histogram
+ggplot() + geom_histogram(aes(norm)) + xlab("Standard Normal data")
+
+#approximate quantiles
+qplot(p, 4.9*(p^.14 - (1-p)^.14), geom = "line") +
+  ylab("Approx. Q() for Normal(0, 1) distribution")
+```
+
+\newpage
+
+\begin{ex}[Breaking strengths of paper towels, cont'd]
+~\\
+```{r, results='asis'}
+towels %>% 
+  dplyr::select(strength) %>%
+  arrange(strength) %>% 
+  rename(`Breaking strength Q()` = strength) %>%
+  mutate(i = 1:n(),
+         `$\\frac{i-.5}{20}$` = (i -.5)/n()) %>%
+  dplyr::select(2, 3, 1) %>%
+  mutate(`Standard Normal Q()` = qnorm((i-.5)/n())) %>%
+  xtable(caption = "Breaking strength and standard Normal quantiles.") %>%
+  print(include.rownames = FALSE, sanitize.text.function=function(x){x})
+```
+\newpage
+
+\end{ex}
+
+## Numerical summaries 
+
+When we have a large amount of data, it can become important to reduce the amount of data to a few informative numerical summary values. Numerical summaries highlight important features of the data 
+
+\vspace{.5in}
+
+\begin{df}
+A \emph{numerical summary (or statistic)} is a number or list of numbers calculated using the data (and only the data).
+\end{df}
+
+### Measures of location
+
+An "average" represents the center of a quantitative data set. There are several potential technical meanings for the word "average", and they are all *measures of location*.
+
+\vspace{.2in}
+\begin{df}
+The \emph{(arithmetic) mean} of a sample of quantitative data ($x_1, \dots, x_n$) is 
+$$
+\overline{x} = \frac{1}{n} \sum\limits_{i=1}^nx_i.
+$$
+\end{df}
+
+\vspace{.2in}
+\begin{df}
+The \emph{mode} of a discrete or categorical data set is the most frequently-occurring value.
+\end{df}
+
+\vspace{.2in}
+
+We have also seen the *median*, $Q(.5)$, which is another measure of location. A shortcut to calculating $Q(0.5)$ is
+
+- $Q(0.5) = x_{\lceil n/2 \rceil}$ if $n$ is odd 
+- $Q(0.5)$ = $(x_{n/2} + x_{n/2+1})/2$ if $n$ is even.
+
+\newpage 
+
+\begin{ex}[Measures of location]
+Calculate the three measures of location for the following data.
+$$
+0, 1, 1, 2, 3, 5
+$$
+\end{ex}
+
+\vspace{2in}
+
+### Measures of spread
+
+Quantifying variation in a data set can be as important as measuring its location. Again, there are many way to measure the spread of a data set.
+
+\vspace{.2in}
+\begin{df}
+The \emph{range} of a data set consisting of ordered values $x_1 \le \cdots \le x_n$ is 
+$$
+R = x_n - x_1.
+$$
+\end{df}
+
+\vspace{.2in}
+\begin{df}
+The \emph{sample variance} of a data set consisting of values $x_1, \dots, x_n$ is
+$$
+s^2 = \frac{1}{n-1} \sum\limits_{i=1}^n (x_i - \overline{x})^2.
+$$
+The \emph{sample standard deviation}, $s$, is the nonnegative square root of the sample variance.
+\end{df}
+
+\vspace{.2in}
+
+We have also seen the *IQR*, $Q(.75) - Q(.25)$, which is another measure of spread.
+
+\newpage
+
+\begin{ex}[Measures of spread]
+Calculate the four measures of spread for the following data.
+$$
+0, 1, 1, 2, 3, 5
+$$
+\end{ex}
+
+\vspace{2in}
+
+\begin{ex}[Sensitivity to outliers]
+Which measures of center and spread differ drastically between the $x_i$s and the $y_i$s? Which ones are the same?
+\begin{align*}
+x_i:& 0, 1, 1, 2, 3, 5 \\
+y_i:& 0, 1, 1, 2, 3, 817263489
+\end{align*}
+\end{ex}
+
+\newpage
+
+### Statistics and parameters
+
+It's important now to stop and talk about terminology and notation.
+
+\vspace{.2in}
+\begin{df}
+Numerical summarizations of sample data are called (sample) \emph{statistics}. Numerical summarizations of population and theoretical distributions are called (population or model) \emph{parameters}. 
+\end{df}
+
+\vspace{1in}
+\begin{df}
+If a data set, $x_1, \dots, x_N$, represents an entire population, then the \emph{population (or true) mean} is defined as
+$$
+\mu = \frac{1}{N}\sum\limits_{i = 1}^N x_i.
+$$
+\end{df}
+
+\vspace{.2in}
+\begin{df}
+If a data set, $x_1, \dots, x_N$, represents an entire population, then the \emph{population (or true) variance} is defined as
+$$
+\sigma^2 = \frac{1}{N}\sum\limits_{i=1}^N(x_i - \mu)^2.
+$$
+The \emph{population (or true) standard deviation}, $\sigma$ is the nonnegative square root of $\sigma^2$.
+\end{df}
+
+
+\newpage
+
+## Categorical and count data
+
+So far we have talked mainly about summarizing quantitative, or measurement, data. Sometimes, we have categorical or count data to summarize. In this case, we can revisit the *frequency table* and introduce a new type of plot.
+
+\vspace{.2in}
+
+\begin{ex}[Cars]
+Fuel consumption and 10 aspects of automobile design and performance are available for 32 automobiles (1973–74 models) from 1974 Motor Trend US Magazine.
+
+\vspace{.1in}
+
+```{r, results='asis'}
+head(mtcars) %>%
+  rbind(c(rep("...", 11))) -> cars_tab
+
+rownames(cars_tab)[7] <- "..."
+
+xtable(cars_tab, caption = "Car data for 1973-1974 models.")
+```
+
+We can construct a frequency table for the \texttt{cylinder} variable.
+
+\vspace{.1in}
+
+```{r cyl-tab, results='asis'}
+mtcars %>%
+  group_by(cyl) %>%
+  summarise(Frequency = n(),
+            `Relative Frequency` = n()/nrow(mtcars)) %>%
+  mutate(`Cumulative Frequency` = cumsum(`Relative Frequency`)) %>%
+  xtable(caption = "Frequency table for car cylinders.") %>%
+  print(include.rownames = FALSE)
+```
+
+\end{ex}
+
+From this frequency data, we can summarize the categorical data graphically.
+
+\newpage
+\begin{df}
+A \emph{bar plot} presents categorical data with rectangular bars with lengths proportional to the values that they represent (usually frequency of occurrence).
+\end{df}
+
+\vspace{.2in}
+
+\begin{ex}[Cars, cont'd]
+
+\end{ex}

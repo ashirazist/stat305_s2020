@@ -1,0 +1,28 @@
+\usepackage{amsthm}
+\usepackage{float}
+\usepackage{multirow}
+\usepackage{pdfpages}
+\usepackage{movie15}
+
+\newtheorem{prop}{Proposition}[section]
+
+\theoremstyle{definition}
+\newtheorem{ex}{Example}[section]
+\newtheorem{df}{Definition}[section]
+
+% Define tally
+\newcommand{\StrokeOne}{|}
+\newcommand{\StrokeTwo}{||}
+\newcommand{\StrokeThree}{|||}
+\newcommand{\StrokeFour}{||||}
+\newcommand{\StrokeFive}{\rlap{\raise1ex\hbox{\underline{%
+\hphantom{\StrokeFour}}}}\StrokeFour}
+
+\newcount\tallycount
+\newcommand{\dotally}{%
+\loop\ifnum\tallycount>4\relax\StrokeFive\
+\advance\tallycount by-5\repeat
+\ifcase\tallycount\or\StrokeOne\or\StrokeTwo\or
+\StrokeThree\or\StrokeFour\else ERROR\fi\unskip}
+
+\newcommand{\tally}{\afterassignment\dotally\tallycount }

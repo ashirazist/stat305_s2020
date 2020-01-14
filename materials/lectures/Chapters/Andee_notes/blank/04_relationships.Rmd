@@ -1,0 +1,686 @@
+---
+output: 
+  pdf_document:
+    number_sections: true
+    includes:
+      in_header: 00_header.tex
+fontsize: 12pt
+fig_caption: true
+geometry: margin=1in
+linestretch: 1.5
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(knitr)
+library(tidyverse)
+library(xtable)
+library(MASS)
+
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, fig.height = 2)
+theme_set(theme_bw(base_family = "serif"))
+
+set.seed(305)
+```
+
+\setcounter{section}{3}
+
+# Describing relationships between variables
+
+This chapter provides methods that address a more involved problem of describing relationships between variables and require more computation. We start with relationships between two variables and move on to more.
+
+## Fitting a line by least squares
+
+**Goal:**
+
+\vspace{.2in}
+
+We would like to use an equation to describe how a dependent (response) variable, $y$, changes in response to a change in one or more independent (experimental) variable(s), $x$.
+
+### Line review 
+
+Recall a linear equation of the form $y = mx + b$
+
+\vspace{.25in}
+
+In statistics, we use the notation $y = \beta_0 + \beta_1 x + \epsilon$ where we assume $\beta_0$ and $\beta_1$ are unknown parameters and $\epsilon$ is some error.
+
+\vspace{.25in}
+
+The goal is to find estimates $b_0$ and $b_1$ for the parameters.
+
+\vspace{.25in}
+
+\begin{ex}[Plastic hardness]
+Eight batches of plastic are made. From each batch one test item is molded and its hardness, $y$, is measured at time $x$. The following are the 8 measurements and times:
+
+\vspace{.2in}
+
+```{r hardness-data, results='asis'}
+hardness <- data.frame(time = c(32, 72, 64, 48, 16, 40, 80, 56),
+                      hardness = c(230, 323, 298, 255, 199, 248, 359, 305))
+
+print(xtable(t(hardness), digits = 0), include.colnames = FALSE, comment = FALSE)
+
+```
+\newpage
+~\\
+\vspace{4in}
+
+How do we find an equation for the line that best fits the data?
+
+\vspace{2.5in}
+
+\end{ex}
+
+\begin{df}
+A \emph{residual} is the vertical distance between the actual data point and a fitted line, $e = y - \hat{y}$.
+\end{df}
+
+\newpage
+
+The *principle of least squares* provides a method of choosing a "best" line to describe the data.
+
+\begin{df}
+To apply the \emph{principle of least squares} in the fitting of an equation for $y$ to an $n$-point data set, values of the equation parameters are chosen to minimize
+$$
+\sum\limits_{i = 1}^n(y_i - \hat{y_i})^2
+$$
+where $y_1, y_2, \dots, y_n$ are the observed responses and $\hat{y}_1, \hat{y}_2, \dots, \hat{y}_n$ are corresponding responses predicted or fitted by the equation.
+\end{df}
+
+\vspace{.1in}
+
+We want to choose $b_0$ and $b_1$ to minimize
+$$
+\sum\limits_{i = 1}^n(y_i - \hat{y_i})^2 = \sum\limits_{i = 1}^n(y_i - b_0 - b_1 x_i)^2
+$$
+
+\newpage
+
+Solving for $b_0$ and $b_1$, we get
+\vspace{-.5in}
+\begin{align*}
+b_0 &= \overline{y} - b_1 \overline{x} \\
+b_1 &= \frac{\sum(x_i - \overline{x})(y_i - \overline{x})}{\sum(x_i - \overline{x})^2} = \frac{\sum x_i y_i - \frac{1}{n}\sum x_i \sum y_i}{\sum x_i^2 - \frac{1}{n}(\sum x_i)^2}
+\end{align*}
+
+\vspace{.1in}
+
+\begin{ex}[Plastic hardness, cont'd]
+Compute the least squares line for the data in Example 4.1.
+
+```{r hardness-ls, results='asis'}
+hardness %>%
+  rename(x = time,
+         y = hardness) %>%
+  mutate(`$xy$` = x*y,
+         `$x^2$` = x^2,
+         `$y^2$` = y^2) %>%
+  rename(`$x$` = x,
+         `$y$` = y) %>%
+  xtable(digits = 0) %>%
+  print(include.rownames = FALSE, sanitize.colnames.function = identity)
+```
+
+\newpage
+\end{ex}
+
+### Interpreting slope and intercept
+
+\begin{itemize}
+\itemsep .25in
+\item Slope:
+\item Intercept
+\end{itemize}
+
+\vspace{.2in}
+
+Interpreting the intercept is nonsense when
+
+\vspace{2in}
+
+\begin{ex}[Plastic hardness, cont'd]
+Interpret the coefficients in the plastic hardness example. Is the interpretation of the intercept reasonable?
+
+\newpage
+\end{ex}
+
+When making predictions, don't *extrapolate*.
+
+\vspace{.1in}
+\begin{df}
+\emph{Extrapolation} is when a value of $x$ beyond the range of our actual observations is used to find a predicted value for $y$. We don't know the behavior of the line beyond our collected data.
+\end{df}
+
+\vspace{.1in}
+
+\begin{df}
+\emph{Interpolation} is when a value of $x$ within the range of our observations is used to find a predicted value for $y$.
+\end{df}
+
+\vspace{2in}
+
+### Correlation
+
+Visually we can assess if a fitted line does a good job of fitting the data using a scatterplot. However, it is also helpful to have methods of quantifying the quality of that fit.
+
+\vspace{.1in}
+\begin{df}
+\emph{Correlation} gives the strength and direction of the linear relationship between two variables.
+\end{df}
+
+\vspace{.1in}
+\begin{df}
+The \emph{sample correlation} between $x$ and $y$ in a sample of $n$ data points $(x_i, y_i)$ is
+
+$$
+r = \frac{\sum(x_i - \overline{x})(y_i - \overline{y})}{\sqrt{\sum(x_i - \overline{x})^2\sum(y_i - \overline{y})^2}} = \frac{\sum x_i y_i - \frac{1}{n}\sum x_i \sum y_i}{\sqrt{\sum x_i^2 - \frac{1}{n}(\sum x_i)^2}\sqrt{\sum y_i^2 - \frac{1}{n}(\sum y_i)^2}}
+$$
+\end{df}
+
+\newpage
+Properties of the sample correlation:
+
+- $-1 \le r \le 1$
+- $r = -1$ or $r = 1$ if all points lie exactly on the fitted line
+- The closer $r$ is to $0$, the weaker the linear relationship; the closer it is to $1$ or $-1$, the stronger the linear relationship.
+- Negative $r$ indications negative linear relationship; Positive $r$ indications positive linear relationship
+- Interpretation always need 3 things
+    1. Strength (strong, moderate, weak)
+    2. Direction (positive or negative)
+    3. Form (linear relationship or no linear relationship)
+    
+Note:
+
+\newpage
+
+```{r example_r, fig.height=5}
+example_dat <- data.frame(gamma = c(.98, -.77, -0.2))
+
+example_dat %>%
+  group_by(gamma) %>%
+  do(data.frame(mvrnorm(50, rep(0, 2), matrix(c(1, .$gamma, .$gamma, 1), nrow=2)))) %>%
+  bind_rows(data.frame(gamma = 0, 
+                       X1 = seq(-3, 3, length.out = 20), 
+                       X2 = seq(-3, 3, length.out = 20)^2)) %>%
+  ungroup() %>%
+  mutate(gamma = paste("r = ", gamma)) %>%
+  ggplot() +
+  geom_point(aes(X1, X2)) +
+  facet_wrap(~gamma) +
+  xlab("x") + ylab("y")
+```
+
+\begin{ex}[Plastic hardness, cont'd]
+Compute and interpret the sample correlation for the plastic hardness example. Recall, 
+$$
+\sum x = 408, \sum y = 2217, \sum xy = 120832, \sum x^2 = 24000, \sum y^2 = 634069
+$$
+\newpage
+\end{ex}
+
+### Assessing models
+
+When modeling, it's important to assess the (1) **validity** and (2) **usefulness** of your model.
+
+To assess the validity of the model, we will look to the residuals. If the fitted equation is the good one, the residuals will be:
+
+\begin{enumerate}
+\itemsep .25in
+\item
+\item
+\item
+\end{enumerate}
+
+\vspace{.2in}
+
+To check if these three things hold, we will use two plotting methods.
+
+\vspace{.2in}
+
+\begin{df}
+A \emph{residual plot} is a plot of the residuals, $e = y - \hat{y}$ vs. $x$ (or $\hat{y}$ in the case of multiple regression, Section 4.2).
+\end{df}
+
+\newpage
+```{r residual_plots, results='hold', out.width=".48\\textwidth", fig.height = 2.5, fig.width = 4}
+b0 <- 4.67
+b1 <- .92
+
+perfect <- data.frame(x = seq(10, 52, length.out = 35)) %>%
+  mutate(y = b0 + b1*x + rnorm(n(), 0, 2))
+
+pattern <- data.frame(x = seq(10, 52, length.out = 35)) %>%
+  mutate(y = b0 + b1*x + .05*x^2 + rnorm(n(), 0, 2))
+
+fan <- data.frame(x = seq(10, 52, length.out = 35)) %>%
+  mutate(y = b0 + b1*x + (x/20)^2*rnorm(n(), 0, 2))
+
+ggplot(perfect, aes(x, y)) + geom_point() + geom_smooth(method = "lm", se = FALSE)
+
+qplot(perfect$x, lm(y ~ x, data = perfect)$residuals, geom = "point") + xlab("x") + ylab("e") + geom_hline(aes(yintercept=0), lty=2)
+```
+
+\vspace{.5in}
+
+```{r, results='hold', out.width=".48\\textwidth", fig.height = 2.5, fig.width = 4}
+ggplot(pattern, aes(x, y)) + geom_point() + geom_smooth(method = "lm", se = FALSE)
+
+qplot(pattern$x, lm(y ~ x, data = pattern)$residuals, geom = "point") + xlab("x") + ylab("e") + geom_hline(aes(yintercept=0), lty=2)
+```
+
+\vspace{.5in}
+```{r, results='hold', out.width=".48\\textwidth", fig.height = 2.5, fig.width = 4}
+ggplot(fan, aes(x, y)) + geom_point() + geom_smooth(method = "lm", se = FALSE)
+
+qplot(fan$x, lm(y ~ x, data = fan)$residuals, geom = "point") + xlab("x") + ylab("e") + geom_hline(aes(yintercept=0), lty=2)
+
+
+```
+
+\newpage
+
+To check if residuals have a Normal distribution,
+
+\vspace{2in}
+
+To assess the usefulness of the model, we use $R^2$, the *coefficient of determination*. 
+
+\vspace{.2in}
+
+\begin{df}
+The \emph{coefficient of determination}, $R^2$, is the proportion of variation in the response that is explained by the model.
+\end{df}
+
+
+Total amount of variation in the response
+$$
+Var(y) = \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad \qquad
+$$
+
+Sum of squares breakdown:
+
+
+\newpage
+
+Properties of $R^2$:
+
+- $R^2$ is used to assess the fit of other types of relationships as well (not just linear).
+- Interpretation - fraction of raw variation in $y$ accounted for by the fitted equation.
+- $0 \le R^2 \le 1$
+- The closer $R^2$ is to 1, the better the model.
+- For SLR, $R^2 = (r)^2$
+
+\vspace{.2in}
+
+\begin{ex}[Plastic hardness, contd]
+Compute and interpret $R^2$ for the example of the relationship between plastic hardness and time.
+
+\newpage
+\end{ex}
+
+
+
+
+
+### Precautions
+
+Precautions about Simple Linear Regression (SLR)
+
+- $r$ only measures linear relationships
+- $R^2$ and $r$ can be drastically affected by a few unusual data points.
+
+### Using a computer
+
+You can use JMP (or `R`) to fit a linear model. See BlackBoard for videos on fitting a model using JMP.
+
+## Fitting curves and surfaces by least squares
+
+The basic ideas in Section 4.1 can be generalized to produce a powerful tool: **multiple linear regression**.
+
+### Polynomial regression
+
+In the previous section, a straight line did a reasonable job of describing the relationship between time and plastic hardness. But what to do when there is not a linear relationship between variables?
+
+\newpage
+
+\begin{ex}[Cylinders, pg. 132]
+B. Roth studied the compressive strength of concrete-like fly ash cylinders. These were made using various amounts of ammonium phosphate as an additive. 
+
+\vspace{.1in}
+
+```{r cylinders-data, results='asis'}
+cylinders <- read_csv("../../data/cylinders.csv")
+
+cbind(cylinders[1:9,], cylinders[10:18,]) %>%
+  xtable(caption="Additive concentrations and compressive strengths for fly ash cylinders.") %>%
+  print(comment=FALSE, include.rownames=FALSE)
+```
+
+\vspace{.25in}
+
+```{r cylinders-plot, fig.show='hide', results='asis', fig.height=3}
+ggplot(cylinders, aes(ammonium.phosphate, strength)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE)
+```
+\begin{figure}[H]
+\centering
+\includegraphics{04_relationships_files/figure-latex/cylinders-plot-1.pdf}
+\caption{Scatterplot of compressive strength of concrete-like fly ash cylinders for various amounts of ammonium phosphate as an additive with a fitted line.}
+\end{figure}
+
+\newpage
+
+```{r cylinders-resid, fig.show='hide', results='asis', fig.height=2.5, fig.width=3}
+cyl_m0 <- lm(strength ~ ammonium.phosphate, data = cylinders)
+
+qplot(cylinders$ammonium.phosphate, cyl_m0$residuals, geom="point") +
+  geom_hline(aes(yintercept=0)) +
+  ylab("e") + xlab("x")
+
+
+qplot(sample = cyl_m0$residuals)
+
+```
+\begin{figure}[H]
+\centering
+\includegraphics{04_relationships_files/figure-latex/cylinders-resid-1.pdf}
+\includegraphics{04_relationships_files/figure-latex/cylinders-resid-2.pdf}
+\caption{Residual plots for linear fit of cylinder compressive strength on amounts of ammonium phosphate.}
+\end{figure}
+
+\vspace{.5in}
+
+\end{ex}
+
+A natural generalization of the linear equation
+$$
+y \approx \beta_0 + \beta_1 x
+$$
+is the **polynomial equation**
+$$
+y \approx \beta_0 + \beta_1 x + \beta_2 x^2 + \cdots + \beta_{p-1}x^{p-1}.
+$$
+
+The $p$ coefficients are again estimated using the *principle of least squares*, where the function
+
+$$
+S(b_0, \dots, b_{p-1}) = \sum\limits_{i = 1}^n(y_i - \hat{y})^2 = \sum\limits_{i = 1}^n (y_i - \beta_0 - \beta_1 x_i - \cdots - \beta_{p-1}x_i^{p-1})^2
+$$
+
+must be minimized to find the estimates $b_0, \dots, b_{p-1}$.
+
+\newpage
+
+\begin{ex}[Cylinders, cont'd]
+
+The linear fit for the relationship between ammonium phosphate and compressive strength of cylinders was not great ($R^2 = `r summary(cyl_m0)$r.squared`$). We can fit a quadratic model.
+
+\vspace{.1in}
+
+\end{ex}
+
+```{r, comment=NA}
+cyl_m1 <- lm(strength ~ ammonium.phosphate + I(ammonium.phosphate^2), data = cylinders)
+
+summary(cyl_m1)
+```
+
+```{r quad-plot, fig.height = 3}
+x <- seq(min(cylinders$ammonium.phosphate), max(cylinders$ammonium.phosphate), length.out = 100)
+y_hat_quad <- predict(cyl_m1, data.frame(ammonium.phosphate = x))
+
+ggplot() +
+  geom_point(aes(ammonium.phosphate, strength), data = cylinders) +
+  geom_line(aes(x, y_hat_quad), colour = "blue") +
+  xlab("Percent ammonium phosphate") +
+  ylab("Compressive strength (psi)")
+```
+
+
+\vspace{.5in}
+
+```{r cylinders-resid-quad, fig.show='hold', fig.height=2.5, fig.width=3, fig.cap="Residual plots for quadratic fit of percent compressive strength of cylinders on percent ammonium phosphate."}
+
+qplot(cylinders$ammonium.phosphate, cyl_m1$residuals, geom="point") +
+  geom_hline(aes(yintercept=0)) +
+  ylab("e") + xlab("x")
+
+
+qplot(sample = cyl_m1$residuals)
+
+```
+
+\newpage
+
+\begin{ex}[Cylinders, cont'd]
+
+How about a cubic model.
+
+\vspace{.1in}
+
+\end{ex}
+
+```{r, comment=NA}
+cyl_m2 <- lm(strength ~ ammonium.phosphate + I(ammonium.phosphate^2) + I(ammonium.phosphate^3), data = cylinders)
+
+summary(cyl_m2)
+```
+
+```{r cubic-plot, fig.height = 3}
+y_hat_cubic <- predict(cyl_m2, data.frame(ammonium.phosphate = x))
+
+ggplot() +
+  geom_point(aes(ammonium.phosphate, strength), data = cylinders) +
+  geom_line(aes(x, y_hat_cubic), colour = "blue") +
+  xlab("Percent ammonium phosphate") +
+  ylab("Compressive strength (psi)")
+```
+
+
+\vspace{.5in}
+
+```{r cylinders-resid-cubic, fig.show='hold', fig.height=2.5, fig.width=3, fig.cap="Residual plots for cubic fit of percent compressive strength of cylinders on percent ammonium phosphate."}
+
+qplot(cylinders$ammonium.phosphate, cyl_m2$residuals, geom="point") +
+  geom_hline(aes(yintercept=0)) +
+  ylab("e") + xlab("x")
+
+
+qplot(sample = cyl_m2$residuals)
+
+```
+
+\newpage
+
+### Multiple regression (surface fitting)
+
+The next generalization from fitting a line or a polynomial curve is to use the same methods to summarize the effects of several different quantitative variables $x_1, \dots, x_{p-1}$ on a response $y$.
+$$
+y \approx \beta_0 + \beta_1 x_1 + \cdots \beta_{p-1}x_{p-1}
+$$
+
+Where we estimate $\beta_0, \dots, \beta_{p-1}$ using the *least squares principle*. The function
+$$
+S(b_0, \dots, b_{p-1}) = \sum\limits_{i = 1}^n(y_i - \hat{y})^2 = \sum\limits_{i = 1}^n (y_i - \beta_0 - \beta_1 x_{1,i} - \cdots - \beta_{p-1}x_{p-1,i})^2
+$$
+
+must be minimized to find the estimates $b_0, \dots, b_{p-1}$.
+
+\vspace{.2in}
+
+\begin{ex}[New York rivers]
+Nitrogen content is a measure of river pollution. We have data from 20 New York state rivers concerning their nitrogen content as well as other characteristics. The goal is to find a relationship that explains the variability in nitrogen content for rivers in New York state.
+
+\vspace{.2in}
+
+\begin{table}[H]
+\begin{tabular}{ l | p{.85\textwidth} }
+\hline
+Variable & Description \\
+\hline
+$Y$ & Mean nitrogen concentration (mg/liter) based on samples taken at regular intervals during the spring, summer, and fall months\\
+$X_1$ & Agriculture: percentage of land area currently in agricultural use\\
+$X_2$ & Forest: percentage of forest land\\
+$X_3$ & Residential: percentage of land area in residential use\\
+$X_4$ & Commercial/Industrial: percentage of land area in either commercial or industrial use \\
+\hline
+\end{tabular}
+\caption{Variables present in the New York rivers dataset.}
+\end{table}
+
+\newpage
+
+We will fit each of
+
+\begin{align*}
+\hat{y} &= b_0 + b_1 x_1 \\
+\hat{y} &= b_0 + b_1 x_1 + b_2 x_2 + b_3 x_3 + b_4 x_4
+\end{align*}
+
+and evaluate fit quality.
+
+\end{ex}
+
+
+```{r}
+rivers <- read_csv("../../data/rivers.csv")
+```
+
+```{r, comment=NA}
+rivers_m0 <- lm(Y ~ X1, data = rivers)
+
+summary(rivers_m0)
+```
+
+```{r base-model-plot, fig.height = 3}
+ggplot(aes(X1, Y), data = rivers) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  xlab("Percent agriculture") +
+  ylab("Mean nitrogen concentration (mg/liter)")
+```
+
+
+\vspace{.5in}
+
+```{r rivers-resid, fig.show='hold', fig.height=2.5, fig.width=3}
+
+qplot(rivers$X1, rivers_m0$residuals, geom="point") +
+  geom_hline(aes(yintercept=0)) +
+  ylab("e") + xlab("x")
+
+
+qplot(sample = rivers_m0$residuals)
+
+```
+
+\newpage
+
+```{r, comment=NA}
+rivers_m1 <- lm(Y ~ X1 + X2 + X3 + X4, data = rivers)
+
+summary(rivers_m1)
+```
+
+```{r big-model-plot, fig.height = 3}
+
+rivers_pred <- data.frame(Y_hat = rivers_m1$fitted.values,
+                          e = rivers_m1$residuals) %>%
+  bind_cols(rivers)
+
+
+ggplot(aes(Y_hat, Y), data = rivers_pred) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  xlab("Predicted Mean nitrogen concentration (mg/liter)") +
+  ylab("Mean nitrogen concentration (mg/liter)")
+```
+
+
+\vspace{.5in}
+
+```{r rivers-resid-2, fig.show='hold', fig.height=2.5, fig.width=3}
+
+rivers_pred %>%
+  dplyr::select(-river, -Y) %>%
+  gather(variable, value, -e) %>%
+  ggplot() +
+  geom_point(aes(value, e)) +
+  geom_hline(aes(yintercept=0), lty=2) +
+  facet_wrap(~variable, scales = "free_x") 
+  
+
+qplot(sample = rivers_m1$residuals)
+
+```
+
+\vspace{.2in}
+
+There are some more residual plots we can look at for multiple regression that are helpful:
+
+1. 
+2.
+3.
+4.
+5.
+
+\newpage
+
+Bonus model:
+
+```{r, comment=NA}
+rivers_m2 <- lm(Y ~ X1 + X2 + X3 + X4 + I(X4^2), data = rivers)
+
+summary(rivers_m2)
+```
+
+```{r bigger-model-plot, fig.height = 3}
+
+rivers_pred2 <- data.frame(Y_hat = rivers_m2$fitted.values,
+                          e = rivers_m2$residuals) %>%
+  bind_cols(rivers)
+
+
+ggplot(aes(Y_hat, Y), data = rivers_pred2) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  xlab("Predicted Mean nitrogen concentration (mg/liter)") +
+  ylab("Mean nitrogen concentration (mg/liter)")
+```
+
+
+\vspace{.5in}
+
+```{r rivers-resid-3, fig.show='hold', fig.height=2.5, fig.width=3}
+
+rivers_pred2 %>%
+  dplyr::select(-river, -Y) %>%
+  mutate(X4_square = X4^2) %>%
+  gather(variable, value, -e) %>%
+  ggplot() +
+  geom_point(aes(value, e)) +
+  geom_hline(aes(yintercept=0), lty=2) +
+  facet_wrap(~variable, scales = "free_x") 
+  
+
+qplot(sample = rivers_m2$residuals)
+
+```
+
+\newpage
+
+### Overfitting
+
+Equation simplicity (*parsimony*) is important for
+
+\vspace{3in}
+
+```{r wiggle, fig.height=3}
+dat <- mvrnorm(10, c(0, 0), Sigma = matrix(c(1,.9,.9, 1), nrow=2))
+qplot(dat[,1], dat[,2]) +
+  xlab("x") + ylab("y")
+```
+
+

@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>ch1.utf8.md</title>
+    <meta charset="utf-8" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+
+class: center, middle, inverse
+layout: yes
+name: inverse
+
+## STAT 305: Chapter 1 
+## Amin Shirazi
+.footnote[Course page: [ashirazist.github.io/stat305_s2020.github.io](https://ashirazist.github.io/stat305_s2020.github.io/)]
+ 
+---
+class: center, middle, inverse
+layout: yes
+name: inverse
+
+## Why Engineers Study Statistics
+### Chapter 1: Introduction
+
+
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# Section 1.1
+## Engineering Statistics: What and Why
+---
+layout: false
+.left-column[
+  ## What and Why
+  ### Engineers In General
+]
+.right-column[
+
+&lt;center&gt; &lt;h2&gt; What Do Engineers Do? &lt;/h2&gt; &lt;/center&gt;
+
+&lt;center&gt; &lt;img src="www/figs/engineers.jpg" alt="dmc logo" height="185"&gt; &lt;/center&gt;
+
+-  Design/build/operate/improve some system
+
+-  Use both **quantitative theories** (i.e., mathematical) and **scientific principles** (i.e., physics, chemistry, psychology(?)) as a guide
+
+-  Obvious issue - math/science vast, no one knows everything. 
+
+-  Additionally, engineers must work outside of "lab conditions" - there is no control over the environment, the users, the timing, ...
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# So, here's the situation:
+## The "system" you want to improve is essentially unique 
+## There are competing theories that all seem equal
+## Experts disagree bitterly about what to do 
+# What's an engineer to do???
+---
+#Option 1: Just Give Up
+
+## A few drawbacks to this one
+---
+#Option 2: Gather Some Data
+
+## Figure Out What Really Matters in the System
+## Figure Out How a New System Is Gonna Work
+---
+layout: false
+.left-column[
+## What and Why
+### Engineers In General
+]
+.right-column[
+
+## But ...
+
+- Without specific training in data collection and analysis, engineers' attemps can be haphazhard and poorly conceived!
+
+- Valuable time and resources are wasted!
+
+
+- Ambiguous conclusions are reached!
+
+So, engineers need a good toolkit for best possible data collection and interpretation. 
+
+]
+
+---
+layout: false
+.left-column[
+## What and Why
+### Engineers In General
+]
+.right-column[
+
+### Engineering Statistics can help!
+### What is statistics?
+
+Statistics is the science of collecting, presenting, analyzing, and making decisions from data. Often, as an engineer, it is necessary to **collect and interpret data** that will help in understanding how a new system or product works. 
+
+Statistics has applications to engineering through quality control, process control, reliability, risk management, system identification, design of experiments, etc.
+]
+---
+layout: false
+.left-column[
+## What and Why
+### Engineers In General
+]
+.right-column[
+#### Engineering statistics} is the study of how best to 
+
+&gt; collect engineering data,
+
+&gt; summarize or describe engineering data, and
+
+&gt; draw formal inference and practical conclusions on the basis of engineering data,
+
+all while recognizing the reality of variation.
+
+
+We can break down this study into three main tasks:
+
+&gt;**Summary:** Decribe, summarise and display data
+
+&gt;**Inference:** Draw conclusion from data
+
+&gt;**Interpretation:** Explain those conclusion in layman's terms (i.e. to people outside statistics)
+
+]
+---
+
+layout: false
+.left-column[
+## What and Why
+### Engineers In General
+### Data?
+]
+.right-column[
+## What Do I Mean Data?
+
+Data is **essentially just information** we can record.
+
+Examples are incredibly easy to come up with:
+
+-  Students with majors and courses they enrolled in
+```text
+student   major         course
+John      Philosophy    EASY 101
+Kate      Engineering   SMRT 500
+Mike      Mathematics   MATH 000
+```
+
+-  Amount I can bench over time
+```text
+Date     Weight
+08/01    55 lbs.
+08/02    56 lbs.
+08/03    57 lbs.
+08/04    59 lbs.
+...      ...
+12/21    345 lbs.
+```
+
+Really trivial to come up with examples
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+&lt;center&gt;
+   &lt;h1&gt; Getting Data is Easy &lt;/h1&gt;
+   &lt;img src="www/figs/all_this_data_orig1.jpg" alt="dmc logo" height="405"&gt; 
+   &lt;h1&gt; Getting Good Data is Hard &lt;/h1&gt;
+&lt;/center&gt;
+---
+layout: false
+.left-column[
+## What and Why
+### Engineers In General
+### Data?
+### Example 1
+]
+.right-column[
+##Two Competing Theories
+
+###Goal: Load gears into a continuous carburizing furnace to minimize distortion during heat treating 
+
+-  **Theory 1**: Load the gears laid in a stack
+
+-  **Theory 2**: Hang the gears from a bar
+
+-  **Complications**: No two gears are exactly the same - if we test it how do we decide what was the effect of the gear and what was the effect of the loading method?
+
+-  **Good engineer**: tried it both ways and collected the distortion measures from multiple attempts
+```text
+Method    Distortion measure (.0001 in.)
+Hung      7, 8, 8, 10, 10, 10, 10, 11, 11, ..., 31, 36
+Laid      5, 8, 8,  9,  9,  9,  9, 10, 10, ..., 19, 27
+```
+]
+---
+layout: false
+.left-column[
+## What and Why
+### Engineers In General
+### Data?
+### Example 1
+]
+.right-column[
+##Two Competing Theories
+
+###Goal: minimize distortion 
+
+```text
+Method    Distortion measure (.0001 in.)
+Hung      7, 8, 8, 10, 10, 10, 10, 11, 11, ..., 31, 36
+Laid      5, 8, 8,  9,  9,  9,  9, 10, 10, ..., 19, 27
+```
+
+Plots and summary values help us see what's going on:
+
+&lt;center&gt;
+   &lt;img src="www/figs/runout.png" alt="dmc logo" height="185"&gt; 
+&lt;/center&gt;
+
+```text
+Mean hung runout:  17.9
+Mean laid runout:  12.6
+```
+Looks like laying gears in a stack is best
+]
+---
+layout: false
+.left-column[
+## What and Why
+### Engineers In General
+### Data?
+### Example 1
+### Engineering Statistics
+]
+.right-column[
+## Engineering Statistics
+
+Collecting good data is part of what engineering statistics is concerned with, 
+but of course that's only the first part.
+**Recall:**
+&gt; **Engineering Statistics** is the study of how *best* to
+&gt;
+&gt; 1. Collect engineering data
+&gt; 2. summarize or describe engineering data, and
+&gt; 3. draw formal inferences and practical conclusions on the basis of engineering data
+&gt;
+&gt; all while recognizing the reality of variation
+
+Recognizing the "reality of variation" in the distortion example led the engineer to run multiple tests.
+This helped rules out the possibility that hanging gears is better: if hanging the gears were actually the right approach, it would be astronomically unlikely that it would have led to that many comparatively large distortions.
+
+
+]
+---
+
+layout: false
+.left-column[
+## What and Why
+### Engineers In General
+### Data?
+### Example 1
+### Engineering Statistics
+]
+.right-column[
+## Example 1
+
+- If the engineer concludes that laying the gears in a stack is better in minimizing the distortion, but more expensive!
+- Now, the question is if it is really worth it to use the results based on that experiment.
+- How sure are we to use laying method?
+
+Statistics can help to reach reliable conclusions.
+
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# All good engineers use statistical tools
+
+# The only question is whether they will use good ones
+---
+# Section 1.2
+## Basic Terminology
+---
+layout:false
+.left-column[
+## What and Why
+## Terms
+]
+.right-column[
+### Basic terminology
+
+It's important we speak the same language. This section introduces common terminology related to statistical studies, types of data, and types of data structures.
+
+### Population vs. sample
+
+
+&gt;A **population** is the entire group of objects about which one wishes to gather information in a statistical study.
+
+&gt;A **sample** is the group of objects on which one actually gathers data. 
+
+]
+---
+layout:false
+.left-column[
+## What and Why
+## Terms
+]
+.right-column[
+### Basic terminology
+### Population vs. sample
+
+
+&lt;img src="ch1_files/figure-html/sample-pop-1.png" style="display: block; margin: auto;" /&gt;
+&gt;The relationship between a population and a sample. In this example, we have 100 parts and 5 are examined in order to verify acceptibility. Notice we say *one sample*, not *five samples*.
+
+]
+---
+layout:false
+.left-column[
+## What and Why
+## Terms
+]
+.right-column[
+### Basic terminology
+### Population vs. sample
+
+
+**Example:** Heat treating gears, cont'd
+
+
+&gt;Population: All the gears with same make and model as those included in the experiment
+
+&gt;Sample: The 77 gears arranged, tested, and measured for distortion
+]
+
+---
+layout:false
+.left-column[
+## What and Why
+## Terms
+]
+.right-column[
+### Basic terminology
+### Population vs. sample
+
+**Example:** [Fiscal cliff]
+
+On Dec. 1-2, 2012,&lt;a \href{"http://www.gallup.com/"}&gt;Gallup&lt;/a&gt; conducted a &lt;a \href{"http://www.gallup.com/poll/159065/americans-widely-prefer-compromise-fiscal-cliff.aspx"}&gt;study&lt;/a&gt; to find out what proportion of Americans prefer a compromise on the Fiscal Cliff issue. 1000 adults were randomly selected for telephone interviews. The adults were aged 18 and older and living in any of the 50 U.S. states or the District of Columbia.
+
+
+&gt; Population:
+
+
+&gt;Sample:
+
+]
+---
+layout:false
+.left-column[
+## What and Why
+## Terms
+]
+.right-column[
+### Basic terminology
+### Population vs. sample
+
+**Example:**
+
+&lt;a \href{http://www.esbit.net/}&gt;Esbit&lt;/a&gt; manufactures fuel pellets out of compressed hexamine powder. Suppose a new shipment of 100 pelletizing machines arrives, and the goal of a new study is to determine the quality of this particular new shipment.
+
+5 machines out of the 100 are randomly selected for comprehensive testing in which each produces 200 pellets, and each pellet’s mass, volume, flash point, and rate of combustion are measured.
+
+
+
+&gt; Population:
+
+&gt; Sample:
+]
+
+---
+
+layout: true
+class: center, middle, inverse
+---
+## Types of Studies
+
+---
+layout:false
+.left-column[
+### What and Why
+### Terms
+### Types of Studies
+]
+.right-column[
+### Types of studies
+### Experimental study
+
+When an engineer **collects data**, (s)he must decide how active to be. Should the engineer manipulate the process or let things happen and record the results?
+
+
+&gt;An **experimental study** (or, more simply, an experiment) is one in which the investigator's role is active. Process variables are manipulated, and the study environment is regulated.
+
+### Randomized study
+
+&gt;In a **randomized experiment**, investigators control the assignment of treatments to experimental units using a chance mechanism (like the flip of a coin or a computer's random number generator).
+
+
+]
+---
+layout:false
+.left-column[
+### What and Why
+### Terms
+### Types of Studies
+]
+.right-column[
+### Types of studies
+
+**Example:**[Smoking - experimental]
+
+To answer the question of if smoking affects lung capacity in young men, an investigator does the following. 
+
+Finds 100 men age 20 who do not currently smoke. Randomly assigns 50 of the 100 men to the smoking treatment and the other 50 to the non-smoking treatment. Those in the smoking group smoke a pack a day for 10 years while those in the control group remain smoke free for 10 years. Measures lung capacity for each of the 100 men. Analyze, interpret, and draw conclusions from data.
+
+
+]
+---
+layout:false
+.left-column[
+### What and Why
+### Terms
+### Types of Studies
+]
+.right-column[
+### Types of studies
+### Observational study
+
+An **observational study** is one in which the investigator's role is basically passive. A process or phenomenon is watched and data are recorded, but there is no intervention on the part of the person conducting the study.
+
+
+**Example:**[Smoking - observational]
+
+To answer the question of if smoking affects lung capacity in young men, an investigator does the following. 
+
+Finds 100 men age 30 of which 50 have been smoking a pack a day for 10 years while the other 50 have been smoke free for 10 years. Measures lung capacity for each of the 100 men. Analyze, interpret, and draw conclusions from data.
+
+
+
+
+]
+---
+layout:true
+class: center, middle, inverse
+---
+## Types of Data
+---
+layout:false
+.left-column[
+### What and Why
+### Terms
+### Types of Studies
+### Data Types
+]
+.right-column[
+### Data 
+
+Engineers encounter many types of data. It's important to have a way to distinguish all the different types of data you will see.
+
+### Qualitative data
+
+&gt;**Qualitative** or **categorical** data are the values of basically nonnumerical characteristics associated with items in a sample. There can be an order to qualitative data, but aggregation and counting are required to produce meaningful numeric values from such data.
+
+Example:
+&gt;-  male/female&lt;/br&gt;
+&gt;- green/blue&lt;/br&gt;
+&gt;- condition A/ condition B&lt;/br&gt;
+
+
+]
+---
+layout:false
+.left-column[
+### What and Why
+### Terms
+### Types of Studies
+### Data Types
+]
+.right-column[
+### Data 
+### Quantitative data
+
+&gt;**Quantitative** or **numeric** data are the values of numerical characteristics associated with items in a sample. These are typically counts of the number of occurrences of a phenomenon of interest or measurements of some physical property of the items.
+
+Example:
+
+&gt;- mass of fuel pellets&lt;/br&gt;
+&gt;- temperature of the engine&lt;/br&gt;
+&gt;- furnance of grear roundout
+]
+---
+layout:false
+.left-column[
+### What and Why
+### Terms
+### Types of Studies
+### Data Types
+]
+.right-column[
+### Data 
+### Quantitative data
+
+#### Types of numeric data:
+
+- **Discrete:**
+&gt; measurements are separated points (e.g. pages of a book)
+
+- **Continuous:**
+&gt; measurements lie in a continuum (e.g. mpg of a car)
+
+]
+---
+layout:false
+.left-column[
+### What and Why
+### Terms
+### Types of Studies
+### Data Types
+]
+.right-column[
+### Data 
+
+###Univariate data
+&gt;**Univariate data** arise when only a single characteristic of each sampled item is observed.
+
+### Multivariate data
+&gt;**Multivariate data** arise when observations are made on more than one characteristic of each sampled item. 
+&gt;
+&gt;A special case is when there are two characteristics - **bivariate**
+
+
+]
+---
+layout:false
+.left-column[
+### What and Why
+### Terms
+### Types of Studies
+### Data Types
+]
+.right-column[
+### Data 
+
+
+#### Example:
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; hung &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; laid &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 7, 8, 8, 10, 10, 10, 10, 11, 11, 11, 12, 13, 13, 13, 15, 17, 17, 17, 17, 18, 19, 19, 20, 21, 21, 21, 22, 22, 22, 23, 23, 23, 23, 24, 27, 27, 28, 31, 36 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 5, 8, 8, 9, 9, 9, 9, 10, 10, 10, 11, 11, 11, 11, 11, 11, 11, 12, 12, 12, 12, 13, 13, 13, 13, 14, 14, 14, 15, 15, 15, 15, 16, 17, 17, 18, 19, 27 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+**Univariate** or **bivariate**?
+]
+---
+layout:false
+.left-column[
+### What and Why
+### Terms
+### Types of Studies
+### Data Types
+]
+.right-column[
+#### Example:
+Arrange the data in a table, where:
+
+&gt; Each row is a sample unit, or thing that you measure (gear, in this case).
+
+&gt; Each column is a variable, or characteristic that you control or measure.
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Arrangement &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Runout &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; hung &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; hung &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 21 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; hung &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 13 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; laid &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 8 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; laid &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 11 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; laid &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 11 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+]
+---
+layout:false
+.left-column[
+### What and Why
+### Terms
+### Types of Studies
+### Data Types
+]
+.right-column[
+#### Repeated measures/ paired data
+
+When multivariate data consist of several determinations of basically the same characteristic (e.g., made with different instruments or at different times), the data are called&lt;font color="red"&gt; **repeated measures data**&lt;/font&gt;. 
+
+In the special case of bivariate responses, the term&lt;font color="red"&gt; **paired data**&lt;/font&gt; is used.
+
+**Example:**[Paired distortion]
+
+For the gears heat treating example, the measurements were actually made on the 77 gears both *before* and after *heat* treating.
+
+
+]
+---
+layout:true
+class: center, middle, inverse
+---
+##Data Structure
+
+---
+layout:false
+.left-column[
+### What and Why
+### Terms
+### Types of Studies
+### Data Types
+### Data structure
+]
+.right-column[
+### Data structures
+
+It is common for several sets of conditions to be compared with each other, in which **several samples** are involved. Here are two structures for multisample studies.
+
+**&lt;font color="red"&gt;Response variable&lt;/font&gt;**
+
+&gt;A **response variable** (or dependent variable) is the outcome of a study.
+
+
+**&lt;font color="red"&gt;Factor&lt;/font&gt;**
+
+&gt;A **factor** is any numerical or categorical variable with a finite set of possible values. A **level** is the value of the factor.
+
+**&lt;font color="red"&gt;(complete) factorial study&lt;/font&gt;**
+
+A **(complete) factorial study** is one in which several process variables (and settings of each) are identified as being of interest and data are collected under each possible combination of settings of the process variables. The process variables are usually factors.
+
+]
+---
+layout:false
+.left-column[
+### What and Why
+### Terms
+### Types of Studies
+### Data Types
+### Data structure
+]
+.right-column[
+
+**Example:**[Pelletizing machine, pg. 6, 12]
+
+Experimentation with a pelletizing machine using a `\(2\times 2\times2\)` or `\(2^3\)` factorial structure. The researchers are measuring the percentage of acceptable fuel pellets for various situations. The factors and respective levels are:
+
+- **Die volume** - low volume vs. high volume
+
+- **Material flow** - current method vs. manual filling
+
+- **Mixture type** - no binding agent vs. with binder
+
+
+There are then `\(8\)` sets of conditions under which data are collected.
+]
+---
+layout:false
+.left-column[
+### What and Why
+### Terms
+### Types of Studies
+### Data Types
+### Data structure
+]
+.right-column[
+
+**Example:**[Pelletizing machine, pg. 6, 12]
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Volume &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Flow &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Mixture &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; low &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; current &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; no bunder &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; high &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; current &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; no bunder &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; low &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; manual &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; no bunder &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; high &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; manual &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; no bunder &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; low &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; current &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; binder &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; high &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; current &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; binder &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; low &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; manual &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; binder &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; high &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; manual &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; binder &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+
+When there are many factors or levels are involved, the number of sampling units in a complete fractional study can quickly reach an impractical size.
+]
+---
+layout:false
+.left-column[
+### What and Why
+### Terms
+### Types of Studies
+### Data Types
+### Data structure
+]
+.right-column[
+
+**&lt;font color="red"&gt;Fractional factorial study&lt;/font&gt;**
+
+&gt;A **fractional factorial study** is one in which data are collected for only some of the combinations that would make up a complete factorial study.
+\end{df}`
+
+
+**Example:**[Pelletizing machine, cont'd]
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Volume &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Flow &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Mixture &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; high &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; current &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; no bunder &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; low &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; manual &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; no bunder &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; low &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; current &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; binder &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; high &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; manual &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; binder &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

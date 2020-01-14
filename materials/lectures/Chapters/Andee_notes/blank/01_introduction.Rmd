@@ -1,0 +1,385 @@
+---
+output: 
+  pdf_document:
+    number_sections: true
+    includes:
+      in_header: 00_header.tex
+fontsize: 12pt
+geometry: margin=1in
+linestretch: 1.5
+---
+
+```{r setup, echo=FALSE, message=FALSE}
+library(knitr)
+library(tidyverse)
+library(xtable)
+
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, fig.height = 2)
+theme_set(theme_bw(base_family = "serif"))
+```
+
+\setcounter{section}{0}
+
+# Introduction
+
+First we start with a road map for the course. The subject of **engineering statistics** is defined, its importance is described and basic terminology is introduced.
+
+## What is statistics?
+
+Statistics is the science of collecting, presenting, analyzing, and making decisions from data. Often, as an engineer, it is necessary to **collect and interpret data** that will help in understanding how a new system or product works. 
+
+Statistics has applications to engineering through quality control, process control, reliability, risk management, system identification, design of experiments, etc.
+
+\vspace{.25in}
+\begin{df}
+\emph{Engineering statistics} is the study of how best to 
+\begin{enumerate}
+\item collect engineering data,
+\item summarize or describe engineering data, and
+\item draw formal inference and practical conclusions on the basis of engineering data,
+\end{enumerate}
+all while recognizing the reality of variation.
+\end{df}
+\vspace{.1in}
+
+We can break down this study into three main tasks:
+
+\begin{enumerate}
+\item {\bf Summary:} 
+\item {\bf Inference:}
+\item {\bf Interpretation:}
+\end{enumerate}
+
+\newpage
+
+```{r gears-load}
+gears <- read_csv("../../data/gears.csv")
+```
+
+
+
+\begin{ex}[Heat treating gears, pg. 2]
+A process engineer is faced with the question, "How should gears be loaded into a continuous carburizing furnace in order to minimize distortion during heat treating?" The engineer conducts a well-thought-out study and obtains the runout values for `r gears %>% filter(Arrangement == "laid") %>% nrow()` gears laid and `r gears %>% filter(Arrangement == "hung") %>% nrow()` gears hung.
+
+```{r, results='asis'}
+gears %>%
+  group_by(Arrangement) %>%
+  summarise(Values = paste(Runout, collapse = ", ")) %>%
+  spread(Arrangement, Values) %>%
+  xtable(align = c("c", "p{1in}", "p{1in}"), caption = "Thrust face runouts (.0001 in.)") %>%
+  print(include.rownames = FALSE)
+```
+
+This data, as is, is hard to get insights from. Should the gears be hung or laid? We still cannot tell by looking at the table.
+
+{\bf Numerical summaries:} 
+\vspace{.75in}
+
+{\bf Variation:} 
+```{r gear-dotplot, fig.show='hide', results='asis'}
+gears %>%
+  ggplot() +
+  geom_dotplot(aes(Runout)) +
+  facet_wrap(~Arrangement)
+```
+\begin{figure}[H]
+\centering
+\includegraphics{01_introduction_files/figure-latex/gear-dotplot-1.pdf}
+\caption{Dot diagrams of runouts.}
+\end{figure}
+
+{\bf Inference:} Runout values are variable, is there any assurance that the difference seen in the present data would reappear in further testing? 
+
+Points to need for methods of formal statistical inference from data and translation into practical conclusions. We can use statistical inference to say
+
+\begin{enumerate}
+\item We are roughly 90\% sure that the difference in long-run mean runout produced under conditions like those in the study is in the range 3.2 to 7.4.
+\item We are roughly 95\% sure that the difference in long-run mean runout produced under conditions like those in the study is in the range 3.0 to 22.2.
+\end{enumerate}
+
+{\bf Interpretation:} Explains those answers in layman’s terms without all the probability theory, symbols and equations.
+\end{ex}
+
+
+\vspace{1in}
+**Overview/schematic:**
+
+\newpage
+
+## Basic terminology
+
+It's important we speak the same language. This section introduces common terminology related to statistical studies, types of data, and types of data structures.
+
+### Population vs. sample
+
+\vspace{.25in}
+\begin{df}
+A \emph{population} is the entire group of objects about which one wishes to gather information in a statistical study.
+\end{df}
+
+\vspace{.25in}
+\begin{df}
+A \emph{sample} is the group of objects on which one actually gathers data. 
+\end{df}
+\vspace{.1in}
+
+```{r sample-pop, fig.width=3, fig.cap="The relationship between a population and a sample. In this example, we have 100 parts and 5 are examined in order to verify acceptibility. Notice we say \"one sample\", not \"five samples\"."}
+pop <- expand.grid(x=1:10, y=1:10)
+pop$class <- "population"
+pop$class[c(48:50, 39, 59)] <- "sample"
+
+ggplot(pop) + geom_point(aes(x, y, shape = class, colour = class)) + theme_void(base_family = "serif")
+
+```
+
+\begin{ex}[Heat treating gears, cont'd]
+~\\[.25in]
+{\bf Population}:
+
+{\bf Sample}:
+\end{ex}
+
+\newpage
+
+\begin{ex}[Fiscal cliff]
+On Dec. 1-2, 2012, \href{http://www.gallup.com/}{Gallup} conducted a \href{http://www.gallup.com/poll/159065/americans-widely-prefer-compromise-fiscal-cliff.aspx}{study} to find out what proportion of Americans prefer a compromise on the Fiscal Cliff issue. 1000 adults were randomly selected for telephone interviews. The adults were aged 18 and older and living in any of the 50 U.S. states or the District of Columbia.
+
+\vspace{.1in}
+
+{\bf Population}:
+
+{\bf Sample}:
+\end{ex}
+
+\vspace{.25in}
+\begin{ex}
+\href{http://www.esbit.net/}{Esbit} manufactures fuel pellets out of compressed hexamine powder. Suppose a new shipment of 100 pelletizing machines arrives, and the goal of a new study is to determine the quality of this particular new shipment.
+
+5 machines out of the 100 are randomly selected for comprehensive testing in which each produces 200 pellets, and each pellet’s mass, volume, flash point, and rate of combustion are measured.
+
+\vspace{.1in}
+
+{\bf Population}:
+
+{\bf Sample}:
+\end{ex}
+
+### Types of studies
+
+When an engineer **collects data**, (s)he must decide how active to be. Should the engineer manipulate the process or let things happen and record the results?
+
+\vspace{.1in}
+\begin{df}
+An \emph{experimental study} (or, more simply, an experiment) is one in which the investigator's role is active. Process variables are manipulated, and the study environment is regulated.
+\end{df}
+
+\vspace{.1in}
+\begin{df}
+In a \emph{randomized experiment}, investigators control the assignment of treatments to experimental units using a chance mechanism (like the flip of a coin or a computer's random number generator).
+\end{df}
+
+\vspace{.1in}
+\begin{ex}[Smoking - experimental]
+To answer the question of if smoking affects lung capacity in young men, an investigator does the following. 
+
+Finds 100 men age 20 who do not currently smoke. Randomly assigns 50 of the 100 men to the smoking treatment and the other 50 to the non-smoking treatment. Those in the smoking group smoke a pack a day for 10 years while those in the control group remain smoke free for 10 years. Measures lung capacity for each of the 100 men. Analyze, interpret, and draw conclusions from data.
+\end{ex}
+
+\vspace{.1in}
+\begin{df}
+An \emph{observational study} is one in which the investigator's role is basically passive. A process or phenomenon is watched and data are recorded, but there is no intervention on the part of the person conducting the study.
+\end{df}
+
+\vspace{.1in}
+\begin{ex}[Smoking - observational]
+To answer the question of if smoking affects lung capacity in young men, an investigator does the following. 
+
+Finds 100 men age 30 of which 50 have been smoking a pack a day for 10 years while the other 50 have been smoke free for 10 years. Measures lung capacity for each of the 100 men. Analyze, interpret, and draw conclusions from data.
+\end{ex}
+
+### Data 
+
+Engineers encounter many types of data. It's important to have a way to distinguish all the different types of data you will see.
+
+\vspace{.1in}
+\begin{df}
+\emph{Qualitative} or \emph{categorical} data are the values of basically nonnumerical characteristics associated with items in a sample. There can be an order to qualitative data, but aggregation and counting are required to produce meaningful numeric values from such data.
+\end{df}
+
+\vspace{.1in}
+\begin{df}
+\emph{Quantitative} or \emph{numeric} data are the values of numerical characteristics associated with items in a sample. These are typically counts of the number of occurrences of a phenomenon of interest or measurements of some physical property of the items.
+\end{df}
+
+Types of numeric data:
+
+- **Discrete:**
+- **Continuous:**
+
+\vspace{.25in}
+\begin{df}
+\emph{Univariate data} arise when only a single characteristic of each sampled item is observed.
+\end{df}
+
+\vspace{.1in}
+\begin{df}
+\emph{Multivariate data} arise when observations are made on more than one characteristic of each sampled item. A special case is when there are two characteristics - \emph{bivariate}.
+\end{df}
+
+\vspace{.1in}
+\begin{ex}[Heat treating gears, cont'd]
+
+~\\
+```{r, results='asis'}
+gears %>%
+  group_by(Arrangement) %>%
+  summarise(Values = paste(Runout, collapse = ", ")) %>%
+  spread(Arrangement, Values) %>%
+  xtable(align = c("c", "p{1in}", "p{1in}"), caption = "Thrust face runouts (.0001 in.)") %>%
+  print(include.rownames = FALSE)
+```
+
+{\bf Univariate} or {\bf bivariate}?
+
+\newpage
+
+Arrange the data in a table, where:
+\begin{itemize}
+\item Each row is a sample unit, or thing that you measure (gear, in this case).
+\item Each column is a variable, or characteristic that you control or measure.
+\end{itemize}
+
+```{r, results='asis'}
+gears %>%
+  group_by(Arrangement) %>%
+  sample_n(3) %>%
+  mutate(Runout=as.character(Runout)) %>%
+  bind_rows(data.frame(Arrangement="...", Runout="...")) %>%
+  xtable(caption = "Thrust face runouts (.0001 in.) rearranged.") %>%
+  print(include.rownames = FALSE)
+```
+
+\end{ex}
+
+\vspace{.1in}
+\begin{df}
+When multivariate data consist of several determinations of basically the same characteristic (e.g., made with different instruments or at different times), the data are called \emph{repeated measures data}. In the special case of bivariate responses, the term \emph{paired data} is used.
+\end{df}
+
+\vspace{.1in}
+\begin{ex}[Paired distortion]
+For the gears heat treating example, the measurements were actually made on the 77 gears both before and after heat treating.
+\end{ex}
+\vspace{.15in}
+
+### Data structures
+
+It is common for several sets of conditions to be compared with each other, in which **several samples** are involved. Here are two structures for multisample studies.
+
+\vspace{.1in}
+\begin{df}
+A \emph{response variable} (or dependent variable) is the outcome of a study.
+\end{df}
+
+\vspace{.1in}
+\begin{df}
+A \emph{factor} is any numerical or categorical variable with a finite set of possible values. A \emph{level} is the value of the factor.
+\end{df}
+
+\vspace{.1in}
+\begin{df}
+A \emph{(complete) factorial study} is one in which several process variables (and settings of each) are identified as being of interest and data are collected under each possible combination of settings of the process variables. The process variables are usually factors.
+\end{df}
+
+\vspace{.1in}
+\begin{ex}[Pelletizing machine, pg. 6, 12]
+Experimentation with a pelletizing machine using a $2\times 2\times2$ or $2^3$ factorial structure. The researchers are measuring the percentage of acceptable fuel pellets for various situations. The factors and respective levels are:
+
+\begin{itemize}
+\item \emph{Die volume} - low volume vs. high volume
+\item \emph{Material flow} - current method vs. manual filling
+\item \emph{Mixture type} - no binding agent vs. with binder
+\end{itemize}
+
+There are then $`r 2^3`$ sets of conditions under which data are collected.
+
+```{r full-factorial, results='asis'}
+factorial <- expand.grid(Volume = c("low", "high"),
+                         Flow = c("current", "manual"),
+                         Mixture = c("no bunder", "binder"))
+
+factorial %>%
+  xtable(caption = "Combinations in a $2^3$ factorial study.") %>%
+  print(include.rownames = FALSE)
+
+```
+
+\end{ex}
+
+When there are many factors or levels are involved, the number of sampling units in a complete fractional study can quickly reach an impractical size.
+
+\vspace{.1in}
+\begin{df}
+A \emph{fractional factorial study} is one in which data are collected for only some of the combinations that would make up a complete factorial study.
+\end{df}
+
+\vspace{.1in}
+\begin{ex}[Pelletizing machine, cont'd]
+~\\
+```{r fractional-factorial, results='asis'}
+factorial[c(2, 3, 5, 8),] %>%
+  xtable(caption = "A \"clever\" half of the eight possible combinations.") %>%
+  print(include.rownames = FALSE)
+```
+
+
+\end{ex}
+
+## Measurement difficulties
+
+A measurement system is:
+
+- **Valid** if 
+- **Accurate** if 
+- **Precise** if 
+
+```{r paper}
+paper <- read.csv("../../data/paper.csv")
+```
+
+
+\vspace{.1in}
+\begin{ex}[Paper thickness, pg. 16]
+Two students measured the thickness of paper in the same book. Each student took `r paper %>% group_by(Measurer) %>% summarise(count = n()) %>% select(count) %>% unique() %>% as.numeric()` measurements.
+
+```{r paper-table, results='asis'}
+paper %>%
+  group_by(Measurer) %>%
+  summarise(Values = paste(Thickness, collapse = ", ")) %>%
+  spread(Measurer, Values) %>%
+  xtable(align = c("c", "p{1in}", "p{1in}"), caption = "Thickness of book paper in mm.") %>%
+  print(include.rownames = FALSE)
+```
+
+```{r paper-dotplot, fig.show='hide', results='asis'}
+paper %>%
+  ggplot() +
+  geom_dotplot(aes(Thickness), binwidth = .0001, dotsize = 5) +
+  facet_wrap(~Measurer)
+```
+\begin{figure}[H]
+\centering
+\includegraphics{01_introduction_files/figure-latex/paper-dotplot-1.pdf}
+\caption{Dot diagrams of paper thickness.}
+\end{figure}
+
+If the true thickness is 0.1, then
+
+\begin{enumerate}
+\item Who is more accurate?
+\item Who is more precise?
+\end{enumerate}
+
+\end{ex}
+
+
