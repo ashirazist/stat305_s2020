@@ -287,7 +287,6 @@ layout:false
 .right-column[
 
 <center>
-   <h2> Factorial Studies Example, cont </h2>
    <img src="figs/being_chemists_trim.jpg" alt="dmc logo" height="125"> 
 </center>
 
@@ -319,7 +318,6 @@ $$
 If we collect data from each of these combinations, we have performed a **A Complete Factorial Study**
 ]
 
-???
 ---
 layout:false
 .left-column[
@@ -328,28 +326,8 @@ layout:false
 ## Data Structures
 ]
 .right-column[
-
+### Factorial Studies Example, cont 
 <center>
-   <h2> Factorial Studies Example, cont </h2>
-   <img src="figs/being_chemists_trim.jpg" alt="dmc logo" height="125"> 
-</center>
-
-
-If we collect data from each of these combinations, we have performed a **A Complete Factorial Study**
-
-]
-
----
-layout:false
-.left-column[
-## What and Why
-## Terms
-## Data Structures
-]
-.right-column[
-
-<center>
-   <h2> Factorial Studies Example, cont </h2>
    <img src="figs/new_chemists_trim.jpg" alt="dmc logo" height="125"> 
 </center>
 
@@ -375,6 +353,8 @@ layout:false
 
 
 -  Walter never works in South America.
+
+![](https://media.giphy.com/media/l41YkFIiBxQdRlMnC/giphy.gif)
 ]
 ---
 layout:false
@@ -384,9 +364,8 @@ layout:false
 ## Data Structures
 ]
 .right-column[
-
+###  Factorial Studies Example, cont 
 <center>
-   <h2> Factorial Studies Example, cont </h2>
    <img src="figs/still_chemists_trim.jpg" alt="dmc logo" height="95"> 
 </center>
 ```
@@ -419,9 +398,9 @@ layout:false
 ## Data Structures
 ]
 .right-column[
-
+###  Factorial Studies Example, cont 
 <center>
-   <h2> Factorial Studies Example, cont </h2>
+
    <img src="figs/still_chemists_trim.jpg" alt="dmc logo" height="125"> 
 </center>
 
@@ -448,7 +427,7 @@ layout:false
 ]
 .right-column[
 
-## If You Can't Measure, You Can't Do Statistics
+### If You Can't Measure, You Can't Do Statistics
 ### Or Engineering For That Matter
 
 -  Success in statistical engineering studies requires the ability to measure
@@ -468,7 +447,7 @@ layout:false
 ]
 .right-column[
 
-## If You Can't Measure, You Can't Do Statistics
+### If You Can't Measure, You Can't Do Statistics
 ### Example:
 Two students wanted to conduct a factorial study comparing joint strengths for combinations of three different woods and three glues. 
 -  Didn't know how to have access to strength-testing equipment, so invented their own.
@@ -487,9 +466,9 @@ layout:false
 ]
 
 .right-column[
+### If You Can't Measure, You Can't Do Statistics
 
 <center>
-   <h2> If You Can't Measure, You Can't Do Statistics </h2>
    <img src="figs/funny1.JPG" alt="dmc logo" height="200"> 
    <img src="figs/funny2.JPG" alt="dmc logo" height="200">
       <img src="figs/funny3.JPG" alt="dmc logo" height="200"> 
@@ -505,7 +484,7 @@ layout:false
 ]
 .right-column[
 
-## If You Can't Measure, You Can't Do Statistics
+### If You Can't Measure, You Can't Do Statistics
 ### Measurement and its importance and difficulty
 
 -  **Validity**: appropriately represent the feature of interest.
@@ -525,7 +504,7 @@ layout:false
 ]
 .right-column[
 
-## If You Can't Measure, You Can't Do Statistics
+### If You Can't Measure, You Can't Do Statistics
 ### Measurement and its importance and difficulty
 
 -  **Precision**: the amount of variation in repeated measurement of the same object
@@ -544,7 +523,7 @@ layout:false
 ]
 .right-column[
 
-## If You Can't Measure, You Can't Do Statistics
+### If You Can't Measure, You Can't Do Statistics
 ### Measurement and its importance and difficulty
 
 Precision of a measurement is important, but for many purposes it alone is not adequate. 
@@ -563,7 +542,7 @@ layout:false
 ]
 .right-column[
 
-## If You Can't Measure, You Can't Do Statistics
+### If You Can't Measure, You Can't Do Statistics
 ### Measurement and its importance and difficulty
 
 -  **Calibration** of a system against the standard (bringing the measurement system in line with the standard) can be
@@ -582,7 +561,7 @@ layout:false
 ]
 .right-column[
 
-## If You Can't Measure, You Can't Do Statistics
+### If You Can't Measure, You Can't Do Statistics
 ### Accuracy VS. Precision
 -  **Accuracy**: how close a measurement is to the true value "on average"
 -  **Precision**: the amount of variation in repeated measurement of the same object
@@ -593,6 +572,22 @@ layout:false
 </center>
 
 
+]
+---
+layout:false
+.left-column[
+## What and Why
+## Terms
+## Measure
+### Key Words
+]
+.right-column[
+
+### If You Can't Measure, You Can't Do Statistics
+### Validity, Accuracy and Precision
+
+
+![](https://media.giphy.com/media/c5eqVJN7oNLTq/giphy.gif)
 ]
 ---
 name: inverse
