@@ -469,9 +469,9 @@ layout:false
 ### If You Can't Measure, You Can't Do Statistics
 
 <center>
-   <img src="figs/funny1.JPG" alt="dmc logo" height="200"> 
-   <img src="figs/funny2.JPG" alt="dmc logo" height="200">
-      <img src="figs/funny3.JPG" alt="dmc logo" height="200"> 
+   <img src="figs/funny1.jpg" alt="dmc logo" height="200"> 
+   <img src="figs/funny2.jpg" alt="dmc logo" height="200">
+      <img src="figs/funny3.jpg" alt="dmc logo" height="200"> 
 </center>
 ]
 ---
