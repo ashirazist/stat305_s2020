@@ -361,21 +361,97 @@ layout:false
 ]
 .right-column[
 
-## The Ideal Experiment Structure
+## Effective experimentation
 
+Purposefully changing a system and observing what happens as a result is a principled way of learning how a system works.
+
+
+**A typical experimental situation:**
+]
+---
+layout:false
+.left-column[
+## Recap
+## Data Collection
+## Exp. Principles
+### Taxonomy
+]
+.right-column[
+### Effective experimentation
+### Taxonomy of variables
+<center>
+   <img src="figs/schemeit-project.svg" alt="dmc logo" height="125"> 
+</center>
+Planning an experiment is complicated. There are typically many different characteristics of the system an engineer is interested in improving and many variables that might influence them. Some terminology is needed.
+
+<font color="red">Response Variable</font>
+
+>A **response variable** in an experiment is one that is monitored as characterizing system performance/behavior.
+
+]
+---
+layout:false
+.left-column[
+## Recap
+## Data Collection
+## Exp. Principles
+### Taxonomy
+]
+.right-column[
+### Effective experimentation
+### Taxonomy of variables
 <center>
    <img src="figs/schemeit-project.svg" alt="dmc logo" height="125"> 
 </center>
 
-A few terms to help us make sense of the natural complexity of characteristics influencing system performance:
+<font color="red">Supervised  variable</font>
 
--  **Response variable**: the characteristic indicating system performance which is being monitored.
+>A **supervised (or managed) variable** in an experiment is one over which an investigator exercises power, choosing a setting or settings for use in the study. 
 
--  **Supervised** or **managed variable**: the characteristics of the system that the investigator can control.
+>When a supervised variable is held constant (has only one setting), it is called a *control variable*. When a supervised variable is given several settings in a study, it is called an *experimental variable*.
 
-   -  **Controlled variable**: a supervised variable that is held constant throughout the experiment.
+]
+---
+layout:false
+.left-column[
+## Recap
+## Data Collection
+## Exp. Principles
+### Taxonomy
+]
+.right-column[
+### Effective experimentation
+### Taxonomy of variables
+<center>
+   <img src="figs/schemeit-project.svg" alt="dmc logo" height="125"> 
+</center>
 
-   -  **Experimental variable**: a supervised variable that is given several different settings during the experiment.
+<font color="red">concomitant  variable</font>
+
+>A **concomitant (or accompanying) variable** in an experiment is one that is observed but is neither a primary response variable nor a managed variable. 
+
+>Such a variable can change in relation to either experimental or unobserved causes and may or may not itself have an impact on a response variable.
+
+]
+---
+layout:false
+.left-column[
+## Recap
+## Data Collection
+## Exp. Principles
+### Taxonomy
+]
+.right-column[
+### Effective experimentation
+### Taxonomy of variables
+
+**Example:**[Chemical purity]
+
+Suppose you want to know about the effect of two different reactants (A and B) on the purity of a chemical for a given mixing speed and batch size. Reactant A has 2 levels ( $a_1$ and $a_2$ ) and reactant B also has 2 levels ( $b_1$ and $b2$ ).
+
+What are the response variables, controlled variables, experimental variables, and concomitant variables?
+
+
 ]
 ---
 layout:false
@@ -387,13 +463,11 @@ layout:false
 ]
 .right-column[
 
-## The Ideal Experiment Structure, cont.
+**Example:**[Wood joint strength, pg. 39]
 
--  **Blocking variables**: characteristics of the system that can be manipulated to create homogeneous environments within which to compare the effects of the primary experimental variables.
-   -  This is essentially extending the idea of control variables - we just create several environments with different controls.
-   -  How to recognize - the comparisons are not made comparing results from one block to results from another but instead comparing results inside a block.
+Dimond and Dix experimented with three different woods and three different glues, investigating joint strength properties. Their primary interest was the effects of wood type and glue type on joint strength in a tension test and joint strength in a shear test. In addition, they found that the strengths were probably related to the variables drying time and pressure, so they hold these two variables constant. They also observed that variation in strengths could also have originated in properties of the particular specimens glued, such as moisture content although they haven't utilized this variable in the analysis of the data.
 
--  A **block** of objects under study is a homogeneous group where different levels of experimental   variables can be applied and compared in a relatively uniform environment. 
+What is a full/complete factorial study for this experiment? What are the response variables, controlled variables, experimental variables, and concomitant variables?
 ]
 ---
 layout:false
@@ -405,17 +479,20 @@ layout:false
 ]
 .right-column[
 
-## The Ideal Experiment Structure, cont.
-### Example on blocking
+### Extraneous variables
 
-Back to machine parts testing example in lecture 2, in a shipment of 5000 parts. The goal is to verify that the parts are as strong as we anticipated. Assume the hardness of the parts are pre-specified by the seller and come in separate batches. Assume there are four levels of hardness (3.0, 3.2, 3.4, 3.6) 
 
--  We might want to test the Rockwell Hardness test across specimens of various hardness levels. 
-   -  We then take samples from each batch
-   -  Hardness level is the blocking variable
-   
+**Extraneous variables** are undesirable variables that influence the relationship between the variables that an experimenter is examining. Extraneous variables that vary with the levels of the independent variable are the most dangerous type in terms of challenging the validity of experimental results. These types of extraneous variables have a special name, **confounding variables**.
+
+
+There are three basic ways to handle extraneous variable:
+
+- Treat them as controlled variables (Hard to extend results)
+
+- Handle them as experimental variables and create a second homogeneous environment to compare levels of priamary experimental variables (blocking)
+
+- Randomization
 ]
-   
 ---
 layout:false
 .left-column[
@@ -426,10 +503,66 @@ layout:false
 ]
 .right-column[
 
-## The Ideal Experiment Structure, cont.
--  **Concomitant variable**: characteristics that are observed but are not managed or responses. Could be influenced by either experimental variables or unobserved causes. May or may not have an influence on the response.
+<font color="red">Blocking Variable</font>
+
+>A **block** of experimental units, experimental times of observation, experimental conditions, etc. is a homogeneous group within which different levels of primary experimental variables can be applied and compared in a relatively uniform environment.
+
+<font color="red">Randomization</font>
+
+>**Randomization** is the use of a randomizing device at some point where experimental protocol is not already dictated by the specification of the supervised variables. 
+
+>Often it means that assigning experimental units to the experimental conditions at random.
+]
+
+---
+layout:false
+.left-column[
+## Recap
+## Data Collection
+## Exp. Principles
+### Taxonomy
+]
+.right-column[
+
+**Example:**[Heat treating gears, cont'd]
+
+A process engineer is faced with the question, "How should gears be loaded into a continuous carburizing furnace in order to minimize distortion during heat treating?" 
+
+There are two types of methods for loading, laying or hanging the gears. The thrust face runout (0.0001 in) is a measure of distortion.
+
+What are the response variables, controlled variables, experimental variables, and extraneous variables? How would you use handle the extraneous variable (three ways)?
+
+
+
 
 ]
+---
+layout:false
+.left-column[
+## Recap
+## Data Collection
+## Exp. Principles
+### Taxonomy
+]
+.right-column[
+### Some key issues of data collection
+
+>-  **Comparative study:** Need a point of reference. e.g. studying the strength of a new alloy, may need the strength of the existing alloy.
+
+>- **Replication:** Need evidence that a study is repeatable or reproducible (resutls are not by a chance or mistake)</br>
+> **under the same setting, need to collect the data more than once.**
+
+>- **Allocation of resources:** Need to plan ahead</br>
+>Spend your resources (time/ money/ lab space/ materials) sequentially. i.e. extend your experiment gradually if possible to get priliminary results.
+
+>If data variablity is high, need more data.
+
+
+
+
+
+]
+
 ---
 layout:false
 .left-column[
@@ -441,176 +574,13 @@ layout:false
 ]
 .right-column[
 
-## The Ideal Experiment Structure, cont.
 
-<center>
-   <img src="figs/schemeit-project.svg" alt="dmc logo" height="125"> 
-</center>
+&nbsp;
 
-**Extraneous Variables**
+&nbsp;
 
-There are lots characteristics that could influence the response but are not of primary interest to the experimenter. For instance,
+>**Common Advice**: Block what you can control and randomize the rest (common, not necessarily good though, what can be controlled not universal).
 
--  The experimenter could be unaware of their importance,
--  There may be no way to control them in the experimental setting,
--  There may be no way to control them outside of the experimental setting,
-
-However, if we ignore them completely, their effect won't just disappear - it could ruin our experiment. 
-
-]
----
-layout:false
-.left-column[
-## Recap
-## Data Collection
-## Exp. Principles
-### Taxonomy
-### Extraneous Vars
-]
-.right-column[
-
-## The Ideal Experiment Structure, cont.
-
-<center>
-   <img src="figs/schemeit-project.svg" alt="ideal exp" height="125"> 
-</center>
-
-There are two common ways to attempt to account for these effects:
-
-1. **Blocking**: Treat the extraneous variables as blocking variables
-
-2. **Randomization**: assign runs of the experiment to the different levels of the extraneous variables randomly, with the hope that it balances out in the end.
-
-
-
-
-]
----
-layout:false
-.left-column[
-## Recap
-## Data Collection
-## Exp. Principles
-### Taxonomy
-### Extraneous Vars
-]
-.right-column[
-
-## The Ideal Experiment Structure, cont.
-
-<center>
-   <img src="figs/schemeit-project.svg" alt="ideal exp" height="125"> 
-</center>
-**Example:**
-In the heat treating example (example 1in Chapter 1), Loading method was the primary experimental variable. Extraneous variables  **Steel Heat** and **Machining History** were controlled by experimenting on 78 gears from the same heat code, machined as a lot. Then 78 gears were randomly assigned to two groups (one group were laid  and the other were hung from a bar). Without randomization, unintended changes in measurement techniqes would appear in the data as differences between the two loading methods. 
-
-Practice with measurement equipment might increase the precision and make the later measurements to be more uniform than the early ones. 
-
-]
-
----
-layout:false
-.left-column[
-## Recap
-## Data Collection
-## Exp. Principles
-### Taxonomy
-### Extraneous Vars
-]
-.right-column[
-
-## The Ideal Experiment Structure, cont.
-
-<center>
-   <img src="figs/schemeit-project.svg" alt="ideal exp" height="125"> 
-</center>
-
-
-**Common Advice**: Block what you can control and randomize the rest (common, not necessarily good though - what can be controlled not universal).
-
-]
----
-layout:false
-.left-column[
-## Recap
-## Data Collection
-## Exp. Principles
-### Taxonomy
-### Extraneous Vars
-### Wrap up
-]
-.right-column[
-
-## The Ideal Experiment Structure, cont.
-
-<center>
-   <img src="figs/schemeit-project.svg" alt="dmc logo" height="125"> 
-</center>
-
-**Comparative study**: Need a valid point of reference - so if we want to know if the new is better than the old, you better try to get some comparable data on the old as well. Without comparison, there is no firm basis on which to say that any effects observed come from the new conditions under study rather than from unexpected extraneous sources.
-
-**Repitition**: Multiple responses measured from the same conditions.
-]
-
-???
-
-bar1 bar1 bar1 bar1 bar1 bar2 bar2 bar2 bar2 bar2 bar2
-
-   - Ex: Two techniques for treating arm injuries - but left/right could matter
-
-   - Ex: Farmer planting fields with two different crops, interested in yield.
----
-layout:false
-.left-column[
-## Recap
-## Data Collection
-## Exp. Principles
-### Taxonomy
-### Ch. 2, Ex. 7
-]
-.right-column[
-
-## The Ideal Experiment Structure, cont.
-
-<center>
-   <img src="figs/schemeit-project.svg" alt="dmc logo" height="125"> 
-</center>
-
-**Discussion**: Example 7, pg. 39
-
--  Three types of wood and three types of glue, two students sought to investigate joint strength.
-
--  Issues: *drying time* and *pressure applied* during drying also important; smooth vs. rough wood; wood species have different moisture contents; the experiment is performed over two time periods.
-
--  Approach: all wood/glue combinations dried 90 minutes with same pressure applied, moisture content of wood type measured before gluing.
-
-]
-
----
-layout:false
-.left-column[
-## Recap
-## Data Collection
-## Exp. Principles
-### Taxonomy
-### Ch. 2, Ex. 7
-]
-.right-column[
-
-## The Ideal Experiment Structure, cont.
-
-<center>
-   <img src="figs/schemeit-project.svg" alt="dmc logo" height="125"> 
-</center>
-
-**Discussion**: Example 7, pg. 39
-
-How do you measure moisture content? Cut the piece in half, record original weight and dried weight.
-
-- Supervised(Managed) variables: wood, glue, time, pressure
-   - controlled: time, pressure
-   - experimental: wood, glue
-- Concomitant:  moisture
 ]
 
 ---
@@ -761,103 +731,104 @@ class: center, middle, inverse
 ---
 layout:false
 .left-column[
-## Recap
-## Common Plans
+### Recap
+### Common Plans
 ### Designing Experiments
 ]
 .right-column[
 
-## Common Experimental Plans
+### Common experimental designs
+### Completely randomized experiment 
 
-### Designing Experiments
+There are many subtleties that enter into the planning of an effective experiment. There are some standard "skeletons" of plans that can help with planning an experiment.
 
-Experiments don't just happen, they have to be planned out ahead of time. 
+<font color="red">Completely randomized experiment</font>
 
-With **replication**, **randomization**, **blocking** we have introduced some common techniques used in planning (or **designing**) an experiment. 
-
-Common combinations of these techniques can be used as frameworks around which we can build our real-life experiments.
-
-Some of these combinations have become so useful that we named them to make explaining the experimental design easier.
+A **Completely randomized experiment** is one in which all experimental variables are of primary interest (i.e. none are included only for purposes of blocking), and randomization is used at every possible point of choosing the experimental protocol.
 ]
 ---
+layout:false
 .left-column[
-## Recap
-## Common Plans
+### Recap
+### Common Plans
 ### Designing Experiments
-### Completely Randomized
 ]
 .right-column[
 
-### Design 1: Completely Randomized Experiments
+### Common experimental designs
+### Randomized complete block experiment 
 
-**Description**
+<font color="red">Randomized complete block experiment</font>
 
-- All experimental variables are of primary interest (no controls, no blocking)
-
-- Randomization used at every possible point where we choose how to treat the experimental units
-
-**Example**
-- Example 12 (page 51): Golf ball drive distances study by G.Gronberg
-   - 30 balls in total. 10 balls each at 3 different compressions (80, 90, and 100)
-   - How would you design an experiment to determine which type can be driven the furthest?
-   
-The levels of the experimental factor (compressions) are an intrinsic property of the balls. There is no way to randomly divide the 30 balls into three groups and "apply" the treatment levels 80, 90 and 100. Instead, the randomization could be the choice of an order for hitting the 30 test balls. 
+A **randomized complete block experiment** is one in which at least one experimental variable is a blocking factor (not of primary interest to the investigator); and within each block, every setting of the primary experimental variables appears at least once; and randomization is employed at all possible points where the exact experimental protocol is determined.
 
 ]
 ---
 layout:false
 .left-column[
-## Recap
-## Common Plans
+### Recap
+### Common Plans
 ### Designing Experiments
-### Completely Randomized
-### RCB
 ]
 .right-column[
-### Design 2: Randomized Complete Block Experiments
 
-**Description**
+### Common experimental designs
 
-- At least on factor is a blocking variable 
-- "Blocks" are created by combinations of the levels of the blocking variables
-- Within each block, every combination of the primary experimental variables are used at least once
-- Randomization is used where possible
+**Example:**[Glass restrengthening]
 
-**Examples**
-- Example 12 (page 51): Golf ball drive distances study by G.Gronberg
-   - Gronberg didn't drive the golf balls all at the same time 
-   - instead, he personally drove 10 golf balls from each compression each night, 6 nights a week, for 3 weeks.
-   - The block (days) account for possible changes over time in his physical condition and skill level and environmental conditions. 
+Boyer, Millis, and Schiber studied the restrengthening of damaged glass through etching. They investigated the effects of the concentration of hydroflouric acid in etching bath and the time spent in the etching bath on the resulting strength of damaged glass rods. 
+
+Strengths were measured using a three-point bending method.
+
 ]
 ---
 layout:false
 .left-column[
-## Recap
-## Common Plans
+### Recap
+### Common Plans
 ### Designing Experiments
-### Completely Randomized
-### RCB
-### RIB
 ]
 .right-column[
-### Design 3: Randomized Incomplete Block Experiments
 
-**Description**
+### Common experimental designs
 
-- At least one factor is a blocking variable 
+**Example:**[Glass restrengthening]
 
-- "Blocks" are created by combinations of the levels of the blocking variables
+A $3\times 3$ factorial experiment is run with the levels of concentration being 50%, 75%, and 100% HF and the levels of time being 30 sec., 60 sec, 120 sec. 18 damaged rods were allocated - two apiece - to each of the nine treatment combinations for testing. 
 
-- Within each block, some combinations (but not all) of the primary experimental variables are used at least once while others are not used at all
+This was done at random by labeling the rods 01-18, placing numbered slips of paper in a hat, mixing, drawing two out for 30 sec. and 50%, then drawing two out for 30 sec. and 75%, etc. The slips of paper were also used to determine the order of testing and the order of damaging the rods.
 
-- Randomization is used where possible
 
-**How does this work??**
 
-- There are some clever ways to assign the combinations of the primary experimental variable levels to the blocks that allow us to get "more" out of the data we collect.
+Completely randomized design or Randomized complete block design?
 
-- How these block assignments come about gets explained in Chapter 8.
 ]
+---
+layout:false
+.left-column[
+### Recap
+### Common Plans
+### Designing Experiments
+]
+.right-column[
+
+### Common experimental designs
+
+**Example:**[Chemical purity, cont'd]
+
+Assume time of day is an extraneous variable.
+
+
+**Completely randomized design:**
+
+
+&nbsp;
+
+&nbsp;
+
+**Randomized complete block design:**
+]
+
 ---
 name: inverse
 layout: true
