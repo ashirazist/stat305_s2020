@@ -5,6 +5,7 @@
     <meta charset="utf-8" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
   </head>
   <body>
     <textarea id="source">
@@ -743,20 +744,86 @@ layout:false
 ]
 .right-column[
 ### Summaries of Location and Central Tendency
+### Quantiles
+Already familiar with the concept of "percentile".
 
-**Quantiles**
--  Already familiar with the concept of "percentile".
-   -  e.g in the context of reporting scores on exams:
-   
-   If a person has scored at the 80th percentile, roughly 80% of those taking the exam had worse scores, and roghly 20% had better scores. 
+The &lt;font color="red"&gt; `\(p^{th}\)` percentile&lt;/font&gt; of a data set is a number greater than `\(p\)`% of the data and less than the rest.
 
+&gt; "You scored at the `\(90^{th}\)` percentile on the SAT" means that your score was higher than 90% of the students who took the test and lower than the other 10% 
+
+&gt; "Zorbit was positioned at the `\(80^{th}\)` percentile of the list of fastest growing companies compiled by INC magazine.” means Zorbit was growing faster than 80% of the companies in the list and slower than the other 20%.
+]
+
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+]
+.right-column[
+### Summaries of Location and Central Tendency
+### Quantiles
 - It is more convenient to work in terms of fractions between 0 and 1 rather than percentages between 0 and 100. We then use terminology **Quantiles** rather than percentiles. 
 
 - For a number **p** between 0 and 1, the **p quantle** of a distribution is a number such that a fraction p of the distribution lies to the left of that value, and a fraction 1-p of the distribution lies to the right. 
 
 ]
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
 
+]
+.right-column[
+### Summaries of Location and Central Tendency
+### Quantiles
+For a data set consisting of `\(n\)` values that when ordered are `\(x_1 \le x_2 \le \cdots \le x_n\)`,
 
+- if `\(p = \frac{i - .5}{n}\)` for a positive integer `\(i \le n\)`, the `\(p\)` **quantile** of the data set is 
+`$$Q(p) = Q\left(\frac{i-.5}{n}\right) = x_i$$` 
+(the `\(i\)`th smallest data point will be called the `\(\frac{i-.5}{n}\)` quantile)
+
+]
+
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+]
+.right-column[
+### Summaries of Location and Central Tendency
+### Quantiles
+
+- for any number `\(p\)` between `\(\frac{.5}{n}\)` and `\(\frac{n-.5}{n}\)` that is not of the form `\(\frac{i-.5}{n}\)` for an integer `\(i\)`, the `\(p\)` **quantile** of the data set will be obtained by linear interpolation between the two values of `\(Q\left(\frac{i-.5}{n}\right)\)` with corresponding `\(\frac{i-.5}{n}\)` that bracket `\(p\)`.
+
+In both cases, the notation `\(Q(p)\)` will denote the `\(p\)` quantile.
+]
 ---
 layout:false
 .left-column[
@@ -781,33 +848,62 @@ For a data set consisting of `\(n\)` values that when ordered are `\(x_1 \le x_2
 
 We define the **quantile function** `\(Q(p)\)` as:
 
-
-   `\[
+&lt;span style = "font-size: 50%"&gt;
+`\[
       Q(p) = 
       \begin{cases}
-      x_i &amp; \lfloor n \cdot p + .5 \rfloor = n \cdot p + .5 \\
-      x_i  + \left( n p - i + .5 \right) \left( x_{i+1} - x_i \right) &amp;  \lfloor n \cdot p + .5 \rfloor \ne n \cdot p + .5 \\
+     \small x_i &amp; \small \lfloor n \cdot p + .5 \rfloor = n \cdot p + .5 \\
+      \small x_i  +\left( n p - i + .5 \right) \left( x_{i+1} - x_i \right) &amp;\small  \lfloor n \cdot p + .5 \rfloor \ne n \cdot p + .5 \\
       \end{cases}
-   \]` 
-
+\]` 
+&lt;/span&gt;
 (note: this is the definition used in the book - it's just written using *floor* and *ceiling* instead of in words)
 ]
 
-
 ---
+
 layout:false
 .left-column[
-## Summarizing
-### Simple Graphs
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
 ### Freq Tables
-### Histograms
+### Histogram
+### Scatter plots
 ### Center Stats
 ### Quantiles
 
 ]
 .right-column[
-### Summaries of Location and Central Tendency
 
+- `\(\small Q\left(\frac{1-.5}{n}\right)\)` is called the **minimum** and `\(\small Q\left(\frac{n-.5}{n}\right)\)` is called the **maximum** of a distribution.
+
+- `\(\small Q(.5)\)` is called the **median** of a distribution. `\(\small Q(.25)\)` and `\(\small Q(.75)\)` are called the **first (or lower) quartile** and **third (or upper) quartile** of a distribution, respectively.
+
+- The **interquartile range (IQR)** is defined as `$$\small IQR = Q(.75) - Q(.25)$$`.
+
+- An **outlier** is a data point that is larger than `\(\small Q(.75) + 1.5*IQR\)` or smaller than `\(\small Q(.25) - 1.5*IQR\)`.
+
+
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+
+]
+.right-column[
 **Example**: Find the median, first quartile, 17th quantile and 65th quantile for the following set of data values:
 &lt;center&gt;
 58, 76, 66, 61, 50, 77, 67, 64, 41, 61
@@ -826,17 +922,19 @@ First notice that `\(n = 10\)`. It is possible helpful to set up the following t
 ---
 layout:false
 .left-column[
-## Summarizing
-### Simple Graphs
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
 ### Freq Tables
-### Histograms
+### Histogram
+### Scatter plots
 ### Center Stats
 ### Quantiles
 
 ]
 .right-column[
-### Summaries of Location and Central Tendency
-
 **Example**: Find the median, first quartile, 17th quantile and 65th quantile for the following set of data values:
 &lt;center&gt;
 58, 76, 66, 61, 50, 77, 67, 64, 41, 61
@@ -855,17 +953,19 @@ layout:false
 ---
 layout:false
 .left-column[
-## Summarizing
-### Simple Graphs
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
 ### Freq Tables
-### Histograms
+### Histogram
+### Scatter plots
 ### Center Stats
 ### Quantiles
 
 ]
 .right-column[
-### Summaries of Location and Central Tendency
-
 - **Step 3: find `\(Q(p)\)`**
 
 |          |    |    |    |    |    |    |    |    |    |    |
@@ -874,15 +974,17 @@ layout:false
 | `\(i\)`  | 1  |  2 |  3 |  4 |  5 |  6 |  7 |  8 |  9 | 10 |
 | `\(\frac{i - .5}{n}\)`  | 0.05  |  0.15 |  0.25 |  0.35 |  0.45 |  0.55 |  0.65 |  0.75 |  0.85 | 0.95 |
 
+&lt;span style = "font-size: 80%"&gt;
 
-   `\[
+`\[
       Q(p) = 
       \begin{cases}
-      x_i &amp; \lfloor n \cdot p + .5 \rfloor = n \cdot p + .5 \\
-      x_i  + \left( n p - i + .5 \right) \left( x_{i+1} - x_i \right) &amp;  \lfloor n \cdot p + .5 \rfloor \ne n \cdot p + .5 \\
+     \small x_i &amp; \small \lfloor n \cdot p + .5 \rfloor = n \cdot p + .5 \\
+      \small x_i  +\left( n p - i + .5 \right) \left( x_{i+1} - x_i \right) &amp;\small  \lfloor n \cdot p + .5 \rfloor \ne n \cdot p + .5 \\
       \end{cases}
-   \]`
+\]`
 
+&lt;/span&gt;
 Finding the first **quartile** (`\(Q(.25)\)`):
 
 -  `\( n p + .5 = 10 \cdot .25 + .5 = 3 \)`. 
@@ -904,15 +1006,19 @@ class: center, middle, inverse
 ---
 layout:false
 .left-column[
-## Summarizing
-### Simple Graphs
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
 ### Freq Tables
-### Histograms
+### Histogram
+### Scatter plots
 ### Center Stats
 ### Quantiles
+
 ]
 .right-column[
-### Summaries of Location and Central Tendency
 
 |          |    |    |    |    |    |    |    |    |    |    |
 |----------|----|----|----|----|----|----|----|----|----|----|
@@ -921,22 +1027,21 @@ layout:false
 | `\(\frac{i - .5}{n}\)`  | 0.05  |  0.15 |  0.25 |  0.35 |  0.45 |  0.55 |  0.65 |  0.75 |  0.85 | 0.95 |
 
 &lt;span style = "font-size: 80%"&gt;
+
    `\[
       Q(p) = 
       \begin{cases}
-      x_i &amp; \lfloor n \cdot p + .5 \rfloor = n \cdot p + .5 \\
-      x_i  + \left( n p - i + .5 \right) \left( x_{i+1} - x_i \right) &amp;  \lfloor n \cdot p + .5 \rfloor \ne n \cdot p + .5 \\
+     \small x_i &amp; \small \lfloor n \cdot p + .5 \rfloor = n \cdot p + .5 \\
+      \small x_i  +\left( n p - i + .5 \right) \left( x_{i+1} - x_i \right) &amp;\small  \lfloor n \cdot p + .5 \rfloor \ne n \cdot p + .5 \\
       \end{cases}
    \]`
    
 &lt;span&gt;
-
-
 -  `\( n p + .5 = 10 \cdot 0.5 + 0.5 = 5.5 \)`.
 
 -  since `\(\lfloor 5.5 \rfloor = 5 \)` then `\(i = 5\)` and
+&lt;span style = "font-size: 70%"&gt;
 
-&lt;span style = "font-size: 80%"&gt;
 `\[
   \begin{align}
   Q(.5) &amp;= x_i + (n \cdot p - i + .5) \cdot \left( x_{i+1} - x_i \right)  \\\\
@@ -946,22 +1051,25 @@ layout:false
          &amp;= 62.5
   \end{align}
 \]`
+
 &lt;span&gt;
 ]
 ---
 layout:false
 .left-column[
-## Summarizing
-### Simple Graphs
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
 ### Freq Tables
-### Histograms
+### Histogram
+### Scatter plots
 ### Center Stats
 ### Quantiles
 
 ]
 .right-column[
-### Summaries of Location and Central Tendency
-
 
 Finding `\(Q(.17)\)`
 
@@ -983,18 +1091,18 @@ Finding `\(Q(.17)\)`
 ---
 layout:false
 .left-column[
-## Summarizing
-### Simple Graphs
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
 ### Freq Tables
-### Histograms
+### Histogram
+### Scatter plots
 ### Center Stats
 ### Quantiles
-
 ]
 .right-column[
-### Summaries of Location and Central Tendency
-
-
 Finding `\(Q(.65)\)`
 
 -  `\( n p + .5 = 10 \cdot 0.65 + 0.5 = 7 \)`. 
@@ -1011,235 +1119,63 @@ Finding `\(Q(.65)\)`
   \end{align}
 \]`
 ]
+
 ---
 name: inverse
 layout: true
 class: center, middle, inverse
 ---
 
-# Section 3.2: Plots Using Quantiles
+# Section 3.2: Plots 
 
+---
+
+# Boxplots
 ---
 layout:false
 .left-column[
-## Plots and Quantiles
-### Quantile Plots
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
 ]
 .right-column[
-### Quantile Plots: 
+## Boxplots
 
-**Scatterplots using quatiles and their corresponding values**
+Quantiles are useful in making *boxplots*, an alternative to dot diagrams or histograms. 
 
-For each `\(x_i\)` in the data set, we plot `\(\left(\frac{i - .5}{n}, x_i\right)\)` - meaning we are plotting `\( (p, Q(p)) \)`.
-We connect the points with a straight line, which follows the values of `\(Q(p)\)` exactly.
+The boxplot shows less information, but many can be placed side by side on a single page for comparisons.
 
-Consider the sample: 13, 15, 18, 19, 21, 34, 35, 35, 36, 39.
-The following table which helps create the plot:
+&amp;nbsp;
 
-|            |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10  |
-|------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|------|
-| `\(p\)`    |     |     |     |     |     |     |     |     |     |      |
-| `\(Q(p)\)` |     |     |     |     |     |     |     |     |     |      |
-
-]
----
-.left-column[
-## 
-## Plots and Quantiles
-### Quantile Plots
-]
-.right-column[
-### Quantile Plots: 
-
-
-**Scatterplots using quatiles and their corresponding values**
-
-For each `\(x_i\)` in the data set, we plot `\(\left(\frac{i - .5}{n}, x_i\right)\)` - meaning we are plotting `\( (p, Q(p)) \)`.
-We connect the points with a straight line, which follows the values of `\(Q(p)\)` exactly.
-
-Consider the sample: 13, 15, 18, 19, 21, 34, 35, 35, 36, 39.
-
-Notice that we have `\(n = 10\)` observations which means that `\(Q(0.05) = x_1 = 13\)`. We can get the quantile for each of our observations and create this table:
-
-|            |  1   |  2   |  3   |  4   |  5   |  6   |  7   |  8   |  9   |  10  |
-|------------|------|------|------|------|------|------|------|------|------|------|
-| `\(p\)`    | 0.05 | 0.15 | 0.25 | 0.35 | 0.45 | 0.55 | 0.65 | 0.75 | 0.85 | 0.95 |
-| `\(Q(p)\)` |  13  |  15  |  18  |  19  |  21  |  34  |  35  |  35  |  36  |  39  |
-
-]
----
-.left-column[
-## 
-## Plots and Quantiles
-### Quantile Plots
-]
-.right-column[
-### Quantile Plots: 
-
-
-**Quantile plots**
-
-|            |  1   |  2   |  3   |  4   |  5   |  6   |  7   |  8   |  9   |  10  |
-|------------|------|------|------|------|------|------|------|------|------|------|
-| `\(p\)`    | 0.05 | 0.15 | 0.25 | 0.35 | 0.45 | 0.55 | 0.65 | 0.75 | 0.85 | 0.95 |
-| `\(Q(p)\)` |  13  |  15  |  18  |  19  |  21  |  34  |  35  |  35  |  36  |  39  |
-
+&amp;nbsp;
 
 &lt;img src="ch3_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 ---
+layout:false
 .left-column[
-## Plots and Quantiles
-### Quantile Plots
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
 ]
 .right-column[
-### Quantile Plots: 
-
-
-**Quantile plots**
-
-|            |  1   |  2   |  3   |  4   |  5   |  6   |  7   |  8   |  9   |  10  |
-|------------|------|------|------|------|------|------|------|------|------|------|
-| `\(p\)`    | 0.05 | 0.15 | 0.25 | 0.35 | 0.45 | 0.55 | 0.65 | 0.75 | 0.85 | 0.95 |
-| `\(Q(p)\)` |  13  |  15  |  18  |  19  |  21  |  34  |  35  |  35  |  36  |  39  |
-
-
-&lt;img src="ch3_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
-
-]
----
-.left-column[
-## Plots and Quantiles
-### Quantile Plots
-### QQ Plots
-]
-.right-column[
-### Quantile-Quantile Plots: 
-
-**QQ plots** are created by plotting the values of `\(Q(p)\)` for a data set against values of `\(Q(p)\)` coming from some other source.
-
--  Compare the shape of two data sets (distributions).
-
--  Two data sets having "equal shape" is equivalent to say their quantile functions are "**linearly related**". 
-
--  If the two data sets have different sizes, the size of smaller set is used for both.
-
--  A **QQ plot** that is linear indicates the two distributions have similar shape. 
-
--  If there are significant departures from linearity, the character of those departures reveals the ways in which the shapes differ.
-
-]
----
-.left-column[
-## Plots and Quantiles
-### Quantile Plots
-### QQ Plots
-]
-.right-column[
-### Quantile-Quantile Plots: 
-
-**Example**: How similar the two data sets are?
-
--  Set 1: 36, 15, 35, 34, 18, 13, 19, 21, 39, 35 
--  Set 2: 37, 39, 79, 31, 69, 71, 43, 27, 73, 71 
-
-|                  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10  |
-|:-----------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|------|
-| `\(p\)`          |     |     |     |     |     |     |     |     |     |      |
-|                  |     |     |     |     |     |     |     |     |     |      |
-| Set 1 `\(Q(p)\)` |     |     |     |     |     |     |     |     |     |      |
-|                  |     |     |     |     |     |     |     |     |     |      |
-| Set 2 `\(Q(p)\)` |     |     |     |     |     |     |     |     |     |      |
-]
----
-
-.left-column[
-## Plots and Quantiles
-### Quantile Plots
-### QQ Plots
-]
-.right-column[
-### Quantile-Quantile Plots: 
-|                  |  1   |  2   |  3   |  4   |  5   |  6   |  7   |  8   |  9   |  10  |
-|------------------|------|------|------|------|------|------|------|------|------|------|
-| `\(p\)`          | 0.05 | 0.15 | 0.25 | 0.35 | 0.45 | 0.55 | 0.65 | 0.75 | 0.85 | 0.95 |
-| `\(Q_1(p)\)` |  13  |  15  |  18  |  19  |  21  |  34  |  35  |  35  |  36  |  39  |
-| `\(Q_2(p)\)` |  27  |  31  |  37  |  39  |  43  |  69  |  71  |  71  |  73  |  79  |
-
-&lt;img src="ch3_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
-
-]
----
-
-.left-column[
-## Plots and Quantiles
-### Quantile Plots
-### QQ Plots
-]
-.right-column[
-### Quantile-Quantile Plots:
-
-**Interpretation**
-
-
-The resulting plot shows some kind of linear pattern  
-
-This means that the quantiles increase at the same rate, even if the sizes of the values themselves are very different.
-]
----
-.left-column[
-## Plots and Quantiles
-### Quantile Plots
-### QQ Plots
-]
-.right-column[
-### Quantile-Quantile Plots: 
-
-**Example 6 of chapter 3**: Bullet penetration depth
--  230 Grain penetration (mm)
--  200 Grain penetration (mm)
-
-&lt;img src="ch3_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
-Except extreme lower values, it **seems** the two distributions have smiliar shapes; however, it still needs more attention to make a rough decision (consider boxplots). Might want to figure out what has caused the extereme value
-
-]
----
-
-.left-column[
-## Plots and Quantiles
-### Quantile Plots
-### QQ Plots
-]
-.right-column[
-### Quantile-Quantile Plots: 
-
-The idea of QQ plots is most useful when applied to one quantile function that represents data and a second that represents a **theoretical distribution**
-
--  Empirical QQ plots: the other source are quantiles from another actual data set.
-
--  Theoretical QQ plots: the other source are quantiles from a theoretical set - we know the quantiles without having any data.
-
-This allows to ask "Does the data set have a shape similar to the theoretical distribution?" 
-
-
-]
----
-name: inverse
-layout: true
-class: center, middle, inverse
----
-## Boxplots
----
-layout: false
-.left-column[
-## Plots and Quantiles
-### Quantile Plots
-### QQ Plots
-### Boxplots
-]
-.right-column[
-
 ## Boxplots
 
 A simple plot making use of the first, second and third quartiles (i.e., `\(Q(.25)\)`, `\(Q(.5)\)` and `\(Q(.75)\)`.
@@ -1253,11 +1189,19 @@ A simple plot making use of the first, second and third quartiles (i.e., `\(Q(.2
 
 ]
 ---
+layout:false
 .left-column[
-## Plots and Quantiles
-### Quantile Plots
-### QQ Plots
-### Boxplots
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
 ]
 .right-column[
 **Example**: 
@@ -1288,27 +1232,41 @@ while Group 2 has IQR = 5 and
    -  1.5\*IQR = 7.5
 ]
 ---
-
+layout:false
 .left-column[
-## Plots and Quantiles
-### Quantile Plots
-### QQ Plots
-### Boxplots
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
 ]
 .right-column[
 **Example**: 
 
-&lt;img src="ch3_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+&lt;img src="ch3_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
 
 ]
 
 ---
-
+layout:false
 .left-column[
-## Plots and Quantiles
-### Quantile Plots
-### QQ Plots
-### Boxplots
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
 ]
 .right-column[
 ### Anatomy of a Boxplot
@@ -1322,33 +1280,723 @@ while Group 2 has IQR = 5 and
 ]
 
 ---
+layout:false
 .left-column[
-## Plots and Quantiles
-### Quantile Plots
-### QQ Plots
-### Boxplots
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
 ]
 .right-column[
-### Recap: Example 6 of chapter 3: Bullet penetration depth
+**Example:**[Bullet penetration depths, cont'd]
+&lt;span style = "font-size: 60%"&gt;
+
+&lt;table class="table" style="font-size: 8px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; i &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; `\(\frac{i-.5}{20}\)` &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 200 grain bullets &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; 230 grain bullets &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.025 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 58.00 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 27.75 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.075 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 58.65 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 37.35 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.125 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 59.10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 38.35 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.175 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 59.50 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 38.35 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.225 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 59.80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 38.75 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.275 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 60.70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 39.75 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.325 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 61.30 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 40.50 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.375 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 61.50 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 41.00 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.425 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 62.30 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 41.15 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.475 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 62.65 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 42.55 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.525 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 62.95 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 42.90 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.575 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 63.30 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 43.60 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 13 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.625 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 63.55 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 43.85 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 14 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.675 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 63.80 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47.30 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 15 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.725 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 64.05 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 47.90 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 16 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.775 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 64.65 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 48.15 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 17 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.825 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 65.00 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 49.85 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 18 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.875 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 67.75 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 51.25 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 19 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.925 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 70.40 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 51.60 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 20 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.975 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 71.70 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 56.00 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;/span&gt;
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+]
+.right-column[
+**Example:**[Bullet penetration depths, cont'd]
+
+
+&lt;img src="ch3_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+---
+layout: true
+class: middle, center, inverse
+---
+### Quantile-quantile (Q-Q) plots
+
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+]
+.right-column[
+### Quantile-quantile (Q-Q) plots
+
+Often times, we want to compare the shapes of two distributions.
+
+A more sensitive way is to make a single plot based on the quantile functions for two distributions.
+
+A **Q-Q plot** for two data sets with respective quantile functions `\(Q_1\)` and `\(Q_2\)` is a plot of ordered pairs `\((Q_1(p), Q_2(p))\)` for appropriate values of `\(p\)`. When two data sets of size `\(n\)` are involved, the values of `\(p\)` used to make the plot will be `\(\frac{i-.5}{n}\)` for `\(i = 1, \dots, n\)`. 
+
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+
+]
+.right-column[
+### Quantile-quantile (Q-Q) plots
+**Example:**[Bullet penetration depth, cont'd]
+
+**Example:**[Bullet penetration depth cont'd]
    -  230 Grain penetration (mm)
    -  200 Grain penetration (mm)
 
-&lt;img src="ch3_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" /&gt;
+![](ch3_files/figure-html/bullets-qqplot-1.png)&lt;!-- --&gt;
 Except extreme lower values, it **seems** the two distributions have smiliar shapes; however, it still needs more attention to make a rough decision (consider boxplots).
 ]
 ---
+layout:false
 .left-column[
-## Plots and Quantiles
-### Quantile Plots
-### QQ Plots
-### Boxplots
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
 ]
 .right-column[
-### Recap: Example 6 of chapter 3: Bullet penetration depth
 
-#### Boxplot
+
+To make a Q-Q plot for two data sets of the same size,
+
+1. order each from the smallest observation to the largest,
+
+2. pair off corresponding values in the two data sets
+
+3. plot ordered pairs, with the horizontal coordinated coming from the first data set and the vertical ones from the second.
+
+**Example:**[Q-Q plot by hand]
+
+Make a Q-Q plot for the following small artificial data sets.
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Data set 1 &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Data set 2 &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; 3, 5, 4, 7, 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 15, 7, 9, 7, 11 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+]
+.right-column[
+### Quantile-Quantile Plots: 
+
+**QQ plots** are created by plotting the values of `\(Q(p)\)` for a data set against values of `\(Q(p)\)` coming from some other source.
+
+-  Compare the shape of two data sets (distributions).
+
+-  Two data sets having "equal shape" is equivalent to say their quantile functions are "**linearly related**". 
+
+-  If the two data sets have different sizes, the size of smaller set is used for both.
+
+-  A **QQ plot** that is linear indicates the two distributions have similar shape. 
+
+-  If there are significant departures from linearity, the character of those departures reveals the ways in which the shapes differ.
+
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+]
+.right-column[
+### Quantile-Quantile Plots: 
+
+**Example**: How similar the two data sets are?
+
+-  Set 1: 36, 15, 35, 34, 18, 13, 19, 21, 39, 35 
+-  Set 2: 37, 39, 79, 31, 69, 71, 43, 27, 73, 71 
+
+|                  |  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |  9  |  10  |
+|:-----------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|------|
+| `\(p\)`          |     |     |     |     |     |     |     |     |     |      |
+|                  |     |     |     |     |     |     |     |     |     |      |
+| Set 1 `\(Q(p)\)` |     |     |     |     |     |     |     |     |     |      |
+|                  |     |     |     |     |     |     |     |     |     |      |
+| Set 2 `\(Q(p)\)` |     |     |     |     |     |     |     |     |     |      |
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+]
+.right-column[
+### Quantile-Quantile Plots: 
+|                  |  1   |  2   |  3   |  4   |  5   |  6   |  7   |  8   |  9   |  10  |
+|------------------|------|------|------|------|------|------|------|------|------|------|
+| `\(p\)`          | 0.05 | 0.15 | 0.25 | 0.35 | 0.45 | 0.55 | 0.65 | 0.75 | 0.85 | 0.95 |
+| `\(Q_1(p)\)` |  13  |  15  |  18  |  19  |  21  |  34  |  35  |  35  |  36  |  39  |
+| `\(Q_2(p)\)` |  27  |  31  |  37  |  39  |  43  |  69  |  71  |  71  |  73  |  79  |
 
 &lt;img src="ch3_files/figure-html/unnamed-chunk-11-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+]
+.right-column[
+### Quantile-Quantile Plots:
+
+**Interpretation**
+
+
+The resulting plot shows some kind of linear pattern  
+
+This means that the quantiles increase at the same rate, even if the sizes of the values themselves are very different.
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+]
+.right-column[
+### Quantile-Quantile Plots: 
+
+**Example 6 of chapter 3**: Bullet penetration depth
+-  230 Grain penetration (mm)
+-  200 Grain penetration (mm)
+
+&lt;img src="ch3_files/figure-html/unnamed-chunk-12-1.png" style="display: block; margin: auto;" /&gt;
+Except extreme lower values, it **seems** the two distributions have smiliar shapes; however, it still needs more attention to make a rough decision (consider boxplots). Might want to figure out what has caused the extereme value
+
+]
+---
+layout: true 
+class: middle, center, inverse
+---
+# Theoretical quantile-quantile plots
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+]
+.right-column[
+
+### Theoretical quantile-quantile plots
+
+Q-Q plots are useful when comparing two finite data sets, but a Q-Q plot can also be used to compare a data set and an expected shape, or *theoretical distribution*.
+
+
+&gt;A **theoretical Q-Q plot** for a data set of size `\(n\)` and a theoretical distribution, with respective quantile functions `\(Q_1\)` and `\(Q_2\)` is a plot of ordered pairs `\((Q_1(p), Q_2(p))\)` for `\(p = \frac{i-.5}{n}\)` where `\(i = 1, \dots, n\)`.
+
+
+The most famous theoretical Q-Q plot occurs when quantiles for the *standard Normal* or *Gaussian* distribution are used. A simple numerical approximation to the quantile function for the Normal distribution is 
+
+$$
+Q(p) \approx 4.9(p^{.14} - (1-p)^{.14}).
+$$
+
+
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+]
+.right-column[
+
+### Theoretical quantile-quantile plots
+
+The standard Normal quantiles can be used to make a theoretical Q-Q plot as a way of assessing how bell-shaped a data set is. 
+
+The resulting plot is called a **normal Q-Q plot**.
+
+
+![Histogram and approximate quantile function for a standard Normal distirbution.](ch3_files/figure-html/normal-dist-1.png)![Histogram and approximate quantile function for a standard Normal distirbution.](ch3_files/figure-html/normal-dist-2.png)
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+]
+.right-column[
+### Quantile-Quantile Plots: 
+### Summary
+
+The idea of QQ plots is most useful when applied to one quantile function that represents data and a second that represents a **theoretical distribution**
+
+-  Empirical QQ plots: the other source are quantiles from another actual data set.
+
+-  Theoretical QQ plots: the other source are quantiles from a theoretical set - we know the quantiles without having any data.
+
+This allows to ask "Does the data set have a shape similar to the theoretical distribution?" 
+
+
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+]
+.right-column[
+**Example:**[Breaking strengths of paper towels, pg. 79]
+
+Here is a study of the dry breaking strength (in grams) of generic paper towels.
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; test &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; strength &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8577 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9471 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9011 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7583 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8572 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10688 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9614 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9614 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8527 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9165 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+]
+.right-column[
+**Example:**[Breaking strengths of paper towels, pg. 79]
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; i &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; `\(\frac{i-.5}{20}\)` &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Breaking strength Q() &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Standard Normal Q() &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.05 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7583 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -1.6448536 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 2 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.15 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8527 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -1.0364334 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.25 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8572 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.6744898 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.35 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 8577 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.3853205 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 5 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.45 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9011 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; -0.1256613 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.55 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9165 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.1256613 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.65 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9471 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.3853205 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.75 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9614 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.6744898 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.85 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9614 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.0364334 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.95 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10688 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.6448536 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Intro
+### Purpose
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+]
+.right-column[
+### Theoretical quantile-quantile plots
+
+**Example:**[Breaking strengths of paper towels, pg. 79]
+
+&amp;nbsp;
+
+&amp;nbsp;
+
+&lt;img src="ch3_files/figure-html/unnamed-chunk-15-1.png" style="display: block; margin: auto;" /&gt;
+
 ]
 ---
 name: inverse
@@ -1363,78 +2011,469 @@ class: center, middle, inverse
 ---
 layout:false
 .left-column[
-## Recap
-### Location
+### Summarizing
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+### Numerical summaries 
 ]
 .right-column[
-## Recap: Location and central tendency
+## Numerical summaries 
 
-Motivated by asking what is *normal/common/expected* for this data
-
-**Mean**: A "fair" center value - `\( \frac{1}{n} \sum_{i=1}^{n} x_i \)`
-
-**Mode**: The most commonly occurring value in set
-
-**Median**: The value dividing the set in half (the middle of the values).
-```
-              Group 1             Group 2
-            74 79 77 81         65 77 78 74
-            68 79 81 76         76 73 71 71
-            81 80 80 78         86 81 76 89
-            88 83 79 91         79 78 77 76
-            79 75 74 73         72 76 75 79    
-```
+When we have a large amount of data, it can become important to reduce the amount of data to a few informative numerical summary values. Numerical summaries highlight important features of the data 
 
 
+A **numerical summary (or statistic)** is a number or list of numbers calculated using the data (and only the data).
 
 
-For group 1, the mean is 78.8, the median is 79, and the mode is 79.
+### Measures of location
 
-For group 2, the mean is 76.45, the median is 76, and the mode is 76.
+An "average" represents the center of a quantitative data set. There are several potential technical meanings for the word "average", and they are all *measures of location*.
+
+The **(arithmetic) mean** of a sample of quantitative data `\((x_1, \dots, x_n)\)` is 
+
+`$$\overline{x} = \frac{1}{n} \sum\limits_{i=1}^nx_i$$`
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+### Numerical summaries 
+
+]
+.right-column[
+## Numerical summaries 
+### Measures of location
+
+
+The **mode** of a discrete or categorical data set is the most frequently-occurring value.
+
+We have also seen the *median*, `\(Q(.5)\)`, which is another measure of location. A shortcut to calculating `\(Q(0.5)\)` is
+
+- `\(Q(0.5) = x_{\lceil n/2 \rceil}\)` if `\(n\)` is odd 
+- `\(Q(0.5)\)` = `\((x_{n/2} + x_{n/2+1})/2\)` if `\(n\)` is even.
+
+
+
+**Example:**[Measures of location]
+
+Calculate the three measures of location for the following data.
+`$$0, 1, 1, 2, 3, 5$$`
+
+
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+### Numerical summaries 
+
+]
+.right-column[
+## Numerical summaries
+### Measures of spread
+
+Quantifying variation in a data set can be as important as measuring its location. Again, there are many way to measure the spread of a data set.
+
+
+The **range** of a data set consisting of ordered values `\(x_1 \le \cdots \le x_n\)` is 
+`$$R = x_n - x_1.$$`
+
+
+The **sample variance** of a data set consisting of values `\(x_1, \dots, x_n\)` is
+`$$s^2 = \frac{1}{n-1} \sum\limits_{i=1}^n (x_i - \overline{x})^2$$`
+The **sample standard deviation**, `\(s\)`, is the nonnegative square root of the sample variance.
+
+We have also seen the *IQR*, `\(Q(.75) - Q(.25)\)`, which is another measure of spread.
+
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+### Numerical summaries 
+
+]
+.right-column[
+## Numerical summaries
+## Measures of spread
+
+**Example:**[Measures of spread]
+
+Calculate the four measures of spread for the following data.
+`$$0, 1, 1, 2, 3, 5$$`
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+### Numerical summaries 
+
+]
+.right-column[
+## Numerical summaries
+## Measures of spread
+
+**Example:**[Sensitivity to outliers]
+Which measures of center and spread differ drastically between the `\(x_i\)`s and the `\(y_i\)`s? Which ones are the same?
+
+`\begin{align*}
+x_i:&amp; 0, 1, 1, 2, 3, 5 \\
+y_i:&amp; 0, 1, 1, 2, 3, 817263489
+\end{align*}`
+
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+### Numerical summaries 
+
+]
+.right-column[
+### Statistics and parameters
+
+It's important now to stop and talk about terminology and notation.
+
+
+- Numerical summarizations of sample data are called (sample) **statistics**. Numerical summarizations of population and theoretical distributions are called (population or model) **parameters**. 
+
+
+- If a data set, `\(x_1, \dots, x_N\)`, represents an entire population, then the **population (or true) mean** is defined as
+
+`$$\mu = \frac{1}{N}\sum\limits_{i = 1}^N x_i.$$`
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+### Numerical summaries 
+
+]
+.right-column[
+### Statistics and parameters
+- If a data set, `\(x_1, \dots, x_N\)`, represents an entire population, then the **population (or true) variance** is defined as
+
+`$$\sigma^2 = \frac{1}{N}\sum\limits_{i=1}^N(x_i - \mu)^2.$$`
+The **population (or true) standard deviation**, `\(\sigma\)` is the nonnegative square root of `\(\sigma^2\)`.
+
+
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+### Numerical summaries 
+
+]
+.right-column[
+
+## Categorical and count data
+
+So far we have talked mainly about summarizing quantitative, or measurement, data. Sometimes, we have categorical or count data to summarize. In this case, we can revisit the *frequency table* and introduce a new type of plot.
+
+**Example:**[Cars]
+
+Fuel consumption and 10 aspects of automobile design and performance are available for 32 automobiles (1973–74 models) from 1974 Motor Trend US Magazine.
+
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+### Numerical summaries 
+
+]
+.right-column[
+**Example:**[Cars]
+
+&lt;table class="table" style="font-size: 10px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt;   &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; mpg &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; cyl &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; disp &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; hp &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; drat &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; wt &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; qsec &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; vs &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; am &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; gear &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; carb &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3.9 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.62 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 16.46 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Mazda RX4 Wag &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 21 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 160 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3.9 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.875 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 17.02 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 4 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Datsun 710 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 22.8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 108 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 93 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3.85 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.32 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 18.61 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet 4 Drive &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 21.4 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 258 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 110 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3.08 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3.215 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 19.44 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hornet Sportabout &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 18.7 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 360 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 175 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3.15 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3.44 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 17.02 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Valiant &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 18.1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 225 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 105 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 2.76 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3.46 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 20.22 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 3 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; ... &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+We can construct a frequency table for the *cylinder* variable.
+
+&lt;table class="table" style="font-size: 12px; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:right;"&gt; cyl &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Frequency &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Relative Frequency &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Cumulative Frequency &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 4 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 11 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.34375 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.34375 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.21875 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.56250 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:right;"&gt; 8 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 14 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.43750 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1.00000 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+From this frequency data, we can summarize the categorical data graphically.
+]
+---
+layout:false
+.left-column[
+### Summarizing
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+### Numerical summaries 
+
+]
+.right-column[
+
+
+- A **bar plot** presents categorical data with rectangular bars with lengths proportional to the values that they represent (usually frequency of occurrence).
+
+**Example:**[Cars, cont'd]
+
+![](ch3_files/figure-html/unnamed-chunk-17-1.png)&lt;!-- --&gt;
+
+
+
+
 ]
 
 ---
 layout:false
 .left-column[
-## Recap
-### Location
-### Spread
+### Summarizing
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+### Numerical summaries 
+
 ]
 .right-column[
-###Summaries of Variablity (Measures of Spread)
-
-Motivated by asking what kind of *variability is seen in the data* or *how spread out* the data is.
-
-**Range**: The difference between the highest and lowest values (Range = max - min)
-
-**IQR**: The Interquartile Range, how spread out is the middle 50% (IQR =  Q3 - Q1)
-
-**Variance/Standard Deviation**: Uses squared distance from the mean.
-
-|                 |    | Variance                                                      |   | Standard Deviation                                                  |
-|:----------------|----------------------|---------------------------------------------------------------|----------------------|---------------------------------------------------------------------|
-|          |                      |                                                               |                      |                                                                     |
-| **Population**  |                      | `\(\sigma^2 =  \frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2 \)` |                      | `\(\sigma = \sqrt{\frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2} \)`   |
-|            |                      |                                                               |                      |                                                                     |
-|            |                      |                                                               |                      |                                                                     |
-| **Sample**      |                      | `\( s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2 \)`    |                      | `\(s =  \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2} \)`     |
-]
-
----
-layout:false
-.left-column[
-## Recap
-### Location
-### Spread
-]
-.right-column[
-## Summarizing Data Numerically
 **Example**: Taking a sample of size 5 from a population we record the following values:
 
 
 
 &lt;center&gt;
-65, 67, 57, 69, 58
+68, 54, 60, 66, 58
 &lt;/center&gt;
 
 Find the variance and standard deviation of this sample.
@@ -1445,23 +2484,39 @@ layout:false
 ## Example: Finding the Variance
 
 Since we are told it is a sample, we need to use **sample variance**.
-The mean of 65, 67, 57, 69, 58 is 63.2
+The mean of 68, 54, 60, 66, 58 is 61.2
 
 
-&lt;span style = "font-size: 65%"&gt;
+&lt;span style = "font-size: 60%"&gt;
 
 `\begin{align}
-s^2 &amp;= \frac{1}{n-1}\sum_{i=1}^5 (x_i - \bar{x})^2 \\\\
-    &amp;= \frac{1}{n-1}\left( (x_1 - \bar{x})^2 + (x_2 - \bar{x})^2 + (x_3 - \bar{x})^2 + (x_4 - \bar{x})^2 + (x_5 - \bar{x})^2 \right) \\\\
-    &amp;= \frac{1}{5-1} \left((65 - 63.2)^2 + (67 - 63.2)^2 + (57 - 63.2)^2 + (69 - 63.2)^2 + (58 - 63.2)^2 \right) \\\\
-    &amp;= \frac{1}{4} \left( (1.8)^2 + (3.8)^2 + (-6.2)^2 + (5.8)^2 + (-5.2)^2 \right) \\\\
-    &amp;= \frac{1}{4} \left( 3.24 + 14.44 + 38.44 + 33.64 + 27.04 \right) \\\\
-    &amp;=  29.2\\\\
+\small s^2 &amp;= \frac{1}{n-1}\sum_{i=1}^5 (x_i - \bar{x})^2 \\\\
+    &amp;=\small \frac{1}{n-1}\left( (x_1 - \bar{x})^2 + (x_2 - \bar{x})^2 + (x_3 - \bar{x})^2 + (x_4 - \bar{x})^2 + (x_5 - \bar{x})^2 \right) \\\\
+    &amp;=\small \frac{1}{5-1} \left((68 - 61.2)^2 + (54 - 61.2)^2 + (60 - 61.2)^2 + (66 - 61.2)^2 + (58 - 61.2)^2 \right) \\\\
+    &amp;=\small \frac{1}{4} \left( (6.8)^2 + (-7.2)^2 + (-1.2)^2 + (4.8)^2 + (-3.2)^2 \right) \\\\
+    &amp;=\small \frac{1}{4} \left( 46.24 + 51.84 + 1.44 + 23.04 + 10.24 \right) \\\\
+    &amp;= \small 33.2\\\\
 \end{align}`
 
 &lt;span&gt;
 
 ---
+layout:false
+.left-column[
+### Summarizing
+### Descriptive statistics
+### Plots
+### Freq Tables
+### Histogram
+### Scatter plots
+### Center Stats
+### Quantiles
+### Boxplot
+### QQ-Plot
+### Numerical summaries 
+
+]
+.right-column[
 ## Example: Finding the Standard Deviation
 
 With `\(s^2\)` known, finding `\(s\)` is simple:
@@ -1470,10 +2525,11 @@ With `\(s^2\)` known, finding `\(s\)` is simple:
 
 `\begin{align}
    s &amp;= \sqrt{s^2} \\\\
-     &amp;= \sqrt{29.2} \\\\
-     &amp;= 5.4037024\\\\
+     &amp;= \sqrt{33.2} \\\\
+     &amp;= 5.7619441\\\\
 \end{align}`
 &lt;span&gt;
+]
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

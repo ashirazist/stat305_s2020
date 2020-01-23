@@ -6,6 +6,11 @@ output: pdf_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+Show \textbf{all} of your work on this assignment and answer each question fully in the given context. 
+Each individual part is worth 5 points and partial credit is awarded for close answers.
+\vspace{0.3cm}
+
+\textbf{If you cannot submit your homework in the class, you can drop it at my office door in 3220 Snedecore Hall by Thursday at 03:30 PM.}
 
 You will want to understand Exercise 1 from Section 2.1 before attempting the following questions.  
 Your answers should be written in complete sentences.
