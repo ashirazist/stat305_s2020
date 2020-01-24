@@ -96,7 +96,7 @@ Each individual part is worth 5 points and partial credit is awarded for close a
 
 \begin{enumerate}
 
-\item \textbf{[Ch. 2 Exercise 1, pg. 64]} Use the random digits table (Table B.1, available at $"https://ashirazist.github.io/stat305_s2020.github.io/schedule.html"$) and choose a simple random sample of $n = 8$ out of $N = 491$ widgets. Describe carefully how you label the widgets. Begin in the upper left corner of the table.[5 pts] 
+\item \textbf{[Ch. 2 Exercise 1, pg. 64]} Use the random digits table (Table B.1, available at \href{https://ashirazist.github.io/stat305_s2020.github.io/schedule.html}{the course page/schedule} and choose a simple random sample of $n = 8$ out of $N = 491$ widgets. Describe carefully how you label the widgets. Begin in the upper left corner of the table.[5 pts] 
 \item \textbf{[Ch 2. Exercise 2, pg. 64]} Consider a potential student project concerning the making of popcorn. Possible factors affecting the outcome of popcorn making include at least the following: Brand of corn, Temperature of corn at the beginning of cooking, Popping method (e.g. frying vs. hot air popping), Type of Oil used (if frying), Amount of Oil used (if frying), Batch Size, initial Moisture Content of corn, and Person doing the evaluation of a single batch. Using these factors and/or any others that you can think of, answer the following questions about such a project:
 
       \begin{enumerate}
@@ -294,6 +294,7 @@ Note that \verb!0 | 9! represents 0.9. In this case, the first quartile is $Q(.2
 
    In this problem, we will work through the tutorial found at \href{http://web.utk.edu/~cwiek/201Tutorials/}{http://web.utk.edu/$\sim$cwiek/201Tutorials/}. Download and install \texttt{JMP} or find a computer with it already installed. Once you have done this, complete the following sections from the the tutorial linked above. For each part, print and include the table or graph produced. (Note: You can save the plots/tables and combine them in a single document).
 
+\emph{For the JMP exercise, you just need to reproduce the same results on the tutorial using the data set available in the tutorial page.}
    \begin{enumerate}
       \item Creating a JMP data table [5 pts]
       \item Histogram and Box Plot[5 pts]
