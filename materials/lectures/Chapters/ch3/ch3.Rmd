@@ -2330,6 +2330,3 @@ With `\(s^2\)` known, finding `\(s\)` is simple:
 \end{align}
 <span>
 ]
-
-
-

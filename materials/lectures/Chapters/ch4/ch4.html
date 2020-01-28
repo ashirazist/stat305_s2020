@@ -12,96 +12,11 @@
 class: center, middle, inverse
 layout: yes
 name: inverse
-
 ## STAT 305: Chapter 4 
-##Part I
+## Part I
 ### Amin Shirazi
-.footnote[Course page: [ashirazist.github.io/stat305.github.io](https://ashirazist.github.io/stat305.github.io/)]  
+.footnote[Course page: [ashirazist.github.io/stat305_s2020.github.io](https://ashirazist.github.io/stat305_s2020.github.io/)]  
 
----
-class: center, middle, inverse
-layout: yes
-name: inverse
-
-## Recap on Numerical Summaries (Chapter 3)
-### Summaries of Variablity (Measures of Spread)
-## Chapter 4: Describing Relationships Between Variables
-## Introduction to Models
----
-layout:false
-###Recap: Summaries of Variablity (Measures of Spread)
-
-Motivated by asking what kind of *variability is seen in the data* or *how spread out* the data is.
-
-**Range**: The difference between the highest and lowest values (Range = max - min)
-
-**IQR**: The Interquartile Range, how spread out is the middle 50% (IQR =  Q3 - Q1)
-
-**Variance/Standard Deviation**: Uses squared distance from the mean.
-
-
-|                 |    | Variance                                                      |   | Standard Deviation                                                  |
-|:----------------|----------------------|---------------------------------------------------------------|----------------------|---------------------------------------------------------------------|
-|          |                      |                                                               |                      |                                                                     |
-| **Population**  |                      | `\(\sigma^2 =  \frac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^2 \)` |                      | `\(\sigma = \sqrt{\frac{1}{N}\sum_{i=1}^{N}(x_i - \bar{x})^2} \)`   |
-|            |                      |                                                               |                      |                                                                     |
-|            |                      |                                                               |                      |                                                                     |
-| **Sample**      |                      | `\( s^2 = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2 \)`    |                      | `\(s =  \sqrt{\frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2} \)`     |
-
-
----
-layout:false
-.left-column[
-## Recap
-### Spread
-]
-.right-column[
-## Summarizing Data Numerically
-**Example**: Taking a sample of size 5 from a population we record the following values:
-
-
-
-&lt;center&gt;
-68, 64, 53, 58, 60
-&lt;/center&gt;
-
-Find the variance and standard deviation of this sample.
-]
-
----
-layout:false
-## Example: Finding the Variance
-
-Since we are told it is a sample, we need to use **sample variance**.
-The mean of 68, 64, 53, 58, 60 is 60.6
-
-
-&lt;span style = "font-size: 75%"&gt;
-`\begin{align}
-s^2 &amp;= \frac{1}{n-1}\sum_{i=1}^5 (x_i - \bar{x})^2 \\\\
-    &amp;= \frac{1}{n-1}\left( (x_1 - \bar{x})^2 + (x_2 - \bar{x})^2 + (x_3 - \bar{x})^2 + (x_4 - \bar{x})^2 + (x_5 - \bar{x})^2 \right) \\\\
-    &amp;= \frac{1}{5-1} \left((68 - 60.6)^2 + (64 - 60.6)^2 + (53 - 60.6)^2 + (58 - 60.6)^2 + (60 - 60.6)^2 \right) \\\\
-    &amp;= \frac{1}{4} \left( (7.4)^2 + (3.4)^2 + (-7.6)^2 + (-2.6)^2 + (-0.6)^2 \right) \\\\
-    &amp;= \frac{1}{4} \left( 54.76 + 11.56 + 57.76 + 6.76 + 0.36 \right) \\\\
-    &amp;=  32.8\\\\
-\end{align}`
-
-&lt;span&gt;
-
-
----
-## Example: Finding the Standard Deviation
-
-With `\(s^2\)` known, finding `\(s\)` is simple:
-&lt;span style = "font-size: 100%"&gt;
-
-`\begin{align}
-   s &amp;= \sqrt{s^2} \\\\
-     &amp;= \sqrt{32.8} \\\\
-     &amp;= 5.7271284\\\\
-\end{align}`
-
-&lt;span&gt;
 
 ---
 
@@ -113,17 +28,57 @@ class: center, middle, inverse
 ---
 layout: false
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ]
 .right-column[
-## Describing Relationships
+### Describing Relationships between variables
+
+This chapter provides methods that address a more involved problem of describing relationships between variables and require more computation. We start with relationships between two variables and move on to more.
+
+## Fitting a line by least squares
+
+**Goal:**Notice a relationship between two quantitative variables. 
+
+
+&gt;We would like to use an equation to describe how a dependent (response) variable, `\(y\)`, changes in response to a change in one or more independent (experimental) variable(s), `\(x\)`.
+]
+
+---
+layout: false
+.left-column[
+### Describing Relationships
+### Idea
+]
+.right-column[
+### Describing Relationships between variables
+
+### Line review 
+
+Recall a linear equation of the form `$$y = mx + b$$`
+
+
+Where `\(m\)` is the slope and `\(b\)` is the intercept of the line.
+
+In statistics, we use the notation `\(y = \beta_0 + \beta_1 x + \epsilon\)` where we assume `\(\beta_0\)` and `\(\beta_1\)` are unknown parameters and `\(\epsilon\)` is some error.
+
+
+
+The goal is to find estimates `\(b_0\)` (intercept) and `\(b_1\)` (slope) for the parameters.
+
+
+]
+---
+layout: false
+.left-column[
+### Describing Relationships
+### Idea
+]
+.right-column[
+### Describing Relationships
 
 We have a standard idea of how our experiment works:
 
-&lt;center&gt;
-   &lt;img src="figure/schemeit-project.png" alt="dmc logo" height="120"&gt; 
-&lt;/center&gt;
 Bivariate data oftern arise because a quantitative experimental variable *x* has been varied between several different setting (treatment). 
 
 It is helpful to have an equation relating *y* (the response) to *x* when the purposes are summarization, interpolation, limited extrapolation, and/or process optimization/ adjusment. 
@@ -134,7 +89,7 @@ But how do we describe those response when we know that random error would make 
 ]
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ]
 .right-column[
@@ -146,16 +101,14 @@ But how do we describe those response when we know that random error would make 
 ]
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ]
 .right-column[
 
-## The Underlying Idea
+### The Underlying Idea
 
-&lt;center&gt;
-   &lt;img src="figure/schemeit-project.png" alt="dmc logo" height="125"&gt; 
-&lt;/center&gt;
+
 
 We start with a valid mathematical model, for instance a line:
 
@@ -172,7 +125,7 @@ In this case,
 ]
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ### Ex: Bar Stress
 ]
@@ -194,7 +147,7 @@ A good first place to investigate the relationship between our experimental vari
 ]
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ### Ex: Bar Stress
 ]
@@ -218,7 +171,7 @@ Our data:
 ]
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ### Ex: Bar Stress
 ]
@@ -242,7 +195,7 @@ Our data:
 ]
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ### Ex: Bar Stress
 ]
@@ -268,7 +221,7 @@ Our data:
 ]
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ### Ex: Bars
 ### Fitting Lines
@@ -300,7 +253,7 @@ y \approx \beta_0 + \beta_1 \cdot x
 ]
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ### Ex: Bars
 ### Fitting Lines
@@ -334,7 +287,7 @@ However, this doesn't tell us _how_ to estimate them.
 ]
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ### Ex: Bars
 ### Fitting Lines
@@ -382,7 +335,7 @@ We can rewrite the target we want to minimize so that the variables are less tan
 
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ### Ex: Bars
 ### Fitting Lines
@@ -413,7 +366,7 @@ How do we minimize it?
 ]
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ### Ex: Bars
 ### Fitting Lines
@@ -440,7 +393,7 @@ and then replace all \\(b_0\\) in the second equation (there is some algebra typ
 ]
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ### Ex: Bars
 ### Fitting Lines
@@ -459,16 +412,29 @@ b_0 &amp;= \bar{y}- b_1 \bar{x} \\\\
 b_1 &amp;= \frac{\sum_{i = 1}^n y_i x_i - n \bar{x} \bar{y}}{\sum_{i = 1}^n x_i^2 - n \bar{x}^2} \\\\
      &amp;= \frac{\sum_{i = 1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i = 1}^n (x_i - \bar{x})^2}
 \end{align}`
+]
+
+---
+.left-column[
+### Describing Relationships
+### Idea
+### Ex: Bars
+### Fitting Lines
+### Best Estimate
+]
+.right-column[
 
 **Wrap Up**
--  Don't try to memorize the derivation. I will never ask you to do that on an exam.
--  Try to understand the simplification steps - the ones that moved constants out of summations for example.
--  This is one rule - there are others, but **Least Squares Estimates** have some useful properties that will make them the obvious best choice as we continue the course.
+&gt;-  Don't try to memorize the derivation. I will never ask you to do that on an exam.
+
+&gt;-  Try to understand the simplification steps - the ones that moved constants out of summations for example.
+
+&gt;-  This is one rule - there are others, but **Least Squares Estimates** have some useful properties that will make them the obvious best choice as we continue the course.
 
 ]
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ### Ex: Bars
 ### Fitting Lines
@@ -511,7 +477,7 @@ In our case we have the following:
 ]
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ### Ex: Bars
 ### Fitting Lines
@@ -551,7 +517,7 @@ b_1 &amp;= \frac{\sum_{i = 1}^n y_i x_i - n \bar{x} \bar{y}}{\sum_{i = 1}^n x_i^
 ]
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ### Ex: Bars
 ### Fitting Lines
@@ -598,7 +564,7 @@ Which gives us the **Fitted Relationship**:
 ]
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ### Ex: Bars
 ### Fitting Lines
@@ -625,7 +591,7 @@ Which gives us the **Fitted Relationship**:
 
 ---
 .left-column[
-## Describing Relationships
+### Describing Relationships
 ### Idea
 ### Ex: Bars
 ### Fitting Lines
@@ -648,30 +614,56 @@ Which gives us the **Fitted Relationship**:
 &lt;img src="ch4_files/figure-html/unnamed-chunk-4-1.png" style="display: block; margin: auto;" /&gt;
 ]
 ---
-name: inverse
-layout: true
-class: center, middle, inverse
----
-# JMP 
-
-
----
-layout: false
 .left-column[
-## Describing Relationships
-### Using JMP
+### Describing Relationships
+### Idea
+### Ex: Bars
+### Fitting Lines
+### Best Estimate
 ]
 .right-column[
 
-##Topics to be covered in JMP
+When making predictions, don't *extrapolate*.
 
--  Fitting linear relationships
 
--  Describing quality of fit (correlation, \\(R^2\\))
+&gt; **Extrapolation** is when a value of `\(x\)` beyond the range of our actual observations is used to find a predicted value for `\(y\)`. We don't know the behavior of the line beyond our collected data.
 
--  Fitting relationships using multiple variables
+&gt;**Interpolation** is when a value of `\(x\)` within the range of our observations is used to find a predicted value for `\(y\)`.
 
--  Fitting non-linear relationships
+]
+
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+## Good Fit
+---
+layout: false
+.left-column[
+### Describing Relationships
+### Idea
+### Ex: Bars
+### Fitting Lines
+### Best Estimate
+### Good Fit
+]
+.right-column[
+
+### Knowing when a relationship fits the data well&lt;/h3&gt;
+
+
+So far we have been fitting lines to describe our data. A first question to ask may be something like:
+
+-  **Q**: What kind of situations can a linear fit be used to describe the relationship between an expreimental variable and a response?
+
+-  **A**: Any time both the experimental variable and the response variable are numeric.
+
+**However** all fits are not created the same: 
+
+&lt;center&gt;
+   &lt;img src="line_fits.png" alt="dmc logo" height="250"&gt; 
+&lt;/center&gt;
 
 ]
 ---
@@ -679,62 +671,178 @@ name: inverse
 layout: true
 class: center, middle, inverse
 ---
-### An example 
+##  Correlation 
 ---
-layout: false
-## Example: Manufacturing Ball Bearings
+layout:false
+.left-column[
+### Describing Relationships
+### Idea
+### Ex: Bars
+### Fitting Lines
+### Best Estimate
+### Good Fit
+### Correlation
+]
+.right-column[
+### Correlation
 
-Controlling surface roughness is an important part of the manufacture of bearing balls. 
-The key step in this smoothing the balls involves the use of a spinning weighted disc.
-Two important aspects of this are the rotation speed of the disc and the weight applied to the disc.
-Since higher weights and higher rotation speed are all known to cause shorter lifetimes for the discs (which requires halts in production, costs of new discs, and so on), a team of engineers are attempting to better understand the relationship between the rotation speed, the weight, and the resulting surface roughness of the balls produced.
+Visually we can assess if a fitted line does a good job of fitting the data using a scatterplot. However, it is also helpful to have methods of quantifying the quality of that fit.
 
+&gt;**Correlation** gives the strength and direction of the linear relationship between two variables.
 
+For a sample consisting of data pairs 
+\\((x_1, y_1)\\), 
+\\((x_2, y_2)\\), 
+\\((x_3, y_3)\\), 
+...
+\\((x_n, y_n)\\), the sample linear correlation, \\(r\\), is defined by 
 
+`\[
+r = \frac{ \sum_{i = 1}^{n} (x_i - \bar{x}) (y_i - \bar{y}) }{ 
+\sqrt{ \left(\sum_{i = 1}^{n} (x_i - \bar{x})^2 \right) \left(\sum_{i = 1}^{n} (y_i - \bar{y})^2 \right) } }
+\]`
 
+which can also be written as
 
+`\[
+r = \frac{ \sum_{i = 1}^{n} x_i y_i - n \bar{x}\bar{y} }{ 
+\sqrt{ \left(\sum_{i = 1}^{n} x_i^2 - n\bar{x}^2 \right) \left(\sum_{i = 1}^{n} y_i^2 - n \bar{y}^2 \right) } }
+\]`
+]
 ---
-## Experiment 1: Constant speed, changing applied weight
-With the disc rotation speed locked at 50 rotations/second, the team of engineers created 60 batches of balls using differently weighted discs (0.025 g, 0.050 g, 0.075 g, 0.100 g, ..., 0.500 g) and randomly selected one ball from each batch. 
-The results are recorded in the dataset "balls-001.csv" on the course page.
+layout:false
+.left-column[
+### Describing Relationships
+### Idea
+### Ex: Bars
+### Fitting Lines
+### Best Estimate
+### Good Fit
+### Correlation
+]
+.right-column[
+### Correlation
 
-&lt;img src="ch4_files/figure-html/unnamed-chunk-5-1.png" style="display: block; margin: auto;" /&gt;
+**1. Sample correlation (aka, sample linear correlation)**
 
+The value of \\(r\\) is always between -1 and +1.
+
+-  The closer the value is to -1 or +1 the stronger the linear relationship.
+
+-  Negative values of \\(r\\) indicate a negative relationship (as \\(x\\) increases, \\(y\\) decreases).
+
+-  Positive values of \\(r\\) indicate a positive relationship (as \\(x\\) increases, \\(y\\) increases).
+]
 ---
-## Experiment 2: Changing speed, constant applied weight
-With an better understanding of the relationship between weight and surface roughness, the team turned their attention to rotation speed.
-This time the produced 3 batches for each of 15 rotation speeds (25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, and 95 rotations per second). 
-The results are recorded in the dataset "balls-002.csv" on the course page.
+layout:false
+.left-column[
+### Describing Relationships
+### Idea
+### Ex: Bars
+### Fitting Lines
+### Best Estimate
+### Good Fit
+### Correlation
+]
+.right-column[
 
-&lt;img src="ch4_files/figure-html/unnamed-chunk-6-1.png" style="display: block; margin: auto;" /&gt;
+-  One possible rule of thumb:
 
+| Range of \\(r\\)  | Strength      | Direction |
+|-------------------|---------------|-----------|
+| 0.9 to 1.0        | Very Strong   | Positive  |
+| 0.7 to 0.9        |      Strong   | Positive  |
+| 0.5 to 0.7        |      Moderate | Positive  |
+| 0.3 to 0.5        |      Weak     | Positive  |
+| -0.3 to 0.3       | Very Weak/No Relationship |  |
+| -0.5 to -0.3      |      Weak     | Negative  |
+| -0.7 to -0.5      |      Moderate | Negative  |
+| -0.9 to -0.7      |      Strong   | Negative  |
+| -1.0 to -0.9      | Very Strong   | Negative  |
+
+]
 ---
-## Experiment 3: Changing speed changing applied weight
+layout:false
+.left-column[
+### Describing Relationships
+### Idea
+### Ex: Bars
+### Fitting Lines
+### Best Estimate
+### Good Fit
+### Correlation
+]
+.right-column[
 
-With a better understanding of the relationship between weight and surface roughness, the team turned their attention to rotation speed.
-This time the produced 3 batches for each combination of 20 weights 
-(0.025 g, 0.050 g, 0.075 g, 0.100 g, ..., 0.500 g)
-and 15 rotation speeds (25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 85, 90, and 95 rotations per second).
-The results are recorded in the dataset "balls-003.csv"
+&lt;center&gt;
+   &lt;img src="line_fits.png" alt="dmc logo" height="250"&gt; 
+&lt;/center&gt;
 
-&lt;img src="ch4_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
+The values of \\(r\\) from left to right are in the plot above are:
+```
+          r=0.9998782       r=-0.8523543    r=-0.1347395
+```
 
+-  In there first case the linear relationship is almost perfect, and we would happily refer to this as a **very strong**, **positive** relationship between \\(x\\) and \\(y\\).
 
+-  In there second case the linear relationship is seems appropriate - we could safely call it a **strong**, **negative** linear relationship between \\(x\\) and \\(y\\).
+
+-  In there third case the value of \\(r\\) indicates that there is **no linear relationship** between the value of \\(x\\) and the value of \\(y\\).
+
+In each case we *can* fit a linear model. However,
+
+-  a line is clearly a good choice for the data on the left
+-  the middle data could be described well by a line, but the relationship is not as obvious as the case on the left.
+-  a linear relationship is clearly clearly inappropriate for the data on the right (something like \\(x^2\\) would be better).
+
+We need a way to identify the quality of the fit **concretely** 
+]
 ---
-## Experiment 4: Changing categorical speed changing applied weight
+layout:false
+.left-column[
+### Describing Relationships
+### Idea
+### Ex: Bars
+### Fitting Lines
+### Best Estimate
+### Good Fit
+### Correlation
+]
+.right-column[
 
-Now that they have a complete model, what if they had attempted this experiment with a machine in which rotation speed only consisted of "low, medium, and high"?
+**1. Sample correlation (aka, sample linear correlation)**
 
-Again, time the produced 3 batches for each combination of 20 weights 
-(0.025 g, 0.050 g, 0.075 g, 0.100 g, ..., 0.500 g)
-and three rotation speeds: low (encoded as 1), medium (encoded as 2), high (encoded as 3).
-The results are recorded in the dataset "balls-004.csv"
----
-## Experiment 4: Changing categorical speed changing applied weight
+**Example**: Stress and Lifetime of Bars
 
-&lt;img src="ch4_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+We can use it to calculate the following values:
 
+&lt;center&gt;
+&lt;span style = "font-size: 60%"&gt;
+\\[
+\sum\_{i = 1}^{10} x\_i = 200, 
+\sum\_{i = 1}^{10} x\_i^2 = 5412.5, 
+\\]
 
+\\[
+\sum\_{i = 1}^{10} y\_i = 484, 
+\sum\_{i = 1}^{10} y\_i^2 = 25238, 
+\sum\_{i = 1}^{10} x\_i y\_i = 8407.5, 
+\\]
+&lt;/span&gt;
+&lt;/center&gt;
+and we can write:
+&lt;span style = "font-size: 80%"&gt;
+
+`\begin{align}
+r &amp;= \frac{ \sum_{i = 1}^{n} x_i y_i - n \bar{x}\bar{y} }{ \sqrt{ \left(\sum_{i = 1}^{n} x_i^2 - n\bar{x}^2 \right) \left(\sum_{i = 1}^{n} y_i^2 - n \bar{y}^2 \right) } } \\\\
+  &amp;= \frac{ 8407.5 - 10 (20) (48.5) }{ \sqrt{ \left(5412.5 - 10 (20)^2 \right) \left(25238 - 10 (48.4)^2 \right) } } \\\\
+  &amp;= -0.795
+\end{align}`
+
+&lt;/span&gt;
+So we would say that stress applied and lifetime of the bar have a **strong, negative, linear relationship**.
+
+]
 ---
 name: inverse
 layout: true
@@ -744,11 +852,18 @@ class: center, middle, inverse
 ---
 layout:false
 .left-column[
+### Describing Relationships
+### Idea
+### Ex: Bars
+### Fitting Lines
+### Best Estimate
+### Good Fit
+### Correlation
 ### Residuals
 ]
 .right-column[
 
-###Residuals
+### Residuals
 
 -  The "residue" left over from fitting a line
 
@@ -765,11 +880,18 @@ layout:false
 ]
 ---
 .left-column[
+### Describing Relationships
+### Idea
+### Ex: Bars
+### Fitting Lines
+### Best Estimate
+### Good Fit
+### Correlation
 ### Residuals
 ]
 .right-column[
 
-###Residuals
+### Residuals
 
 &lt;center&gt;
    &lt;img src="residual_plpt.gif" alt="dmc logo" height="250"&gt; 
@@ -790,11 +912,18 @@ for each pair \\((x_i, y_i)\\).
 ]
 ---
 .left-column[
+### Describing Relationships
+### Idea
+### Ex: Bars
+### Fitting Lines
+### Best Estimate
+### Good Fit
+### Correlation
 ### Residuals
 ]
 .right-column[
 
-###Residuals
+### Residuals
 
 &lt;center&gt;
    &lt;img src="residual_plpt.gif" alt="dmc logo" height="250"&gt; 
@@ -808,6 +937,1209 @@ for each pair \\((x_i, y_i)\\).
 -  If \\(e\_i &lt; 0\\) then \\(y_i - \hat{y}\_i &lt; 0\\) and \\(y\_i &lt; \hat{y}\_i\\) meaning the observed is smaller than the predicted - we are "overpredicting"
 
 Obviously, we would like our residuals to be small compared to the size of response values.
+
+]
+
+---
+layout: true
+class: center, middle, inverse
+
+---
+
+#Assessing Models
+---
+layout:false
+.left-column[
+### Describing Relationships
+### Idea
+### Fitting Lines
+### Best Estimate
+### Good Fit
+### Correlation
+### Residuals
+### Assessment
+]
+.right-column[
+
+### Assessing models
+
+When modeling, it's important to assess the (1) **validity** and (2) **usefulness** of your model.
+
+To assess the validity of the model, we will look to the residuals. If the fitted equation is the good one, the residuals will be:
+
+- Ptternless (cloud like, random scatter)
+- Centered at zero
+- Bell shaped distribution
+
+To check if these three things hold, we will use two plotting methods.
+
+
+&gt;A **residual plot}** is a plot of the residuals, `\(e = y - \hat{y}\)` vs. `\(x\)` (or `\(\hat{y}\)` in the case of multiple regression, Section 4.2).
+
+]
+---
+layout:false
+.left-column[
+### Describing Relationships
+### Idea
+### Fitting Lines
+### Best Estimate
+### Good Fit
+### Correlation
+### Residuals
+### Assessment
+]
+.right-column[
+#### Assessing models
+#### Residual plot
+&lt;img src="ch4_files/figure-html/residual_plots-1.png" width=".48\textwidth" style="display: block; margin: auto;" /&gt;&lt;img src="ch4_files/figure-html/residual_plots-2.png" width=".48\textwidth" style="display: block; margin: auto;" /&gt;
+]
+---
+layout:false
+.left-column[
+### Describing Relationships
+### Idea
+### Fitting Lines
+### Best Estimate
+### Good Fit
+### Correlation
+### Residuals
+### Assessment
+]
+.right-column[
+#### Assessing models
+#### Residual plot
+
+&lt;img src="ch4_files/figure-html/unnamed-chunk-5-1.png" width=".48\textwidth" style="display: block; margin: auto;" /&gt;&lt;img src="ch4_files/figure-html/unnamed-chunk-5-2.png" width=".48\textwidth" style="display: block; margin: auto;" /&gt;
+
+]
+---
+layout:false
+.left-column[
+### Describing Relationships
+### Idea
+### Fitting Lines
+### Best Estimate
+### Good Fit
+### Correlation
+### Residuals
+### Assessment
+]
+.right-column[
+#### Assessing models
+#### Residual plot
+&lt;img src="ch4_files/figure-html/unnamed-chunk-6-1.png" width=".48\textwidth" style="display: block; margin: auto;" /&gt;&lt;img src="ch4_files/figure-html/unnamed-chunk-6-2.png" width=".48\textwidth" style="display: block; margin: auto;" /&gt;
+
+]
+---
+layout:false
+.left-column[
+### Describing Relationships
+### Idea
+### Fitting Lines
+### Best Estimate
+### Good Fit
+### Correlation
+### Residuals
+### Assessment
+]
+.right-column[
+#### Normality of residuals
+- In addition to the residual versus predicted plot, there are other residual plots we can use to check regression assumptions. 
+
+- A **histogram of residuals** and a **normal probability plot (QQ-plot)** of residuals can be used to evaluate whether our residuals are approximately normally distributed. 
+   - However, unless the residuals are far from normal or have an obvious pattern, we generally don’t need to be overly concerned about normality.
+
+- Note that we check the residuals for normality. We don’t need to check for normality of the raw data. Our response and predictor variables do not need to be normally distributed in order to fit a linear regression model.
+]
+---
+layout:false
+.left-column[
+### Describing Relationships
+### Idea
+### Fitting Lines
+### Best Estimate
+### Good Fit
+### Correlation
+### Residuals
+### Assessment
+]
+.right-column[
+#### Normality of residuals
+
+Draw a histogram of the residuals (review the JMP toturial for histograms)
+
+&lt;center&gt;
+&lt;img src="figure/diag9.png" alt="alloy" width="400", height= "300"&gt;
+&lt;/center&gt;
+
+It seems the residuals are not normaly distributed in this example.The residuals have a left skewed distirbution.
+
+]
+---
+layout:false
+.left-column[
+### Describing Relationships
+### Idea
+### Fitting Lines
+### Best Estimate
+### Good Fit
+### Correlation
+### Residuals
+### Assessment
+]
+.right-column[
+#### Normality of residuals
+As the instructions on the JMP toturials (and also HW #3), you can draw **Normal QQ-plot** to evaluate if the residuals meet the assumptions of normaly distributed. 
+
+Plotting Normal QQ-plot of the same example
+
+&lt;center&gt;
+&lt;img src="figure/diag10.png" alt="alloy" width="300"&gt;
+&lt;/center&gt;
+
+- Again, the QQ-plot also confirms that the assumption of Normal distribution of residuals is violated  to some extend in this example. 
+
+- More examination is required to fix the issue or to find the problem. 
+
+]
+---
+layout: true
+class: middle, center, inverse
+---
+# Coefficient of Determination
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+]
+.right-column[
+#### Coeffecient of Determination (\\(R^2\\))
+
+We know that our responses have variability - they are not always the same. We hope that the relationship between our response and our explanatory variables explains some of the variability in our responses.
+
+\\(R^2\\) is the fraction of the total variability in the response (\\(y\\)) accounted for by the fitted relationship.
+
+
+-  When \\(R^2\\) is close to 1 we have explained **almost all** of the variability in our response using the fitted relationship (i.e., the fitted relationship is good).
+
+-  When \\(R^2\\) is close to 0 we have explained **almost none** of the variability in our response using the fitted relationship (i.e., the fitted relationship is bad).
+
+There are a number of ways we can calculate \\(R^2\\). 
+Some require you to know more than others or do more work by hand.
+
+]
+---
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+]
+.right-column[
+
+#### Calculating Coeffecient of Determination (\\(R^2\\)
+
+**Method a**. Using the data and our fitted relationship:
+
+For an experiment with response values \\(y_1, y_2, \ldots, y_n\\) 
+and fitted values \\(\hat{y}_1, \hat{y}_2, \ldots, \hat{y}_n\\) we calcuate the following:
+
+`\[
+R^2 = \frac{
+\sum_{i=1}^n (y_i - \bar{y})^2 -  \sum_{i=1}^n (y_i - \hat{y}_i)^2 
+}{
+\sum_{i=1}^n (y_i - \bar{y})^2
+}
+\]`
+
+-  This is the longest way to calculate \\(R^2\\) by hand.
+
+-  It requires you to know every response value in the data (\\(y_i\\)) and every fitted value (\\(\hat{y}_i\\))
+]
+---
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+]
+.right-column[
+
+#### Calculating Coeffecient of Determination (\\(R^2\\)
+
+**Method b**. Using Sums of Squares
+
+For an experiment with response values \\(y_1, y_2, \ldots, y_n\\) 
+and fitted values \\(\hat{y}_1, \hat{y}_2, \ldots, \hat{y}_n\\) we calcuate the following:
+
+-  Total Sum of Squares (SSTO): a baseline for the variability in our response.
+
+\\[
+SSTO  = \sum_{i=1}^n (y_i - \bar{y})^2
+\\]
+
+-  Error Sum of Squares (SSE): The variability in the data after fitting the line
+
+\\[
+SSE = \sum_{i=1}^n (y_i - \hat{y}_i)^2
+\\]
+
+
+-  Regression Sum of Squares (SSR): The variability in the data accounted for by the fitted relationship
+
+\\[
+SSR = SSTO - SSE
+\\]
+]
+---
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+]
+.right-column[
+
+#### Calculating Coeffecient of Determination (\\(R^2\\)
+
+**Method b**. Using Sums of Squares
+
+We can write the \\(R^2\\) using these sums of squares:
+
+\\[
+R^2 = \frac{SSR}{SSTO} = \frac{SSTO - SSE}{SSTO} = 1 - \frac{SSE}{SSTO}
+\\]
+
+-  **Q**: What's the advantage of using the sums of squares?
+
+-  **A**: The values of SSTO, SSE, and SSR are used in many statistical calculations. Because of this, they are commonly reported by statistical software. For instance, fitting a model in JMP produces these as part of the output.
+
+]
+---
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+]
+.right-column[
+
+#### Calculating Coeffecient of Determination (\\(R^2\\)
+
+**Method c**. A special case when the relationship is linear
+
+If the relationship we fit between \\(y\\) and \\(x\\) is linear, 
+then we can use the sample correlation, \\(r\\) to get:
+
+\\[
+R^2 =(r)^2
+\\]
+
+**NOTE**: Please, please, please, understand that this is only true for linear relationships.
+
+]
+---
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+]
+.right-column[
+
+#### Calculating Coeffecient of Determination (\\(R^2\\)
+**Example: Stress on Bars **
+
+
+|                                      |      |      |      |      |      |      |      |      |      |      |
+|--------------------------------------|------|------|------|------|------|------|------|------|------|------|
+| **stress** \\((\text{kg/mm}^2)\\)    |  2.5 |  5.0 | 10.0 | 15.0 | 17.5 | 20.0 | 25.0 | 30.0 | 35.0 | 40.0 |
+| **lifetime** (hours)                 |  63  |  58  |  55  |  61  |  62  |  37  |  38  |  45  |  46  |  19  |
+
+Earlier, we found \\(r = -0.795\\).
+
+Since we are describing the relationship using a line, then we can use the special case:
+
+\\[
+R^2 = (r)^2 = (-0.795)^2 = 0.633
+\\]
+
+&gt;In other words, 63.3% of the variability in the lifetime of the bars can be explained by the linear relationship between  the stress the bars were placed under and the lifetime. 
+
+]
+---
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+]
+.right-column[
+### Precautions
+
+Precautions about Simple Linear Regression (SLR)
+
+- `\(r\)` only measures linear relationships
+- `\(R^2\)` and `\(r\)` can be drastically affected by a few unusual data points.
+
+### Using a computer
+
+You can use JMP (or `R`) to fit a linear model. See BlackBoard for videos on fitting a model using JMP.
+
+]
+---
+layout: true
+class: center, middle, inverse
+---
+## Section 4.2
+### Fitting Curves and Surfaces by Least Squares
+### Multiple Linear Regression
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+## Linear Relationships
+
+- The idea of simple linear regression can be generalized to produce a powerful engineering tool: **Multiple Linear Regression** (MLR). 
+
+- SLR is associated with **line fitting**
+- MLR is associated with **curve fitting and surface fitting**
+
+- What we mean by multiple **linear** relationship is that the relation between the variables and the response is linear **in their parameters**.
+
+   - **Multiple linear regression in general:** when there are more than one experimental variable in the experiment 
+`$$y = \beta_0 + \beta_1 x_1 + \beta_2 x_2+\cdots+ \beta_k x_k$$`
+   - **polynomial equation of order k:** 
+`$$y = \beta_0 + \beta_1 x + \beta_2 x^2+ + \beta_3 x^3+\cdots+ \beta_k x^k$$`
+]
+---
+layout:false
+
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+
+## Non-Linear Relationships
+- And there are also **non-linear relationship** where the relationship between the variables and the response is non-linear **in their parameters**.
+
+`\begin{align}
+y &amp;=  \beta_0 + e^{\beta_1} x  \\\\
+\end{align}`
+
+$$ y= \frac{\beta_0}{\beta_1 + \beta_2x} $$
+
+]
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+## An issue
+
+- The point is that fitting curves and surfaces by the least square method needs a lot of matrix algebra concepts and it is difficult to be done by hand.
+
+- We need software to fit surfaces and curves.
+
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+### Example 
+
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+#### Example:  
+Compressive Strength of Fly Ash Cylinders as a Function of Amount of Ammonium Phoshate Additive
+
+| Ammonium Phosphate(%)  | Compressive Strength (psi)| Ammonium Phosphate(%)  | Compressive Strength (psi)| 
+|------------------------|---------------------------|------------------------|---------------------------|
+|          0             |        1221               |           3            |         1609              | 
+|          0             |        1207               |           3            |         1627              | 
+|          0             |        1187               |           3            |         1642              | 
+|          1             |        1555               |           4            |         1451              | 
+|          1             |        1562               |           4            |         1472              | 
+|          1             |        1575               |           4            |         1465              | 
+|          2             |        1827               |           5            |         1321              | 
+|          2             |        1839               |           5            |         1289              | 
+|          2             |        1802               |           3            |         1292              | 
+
+]
+---
+layout:false
+
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+####Example:  
+Compressive Strength of Fly Ash Cylinders as a Function of Amount of Ammonium Phoshate Additive
+
+&lt;img src="ch4_files/figure-html/unnamed-chunk-7-1.png" style="display: block; margin: auto;" /&gt;
+
+]
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+####Example:  
+Compressive Strength of Fly Ash Cylinders as a Function of Amount of Ammonium Phoshate Additive
+
+&lt;img src="ch4_files/figure-html/unnamed-chunk-8-1.png" style="display: block; margin: auto;" /&gt;
+]
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+#### Example:  
+Compressive Strength of Fly Ash Cylinders as a Function of Amount of Ammonium Phoshate Additive
+
+&lt;img src="ch4_files/figure-html/unnamed-chunk-9-1.png" style="display: block; margin: auto;" /&gt;
+]
+
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+### One More Example in  Fitting Surface and Curves
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+#### Example: Hardness of Alloy
+A group of researchers are studying influences on the hardness of a metal alloy. The researchers varied the percent copper and tempering temperature,
+measuring the hardness on the Rockwell scale.
+
+The goal is to describe a relationship between our response, Hardness, and our two experimental variables, the percent copper (\\(x_1\\)) and tempering temperature (\\(x_2\\)).
+
+]
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+#### Example: Hardness of Alloy
+
+| Percent Copper | Temperature | Hardness | 
+|----------------|-------------|----------|
+| 0.02 | 1000  |  78.9 | 
+|      | 1100  |  65.1 | 
+|      | 1200  |  55.2 | 
+|      | 1300  |  56.4 | 
+| 0.10 | 1000  |  80.9 | 
+|      | 1100  |  69.7 | 
+|      | 1200  |  57.4 | 
+|      | 1300  |  55.4 | 
+| 0.18 | 1000  |  85.3 | 
+|      | 1100  |  71.8 | 
+|      | 1200  |  60.7 | 
+|      | 1300  |  58.9 | 
+
+]
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+#### Example: Hardness of Alloy 
+**Theoretical Relationship**: 
+
+We start by writing down a theoretical relationship. With one experimental variable, we may start with a line. Extending that idea for two variables, we start with a plane:
+$$
+y = \beta_0 + \beta_1 x_1 + \beta_2 x_2
+$$
+
+**Observed Relationship**:
+
+In our data, the true relationship will be shrouded in error.
+`\begin{align}
+y &amp;= \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \text{errors} \\\\
+  &amp;= [\ \ \ \ \ \ \ \ \text{signal}\ \ \ \ \ \ \ ] + [\text{noise}]
+\end{align}`
+]
+
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+#### Example: Hardness of Alloy 
+**Fitted Relationship**:
+
+If we are right about our theoretical relationship, though, and the signal-to-noise ratio is small, we might be able to estimate the relationship:
+$$
+\hat{y} = b_0 + b_1 x_1 + b_2 x_2 
+$$
+]
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+#### Example: Hardness of Alloy
+Enter the data in JMP
+
+&lt;img src="figure/alloy-data-in-jmp.png" alt="alloy" width="500"&gt;
+]
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+#### Example: Hardness of Alloy
+In JMP, go to
+
+&gt; `Analyze &gt; Fit Model` 
+
+to define the model you are fitting:
+
+&lt;img src="figure/alloy-fit-model.png" alt="alloy" width="500"&gt;
+]
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+#### Example: Hardness of Alloy
+After clicking `Run` we get the following model fit results:
+
+&lt;img src="figure/alloy-fit-results.png" alt="alloy" width="400"&gt;
+]
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+#### Example: Hardness of Alloy
+From this output, we can get the value of `\(R^2\)`, the coeffecient of determination:
+
+&lt;img src="figure/alloy-fit-results-detail-001.png" alt="alloy" width="400"&gt;
+
+Since `\(R^2 = 0.899073\)`, we can say 
+&gt;89.9074% of the variability in the hardness we observed can be explained by its relationship with temperature and percent copper.
+]
+
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+#### Example: Hardness of Alloy
+From this output, we can get the sum of squares.
+
+&lt;img src="figure/alloy-fit-results-detail-002.png" alt="alloy" width="400"&gt;
+
+This "Analysis of Variance" table has the same format across almost all textbooks, journals, software, etc. In our notation, 
+- `\(SSR = 1152.1888\)`
+- `\(SSE = 129.3404\)`
+- `\(SSTO = 1281.5292\)`
+
+We can use these for lots of purposes. In this class, we have seen that we can get `\(R^2\)`:
+
+$$
+R^2 = 1 - \frac{SSE}{SSTO} = 1 - \frac{129.3404}{1281.5292} = 0.8990734
+$$
+
+]
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+#### Example: Hardness of Alloy
+The parameter estimates give us the fitted values used in our model:
+
+&lt;img src="figure/alloy-fit-results-detail-003.png" alt="alloy" width="400"&gt;
+
+Since we defined percent copper as `\(x_1\)` earlier and temperature as `\(x_2\)` then we can write:
+`$$\hat{y} = 161.33646 + 32.96875 \cdot x_1 - 0.0855 \cdot x_2$$`
+
+We can use this to get fitted values. If we use temperature of 1000 degrees and percent copper of 0.10 then we would predict a hardness of
+
+`\begin{align}
+\hat{y} &amp;= 161.33646 + 32.96875 \cdot (0.10) - 0.0855 \cdot (1000) \\\\
+        &amp;= 161.33646 + 3.296875 - 85.5 \\\\
+        &amp;= 79.13333
+\end{align}`
+
+
+]
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+#### Example: Hardness of Alloy
+While our model looks pretty good, we still need to check a few things involving residuals. We can save our residuals from the model fit drop down and analyze them.
+
+From Analyze &gt; Distribution:
+
+&lt;img src="figure/alloy-residuals.png" alt="alloy" width="400"&gt;
+
+]
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+#### Example: Hardness of Alloy
+
+There aren't many residuals here (just 12) but we would like to make sure that the histogram has rough bell-shape (normal residuals are good). I would call this one inconclusive.
+
+&lt;img src="figure/alloy-residuals-plot-001.png" alt="alloy" width="300", height= "350"&gt;
+
+]
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+#### Example: Hardness of Alloy
+
+Another way to check if the residuals are approximately normal is to compare the quantiles of our residuals to the theoretical quantiles of the true normal distribution. 
+
+From the dropdown menu, choose Normal Quantile Plot to get:
+
+&lt;img src="figure/alloy-residuals-plot-002.png" alt="alloy" width="400"&gt;
+
+]
+---
+layout:false
+.left-column[
+#### Describing Relationships
+#### Idea
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+]
+.right-column[
+#### Example: Hardness of Alloy
+
+&lt;img src="figure/alloy-residuals-plot-002.png" alt="alloy" width="400"&gt;
+
+- If the points all fall on the line, then the residuals have the same spread as the normal distribution (i.e., the residuals follow a bell-shape, which is what we want). 
+- If they stay within the curves, then we can say the residuals follow a rough bell shape (which is good).
+- If points fall outside the curves, our model has problems (which is bad).
+
+]
+---
+layout: true
+class: center, middle, inverse
+---
+## Transformations
+---
+layout:false
+.left-column[
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+#### Transformation
+]
+.right-column[
+#### Transformations: Fitting complicated relationships
+
+Consider the simulated dataset 'transform.csv' in the lecture module. Here's the scatterplot:
+&lt;center&gt;
+&lt;img src="figure/transform-plot.png" alt="alloy" width="400"&gt;
+&lt;/center&gt;
+
+]
+---
+layout:false
+.left-column[
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+#### Transformation
+]
+.right-column[
+#### Transformations: Fitting complicated relationships
+
+Consider the residual plot you would get by trying to fit a line. What would that look like?
+
+Now consider the residual plot you would get by trying to fit a quadratic. What would that look like?
+
+What can we do about the size of the residuals??
+
+We need a function that can both adjust the scale our responses and account for the curve!!
+
+]
+---
+layout:false
+.left-column[
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+#### Transformation
+]
+.right-column[
+#### Transformations: Fitting complicated relationships
+
+One possible function that could do that: `\(ln(x)\)`.
+&lt;center&gt;
+&lt;img src="figure/transform-plot2.png" alt="alloy" width="300"&gt;
+&lt;/center&gt;
+
+Transforming our variables can allow us to get better fits, but you need to be careful about the meaning of the relationship. For instance, the slope now means "the change in the response when *the natural log of x is increased by 1* - the relationship to `\(x\)` itself is not always easy to translate back.
+
+]
+---
+layout: true
+class: center, middle, inverse
+---
+## Dangers in Fits
+---
+layout:false
+.left-column[
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+#### Transformation
+#### Dangers in Fits
+#### Overfitting
+]
+.right-column[
+#### Dangers in Fitting Relationships
+**Example**: Stress and Lifetime of Bars
+
+Consider the bars example again
+
+|                                      |      |      |      |      |      |      |      |      |      |      |
+|--------------------------------------|------|------|------|------|------|------|------|------|------|------|
+| **stress** \\((\text{kg/mm}^2)\\)    |  2.5 |  5.0 | 10.0 | 15.0 | 17.5 | 20.0 | 25.0 | 30.0 | 35.0 | 40.0 |
+| **lifetime** (hours)                 |  63  |  58  |  55  |  61  |  62  |  37  |  38  |  45  |  46  |  19  |
+
+Here's the linear fit:
+
+&lt;img src="figure/barlife-linear-plot.png" alt="alloy" width="300", height= "200"&gt;
+]
+---
+layout:false
+.left-column[
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+#### Transformation
+#### Dangers in Fits
+#### Overfitting
+]
+.right-column[
+#### Dangers in Fitting Relationships
+**Example**: Stress and Lifetime of Bars
+
+&lt;img src="figure/barlife-linear-plot.png" alt="alloy" width="300"&gt;
+
+The fitted line doesn't touch all the points, but we can push our relationship further by adding `\((stress)^2\)`, `\((stress)^3\)`, `\((stress)^4\)`, and so on. 
+
+Everytime we add a new term to the polynomial, we give the fitted relationship the ability to make one more turn.
+
+This leads to a problem called **overfitting**: our model is just following *the data*, including the errors, instead of uncovering *the true relationship*.
+
+]
+---
+layout:false
+.left-column[
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+#### Transformation
+#### Overfitting
+#### Multicollinearity
+]
+.right-column[
+#### Multicollinearity
+Multicollinearity occurs when you have strongly correlated experimental variables.
+&lt;center&gt;
+&lt;img src="figure/multicollinearity.png" alt="alloy" width="400"&gt;
+&lt;/center&gt;
+
+]
+---
+layout: false
+.left-column[
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+#### Transformation
+#### Overfitting
+#### Multicollinearity
+]
+.right-column[
+#### Multicollinearity
+
+Multicollinearity can lead to several problems:
+- Since the variables are all related to each other, the impact each variable has in the relationship to the response becomes difficult to determine
+- Since the disentangling the relationships is difficult, the estimates of the slopes for each variable become very sensitive (different samples lead to very different estimates)
+- Since the correlated experimental variables will have similar relationships to the response, most of them are not needed. Including them leads to an overfit.
+
+Ultimately while it may look like a good fit on paper, the model will be inaccurate.
+]
+---
+.left-column[
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+#### Transformation
+#### Overfitting
+#### Multicollinearity
+#### Wrapup
+]
+.right-column[
+#### Finding the Best Fit 
+-  Again, we can use the **Least Squares** principle to find the best estimates, \\(b_0\\), \\(b_1\\), and \\(b_2\\).
+
+-  The calculations are fairly advanced now that we have three values to estimate, 
+
+-  so these calculations are usually done in statistical software (like JMP).
+
+]
+---
+.left-column[
+#### Fitting Lines
+#### Best Estimate
+#### Good Fit
+#### Correlation
+#### Residuals
+#### Assessment
+#### `\(R^2\)`
+#### Fitting Curves
+#### MLR
+#### Transformation
+#### Overfitting
+#### Multicollinearity
+#### Wrapup
+]
+.right-column[
+####Judging The Fit
+
+-  Not all Theoretical Relationships we may imagine are real!
+
+-  Perhaps a better relationship could be found using \\[ y = \beta\_0 + \beta\_1 x\_1 + \beta\_2 \ln(x\_2) \\]
+
+-  We determine which relationships to try by examining plots of the data, fit statistics (like \\(R^2\\)), and plots of residuals.
+
+-  Be careful of overfitting and multicollinearity (when the experimental variables are correlated).
 
 ]
     </textarea>
