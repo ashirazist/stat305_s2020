@@ -1,0 +1,62 @@
+---
+title: "Homework 6"
+date: "Due June 23, 2017 in class"
+output: 
+  pdf_document:
+    number_sections: true
+geometry: margin=1in
+---
+
+Please show all work for full credit. Print and staple your assignment together and submit by end of class the due date. If you cannot attend class on the due date, please arrange to submit your homework prior to the due date.
+
+```{r setup, echo=FALSE, message=FALSE}
+library(knitr)
+library(tidyverse)
+library(xtable)
+
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, fig.height = 2)
+theme_set(theme_bw(base_family = "serif"))
+```
+
+1. [Ch 5.4, Exercise 2, pg. 300] Quality audit records are kept on numbers of major and minor failures of circuit packs during burn-in of large electronic switching devices. They indicate that for a device of this type, the random variables
+    $$
+    X = \text{ the number of major failures}
+    $$
+    and
+    $$
+    Y = \text{ the number of minor failures}
+    $$
+    can be described at least approximately by the accompanying joint distribution.
+    
+    ```{r}
+    expand.grid(x = 0:2, y = 0:4) %>%
+      mutate(f = c(.15, .05, .01, .10, .08, .01, .10, .14, .02, .10, .08, .03, .05, .05, .03)) -> probs
+    
+    
+    probs %>%
+      spread(x, f) %>%
+      rename(`y\\\\x` = y) %>%
+      kable()
+    ```
+    
+    a) Find the marginal probability functions for both $X$ and $Y$ ($f_x(x)$ and $f_y(y)$, respectively).
+    b) Are $X$ and $Y$ independent? Explain.
+    c) Find the mean and variance of $X$ ($\text{E}X$ and $\text{Var}X$)
+    d) Find the mean and variance of $y$ ($\text{E}Y$ and $\text{Var}Y$)
+    e) Find the conditional probability function for $Y$, given that $X = 0$ -- i.e., that there are no major circuit pack failures ($f_{Y|X}(y|0)$). What is the mean of this conditional distribution?
+1. [Ch 5.5, Exercise 3, pg. 322] Consider again the random number generator from Homework 4, Number 7. Suppose that it is used to generate $25$ random numbers and that these may reasonable be thought of as independent random variables with common individual (marginal) distribution 
+    $$
+    f(x) = \begin{cases} k(5 - x) & 0 < x< 1 \\ 0 & \text{otherwise}\end{cases}.
+    $$
+    Let $\overline{X}$ be the sample mean of these $25$ values.
+    a) What are the mean and standard deviation of the random variable $\overline{X}$?
+    b) What is the approximate probability distribution of $\overline{X}$?
+    c) Approximate the probability that $\overline{X}$ exceeds $0.5$.
+    d) Approximate the probability that $\overline{X}$ takes a value within $0.02$ of its mean.
+    e) Redo parts a) through d) using a sample size of $100$ instead of $25$.
+    
+1. [Ch 5, Exercise 10, pg. 324] Suppose that the thickness of sheets of a certain weight of book paper have mean $0.1$ mm and a standard deviation of $0.003$ mm. A particular textbook will be printed on 370 sheets of this paper. Find sensible values for the mean and standard deviation of the thicknesses of copies of the text (excluding the books' cover).
+
+1. [Ch 5, Exercise 20, pg. 326] Suppose that the raw daily oxygen purities delivered by an air-products supplier have a standard deviation $\sigma \approx .1$ (percent), and it is plausible to think of daily purities as independent random variables. Approximate the probability that the sample mean $\overline{X}$ of $n = 25$ delivered purities falls within $0.03$ (percent) of the raw daily purity mean, $\mu$.   
+
+

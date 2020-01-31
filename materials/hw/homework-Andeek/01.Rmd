@@ -1,0 +1,40 @@
+---
+title: "Homework 1"
+date: "Due May 22, 2017 in class"
+output: 
+  pdf_document:
+    number_sections: true
+geometry: margin=1in
+---
+
+Please show all work for full credit. Print and staple your assignment together and submit by end of class the due date. If you cannot attend class on the due date, please arrange to submit your homework prior to the due date.
+
+1. [Ch. 1.1 Exercise 1, pg. 4] Explain why engineering practice is an inherently statistical enterprise.
+
+1. [Ch. 1.2 Exercise 1, pg. 13] Describe a situation in your field where an observational study might be used to answer a question of real importance. Describe another situation where an experiment might be used.
+
+1. [Ch. 1.2 Exercise 2, pg. 13] Describe two different contexts in your field where, respectively, qualitative and quantitative data might arise.
+
+1. [Ch. 1.2 Exercise 4, pg. 13] Describe a situation in your field where pared data might arise.
+
+1. [Ch. 1.3 Exercise 1, pg. 19] Why might it be argued that in terms of producing useful measurements, one must deal first with the issue of validity, then the issue of precision, and only then the issue of accuracy?
+
+1. [Ch 1.4 Exercise 8, pg. 24] Consider a situation like that of Example 1.1 in the notes (involving the heat treatment of gears). Suppose that the original gears can be purchased from a variety of vendors, they can be made out of a variety of materials, they can be heated according to a variety of regimens (involving different times and temperatures), they can be cooled in a number of different ways, and the furnace atmosphere can be adjusted to a variety of different conditions. A number of features of the final gears are of interest, including their flatness, their concentricity, their hardness (both before and after heat treating), and their surface finish.
+    a) What kind of data arise if, for a single set of conditions, the Rockwell hardness of several gears is measures both before and after head treating? (Use the terminology of Section 1.2.) In the same context, suppose that engineering specifications on flatness require that measured flatness exceed .40mm. If flatness is measured for several gears and each gear is simply marked Acceptable or Not Acceptable, what kind of data are generated?
+    b) Describe a three-factor full factorial study that might be carried out in this situation. Name the factors that will be used and describe the levels of each. Write out a list of all the different combinations of levels of the factors that will be studied.
+    
+1.  [Ch. 2.3 Exercise 1, pg. 47] Consider the context of a study on making paper airplanes where two different Designs (say delta versus t wing), two different Papers (say construction versus typing) and two different Loading Conditions (with a paper clip versus without a paper clip) are of interest with regard to their impact on flight distance. Describe some variables that you would want to control in such a study. What are the response and experimental variables that would be appropriate in this context? Name a potential concomitant variable here.
+
+1. [Ch. 2.3 Exercise 2, pg. 47] In general terms, what is the trade-off that must be weighed in deciding whether or not to control a variable in a statistical engineering study?
+
+1. [Ch. 2 Exercise 1, pg. 64] Use the random digits table (Table B.1, available at http://andeekaplan.com/stat305/materials.html#tables) and choose a simple random sample of $n = 8$ out of $N = 491$ widgets. Describe carefully how you label the widgets. Begin in the upper left corner of the table. 
+
+1. [Ch 2. Exercise 2, pg. 64] Consider a potential student project concerning the making of popcorn. Possible factors affecting the outcome of popcorn making include at least the following: Brand of corn, Temperature of corn at the beginning of cooking, Popping method (e.g. frying vs. hot air popping), Type of Oil used (if frying), Amount of Oil used (if frying), Batch Size, initial Moisture Content of corn, and Person doing the evaluation of a single batch. Using these factors and/or any others that you can think of, answer the following questions about such a project:
+    a) What is a possible response variable in a popcorn project?
+    b) Pick two possible experimental factors in this context and describe a $2 \times 2$ factorial data structure in those variables that might arise in such a study.
+    c) Describe how the concept of randomization might be employed.
+    d) Describe how the concept of blocking might be employed.
+    
+1. [Ch2. Exercise 8, pg. 65] Return to the context of Exercise 6. from Homework 1.
+    a) Name factors and levels that might be used in a three-factor, full factorial study in this situation. Also name two response variables for the study. Suppose that in accord with good engineering data collection practice, you wish to include replication in the study. Make up a data collection sheet, listing all the combinations of levels of the factors to be included, and include blanks where the corresponding observed values of the two responses could be entered for each experimental run.
+    b) Suppose that it is feasible to make the runs listed in your answer to part a) in a completely randomized order. Use a mechanical method (like slips of paper in a hat) to arrive at a random order of experimentation for your study. Carefully describe the physical steps you follow in developing this order for data collection.

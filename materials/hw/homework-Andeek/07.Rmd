@@ -1,0 +1,94 @@
+---
+title: "Homework 7"
+date: "Due July 3, 2017 in class"
+output: 
+  pdf_document:
+    number_sections: true
+geometry: margin=1in
+---
+
+Please show all work for full credit. Print and staple your assignment together and submit by end of class the due date. If you cannot attend class on the due date, please arrange to submit your homework prior to the due date.
+
+
+```{r setup, echo=FALSE, message=FALSE}
+library(knitr)
+library(tidyverse)
+library(xtable)
+
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, fig.height = 2)
+theme_set(theme_bw(base_family = "serif"))
+```
+
+1. [Ch. 6.1, Exercise 2, pg. 344] We have a data set consisting of the aluminum contents of 26 bihourly samples of recycled PET plastic from a recycling facility. Those 26 measurements have $\overline{y} = 142.77$ ppm and $s \approx 98.2$ ppm. Use these facts to respond to the following.
+    a) Make a 90% two-sided confidence interval for the mean aluminum content of such speciments over the whole study period.
+    b) Make a 95% two-sided confidence interval for the mean aluminum content of such speciments over the whole study period. How does this compare to your answer in part a)?
+    c) Make a 90% upper confidence bound for the mean aluminum content of such speciments over the whole study period. (Find a # such that $(\infty, \#)$ is a 90% confidence interval.) How does this value compare to the upper endpoint of your interval from part a)?
+    d) Make a 95% upper confidence bound for the mean aluminum content of such speciments over the whole study period. (Find a # such that $(\infty, \#)$ is a 95% confidence interval.) How does this value compare to the upper endpoint of your interval from part c)?
+    e) Interpret your interval from a) for someone with little statistical background.
+    
+1. [Ch 6.1, Exercise 4, pg. 344] DuToit, Hansen, and Osborne measured the diameters of some no. 10 machine screws with two different calipers (digital and vernier scale). Part of their data are recorded here. Given in the small frequency table are the measurements obtained on 50 screws by one of the students using the digital calipers.
+
+    ```{r}
+    freq <- data.frame(Diameter = c(4.52, 4.66, 4.67, 4.68, 4.69, 4.70, 4.71, 4.72),
+                       Frequency = c(1, 4, 7, 7, 14, 9, 4, 4))
+    kable(freq)
+    ```
+    
+    a) Compute the sample mean and standard deviation for these data.
+    b) Use your sample values from a) and make a 98% two-sided confidence interval for the mean diameter of such screws as measured by this students with these calipers.
+    c) Repeat part b) using 99% confidence. How does this interval compare with the one from b)?
+    d) Use your values from a) and find a 98% lower confidence bound for the mean diameter. (Find a # such that $(\#, \infty)$ is a 98% confidence interval.) How does this value compare to the lower endpoint of your interval from b)?
+    e) Repeat part d) using 99% confidence. How does the value computed here compare with your answer for d)?
+    f) Interpret your interval from b) for someone with little statistical background.
+
+1. [Ch. 6.2, Exercise 1, pg. 361] In the aluminum containment study from Homework 10 Exercise 1, it was desirable to have mean aluminum content for samples of rexycled plastic below 200 ppm. Use the six-step significance testing format and determine the strengths of the evidence in the data that in fact this contamination goal has been violated. (You will want to begin with $\text{H}_0: \mu = 200$ ppm and use $\text{H}_A: \mu > 200$ ppm.)
+
+1. [Ch. 6.2, Exercise 4, pg. 361] In the context of the machine screw diameter study of Exercise 2 from Homework 10, suppose that the nominal diameter of such screws is 4.70 mm. Use the six-step significance-testing format and assess the strength of the evidence provided by the data that the long-run mean measured diameter differs from nominal. (You will want to begin with $\text{H}_0: \mu = 4.70$ mm and use $\text{H}_A: \mu \not= 4.70$ mm.)
+
+1. [Ch 6, Exercise 1, pg. 427] Consider the breaking strengths of paper towels.
+    ```{r, fig.cap="Normal Q-Q Plot for breaking strengths of towels."}
+    paper <- data.frame(Test = 1:10,
+                        Breaking_Strength = c(8577, 9471, 9011, 7583, 8572, 10688, 9614, 9614, 8527, 9165))
+    
+    kable(t(paper))
+    
+    paper %>%
+    ggplot(aes(sample=Breaking_Strength)) +
+      stat_qq()
+    ```
+    Notice that the normal plot of these data given above is reasonably linear. It may thus be sensible to suppose that breaking strengths for generic towels of this type (as measured by the students) are adequately modeled as normal. Under this assumption,
+    
+    a) Make and interpret 95% two-sided and one-sided confidence intervals (one-sided of the form $(\#, \infty)$) for the mean breaking strength of generic towels.
+    b) Make and interpret 95% two sided and one-sided prediction intervals for a single additional generic towel breaking strength. For the one-sided interval, give the lower prediction bound.
+    
+1. [Ch 6, Exercise 2, pg. 427] Consider the situation of Example 1.1 in Chapter 1 in the notes (involving the heat treatment of gears). 
+ 
+    a) Use the six-step significance-testing format to assess the strength of the evidence collected in this study to the effect that the laying method is superior to the hanging method in terms of mean runouts produced.
+    b) Make and interpret 90% two-sided and one-sided condifence intervals for the improvement in mean runout produced by the laying method over the hanging method (for the one-sided interval, give a lower bound for $\mu_{\text{hung}} - \mu_{\text{laid}}$).
+    c) Make and interpret a 90% two-sided confidence interval for the mean runout for laid gears.
+    
+1. [Ch. 6, Exercise 6, pg. 428] Losen, Cahoy, and Lewis measured the lengths of some spanner bushings of a particular type purchased from a local machine shop. Two students measures each ff the outside diameters of each of the sixteen bushings, with the results below.
+
+    ```{r}
+    bushings <- data.frame(Bushing = 1:16,
+                           Student_A = c(.369, .369, .369, .370, .3695, .370, .3695, .369, .369, .3695, .369, .369, .3695, .37, .369, .369),
+                           Student_B = c(.369, .3695, .3695, .3695, .3695, .37, .37, .369, .37, .369, .3695, .3695, .369, .3695, .369, .369))   
+    kable(t(bushings)[, 1:8])
+    kable(t(bushings)[, 9:16])
+    ```
+    
+    a) If you want to compare the two students' average measurements, the methods of Section 6.4.2 in the notes (Two-sample data) are inappropriate. Why?
+    b) Make a 90% two-sided confidence interval for the mean difference in outside diameter measurements for the two students.
+    
+1. [Ch. 6, Exercise 10, pg. 429] T. Johnson tested properties of several brands of 10 lb test monofilament fishing line. Part of his study involved measuring the stretch of a fixed length of line under a 3.5 kg load. Test results for three pieaces of two of the brands follow. The units are cm., and it it fair to assume stretch of a fixed length of line under a 3.5 kg follows a normal distribution.
+
+    ```{r}
+    stretch <- data.frame(Brand_B = c(.86, .88, .88),
+                          Brand_D = c(1.06, 1.02, 1.04))
+    kable(stretch)
+    ```
+    
+    e) Compare the Brand B and Brand D mean stretch values using a appropriate 90% two-sided confidence interval. Does this interval give clear indication of a difference in mean stretch values for the two brands?
+    f) Carry out a formal significance test of the hypothesis that the two brands have the same mean stretch values. Does the concludion you reach here agree with your answer to part e)?
+    
+

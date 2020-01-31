@@ -1,0 +1,57 @@
+---
+title: "Homework 5"
+date: "Due June 19, 2017 in class"
+output: 
+  pdf_document:
+    number_sections: true
+geometry: margin=1in
+---
+
+Please show all work for full credit. Print and staple your assignment together and submit by end of class the due date. If you cannot attend class on the due date, please arrange to submit your homework prior to the due date.
+
+```{r setup, echo=FALSE, message=FALSE}
+library(knitr)
+library(tidyverse)
+library(xtable)
+
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, fig.height = 2)
+theme_set(theme_bw(base_family = "serif"))
+```
+
+1. The mileage to first failure for a model of military personnel carrier can be modeled as exponential with mean $1,000$ miles.
+    a) Evaluate the probability that a vehicle of this type gives less than $500$ miles of service before first failure. Evaluate the probability that a vehicle of this type gives less than $2000$ miles of service before first failure. 
+    b) Find the $.05$ quantile of the distribution of mileage to first failure. Then find the $.9$ quantile of the distribution.
+    
+1. [Ch. 5.2, Exercise 2, pg. 263] Suppose that $Z$ is a standard normal random variable. Evaluate the following probabilities involving $Z$:
+    a) $P[Z < -.62]$
+    a) $P[Z > 1.06]$
+    a) $P[-.37 < Z < .51]$
+    a) $P[|Z| \le .47]$
+    a) $P[|Z| > .93]$
+    a) $P[-3.0 < Z < 3.0]$
+    
+    Now find numbers # such that the following statements involving $Z$ are true:
+    
+    g) $P[Z \le \#] = .90$
+    g) $P[|Z| \le \#] = .90$
+    g) $P[|Z| > \#] = .03$
+    
+1. [Ch. 5.2, Exercise 3, pg. 263] Suppose that $X$ is a normal random variable with mean $43$ and standard deviation $3.6$. Evaluate the following probabilities involving $X$:
+    a) $P[X < 45.2]$
+    a) $P[X \le 41.7]$
+    a) $P[43.8 < X \le 47.0]$
+    a) $P[|X - 43| \le 2]$
+    a) $P[|X - 43| > 1.7]$
+    
+    Now find numbers # such that the following statements involving $X$ are true:
+    
+    f) $P[X < \#] = .95$
+    g) $P[X \ge \#] = .30$
+    h) $P[|X - 43| > \#] = .05$
+
+1. [Ch. 5, Exercise 7, pg. 323] In a grinding operation, there is an upper specification of $3.150$ in. on a dimensions of a certain part after grinding. Suppose that the standard deviation of this normally distributed dimension for parts of this type ground to any particular mean dimension $\mu$ is $\sigma = 0.002$ in. Suppose further that you desire to have no more than $3$% of the parts fail to meet specifications. What is the maximum (minimum machining cost) $\mu$ that can be used if this $3$% requirement is to be met?
+
+1. [Ch 5, Exercise 42, pg. 332] Suppose that engineering specifications on the shelf depth of a certain slug to be turned on a CNC lathe are from $0.0275$ in. to $0.0278$ in. and that values of this dimension produced on the lathe can be described using a normal distribution with mean $\mu$ and standard deviation $\sigma$.
+    a) If $\mu = 0.0276$ and $\sigma = 0.0001$, about what fraction of shelf depths are in specifications?
+    b) What machine precision (as measured by $\sigma$) would be required in order to produce about $98$% of shelf depths within engineering specifications (assuming that $\mu$ is at the midpoint of the specifications)?
+ 

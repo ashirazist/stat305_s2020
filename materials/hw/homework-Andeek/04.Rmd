@@ -1,0 +1,86 @@
+---
+title: "Homework 4"
+date: "Due June 12, 2017 in class"
+output: 
+  pdf_document:
+    number_sections: true
+geometry: margin=1in
+---
+
+Please show all work for full credit. Print and staple your assignment together and submit by end of class the due date. If you cannot attend class on the due date, please arrange to submit your homework prior to the due date.
+
+```{r setup, echo=FALSE, message=FALSE}
+library(knitr)
+library(tidyverse)
+library(xtable)
+
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, fig.height = 2)
+theme_set(theme_bw(base_family = "serif"))
+```
+
+1. [Ch. 5.1, Exercise 1, pg. 243] A discrete random variable $X$ can be described using the probability function, $f(x)$:
+
+    ```{r, results = "asis"}
+    pdf <- data.frame(x = 2:6,
+                      f = c(.1, .2, .3, .3, .1)) %>% t()
+    rownames(pdf) <- c("$x$", "$f(x)$")
+    
+    xtable(pdf) %>%
+      print(sanitize.text.function = function(x){x}, include.colnames = FALSE, comment = FALSE)
+    ```
+    
+    a) Make a probability histogram for $X$. Also plot $F(x)$, the cumulative probability function for $X$.
+    b) Find the mean and standard deviation of $X$.
+    
+1. [Ch. 5, Exercise 1, pg. 322] Suppose $90$% of all students taking a beginning programming class fail to get their first program to run on first submission. Use a binomial distribution and assign probabilities to the possibilities that among a group of six such students,
+    a) all fail on their first submissions
+    b) at least four fail on their first submissions
+    c) less than four fail on their first submissions  
+    
+    Continuing to using this binomial model,
+    d) what is the mean number who will fail?
+    e) what are the variance and standard deviation of the number who will fail?
+    
+1. [Ch. 5, Exercise 2, pg. 322] Suppose that for single launches of a space shuttle, there is a constant probability of O-ring failure (say $.15$), Consider ten future launches, and let $X$ be the number of those involving an O-ring failure. Use an appropriate probability model and evaluate all of the following:
+    a) $P[X = 2]$
+    b) $P[X \ge 1]$
+    c) $\text{E}X$
+    d) $\text{Var} X$
+    e) the standard deviation of $X$
+    
+1. Sketch probability histograms for the binomial distributions with $n = 5$ and $p = .1, .3, .5, .7$, and $.9$. On each histogram, mark the location of the mean and indicate the size of the standard deviation.
+    
+
+1. [Ch. 5.1, Exercise 6, pg. 244] Suppose that an eddy current nondestructive evaluation technique for identifying cracks in critical metal parts has a probability of about $.20$ of detecting a single crack of length $.003$in. in a certain material. Let $Y$ be the number of specimens inspected in order to obtain the first crack detection. Use an appropriate probability model and evaluate all of the following:
+    a) $P[Y = 5]$
+    b) $P[Y \le 4]$
+    c) $\text{E}Y$
+    d) $\text{Var}Y$
+    e) $\text{SD}(Y)$
+    
+1. [Ch. 5.1, Exercise 9, pg. 244] Transmission line interruptions in a telecommunication network occur at an average rate of one per day.
+    a) Use a Poisson distribution as a model for
+        $$
+        X = \text{the number of interruptions in the next five-day work week}
+        $$
+        
+        and assess $P[X = 0]$
+    b) Now consider the random variable
+        $$
+        Y = \text{the number of work weeks in the next four in which there are no interruptions}
+        $$
+        What is a reasonable probability model for $Y$? Assess $P[Y = 2]$.
+
+1. [Ch. 5.2, Exercise 1, pg. 263] The random number generator supplied on a calculator is not terribly well chosen, in that values it generates are not adequately described by a uniform distribution on the interval $(0,1)$. Suppose instead that a probability density
+    $$
+    f(x) = \begin{cases} k(5 - x) & 0 < x< 1 \\ 0 & \text{otherwise}\end{cases}
+    $$
+    
+    is a more appropriate model for $X =$ the next value produced by this random number generator.
+    
+    a) Find the value of $k$
+    b) Sketch the probability density involved here.
+    c) Evaluate $P[.25 < X < .75]$
+    d) Compute and graph the cumulative probability distribution function for $X$, $F(x)$.
+    e) Calculate $\text{E}X$ and the standard deviation of $X$.
+    
