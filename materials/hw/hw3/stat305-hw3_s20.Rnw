@@ -73,17 +73,17 @@
 \chead{Homework 3} 
 \rhead{Due Thursday, February $6^{th}$ in the class}
 \lfoot{Spring 2020} 
-\cfoot{} 
+\cfoot{\thepage} 
  
 \renewcommand{\headrulewidth}{0.4pt} 
 \renewcommand{\footrulewidth}{0.4pt} 
-\rfoot{Page \thepage\ of \pageref{LastPage}}
 
 \def\Exp#1#2{\ensuremath{#1\times 10^{#2}}}
 \def\Case#1#2#3#4{\left\{ \begin{tabular}{cc} #1 & #2 \phantom
 {\Big|} \\ #3 & #4 \phantom{\Big|} \end{tabular} \right.}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
+\SweaveOpts{concordance=TRUE}
 \pagestyle{fancy} 
 
 Show \textbf{all} of your work on this assignment and answer each question fully in the given context. 
