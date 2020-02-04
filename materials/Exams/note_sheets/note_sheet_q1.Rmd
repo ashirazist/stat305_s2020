@@ -1,0 +1,56 @@
+---
+course: STAT 305
+name: Quiz II
+title: Reference Sheet
+output:
+  pdf_document:
+    keep_tex: true
+    template: ../../templates/note_sheet.tex
+    latex_engine: pdflatex
+...
+
+\section{Numeric Summaries}
+\begin{tabular}{@{}ll@{}}
+        & \\
+mean    & $\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$ \\
+        & \\
+population variance  & $\sigma^2 = \frac{1}{n}\sum_{i=1}^n \left(x_i - \bar{x} \right)^2$ \\
+        & \\
+population standard deviation  & $\sigma = \sqrt{\frac{1}{n}\sum_{i=1}^n \left(x_i - \bar{x} \right)^2}$ \\
+        & \\
+sample variance  & $s^2 = \frac{1}{n-1}\sum_{i=1}^n \left(x_i - \bar{x} \right)^2$ \\
+        & \\
+sample standard deviation  & $s = \sqrt{\frac{1}{n-1}\sum_{i=1}^n \left(x_i - \bar{x} \right)^2}$ \\
+        & \\
+\end{tabular}
+
+\vspace{2cm}
+
+\section{Functions}
+\vspace{0.3cm}
+\textbf{Quantile Function $Q(p)$}
+For a univariate sample consisting of $n$ values that are ordered so that $x_1 \le x_2 \le \ldots \le x_n$ and value $p$ where $0 \le p \le 1$, let $i = \lfloor n \cdot p + 0.5 \rfloor$. 
+Then the quantile function at $p$ is:
+
+\[
+      Q(p) = 
+      \begin{cases}
+     \small x_i & \small \lfloor n \cdot p + .5 \rfloor = n \cdot p + .5 \\
+      \small x_i  +\left( n p - i + .5 \right) \left( x_{i+1} - x_i \right) &\small  \lfloor n \cdot p + .5 \rfloor \ne n \cdot p + .5 \\
+      \end{cases}
+\]
+
+
+\textbf{Measures of Central Tendency}
+
+- $\small Q\left(\frac{1-.5}{n}\right)$ is called the **minimum** and $\small Q\left(\frac{n-.5}{n}\right)$ is called the **maximum** of a distribution.
+
+
+- $\small Q(.5)$ is called the **median** of a distribution. 
+
+- $\small Q(.25)$ and $\small Q(.75)$ are called the **first (or lower) quartile** and **third (or upper) quartile** of a distribution, respectively.
+
+- The **interquartile range (IQR)** is defined as $$\small IQR = Q(.75) - Q(.25)$$.
+
+- An **outlier** is a data point that is larger than $\small Q(.75) + 1.5*IQR$ or smaller than $\small Q(.25) - 1.5*IQR$.
+

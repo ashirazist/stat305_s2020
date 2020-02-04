@@ -1,0 +1,298 @@
+---
+title: 'Exam 3'
+course: Stat 305
+output:
+  pdf_document:
+    keep_tex: true
+    template: ../../templates/notesheet-template.tex
+    latex_engine: pdflatex
+...
+\section{Numeric Summaries}
+
+\subsection{Basic Summaries}
+\begin{tabular}{@{}ll@{}}
+mean    & $\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i$ \\ & \\
+population variance  & $\sigma^2 = \frac{1}{n}\sum_{i=1}^n \left(x_i - \bar{x} \right)^2$ \\ & \\
+population standard deviation  & $\sigma = \sqrt{\frac{1}{n}\sum_{i=1}^n \left(x_i - \bar{x} \right)^2}$ \\ & \\
+sample variance  & $s^2 = \frac{1}{n-1}\sum_{i=1}^n \left(x_i - \bar{x} \right)^2$ \\ & \\
+sample standard deviation  & $s = \sqrt{\frac{1}{n-1}\sum_{i=1}^n \left(x_i - \bar{x} \right)^2}$ \\ & \\
+\end{tabular}
+
+\subsection{Quantiles}
+\textbf{Quantile Function $Q(p)$}
+For a univariate sample consisting of $n$ values that are ordered so that $x_1 \le x_2 \le \ldots \le x_n$ and value $p$ where $0 \le p \le 1$, let $i = \lfloor n \cdot p + 0.5 \rfloor$. 
+Then the quantile function at $p$ is:
+\[ Q(p) = x_i + (n \cdot p + 0.5 - i)(x_{i+1} - x_i) \]
+
+\section{Linear Relationships}
+\begin{tabular}{@{}ll@{}}
+Form & $y \approx \beta_0 + \beta_1 x$ \\ & \\
+Fitted linear relationship & $\hat{y} = b_0 + b_1 x$ \\ & \\
+Least squares estimates & $b_1 = \frac{\sum_{i = 1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2}$ \\ & \\
+                        & $b_1 = \frac{ \sum_{i = 1}^n x_i y_i - n \bar{x} \bar{y} }{ \sum_{i = 1}^n x_i^2 - n \bar{x}^2 } $ \\ & \\
+                        & $b_0 = \bar{y} - b_1 \bar{x}$ \\ & \\
+Residuals & $e_i = y_i - \hat{y}_i $ \\ & \\
+sample correlation coeffecient & $r = \frac{\sum_{i=1}^n \left(x_i - \bar{x} \right)\left(y_i - \bar{y}\right)}{\sqrt{\sum_{i=1}^n \left( x_i - \bar{x} \right)^2 \sum_{i=1}^n \left(y_i - \bar{y} \right)^2}}$ \\ & \\
+                               & $r = \frac{\sum_{i=1}^n x_i y_i - n \bar{x} \bar{y}}{\sqrt{\left(\sum_{i=1}^n x_i^2 - n \bar{x}^2\right)\left(\sum_{i=1}^n y_i^2 - n\bar{y}^2\right)}}$ \\ & \\
+coeffecient of determination & $R^2 = (r)^2$ \\ & \\
+                             & $\frac{\sum_{i=1}^n \left(y_i - \bar{y} \right)^2 - \sum_{i=1}^n \left(y_i - \hat{y}_i\right)^2}{\sum_{i=1}^n \left(y_i - \bar{y}\right)^2}$ \\ & \\
+\end{tabular}
+
+
+\section{Multivariate Relationships}
+\begin{tabular}{@{}ll@{}}
+Form & $y \approx \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \ldots + \beta_k x_k $ \\ & \\
+Fitted relationship  & $\hat{y} \approx b_0 + b_1 x_1 + b_2 x_2 + \ldots + b_k x_k $ \\ & \\
+Residuals & $e_i = y_i - \hat{y}_i $ \\ & \\
+Sums of Squares & $\text{SSTO} = \sum_{i = 1}^n \left(y_i - \bar{y}\right)^2$ \\ & \\
+                & $\text{SSE} = \sum_{i = 1}^n \left(y_i - \hat{y}_i\right)^2$ \\ & \\
+                & $\text{SSR} = SSTO - SSE = \sum_{i = 1}^n \left(\hat{y}_i - \bar{y}\right)^2$ \\ & \\
+coeffecient of determination & $R^2 = \frac{ \sum_{i = 1}^n \left(y_i - \bar{y}\right)^2 - \sum_{i = 1}^n \left(y_i - \hat{y}_i\right)^2 }{ \sum_{i = 1}^n \left(y_i - \bar{y}\right)^2 }$ \\ & \\
+                             & $R^2 = \frac{ \text{SSTO} - \text{SSE} }{\text{SSTO}}$ \\ & \\
+                             & $R^2 = \frac{ \text{SSR} }{\text{SSTO}}$ \\ & \\
+                             & $\frac{\sum_{i=1}^n \left(y_i - \bar{y} \right)^2 - \sum_{i=1}^n \left(y_i - \hat{y}_i\right)^2}{\sum_{i=1}^n \left(y_i - \bar{y}\right)^2}$ \\ & \\
+\end{tabular}
+
+\newpage
+
+\section{Basic Probability}
+
+\subsection{Definitions}
+\begin{tabular}{@{}ll@{}}
+Random experiment & A series of actions that lead to an observable result. \\
+                  & The result may change each time we perform the experiment. \\ & \\
+Outcome & The result(s) of a random experiment. \\ & \\
+Sample Space ($S$) & A set of all possible results of a random experiment. \\ & \\
+Event ($A$) & Any subset of sample space. \\ & \\
+Probability of an event ($P(A)$) & the likelihood that the observed outcome of \\
+                               & a random experiment is one of the outcomes in the event. \\ & \\
+$A^C$ & The outcomes that are not in $A$. \\ & \\
+$A \cap B$ & The outcomes that are both in $A$ and in $B$. \\ & \\
+$A \cup B$ & The outcomes that are either $A$ or $B$. \\ & \\
+\end{tabular}
+
+\subsection{General Rules}
+\begin{tabular}{@{}ll@{}}
+Probability $A$ given $B$ & $P(A | B) = P(A \cap B)/P(B)$ \\ & \\
+Probability $A$ and $B$ & $P(A \cap B) = P(A | B) P(B) = P(B | A) P(A)$ \\ & \\
+Probability $A$ or $B$ & $P(A \text{ or } B) = P(A) + P(B) - P(A, B)$ \\ & \\
+\end{tabular}
+
+\subsection{Independence}
+Two events are called independent if $P(A, B) = P(A) \cdot P(B)$. Clever students will realize this also means that if $A$ and $B$ are independent then $P(A|B) = P(A)$ and $P(B|A) = P(B)$.
+
+\subsection{Joint Probability}
+\begin{tabular}{@{}ll@{}}
+Joint Probability & The probability an outcome is in event $A$ and in event $B$ = $P(A, B)$. \\ & \\
+Marginal Probability & If $A \subseteq B \cup C$ then $P(A) = P(A \cap B) + P(A \cap C)$. \\ & \\
+Conditional Probability & For events $A$ and $B$, if $P(B) \ne 0$ then $P(A|B) = P(A \cap B)/P(B)$. \\ & \\
+\end{tabular}
+
+\section{Discrete Random Variables}
+
+\subsection{General Rules}
+\begin{tabular}{@{}ll@{}}
+Probability function &  $f_X(x) = P(X = x)$ \\ & \\
+Cumulative probability function &  $F_X(x) = P(X \le x)$ \\ & \\
+Expected Value & $\mu = E(X) = \sum_{x} x f_X(x)$ \\ & \\
+Variance & $\sigma^2 = Var(X) = \sum_{x} (x - \mu)^2 f_X(x)$ \\ & \\
+Standard Deviation & $\sigma = \sqrt{Var(X)}$ \\ & \\
+\end{tabular}
+
+\subsection{Joint Probability Functions}
+\begin{tabular}{@{}ll@{}}
+Joint Probability Function & $ f_{XY}(x,y) = P[X = x, Y = y] $ \\ & \\
+Marginal Probability Function & $f_X(x) = \sum_{y} f_{XY}(x,y)$ \\ & \\
+                              & $f_Y(y) = \sum_{x} f_{XY}(x,y)$ \\ & \\
+Conditional Probability Function & $f_{X|Y}(x|y) = f_{XY}(x,y)/f_{Y}(y)$ \\ & \\
+                                 & $f_{Y|X}(y|x) = f_{XY}(x,y)/f_{X}(x)$ \\ & \\
+\end{tabular}
+
+\subsection{Geometric Random Variables}
+
+$X$ is the trial count upon which the first successful outcome is observed performing independent trials with probability of success $p$.
+
+\begin{tabular}{@{}ll@{}}
+Possible Values & $x = 1, 2, 3, \ldots$ \\ & \\
+Probability function &  $P[X = x] = f_X(x) = p (1-p)^{x-1}$ \\ & \\
+Expected Value & $\mu = E(X) = \frac{1}{p} $ \\ & \\
+Variance & $\sigma^2 = Var(X) = \frac{1 - p}{p^2}$ \\ & \\
+\end{tabular}
+
+\subsection{Binomial Random Variables}
+
+$X$ is the number of successful outcomes observed in $n$ independent trials with probability of success $p$.
+
+\begin{tabular}{@{}ll@{}}
+Possible Values & $x = 0, 1, 2, \ldots, n$ \\ & \\
+Probability function &  $P[X = x] = f_X(x) = \frac{n!}{(n-x)!x!} p^x (1-p)^{n-x}$ \\ & \\
+Expected Value & $\mu = E(X) = n p $ \\ & \\
+Variance & $\sigma^2 = Var(X) = n p (1-p)$ \\ & \\
+\end{tabular}
+
+\subsection{Poisson Random Variables}
+
+$X$ is the number of times a rare event occurs over a predetermined interval (an area, an amount of time, etc.) where the number of events we expect is $\lambda$.
+
+\begin{tabular}{@{}ll@{}}
+Possible Values & $x = 0, 1, 2, 3, \ldots$ \\ & \\
+Probability function &  $P[X = x] = f_X(x) = \frac{e^{-\lambda} \lambda^x}{x!}$ \\ & \\
+Expected Value & $E(X) = \lambda $ \\ & \\
+Variance & $Var(X) = \lambda$ \\ & \\
+\end{tabular}
+
+\newpage
+
+\section{Continuous Random Variables}
+
+\subsection{General Rules}
+
+\begin{tabular}{@{}ll@{}}
+Probability density function &  $P[a \le X \le b] = \int_a^b f_X(x) dx$ \\ & \\
+Cumulative density function &  $P[X \le x] = F_X(x) = \int_{-\infty}^x f_X(t)dt$ \\ & \\
+Expected Value & $\mu = E(X) = \int_{-\infty}^{\infty} x f_X(x) dx$ \\ & \\
+Variance & $\sigma^2 = Var(X) = \int_{-\infty}^{\infty} (x - \mu)^2 f_X(x) dx$ \\ & \\
+Standard Deviation & $\sigma = \sqrt{Var(X)}$ \\ & \\
+\end{tabular}
+
+\subsection{Joint Probability Density Functions}
+
+\begin{tabular}{@{}ll@{}}
+Joint Probability Density Function & $f_{XY}(x, y)$ is the joint density of both $X$ and $Y$. \\ & \\
+                                   & $ P(a \le X \le b, c \le Y \le d) = \int_{a}^{b} \int_{c}^{d} f_{XY}(x,y) dy dx $\\ & \\
+Marginal Probability Density Function & $f_X(x) = \int_{-\infty}^{\infty} f_{XY}(x,y) dy$ \\ & \\
+                                      & $f_Y(y) = \int_{-\infty}^{\infty} f_{XY}(x,y) dx$ \\ & \\
+Conditional Probability Density Function & $f_{X|Y}(x|y) = f_{XY}(x,y)/f_{Y}(y)$ \\ & \\
+                                         & $f_{Y|X}(y|x) = f_{XY}(x,y)/f_{X}(x)$ \\ & \\
+\end{tabular}
+
+
+\subsection{Uniform Random Variables}
+
+Used when we believe an outcome could be anywhere between two values $a$ and $b$ but have no other beliefs.
+
+\begin{tabular}{@{}ll@{}}
+Probability density function & $f_X(x) = \begin{cases} \frac{1}{b-a} & a \le x \le b \\ 0 & o.w. \end{cases}$ \\ & \\
+Cumulative density function & $F_X(x) = \begin{cases} 0 & x \le a \\ \frac{1}{b-a} x - \frac{a}{b-a} & a \le x \le b \\ 1 & x > b \end{cases}$ \\ & \\
+Expected Value & $E(X) = \frac{1}{2}(b+a)$ \\ & \\
+Variance & $Var(X) = \frac{1}{12}(b-a)^2$ \\ & \\
+\end{tabular}
+
+\vspace{2cm}
+
+\subsection{Exponential Random Variables}
+
+Used when we an outcome could be anything greater than 0 but the likelihood is concentrated on smaller values.
+
+\begin{tabular}{@{}ll@{}}
+Probability density function & $f_X(x) = \begin{cases} \frac{1}{\alpha} \exp\left(-\frac{x}{\alpha}\right) & x \ge 0 \\ 0 & o.w. \end{cases} $ \\ & \\
+Cumulative density function & $F_X(x) = \begin{cases} 0 & x < 0 \\ 1 - \exp\left(-\frac{x}{\alpha}\right) & x \ge 0 \end{cases} $ \\ & \\
+Expected Value & $E(X) = \alpha$ \\ & \\
+Variance & $Var(X) = (\alpha)^2 $\\ & \\
+\end{tabular}
+
+
+\subsection{Normal Random Variables}
+
+Used when we believe an outcome could be above or below a certain value $\mu$ but we also believe it is more likely to be close to $\mu$ than it is to be far away.
+
+\begin{tabular}{@{}ll@{}}
+Probability density function &  $f_X(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{1}{2} \left( \frac{x - \mu}{\sigma} \right)^2}$ \\ & \\
+Cumulative density function &  There is no general formula. \\ & \\
+Expected Value & $E(X) = \mu $ \\ & \\
+Variance & $Var(X) = \sigma^2$ \\ & \\
+\end{tabular}
+
+\subsection{Standard Normal Random Variables ($Z$)}
+
+A normal random variable with mean $0$ and variance $\sigma^2$.
+
+\begin{tabular}{@{}ll@{}}
+Probability density function &  $f_Z(z) = \frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2} z^2}$ \\ & \\
+Cumulative density function & There is no general formula. \\ & \\
+Expected Value & $E(Z) = 0 $ \\ & \\
+Variance & $Var(Z) = 1$ \\ & \\
+Relationship with $X \sim N(\mu, \sigma^2)$ & If $X$ is $N(\mu, \sigma^2)$ then $P[a \le X \le b] = P\left[\frac{a - \mu}{\sigma} \le Z \le \frac{b - \mu}{\sigma} \right]$ \\ & \\
+\end{tabular}
+
+\section{Functions of Random Variables}
+
+\subsection{Linear Combinations of Independent Random Variables}
+For $X_1, X_2, \ldots, X_n$ independent random variables and $a_0, a_1, a_2, \ldots, a_n$ constants if $U = a_0 + a_1 X_1 + \ldots + a_n X_n$:
+\begin{itemize}
+\item $E(U) = a_0 + a_1 E(X_1) + a_2 E(X_2) + \ldots + a_n E(X_n)$ \\
+\item $Var(U) = a_1^2 Var(X_1) + a_2^2 Var(X_2) + \ldots + a_n^2 Var(X_n)$ \\
+\end{itemize}
+
+\pagebreak
+
+\section{$\mathbf{(1 - \alpha) \cdot 100}$\% Confidence Intervals}
+
+\subsection{Notation and Definitions}
+
+\begin{tabular}{@{}ll@{}}
+$z_{1 - \#}$: & the value such that for a standard normal $P(Z \le z_{1-\#}) = 1 - \#$. \\ & \\
+$t_{k, 1 - \#}$: & the value such that for a t-distribution with k \\
+             & degrees of freedom $P(T \le t_{k, 1-\#}) = 1 - \#$. \\ & \\
+Pooled Variance & $s_p^2 = \dfrac{(n_1 - 1) s_1^2 + (n_2 - 1) s_2^2}{(n_1 - 1) + (n_2 - 1)}$ \\ & \\
+Two-Sided & $\text{[Sample Estimate]} \pm \text{[Distribution]} \sqrt{\frac{\text{[Variance]}}{\text{[Sample Size]}}}$ \\ & \\
+Upper Bound & $\text{[Sample Estimate]} + \text{[Distribution]} \sqrt{\frac{\text{[Variance]}}{\text{[Sample Size]}}}$ \\ & \\
+Lower Bound & $\text{Sample Estimate]} - \text{[Distribution]} \sqrt{\frac{\text{[Variance]}}{\text{[Sample Size]}}}$ \\ & \\
+\end{tabular}
+
+\subsection{Two-Sided Intervals for $\mu$}
+
+\begin{tabular}{@{}ll@{}}
+Large sample size, $\sigma$ known & $\bar{x} \pm z_{1 - \alpha/2} \sqrt{\sigma^2/n}$ \\ & \\
+Large sample size, $\sigma$ unknown & $\bar{x} \pm z_{1 - \alpha/2} \sqrt{s^2/n}$ \\ & \\
+Small sample size & $\bar{x} \pm t_{n-1, 1 - \alpha/2} \sqrt{s^2/n}$ \\ & \\
+\end{tabular}
+
+\subsection{Two-Sided Intervals for $\mu_1 - \mu_2$}
+
+\begin{tabular}{@{}ll@{}}
+Large sample size, $\sigma_1$ known, $\sigma_2$ known & $\bar{x}_1 - \bar{x}_2 \pm z_{1 - \alpha/2} \sqrt{\dfrac{\sigma_1^2}{n_1} + \dfrac{\sigma_2^2}{n_2}}$ \\ & \\
+Large sample size, $\sigma_1, \sigma_2$ unknown & $\bar{x}_1 - \bar{x}_2 \pm z_{1 - \alpha/2} \sqrt{\dfrac{s_1^2}{n_1} + \dfrac{s_2^2}{n_2}}$ \\ & \\
+Small sample size, normal population, $\sigma_1 = \sigma_2$ & $\bar{x}_1 - \bar{x}_2 \pm t_{n_1 + n_2 - 2, 1 - \alpha/2} \sqrt{\frac{s_p^2}{n_1} + \frac{s_p^2}{n_2}}$ \\ & \\
+\end{tabular}
+
+\section{Hypothesis Tests}
+
+\subsection{Test Statistics for $\mu$}
+\begin{tabular}{@{}ll@{}}
+Large sample size, $\sigma$ known & $Z = \dfrac{\bar{x} - \mu}{\sqrt{\sigma^2/n}} \sim N(0, 1)$ \\ & \\
+Large sample size, $\sigma$ unknown & $Z = \dfrac{\bar{x} - \mu}{\sqrt{s^2/n}} \sim N(0, 1)$ \\ & \\
+Small sample size, & $ T = \dfrac{\bar{x} - \mu}{\sqrt{s^2/n}} \sim t_{n - 1}$ \\ & \\
+\end{tabular}
+
+\subsection{Test Statistics for $\mu_1 - \mu_2$}
+\begin{tabular}{@{}ll@{}}
+Large sample size, $\sigma_1$ known, $\sigma_2$ known & $Z = \dfrac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{\sqrt{\frac{\sigma_1^2}{n_1} + \frac{\sigma_2^2}{n_2}}} \sim N(0, 1)$ \\ & \\
+Large sample size, $\sigma_1$ unknown, $\sigma_2$ unknown & $Z = \dfrac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} \sim N(0, 1)$ \\ & \\
+Small sample size, normal population, $\sigma_1 = \sigma_2$ & $T = \dfrac{(\bar{x}_1 - \bar{x}_2) - (\mu_1 - \mu_2)}{\sqrt{\frac{s_p^2}{n_1} + \frac{s_p^2}{n_2}}} \sim N(0, 1)$ \\ & \\
+\end{tabular}
+
+\subsection{Common Values for $z$}
+\begin{tabular}{lccc}
+\hline
+z  & $P(Z \le z)$ & Two-Sided Confidence & One Sided Confidence \\ \hline
+`r round(qnorm(0.90),2)` & 0.90 & 0.80 & 0.90 \\ & & & \\
+`r round(qnorm(0.95),2)` & 0.95 & 0.90 & 0.95 \\ & & & \\
+`r round(qnorm(0.975),2)` & 0.975 & 0.95 & 0.975 \\ & & & \\
+`r round(qnorm(0.9875),2)` & 0.9875 & 0.975 & 0.9875 \\ & & & \\
+`r round(qnorm(0.99),2)` & 0.99 & 0.98 & 0.99 \\ & & & \\
+`r round(qnorm(0.995),2)` & 0.995 & 0.99 & 0.995 \\ \hline
+\end{tabular}
+
+\vspace{0.5cm}
+
+\subsection{Quantiles of t-distributions}
+```{r echo=FALSE, cache=FALSE, include=TRUE, comment=NA, results='asis'}
+qs <- c(0.80, 0.85, 0.90, 0.95, 0.975, 0.99, 0.995)
+dfs <- 1:20
+tbl <- sprintf('\\hline %s \\\\ \\hline', paste0(c('df', paste0('$Q(', prettyNum(qs), ')$')), collapse=' & '))
+for(df_i in dfs)
+   tbl <- paste(c(tbl, paste(c(df_i, formatC(round(qt(qs, df_i), 3), format='f', digits=3)), collapse=' & '), '\\\\'), collapse=' ')
+tbl <- sprintf('\\begin{tabular}{lrrrrrrr} %s \\hline \\end{tabular}', tbl)
+cat(tbl)
+```
