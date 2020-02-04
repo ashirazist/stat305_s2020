@@ -5,10 +5,10 @@
 \usepackage{tikz,pgfplots}
 
 %\input{stat105_exam1_info.tex}
-\newcommand{\course}[1]{\ifstrempty{#1}{STAT 305}{STAT 305, Section #1}}
+\newcommand{\course}[1]{\ifstrempty{#1}{STAT 305}{STAT 305, Section #7}}
 \newcommand{\sectionNumber}{3}
-\newcommand{\examDate}{September 26, 2019}
-\newcommand{\semester}{FALL 2019}
+\newcommand{\examDate}{February 6, 2020}
+\newcommand{\semester}{Spring 2020}
 \newcommand{\examNumber}{I}
 
 \usepackage{Sweave}
@@ -54,7 +54,7 @@ In a series of experiments to study the priority of a chemical product, the reac
 \question
 %-- : R code (Code in Document)
 
-A sample of size 5 was drawn from a population and the resulting observations are reported below. 
+A sample of size 6 was drawn from a population and the resulting observations are reported below. 
 \begin{center}
 110, 100, 105, 103, 105, 115
 \end{center}
@@ -102,9 +102,11 @@ Using these observed values, report the following:
 \hfill \fbox{lower left point = $( \;\;  \;\;  \;\; , \;\;  \;\;
 \;\;  )$}
 
-   \vspace{4cm}      
-   \part[5] draw a boxplot for this data. Carefully label numbers on the plot
-
+   \vspace{6cm}      
+   \part[5] Using the axes below, create a box plot to summarize the data. Carefully label the axes
+\centering   
+%-- : R plot (results in document)
+\includegraphics{stat305-exam1-003}
    \vspace{6cm}
 
 \end{parts}
@@ -176,6 +178,95 @@ After the methods had been applied, he measured the change in concentration. \\
 
 
 
+
+
+
+
+
+
+\question
+%-- : R code (Code in Document)
+
+A certain make of load bearing beam used in construction of large buildings is certified to withstand pressures of 2.5 tonnes per square inch.
+30 beams were tested and the pressures at which they failed are collected in the table below.
+
+%-- : R code (Code in Document)
+\begin{Schunk}
+\begin{Soutput}
+  The decimal point is at the |
+
+  1 | 4
+  2 | 8
+  3 | 
+  4 | 2555778899999
+  5 | 01122222234559
+  6 | 5
+\end{Soutput}
+\end{Schunk}
+
+Note that \verb!0 | 9! represents 0.9. In this case, the first quartile is $Q(.25) = 4.7$, 
+the median is 4.95, and the third quartile is $Q(.75) = 5.2$.
+
+\begin{parts}
+  \part[10] Complete the following frequency table: \\
+
+  \begin{table}[h!]
+     \centering
+     \begin{tabular}{|l|p{3cm}|p{3cm}|p{4cm}|}
+        \hline
+                             & \textbf{Frequency} & \textbf{Relative} & \textbf{Cumulative}  \\
+        \textbf{Value Range} &                    & \textbf{Frequency} & \textbf{Relative Frequency} \\\hline \hline
+                    &  &  &  \\
+      0.00 - 2.00   &  &  &  \\
+                    &  &  &  \\ \hline
+                    &  &  &  \\
+      2.01 - 4.00   &  &  &  \\
+                    &  &  &  \\ \hline
+                    &  &  &  \\
+      4.01 - 6.00   &  &  &  \\
+                    &  &  &  \\ \hline
+                    &  &  &  \\
+      6.01 - 8.00   &  &  &  \\
+                    &  &  &  \\ \hline
+     \end{tabular}
+  \end{table}
+
+  \part[10] Using the axes below, create a box plot to summarize the data. Carefully label the axes.
+
+%-- : R plot (results in document)
+\includegraphics{stat305-exam1-012}
+
+\newpage 
+
+  \part[4] Are there any unusually low or high observations? If so, what pressures caused those beams to fail?
+
+  \vspace{3cm}
+
+  \part[10] The company also measured the heat at which the beams begin to deform (in 10,000 degrees Celsius). The values are collected below:
+
+%-- : R code (Code in Document)
+
+\begin{center}
+   31.3, 41.8, 25.3, 35.3, 45.3, 37.3
+\end{center}
+
+Create a theoretical Q-Q plot using the following quantiles from the normal distribution as the theoretical quantiles. 
+What does this graph tell us about the temperature at which the beams deform?
+
+\begin{table}[h!]
+   \centering
+   \begin{tabular}{ccccccc}
+             & 1 & 2 & 3 & 4 & 5 & 6  \\ \hline
+      $p$    & 0.08 & 0.25 & 0.42 & 0.58 & 0.75 & 0.92 \\
+      $Q_{N}(p)$ & -1.41 & -0.67 & -0.2 & 0.2 & 0.67 & 1.41 \\
+   \end{tabular}
+\end{table}
+
+%-- : R plot (results in document)
+\includegraphics{stat305-exam1-014}
+
+\end{parts}
+\pagebreak
 
 
 

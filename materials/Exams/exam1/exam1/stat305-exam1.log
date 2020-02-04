@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.26)  2 OCT 2019 23:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.26)  3 FEB 2020 13:53
 entering extended mode
 **./stat305-exam1.tex
 (stat305-exam1.tex
@@ -648,6 +648,15 @@ File: tikzlibraryplotmarks.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 libraryplotmarks.code.tex"
 File: pgflibraryplotmarks.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 )))
+! Illegal parameter number in definition of \course.
+<to be read again> 
+                   7
+l.8 ...rempty{#1}{STAT 305}{STAT 305, Section #7}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
 (C:/PROGRA~1/R/R-36~1.1/share/texmf/tex/latex\Sweave.sty
 Package: Sweave 
 
@@ -950,6 +959,16 @@ your preamble.
 LaTeX Font Warning: Font shape `T1/aer/bx/sc' undefined
 (Font)              using `T1/aer/bx/n' instead on input line 21.
 
+! You can't use `macro parameter character #' in horizontal mode.
+<argument> STAT 305, Section ##
+                               7
+l.21 \examCoverPage
+                   
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
 LaTeX Font Info:    Try loading font information for TS1+aer on input line 21.
 (C:/PROGRA~1/R/R-36~1.1/share/texmf/tex/latex\ts1aer.fd
 File: ts1aer.fd 
@@ -984,19 +1003,110 @@ Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
 [1
 
-] [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 116--126
+]
+! You can't use `macro parameter character #' in horizontal mode.
+<argument> STAT 305, Section ##
+                               7
+l.96 
+     
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+[2]
+<stat305-exam1-003.pdf, id=22, 433.62pt x 144.54pt>
+File: stat305-exam1-003.pdf Graphic file (type pdf)
+<use stat305-exam1-003.pdf>
+Package pdftex.def Info: stat305-exam1-003.pdf  used on input line 109.
+(pdftex.def)             Requested size: 375.80544pt x 125.27458pt.
+
+! You can't use `macro parameter character #' in horizontal mode.
+<argument> STAT 305, Section ##
+                               7
+l.112 \end{parts}
+                 
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+[3 <./stat305-exam1-003.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 118--128
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 153--154
+Underfull \hbox (badness 10000) in paragraph at lines 155--156
 
  []
 
-[4] [5]
-This exam contains 6 questions with 13 parts, 4 subparts, and 0 subsubparts.
-This exam has a total of 56 points.
+! You can't use `macro parameter character #' in horizontal mode.
+<argument> STAT 305, Section ##
+                               7
+l.161       \subpart[2]
+                        Blocking variable(s):
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+[4]
+! You can't use `macro parameter character #' in horizontal mode.
+<argument> STAT 305, Section ##
+                               7
+l.174 
+      
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+[5]
+LaTeX Font Info:    Try loading font information for T1+aett on input line 195.
+
+ ("C:\Users\4M1N\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ae\t1aett.fd"
+File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
+)
+Underfull \hbox (badness 10000) in paragraph at lines 211--212
+
+ []
+
+<stat305-exam1-012.pdf, id=37, 433.62pt x 144.54pt>
+File: stat305-exam1-012.pdf Graphic file (type pdf)
+<use stat305-exam1-012.pdf>
+Package pdftex.def Info: stat305-exam1-012.pdf  used on input line 237.
+(pdftex.def)             Requested size: 375.80544pt x 125.27458pt.
+! You can't use `macro parameter character #' in horizontal mode.
+<argument> STAT 305, Section ##
+                               7
+l.239 \newpage
+              
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+[6 <./stat305-exam1-012.pdf>]
+<stat305-exam1-014.pdf, id=48, 433.62pt x 433.62pt>
+File: stat305-exam1-014.pdf Graphic file (type pdf)
+<use stat305-exam1-014.pdf>
+Package pdftex.def Info: stat305-exam1-014.pdf  used on input line 266.
+(pdftex.def)             Requested size: 375.80544pt x 375.8238pt.
+
+! You can't use `macro parameter character #' in horizontal mode.
+<argument> STAT 305, Section ##
+                               7
+l.270 
+      
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+[7 <./stat305-exam1-014.pdf>]
+This exam contains 7 questions with 17 parts, 4 subparts, and 0 subsubparts.
+This exam has a total of 90 points.
 This exam has a total of 0 bonus points.
 (stat305-exam1.aux)
 
@@ -1004,11 +1114,11 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 25262 strings out of 492895
- 633258 string characters out of 3124202
- 826407 words of memory out of 3000000
- 28761 multiletter control sequences out of 15000+200000
- 19469 words of font info for 43 fonts, out of 3000000 for 9000
+ 25326 strings out of 492895
+ 634443 string characters out of 3124202
+ 830407 words of memory out of 3000000
+ 28817 multiletter control sequences out of 15000+200000
+ 19958 words of font info for 45 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,10n,96p,808b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\4M1N\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\t
@@ -1017,12 +1127,14 @@ amsfonts/cm/cmbx10.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/t
 ype1/public/amsfonts/cm/cmbx12.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX
  2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/4M1N/AppData/Local/Pro
 grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/4M1N/AppDa
-ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users
-/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb
->
-Output written on stat305-exam1.pdf (6 pages, 84471 bytes).
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users
+/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pf
+b><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
+cm/cmr7.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmtt10.pfb>
+Output written on stat305-exam1.pdf (8 pages, 123289 bytes).
 PDF statistics:
- 55 PDF objects out of 1000 (max. 8388607)
+ 89 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 17 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 32 words of extra memory for PDF output out of 10000 (max. 10000000)
 
