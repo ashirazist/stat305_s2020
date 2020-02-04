@@ -1,0 +1,21 @@
+---
+title: "Stat 305 Section 7 - Quiz 1 Topic Outline"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+1. Introductory concepts (Ch. 1-2)
+    a) Population and samples
+    b) Validity, accuracy, and precision of measurement
+    c) kinds of data: categorical, numeric (quantitative), discrete, continuous, univariate, multivariate, paired
+    d) Variables: treatment, blocking variables, concomitant variables, factor, response, predictor
+    e) observational vs. experimental studies
+2. Study design (Ch. 1-2)
+    a) Designs: completely randomized design, factorial design, block design
+    b) Simple random sampling and randomization
+3. Descriptive statistics (Ch. 3)
+    a) graphical and tabular displays: dot diagrams, stem and leaf plots, frequency tables, histograms, bar plts, boxplots, scatterplots, quantile-quantile plots, theoretical QQ plots (especially normal plots)
+    b) quantiles
+    c) numerical summaries: mean, median, mode, variance, standard deviation, range, IQR
+    d) statistics vs. parameters

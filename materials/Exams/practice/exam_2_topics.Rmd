@@ -1,0 +1,31 @@
+---
+title: "Stat 305 C - Exam 2 Topic Outline"
+output:
+  pdf_document: default
+---
+
+1. Discrete random variables (Ch. 5.1)
+    a. probability mass functions (pmf)
+    b. cumulative distribution functions (cdf)
+    c. expected value, variance, and standard deviation
+    d. special discrete random variables:
+        i. Binomial($n, p$)
+        ii. Geometric($p$)
+        iii. Poisson($\lambda$)
+2. Continuous random variables (Ch. 5.2)
+    a. probability density functions (pdf)
+    b. cumulative distribution functions (cdf)
+    c. quantiles
+    d. expected value, variance, and standard deviation
+    e. special continuous random variables:
+        i. Exponential($\alpha$)
+        ii. Normal($\mu, \sigma^2$)
+3. Joint distributions and independence (Ch. 5.4)
+    a. Joint distributions (discrete random variables)
+    b. Marginal distributions (discrete random variables)
+    c. Conditional distributions (discrete random variables)
+    d. Independence (discrete random variables)
+4. Functions of several random variables (Ch. 5.5)
+    a. Distributions of functions of random variables.
+    b. Expectations and variances of linear combinations.
+    c. The Central Limit Theorem

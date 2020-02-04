@@ -1,0 +1,27 @@
+---
+title: "Stat 305 C - Final Topic Outline"
+output:
+  pdf_document: default
+---
+
+The final exam is comprehensive, so all topics from Exam 1 and Exam 2 are also relevant. The following topics will be emphasized.
+
+1. Random intervals
+2. One-sample inference (confidence intervals and hypothesis testing) on the mean (Ch. 6.1, 6.2)
+    - under each of the following conditions: 
+        i) When $n \ge 25$ and $\sigma^2$ is known.
+        i) When $n \ge 25$ and $\sigma^2$ is unknown.
+        i) When $n < 25$ and $\sigma^2$ is unknown.
+    - All the above using:
+        i) Confidence intervals
+        i) Critical values & p-values
+3. Inference for paired data under all the conditions in pt 2. (Ch. 6.3)
+4. Inference for 2-sample data under all the conditions in pt 2 for each sample (Ch. 6.3)
+5. Inference for simple linear regression (Ch. 9.1)
+    - Confidence intervals and hypothesis testing on $\beta_0$ and $\beta_1$
+    - How to estimate $\sigma$
+    - Inference for the mean response $\mu_{y|x}$
+6. Inference for simple multiple regression (Ch. 9.2)
+    - Confidence intervals and hypothesis testing on $\beta_0, \dots, \beta_{p-1}$
+    - How to estimate $\sigma$
+    - Inference for the mean response $\mu_{y|\boldsymbol{x}}$
