@@ -176,7 +176,7 @@ After the methods had been applied, he measured the change in concentration. \\
 
    \end{subparts}
 
-   \part[4] Was replication used in this experiment? If so, where was it applied? If not, how could we have applied it?
+   \part[2] Was replication used in this experiment? If so, where was it applied? If not, how could we have applied it?
 
   \vspace{2cm}
 
@@ -252,7 +252,7 @@ A certain make of load bearing beam used in construction of large buildings is c
 
 @
 
-Note that \verb!0 | 9! represents 0.9. In this case, the first quartile is $Q(.25) = \Sexpr{Qfun(samp,.25)}$, 
+\underline{Note that here \verb!1 | 4 represents 1.4}. In this case, the first quartile is $Q(.25) = \Sexpr{Qfun(samp,.25)}$, 
 the median is \Sexpr{Qfun(samp,.5)}, and the third quartile is $Q(.75) = \Sexpr{Qfun(samp,.75)}$.
 
 \begin{parts}
@@ -306,22 +306,25 @@ the median is \Sexpr{Qfun(samp,.5)}, and the third quartile is $Q(.75) = \Sexpr{
    \Sexpr{paste0(heat, collapse = ", ")}
 \end{center}
 
-Create a theoretical Q-Q plot using the following quantiles from the normal distribution as the theoretical quantiles. 
-What does this graph tell us about the temperature at which the beams deform?
+First complete the table for the quantiles of the data $(Q(p))$ and then create a theoretical Q-Q plot using the following quantiles from the normal distribution as the theoretical quantiles. 
 
 \begin{table}[h!]
    \centering
    \begin{tabular}{ccccccc}
-             & 1 & 2 & 3 & 4 & 5 & 6  \\ \hline
-      $p$    & \Sexpr{p[1]} & \Sexpr{p[2]} & \Sexpr{p[3]} & \Sexpr{p[4]} & \Sexpr{p[5]} & \Sexpr{p[6]} \\
-      $Q_{N}(p)$ & \Sexpr{Qps[1]} & \Sexpr{Qps[2]} & \Sexpr{Qps[3]} & \Sexpr{Qps[4]} & \Sexpr{Qps[5]} & \Sexpr{Qps[6]} \\
+          i   & 1 & 2 & 3 & 4 & 5 & 6  \\ \hline
+      $p= \frac{i-.5}{6}$    & \Sexpr{p[1]} & \Sexpr{p[2]} & \Sexpr{p[3]} & \Sexpr{p[4]} & \Sexpr{p[5]} & \Sexpr{p[6]} \\ \hline
+      $Q_{N}(p)$ & \Sexpr{Qps[1]} & \Sexpr{Qps[2]} & \Sexpr{Qps[3]} & \Sexpr{Qps[4]} & \Sexpr{Qps[5]} & \Sexpr{Qps[6]} \\ \hline
+      $Q(p)$ &     &     &     &     &     &     \\
    \end{tabular}
 \end{table}
-
+\vspace{1cm}
 %-- : R plot (results in document)
-<<fig.width=10, fig.height=10, out.width='.8\\linewidth', echo=FALSE, fig=TRUE>>=
+<<fig.width=10, height=5, out.width='.8\\linewidth', echo=FALSE, fig=TRUE>>=
    qplot(heat, Qps, ylab = "Normal Quantiles", xlab = "Temperature to Deformation",geom="blank")
 @
+
+
+What does this graph tell us about the temperature at which the beams deform?
 
 \end{parts}
 \pagebreak

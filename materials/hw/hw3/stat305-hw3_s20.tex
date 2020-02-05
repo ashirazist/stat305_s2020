@@ -73,17 +73,18 @@
 \chead{Homework 3} 
 \rhead{Due Thursday, February $6^{th}$ in the class}
 \lfoot{Spring 2020} 
-\cfoot{} 
+\cfoot{\thepage} 
  
 \renewcommand{\headrulewidth}{0.4pt} 
 \renewcommand{\footrulewidth}{0.4pt} 
-\rfoot{Page \thepage\ of \pageref{LastPage}}
 
 \def\Exp#1#2{\ensuremath{#1\times 10^{#2}}}
 \def\Case#1#2#3#4{\left\{ \begin{tabular}{cc} #1 & #2 \phantom
 {\Big|} \\ #3 & #4 \phantom{\Big|} \end{tabular} \right.}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\usepackage{Sweave}
 \begin{document}
+\input{stat305-hw3_s20-concordance}
 \pagestyle{fancy} 
 
 Show \textbf{all} of your work on this assignment and answer each question fully in the given context. 
@@ -119,8 +120,8 @@ Show \textbf{all} of your work on this assignment and answer each question fully
     \item Find all quantiles of compound 1 and use Normal quantile table attached to this homework to find the corresponding normal quantiles[10 pts]\\
     \emph{hint} This part is similar to what we did in class working on ch 3 handout. 
     \item Using the results in part b, plot theoretical Normal QQ-plot against quantiles of compound 1.[10 pts]
-    \item Using the theoretical Normal quantile plot in part c, what can we say about the shape and distribution of compound 2 data? [5 pts]
-    \item Give the coordinates  of the upper right ponint that would appear on a regular graph paper. Also, give the coordinates of the lower left point that would appear on a normal plot of the compound 2 data. [5 pts]
+    \item Using the theoretical Normal quantile plot in part c, what can we say about the shape and distribution of compound 1 data? [5 pts]
+    \item Give the coordinates  of the upper right ponint that would appear on a regular graph paper. Also, give the coordinates of the lower left point that would appear on a normal plot of the compound 1 data. [5 pts]
 \end{enumerate}    
 
 

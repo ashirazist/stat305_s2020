@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.26)  4 FEB 2020 16:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.26)  4 FEB 2020 16:59
 entering extended mode
 **./stat305-exam1.tex
 (stat305-exam1.tex
@@ -1068,6 +1068,20 @@ LaTeX Font Info:    Try loading font information for T1+aett on input line 195.
  ("C:\Users\4M1N\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ae\t1aett.fd"
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
+
+! LaTeX Error: \verb illegal in command argument.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.207 ...ote that here \verb!1 | 4 represents 1.4}
+                                                  . In this case, the first ...
+
+Try typing  <return>  to proceed.
+If that doesn't work, type  X <return>  to quit.
+
+
 Underfull \hbox (badness 10000) in paragraph at lines 211--212
 
  []
@@ -1088,16 +1102,16 @@ If you're in the wrong mode, you might be able to
 return to the right one by typing `I}' or `I$' or `I\par'.
 
 [6 <./stat305-exam1-012.pdf>]
-<stat305-exam1-014.pdf, id=48, 433.62pt x 433.62pt>
+<stat305-exam1-014.pdf, id=48, 433.62pt x 361.35pt>
 File: stat305-exam1-014.pdf Graphic file (type pdf)
 <use stat305-exam1-014.pdf>
 Package pdftex.def Info: stat305-exam1-014.pdf  used on input line 266.
-(pdftex.def)             Requested size: 375.80544pt x 375.8238pt.
+(pdftex.def)             Requested size: 375.80544pt x 313.18651pt.
 
 ! You can't use `macro parameter character #' in horizontal mode.
 <argument> STAT 305, Section ##
                                7
-l.270 
+l.273 
       
 Sorry, but I'm not programmed to handle this case;
 I'll just pretend that you didn't ask for it.
@@ -1106,7 +1120,7 @@ return to the right one by typing `I}' or `I$' or `I\par'.
 
 [7 <./stat305-exam1-014.pdf>]
 This exam contains 7 questions with 17 parts, 4 subparts, and 0 subsubparts.
-This exam has a total of 90 points.
+This exam has a total of 88 points.
 This exam has a total of 0 bonus points.
 (stat305-exam1.aux)
 
@@ -1115,7 +1129,7 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
  ) 
 Here is how much of TeX's memory you used:
  25326 strings out of 492895
- 634443 string characters out of 3124202
+ 634444 string characters out of 3124202
  830407 words of memory out of 3000000
  28817 multiletter control sequences out of 15000+200000
  19958 words of font info for 45 fonts, out of 3000000 for 9000
@@ -1131,10 +1145,11 @@ ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users
 /4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pf
 b><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmr7.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmtt10.pfb>
-Output written on stat305-exam1.pdf (8 pages, 123289 bytes).
+/amsfonts/cm/cmsy7.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/t
+ype1/public/amsfonts/cm/cmtt10.pfb>
+Output written on stat305-exam1.pdf (8 pages, 132463 bytes).
 PDF statistics:
- 89 PDF objects out of 1000 (max. 8388607)
+ 93 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  32 words of extra memory for PDF output out of 10000 (max. 10000000)
 

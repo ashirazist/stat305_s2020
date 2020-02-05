@@ -164,7 +164,7 @@ After the methods had been applied, he measured the change in concentration. \\
 
    \end{subparts}
 
-   \part[4] Was replication used in this experiment? If so, where was it applied? If not, how could we have applied it?
+   \part[2] Was replication used in this experiment? If so, where was it applied? If not, how could we have applied it?
 
   \vspace{2cm}
 
@@ -204,7 +204,7 @@ A certain make of load bearing beam used in construction of large buildings is c
 \end{Soutput}
 \end{Schunk}
 
-Note that \verb!0 | 9! represents 0.9. In this case, the first quartile is $Q(.25) = 4.7$, 
+\underline{Note that here \verb!1 | 4 represents 1.4}. In this case, the first quartile is $Q(.25) = 4.7$, 
 the median is 4.95, and the third quartile is $Q(.75) = 5.2$.
 
 \begin{parts}
@@ -250,20 +250,23 @@ the median is 4.95, and the third quartile is $Q(.75) = 5.2$.
    31.3, 41.8, 25.3, 35.3, 45.3, 37.3
 \end{center}
 
-Create a theoretical Q-Q plot using the following quantiles from the normal distribution as the theoretical quantiles. 
-What does this graph tell us about the temperature at which the beams deform?
+First complete the table for the quantiles of the data $(Q(p))$ and then create a theoretical Q-Q plot using the following quantiles from the normal distribution as the theoretical quantiles. 
 
 \begin{table}[h!]
    \centering
    \begin{tabular}{ccccccc}
-             & 1 & 2 & 3 & 4 & 5 & 6  \\ \hline
-      $p$    & 0.08 & 0.25 & 0.42 & 0.58 & 0.75 & 0.92 \\
-      $Q_{N}(p)$ & -1.41 & -0.67 & -0.2 & 0.2 & 0.67 & 1.41 \\
+          i   & 1 & 2 & 3 & 4 & 5 & 6  \\ \hline
+      $p= \frac{i-.5}{6}$    & 0.08 & 0.25 & 0.42 & 0.58 & 0.75 & 0.92 \\ \hline
+      $Q_{N}(p)$ & -1.41 & -0.67 & -0.2 & 0.2 & 0.67 & 1.41 \\ \hline
+      $Q(p)$ &     &     &     &     &     &     \\
    \end{tabular}
 \end{table}
-
+\vspace{1cm}
 %-- : R plot (results in document)
 \includegraphics{stat305-exam1-014}
+
+
+What does this graph tell us about the temperature at which the beams deform?
 
 \end{parts}
 \pagebreak
