@@ -1,0 +1,347 @@
+% For LaTeX-Box: root = stat305-pexam1.Rnw
+\documentclass[addpoints]{examsetup}
+
+\usepackage{etoolbox}
+\usepackage{tikz,pgfplots}
+
+%\input{stat105_exam1_info.tex}
+\newcommand{\course}[1]{\ifstrempty{#1}{STAT 305}{STAT 305, Section #7}}
+\newcommand{\sectionNumber}{3}
+\newcommand{\examDate}{February 6, 2020}
+\newcommand{\semester}{Spring 2020}
+\newcommand{\examNumber}{I}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+%-- : R code (Code in Document)
+<<echo=FALSE, cache=FALSE, include = FALSE>>=
+   library(ggplot2)
+ #  theme_bw()
+   if(FALSE){ 
+      knitr::knit("stat305-exam1.Rnw")
+      system('pdflatex stat305-exam1.tex')
+   }
+@
+
+
+\examCoverPage
+
+\begin{questions}
+
+\question[2] 
+Circle the \textbf{bold face} term that makes the following statement true: \\
+
+A measurement device that reports the measurements which are close to each other when repeatedly measuring the same thing is (\textcolor{red}{\textbf{precise}} or \textbf{accurate}).
+\vspace{1cm}
+
+\question[2] 
+A number of issues concerning measurement must be addressed in the following order:\vspace{0.2cm}\\
+
+(1) precision, validity, accuracy \hspace{1cm} (2) accuracy, precision, validity\\
+(3) validity, accuracy, precision \hspace{1cm} (4)\textcolor{red}{ validity, precision, accuracy}
+
+\vspace{1cm}
+
+\question[2]
+For a complete(full) factorial study with three factors, each with 4 levels, the number of all possible combinations (i.e the least number of observation) is:\vspace{0.2cm}\\
+
+(1) 12\hspace{0.5cm} (2)\textcolor{red}{ 64}\hspace{0.5cm} (3) 81\hspace{0.5cm} (4) none of these\\
+\emph{Solution:} \\
+
+\begin{align*}
+(\text{\# of levels})^{(\text{\# of factors})}= 4^3=64
+\end{align*}
+
+\vspace{3cm}
+
+\question[2]
+In a series of experiments to study the priority of a chemical product, the reactor temperature is set fixed at $550$\textdegree C. The variable "reactor temperature" is a \vspace{0.2cm}\\
+
+(1) response variable\hspace{1cm} (2) \textcolor{red}{controlled variable}\\
+(3) blocking variable\hspace{1cm} (4) experimental variable
+\vspace{1cm}
+\pagebreak
+
+\question
+%-- : R code (Code in Document)
+<<echo=FALSE, cache=FALSE, include=TRUE>>=
+   q1 <- c(110,100,105,103,105,115) 
+@
+
+A sample of size 6 was drawn from a population and the resulting observations are reported below. 
+\begin{center}
+\Sexpr{paste(q1,collapse=", ")}
+\end{center}
+Using these observed values, report the following:
+\vspace{1cm}
+
+\begin{parts}
+
+   \part[2] the mean  
+   \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $\bar{x}=106.33$ \hspace{2cm}}
+   \\
+      \begin{align*}
+      \bar{x} = \frac{1}{n} \sum_{i=1}^n x_i &= \frac{1}{6} (x_1 + x_2 + x_3 + x_4 + x_5)  \\
+                                             &= \frac{1}{6} (\Sexpr{q1[1]} + \Sexpr{q1[2]} + \Sexpr{q1[3]} + \Sexpr{q1[4]} + \Sexpr{q1[5]})+\Sexpr{q1[6]}) \\
+                                             &= \frac{1}{6} (\Sexpr{q1[1]+q1[2]+q1[3]+q1[4]+q1[5]+q1[6]}) \\
+                                             &= \Sexpr{(q1[1]+q1[2]+q1[3]+q1[4]+q1[5]+q1[6])/6} 
+      \end{align*}
+
+
+   \part[3] the median 
+      \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $Med.=$ \hspace{2cm}}
+
+   \vspace{3cm}
+
+   \part[5] the variance 
+      \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $s^2=$ \hspace{2cm}}
+
+   \vspace{4cm}
+
+   \part[2] the standard deviation 
+      \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $s=$ \hspace{2cm}}
+
+   \vspace{2cm}
+   
+   \part[3] the value of $Q(.75)$
+         \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $Q(.75)=$ \hspace{2cm}}
+
+   \vspace{4cm}
+
+   \part[4] the interquartile range
+            \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $IQR=$ \hspace{2cm}}
+
+   \vspace{4cm}
+   
+   \part[5] give the coordinates (on a regular graph paper) of the upper right and lower left point that would appear on a normal plot of the data.
+
+\hfill \fbox{upper right point = $( \;\;  \;\;  \;\; , \;\;  \;\;
+\;\; )$ }
+
+\hfill \fbox{lower left point = $( \;\;  \;\;  \;\; , \;\;  \;\;
+\;\;  )$}
+
+   \vspace{6cm}      
+   \part[5] Using the axes below, create a box plot to summarize the data. Carefully label the axes
+\centering   
+%-- : R plot (results in document)
+<<fig.width=10, height=2, out.width='.9\\linewidth', echo=FALSE, fig=TRUE>>=
+   qplot(1,seq(95,120, by=5),geom="blank",ylab="Data",xlab="") + theme(axis.ticks.y=element_blank(),axis.text.y=element_blank()) + coord_flip() 
+@
+   \vspace{6cm}
+
+\end{parts}
+
+\pagebreak
+
+\question
+
+An environmental engineer is testing four methods for reducing the concentration of a certain lake pollutant found in Iowa lakes.
+To do this he first randomly selected 20 Iowa lakes from which he took water samples,
+then split each of the 20 samples into 4 portions, 
+and randomly labeled the four portions 1, 2, 3, and 4. 
+Finally, he attempted to reduce the concentration of each 
+of the portions labeled 1 using the the first method, 
+of each of the portions labeled 2 using the second method, 
+of each of the portions labeled 3 using the third method, 
+and of each of the portions labeled portion 4 using the fourth method. 
+After the methods had been applied, he measured the change in concentration. \\
+
+\begin{parts}
+   \part[3] Is this an experiment or an observational study? Explain.
+
+  \vspace{3cm}
+  
+    \part[2] What is the population under study?
+
+  \vspace{3cm}
+
+    \part[2] What is the sample under study?
+
+  \vspace{3cm}
+
+   \part Identify the following (if there was not one, simply put "not used").
+
+  \vspace{1cm}
+
+   \begin{subparts}
+      \subpart[2] Response variable(s):
+
+      \vspace{2cm}
+
+      \subpart[2] Experimental variable(s):
+
+      \vspace{2cm}
+      
+      \subpart[2] What type of variable was (were) the experimental variable(s) in previous question (circle one):\\
+      
+      \textbf{Quantitative}\hspace{2cm} \textbf{Qualitative}
+
+      \vspace{2cm}
+
+      \subpart[2] Blocking variable(s):
+
+      \vspace{2cm}
+
+   \end{subparts}
+
+   \part[2] Was replication used in this experiment? If so, where was it applied? If not, how could we have applied it?
+
+  \vspace{2cm}
+
+\end{parts}
+
+\pagebreak
+
+
+
+
+
+<<child='questions/question01.Rnw',echo=FALSE, cache=FALSE, include=TRUE>>=
+@
+
+<<child='questions/question02.Rnw',echo=FALSE, cache=FALSE, include=TRUE>>=
+@
+
+<<child='questions/question04.Rnw',echo=FALSE, cache=FALSE, include=TRUE>>=
+@
+
+<<child='questions/question03.Rnw',echo=FALSE, cache=FALSE, include=TRUE>>=
+@
+
+<<child='questions/question05.Rnw',echo=FALSE, cache=FALSE, include=TRUE>>=
+@
+
+<<child='questions/question06.Rnw',echo=FALSE, cache=FALSE, include=TRUE>>=
+@
+
+
+
+\question
+%-- : R code (Code in Document)
+<<echo=FALSE, cache=FALSE, include=TRUE>>=
+   set.seed(12345)
+   Qfun <- function(x,p = NULL){
+      x <- x[order(x)]
+
+      n <- length(x)
+
+      qs <- ((1:n) - .5)/n
+
+      if(is.null(p)) return(qs)
+
+      i <- floor(n*p + .5)
+
+      Qp <- x[i] + (n*p + 0.5 - i)*(x[i+1] - x[i])
+
+      return(Qp)
+   }
+
+   IQRange <- function(x) Qfun(x,.75) - Qfun(x,.25)
+
+   samp <- rnorm(30,5,.3)
+
+   samp[29:30] = max(Qfun(samp,.75) + 1.5*IQRange(samp),samp[28]) + runif(2)
+
+   samp[1:3] = 1:3*(Qfun(samp,.21) - 1.5*IQRange(samp))/3
+
+   samp <- samp[order(samp)]
+
+   samp <- round(samp,1)
+   
+@
+
+A certain make of load bearing beam used in construction of large buildings is certified to withstand pressures of 2.5 tonnes per square inch.
+30 beams were tested and the pressures at which they failed are collected in the table below.
+
+%-- : R code (Code in Document)
+<<cache=FALSE, echo = FALSE, comment = NA, include = TRUE>>=
+
+   stem(samp,scale=1)
+
+@
+
+\underline{Note that here \verb!1 | 4 represents 1.4}. In this case, the first quartile is $Q(.25) = \Sexpr{Qfun(samp,.25)}$, 
+the median is \Sexpr{Qfun(samp,.5)}, and the third quartile is $Q(.75) = \Sexpr{Qfun(samp,.75)}$.
+
+\begin{parts}
+  \part[10] Complete the following frequency table: \\
+
+  \begin{table}[h!]
+     \centering
+     \begin{tabular}{|l|p{3cm}|p{3cm}|p{4cm}|}
+        \hline
+                             & \textbf{Frequency} & \textbf{Relative} & \textbf{Cumulative}  \\
+        \textbf{Value Range} &                    & \textbf{Frequency} & \textbf{Relative Frequency} \\\hline \hline
+                    &  &  &  \\
+      0.00 - 2.00   &  &  &  \\
+                    &  &  &  \\ \hline
+                    &  &  &  \\
+      2.01 - 4.00   &  &  &  \\
+                    &  &  &  \\ \hline
+                    &  &  &  \\
+      4.01 - 6.00   &  &  &  \\
+                    &  &  &  \\ \hline
+                    &  &  &  \\
+      6.01 - 8.00   &  &  &  \\
+                    &  &  &  \\ \hline
+     \end{tabular}
+  \end{table}
+
+  \part[10] Using the axes below, create a box plot to summarize the data. Carefully label the axes.
+
+%-- : R plot (results in document)
+<<fig.width=10, height=2, out.width='.9\\linewidth', echo=FALSE, fig=TRUE>>=
+   qplot(1,c(0,samp,8),geom="blank",ylab="Pressure at Failure",xlab="") + theme(axis.ticks.y=element_blank(),axis.text.y=element_blank()) + coord_flip() 
+@
+
+\newpage 
+
+  \part[4] Are there any unusually low or high observations? If so, what pressures caused those beams to fail?
+
+  \vspace{3cm}
+
+  \part[10] The company also measured the heat at which the beams begin to deform (in 10,000 degrees Celsius). The values are collected below:
+
+%-- : R code (Code in Document)
+<<echo=FALSE, cache=FALSE, include = TRUE>>=
+   set.seed(123)
+   heat <- round(5000*rchisq(6,70),-3)/10000
+   p <- round((1:6 - .5)/6,2)
+   Qps <- round(qnorm(p),2)
+@
+
+\begin{center}
+   \Sexpr{paste0(heat, collapse = ", ")}
+\end{center}
+
+First complete the table for the quantiles of the data $(Q(p))$ and then create a theoretical Q-Q plot using the following quantiles from the normal distribution as the theoretical quantiles. 
+
+\begin{table}[h!]
+   \centering
+   \begin{tabular}{ccccccc}
+          i   & 1 & 2 & 3 & 4 & 5 & 6  \\ \hline
+      $p= \frac{i-.5}{6}$    & \Sexpr{p[1]} & \Sexpr{p[2]} & \Sexpr{p[3]} & \Sexpr{p[4]} & \Sexpr{p[5]} & \Sexpr{p[6]} \\ \hline
+      $Q_{N}(p)$ & \Sexpr{Qps[1]} & \Sexpr{Qps[2]} & \Sexpr{Qps[3]} & \Sexpr{Qps[4]} & \Sexpr{Qps[5]} & \Sexpr{Qps[6]} \\ \hline
+      $Q(p)$ &     &     &     &     &     &     \\
+   \end{tabular}
+\end{table}
+\vspace{1cm}
+%-- : R plot (results in document)
+<<fig.width=10, height=5, out.width='.8\\linewidth', echo=FALSE, fig=TRUE>>=
+   qplot(heat, Qps, ylab = "Normal Quantiles", xlab = "Temperature to Deformation",geom="blank")
+@
+
+
+What does this graph tell us about the temperature at which the beams deform?
+
+\end{parts}
+\pagebreak
+
+
+
+
+\end{questions}
+
+\end{document}
