@@ -1,0 +1,104 @@
+---
+title: "CH4- Model Assessment"
+author: "Amin Shirazi"
+date: "2/11/2020"
+output: pdf_document
+---
+
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
+library(knitr)
+library(tidyverse)
+library(xtable)
+library(MASS)
+
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, fig.height = 2)
+theme_set(theme_bw(base_family = "serif"))
+
+set.seed(305)
+```
+
+
+### Assessing models
+
+When modeling, it's important to assess the (1) **validity** and (2) **usefulness** of your model.
+These are model assumptions and we need to check them before making any decisions. If these assumptions are violated, we need to go back and review things and maybe refit the data using other methods to have a valid fit on the data. 
+
+To assess the validity of the model (i.e. to see if model assumptions are met), we will look to the residuals. If the fitted equation is the good one, the residuals will be:
+
+- Ptternless (cloud like, random scatter)
+- Centered at zero
+- Bell shaped distribution
+
+To check if these three things hold, we will use two plotting methods.
+
+
+>A **residual plot** is a plot of the residuals, $e = y - \hat{y}$ vs. $x$ (or $\hat{y}$ in the case of multiple regression, Section 4.2).
+
+
+
+\vspace{1cm}
+```{r residual_plots, results='hold', out.width=".48\\textwidth", fig.height = 2.5, fig.width = 4}
+b0 <- 4.67
+b1 <- .92
+
+perfect <- data.frame(x = seq(10, 52, length.out = 35)) %>%
+  mutate(y = b0 + b1*x + rnorm(n(), 0, 2))
+
+pattern <- data.frame(x = seq(10, 52, length.out = 35)) %>%
+  mutate(y = b0 + b1*x + .05*x^2 + rnorm(n(), 0, 2))
+
+fan <- data.frame(x = seq(10, 52, length.out = 35)) %>%
+  mutate(y = b0 + b1*x + (x/20)^2*rnorm(n(), 0, 2))
+
+ggplot(perfect, aes(x, y)) + geom_point() + geom_smooth(method = "lm", se = FALSE)
+
+qplot(perfect$x, lm(y ~ x, data = perfect)$residuals, geom = "point") + xlab("x") + ylab("e") + geom_hline(aes(yintercept=0), lty=2)
+```
+
+\newpage
+
+```{r, results='hold', out.width=".48\\textwidth", fig.height = 2.5, fig.width = 4}
+ggplot(pattern, aes(x, y)) + geom_point() + geom_smooth(method = "lm", se = FALSE)
+
+qplot(pattern$x, lm(y ~ x, data = pattern)$residuals, geom = "point") + xlab("x") + ylab("e") + geom_hline(aes(yintercept=0), lty=2)
+```
+
+\vspace{2in}
+```{r, results='hold', out.width=".48\\textwidth", fig.height = 2.5, fig.width = 4}
+ggplot(fan, aes(x, y)) + geom_point() + geom_smooth(method = "lm", se = FALSE)
+
+qplot(fan$x, lm(y ~ x, data = fan)$residuals, geom = "point") + xlab("x") + ylab("e") + geom_hline(aes(yintercept=0), lty=2)
+
+
+```
+
+\newpage
+### Normality of residuals
+- In addition to the residual versus predicted plot, there are other residual plots we can use to check regression assumptions. 
+
+- A **histogram of residuals** and a **normal probability plot (QQ-plot)** of residuals can be used to evaluate whether our residuals are approximately normally distributed. 
+   - However, unless the residuals are far from normal or have an obvious pattern, we generally don’t need to be overly concerned about normality.
+
+- Note that we check the residuals for normality. We don’t need to check for normality of the raw data. Our response and predictor variables do not need to be normally distributed in order to fit a linear regression model.
+
+#### How to check the Normality assumptions of residuals?
+
+We are already familiar with theoretical Normal QQ-plots and histograms. So, in order to check normality assumptions of residuals, we need to see if (1) the histogram of the residuals are bell shaped and (2) check their normal QQ-plot to see if the residuals lie around a straight line. 
+
+Draw a histogram of the residuals (review the JMP toturial for histograms)
+
+\vspace{0.3cm}
+![](C:/Users/4M1N/Desktop/stat305_s2020/materials/lectures/Chapters/ch4/figure/diag9.png)
+\vspace{0.3cm}
+It seems the residuals are not normaly distributed in this example.The residuals have a left skewed distirbution.
+\newpage
+
+\vspace{0.3cm}
+\centering
+![](C:/Users/4M1N/Desktop/stat305_s2020/materials/lectures/Chapters/ch4/figure/diag10.png)
+
+\vspace{0.3cm}
+
+- Again, the QQ-plot also confirms that the assumption of Normal distribution of residuals is violated  to some extend in this example. 
+
+- More examination is required to fix the issue or to find the problem. 
