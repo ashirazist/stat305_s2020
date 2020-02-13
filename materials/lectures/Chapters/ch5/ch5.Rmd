@@ -16,8 +16,7 @@ name: inverse
 ## STAT 305: Chapter 5 
 ### Part I
 ### Amin Shirazi
-.footnote[Course page: [ashirazist.github.io/stat305.github.io](https://ashirazist.github.io/stat305.github.io/)]  
-
+.footnote[Course page: [ashirazist.github.io/stat305_s2020.github.io](https://ashirazist.github.io/stat305_s2020.github.io/)]  
 ---
 name: inverse
 layout: inverse
@@ -675,8 +674,8 @@ name: inverse
 inverse:true
 class: center, middle, inverse
 
-##Wrap Up Example
-###Who killed the  king?
+## Wrap Up Example
+### Who killed the  king?
 ---
 inverse: false
 .left-column[
@@ -694,9 +693,27 @@ inverse: false
    <img src="figs/02.jpg"  height="400"> 
 </center>
 
->“King” Joffrey dies during his wedding feast. There are multiple scenarios of his cause of death, and poison is suspected as a manner of death. The poison might have been given by any of his enemies
+>King Joffrey dies during his wedding feast. There are multiple scenarios of his cause of death, and poison is suspected as a manner of death. The poison might have been given by any of his enemies
 
 
+
+]
+---
+inverse: false
+.left-column[
+## Conditional Probability
+### What is it?
+### How it works
+### Notation
+### Independence
+### Bayes' Theorem
+### Example
+]
+.right-column[
+
+### The question is that who killed the king?
+
+![](https://media.giphy.com/media/10dnNMNdFQSt5C/giphy.gif)
 
 ]
 ---
@@ -741,15 +758,28 @@ inverse: false
 ]
 .right-column[
 
->The maester in charge of investigating Joffrey’s death figured out that the poisoned used was made by either *Tyrion* or *lord Baelish*. 
+>The maester in charge of investigating Joffrey?s death figured out that the poisoned used was made by either *Tyrion* 
 
-<center>
-   <img src="figs/03.jpg" width= "400"  height="220"> 
-</center>
+![](https://media.giphy.com/media/FXlBNxByAb9a8/giphy.gif)
 
-<center>
-   <img src="figs/04.png"  width= "400"  height="220"> 
-</center>
+
+]
+---
+inverse: false
+.left-column[
+## Conditional Probability
+### What is it?
+### How it works
+### Notation
+### Independence
+### Bayes' Theorem
+### Example
+]
+.right-column[
+
+> or *lord Baelish*. 
+
+![](https://media.giphy.com/media/7bHgjTv7Psfp6/giphy.gif )
 ]
 ---
 inverse: false
