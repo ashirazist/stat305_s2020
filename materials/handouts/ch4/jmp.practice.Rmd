@@ -82,7 +82,9 @@ p<-qplot(guide, auction, data=d, xlab="1997 Guide Price",ylab="Recent Auction Pr
 \vspace{1cm}
 
 \item Save the residuals and plot residuals vs. 1977 guide price. What do you think of the assumptions of residuals?
+
 - Patternless
+
 - Bell-shaped
 \vspace{0.3cm}
 \item Now check the normality of residuals using histogram and Normal qq-plot.
@@ -91,8 +93,8 @@ p<-qplot(guide, auction, data=d, xlab="1997 Guide Price",ylab="Recent Auction Pr
 
 \end{enumerate}
 
-\newpage
-#### Fitting a quadratic (polynomial) model
+
+### Fitting a quadratic (polynomial) model
 
 Let's try fitting a polynomial of order 2. i.e. we are interested in the theoretical relationship 
 $$y= \beta_0 + \beta_1 x+ \beta_2 x^2$$
@@ -115,7 +117,7 @@ The goal is to fit a quadratic (polynomial) model to the data.
 \item Save the predicted values $\hat{y}$ and plot residuals vs. predicted values. What do you think of the assumptions of the model?
 \end{enumerate}
 
-#### Fitting a multiple regression model
+### Fitting a multiple regression model
 
 Suppose there is another variable involved in this experiment called "Market Price". i.e. the theoretical relationship is 
 
