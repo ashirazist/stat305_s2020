@@ -1,0 +1,131 @@
+---
+title: "STAT 305 - JMP practice"
+author: "Amin Shirazi"
+date: "2/13/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, fig.align = "center", fig.height = 4)
+library(tidyverse)
+```
+
+
+```{r}
+ options(scipen=999)
+   set.seed(5000)
+   #source('./test-functions.R')
+
+   if(file.exists('./data/JMP.csv')){
+
+      d <- read.csv('./data/JMP.csv')
+
+   }else{
+
+      r <- runif(342, 70, 150)
+      w <- runif(500-342, 70, 150)
+      s<- runif(500, 70, 150)
+
+      
+    
+
+      pr <- 20 + 1.8*r + 0.2*sapply(r, function(x) max(c(0, x - 100))^2) + rnorm(342, 0, 30)
+      pw <- 20 + 1.8*w + 0.1*sapply(w, function(x) max(c(0, x - 100))^2) + rnorm(500-342, 0, 20)
+      ps <- 20 + 1.8*s + 0.05*sapply(s, function(x) max(c(0, x - 100))^2) + rnorm(500, 0, 10)
+
+      d <- data.frame(
+         'type'= rep(c('red', 'white'), times=c(342, 500-342)),
+         'guide'=round(c(r, w),2),
+         'auction'=c(pr, pw),
+         'market'= ps
+      )
+
+      d <- d[sample(1:500),]
+         
+      write.csv(d, 'JMP.csv', row.names=FALSE)
+
+   }
+
+```
+### Wine bottle price
+
+A certain statistician decided to do a deep analysis of the relationship between the cost of wine bottles in the 1997 book and the actual prices the same bottles fetched on open auction sites recently. 
+The dataset he created consists of the last 500 bottles with publically available auction prices that were also listed in \textit{Le Champions de vin rouge} price index.
+
+```{r}
+p<-qplot(guide, auction, data=d, xlab="1997 Guide Price",ylab="Recent Auction Price", shape=type) + coord_fixed(.1)
+#p
+```
+
+#### Line fitting 
+
+\begin{enumerate}
+\item Use the file "JMP.csv" file on the course page into JMP and make a scatter plot of the response variable "Recent Auction Price" vs. the experimental variabl "1977 Guide Price". What do you think of the relationship between the response and experimental variable?
+
+\vspace{0.3cm}
+\item Suppose there is a linear relationship between the recent auction price (y) and 1977 guide price (x). Write down the theoretical relationship. 
+
+\vspace{0.3cm}
+\item Use JMP to fit a line (simple linear relationship) between x and y. 
+
+\vspace{0.3cm}
+\item Find and \underline{interpret} the value of $R^2$ for the fitted linear relationship. What do you think of the usefulness of the fit?
+
+\vspace{0.3cm}
+\item What are the values of SSTO, SSE and SSR?
+\vspace{1cm}
+
+\item Using the JMP output, specify the values of $\hat\beta_0$ and $\hat\beta_1$ and write down the fitted relationship.
+\vspace{1cm}
+
+\item Provide a predicted value of the auction price of wine if the price on the 1977 guide book is 100.
+\vspace{1cm}
+
+\item Save the residuals and plot residuals vs. 1977 guide price. What do you think of the assumptions of residuals?
+- Patternless
+- Bell-shaped
+\vspace{0.3cm}
+\item Now check the normality of residuals using histogram and Normal qq-plot.
+\vspace{0.3cm}
+\item Save the predicted values $\hat{y}$ and plot residuals vs. predicted values. What do you think of the assumptions of the model?
+
+\end{enumerate}
+
+\newpage
+#### Fitting a quadratic (polynomial) model
+
+Let's try fitting a polynomial of order 2. i.e. we are interested in the theoretical relationship 
+$$y= \beta_0 + \beta_1 x+ \beta_2 x^2$$
+The goal is to fit a quadratic (polynomial) model to the data. 
+\begin{enumerate}
+\item Fit a polynomial to degree 2 to the data. Note that, there are several way to fit this polynomial model. The easiest way is to use the options in `Analyze > fit model`.
+
+\item Report the $R^2$ and interpret it. 
+\vspace{1cm}
+\item Compare this $R^2$ with the one of line fitting in part I. Which model do you select and why?
+\vspace{1cm}
+\item Write down the fitted quadratic model.
+\vspace{1cm}
+\item Save the residuals and plot residuals vs. 1977 guide price. What do you think of the assumptions of residuals?
+- Patternless
+- Bell-shaped
+\vspace{0.3cm}
+\item Now check the normality of residuals using histogram and Normal qq-plot.
+\vspace{0.3cm}
+\item Save the predicted values $\hat{y}$ and plot residuals vs. predicted values. What do you think of the assumptions of the model?
+\end{enumerate}
+
+#### Fitting a multiple regression model
+
+Suppose there is another variable involved in this experiment called "Market Price". i.e. the theoretical relationship is 
+
+$$\text{auction price}= \beta_0 + \beta_0*\text{guide price} +\beta_2*\text{market price} $$
+Now use JMP to fit a multiple regression model (a surface) to learn about the relationship between auction, guide and market price. 
+
+
+
+
+
+
+
+
