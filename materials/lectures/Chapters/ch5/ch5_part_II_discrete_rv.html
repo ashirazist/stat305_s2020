@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
-    <title>ch5_part_II_discrete_rv.utf8.md</title>
+    <title>ch5_part_II_discrete_rv.utf8</title>
     <meta charset="utf-8" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
@@ -18,7 +18,7 @@ name: inverse
 ## STAT 305: Chapter 5 
 ### Part II
 ### Amin Shirazi
-.footnote[Course page: [ashirazist.github.io/stat305.github.io](https://ashirazist.github.io/stat305.github.io/)]  
+.footnote[Course page: [ashirazist.github.io/stat305_s2020.github.io](https://ashirazist.github.io/stat305_s2020.github.io/)]  
 ---
 layout: true
 class: center, middle, inverse
@@ -28,7 +28,7 @@ class: center, middle, inverse
 ---
 layout:false
 .left-column[
-## General Info
+### General Info
 ### Reminder: RVs
 ]
 .right-column[
@@ -40,8 +40,22 @@ Random Variables, we have already defined, take real-numbered ( `\(\mathbb{R}\)`
 - In the same way, we do not know the value of the random variable before the experiment, but we can make probability statements about what value the RV might take.
 ]
 ---
+layout:false
 .left-column[
-## General Info
+### General Info
+### Reminder: RVs
+]
+.right-column[
+## General Info About Discrete RVs
+### Reminder: What is a Random Variable?
+
+
+![](https://media.giphy.com/media/b3rveIiz8xcdi/giphy.gif)
+
+]
+---
+.left-column[
+### General Info
 ### Reminder: RVs
 ### Discrete?
 ### Terms &amp; Notation
@@ -63,7 +77,20 @@ While we can use `\(P(X=x)\)` to refer to the probability that the discrete rand
 ]
 ---
 .left-column[
-## General Info
+### General Info
+### Reminder: RVs
+### Discrete?
+### Terms &amp; Notation
+]
+.right-column[
+Using **random variables** we can translate **events** into the world of mathematics and probability. So, we can then express  event occuring in the language of **probability**
+
+
+![](https://media.giphy.com/media/11peb90FxNJqfK/giphy.gif)
+]
+---
+.left-column[
+### General Info
 ### Reminder: RVs
 ### Discrete?
 ### Terms &amp; Notation
@@ -86,7 +113,108 @@ and
 ]
 ---
 .left-column[
-## General Info
+### General Info
+### Reminder: RVs
+### Discrete?
+### Terms &amp; Notation
+]
+.right-column[
+
+Note that 
+
+&gt; &lt;font color="red"&gt;Discrete:&lt;/font&gt; &lt;font color="blue"&gt;P&lt;/font&gt;robability &lt;font color="blue"&gt;M&lt;/font&gt;ass &lt;font color="blue"&gt;F&lt;/font&gt;unction (&lt;font color="blue"&gt;pmf&lt;/font&gt;)
+&gt;
+&gt; &lt;font color="red"&gt;Continuous:&lt;/font&gt; &lt;font color="blue"&gt;P&lt;/font&gt;robability &lt;font color="blue"&gt;D&lt;/font&gt;ensity &lt;font color="blue"&gt;F&lt;/font&gt;unction (&lt;font color="blue"&gt;pdf&lt;/font&gt;)
+
+A probability mass function (pmf) gives probabilities of occurance for &lt;font color="red"&gt;individual&lt;/font&gt; values. 
+
+]
+---
+.left-column[
+### General Info
+### Reminder: RVs
+### Discrete?
+### Terms &amp; Notation
+]
+.right-column[
+
+&gt;i.e. a dicrete random variable X takes individual (discrete) values in an interval.
+
+e.g. 
+$$P (X\color{red}\leq 3) = P(X=1) + P(X=2) + P(X=3) $$
+or 
+$$P (2\color{lightblue}&lt; X\leq 4)= P(3\color{red}\leq X\color{red}\leq 4) = P(X=3) + P(X=4) $$
+
+but 
+`$$P(X\in (2, 3)) = P(2\color{lightblue}&lt;X\color{pink}&lt;3) = 0$$`
+or 
+
+`$$P(3 \color{lightblue}&lt;X \color{red}\leq 4)= P(X=4)$$`
+]
+---
+.left-column[
+### General Info
+### Reminder: RVs
+### Discrete?
+### Terms &amp; Notation
+]
+.right-column[
+#### Properties of a &lt;font color="red"&gt;valid&lt;/font&gt; probability function. 
+
+In order to have a valid pmf we need 
+
+&gt;1) `\(f(x)\geq 0\)` for `\(\forall x\in S\)`
+
+&gt;2) `\(\sum_{x} f(x)=1\)` (probabilties sum to one)
+
+#### Example
+Let `\(f(x)\)` be a pmf defined as 
+
+$$
+f(x)= p(X=x)= 
+`\begin{cases}
+1/8 &amp; x=-1, 1 \\\\
+a &amp; x=0\\\\
+1/4 &amp; x=-2, 2
+\end{cases}`
+$$
+
+What value of **a** makes `\(f(x)\)` a valid pmf?
+]
+---
+.left-column[
+### General Info
+### Reminder: RVs
+### Discrete?
+### Terms &amp; Notation
+]
+.right-column[
+#### Properties of a &lt;font color="red"&gt;valid&lt;/font&gt; probability function. 
+#### Example
+
+$$
+f(x)= p(X=x)= 
+`\begin{cases}
+1/8 &amp; x=-1, 1 \\\\
+a &amp; x=0\\\\
+1/4 &amp; x=-2, 2
+\end{cases}`
+$$
+1) `\(f(x)\geq 0 \forall x \in (-2, -1, 0, 1, 2) \Rightarrow a\geq 0\)`
+
+2) `\(\sum_{x\in (-2, -1, 0, 1, 2)} f(x)=1\)`. so, 
+
+`\begin{align*}
+1 &amp;= f(-1)+ f(1)+ f(0)+ f(2)+ f(-2)\\\\
+  &amp;= 1/8 +1/8 +a + 1/4 + 1/4\\\\
+  &amp;= a + 2/8+ 1/2
+\end{align*}`
+
+which gives us `\(a=1/4\)`
+]
+---
+.left-column[
+### General Info
 ### Reminder: RVs
 ### Discrete?
 ### Terms &amp; Notation
@@ -98,12 +226,58 @@ The values that `\(X\)` can take and the probabilities attached to those values 
 
 **Example**
 
-Suppose that the we roll a die and let `\(T\)` be the number of dots facing up. Define the probability distribution of `\(T\)`. Find `\(f(3)\)` and `\(F(6)\)`.
+Suppose that the we roll a die and let `\(T\)` be the number of dots facing up. 
+
+Define the probability distribution of `\(T\)`. Find `\(f(3)\)`, `\(P(3&lt; X\leq 6)\)`, `\(F(3)\)` and `\(F(6)\)`.
+
 
 ]
 ---
 .left-column[
-## General Info
+### General Info
+### Reminder: RVs
+### Discrete?
+### Terms &amp; Notation
+]
+.right-column[
+Recall:
+**pmf**: 
+`\(f(x) = P(X=x)\)`
+
+**CDF**: 
+`\(F(x) = P(X \le x)\)`
+
+![](https://media.giphy.com/media/1Cho4T0V1ddAc/giphy.gif)
+
+]
+---
+
+.left-column[
+### General Info
+### Reminder: RVs
+### Discrete?
+### Terms &amp; Notation
+]
+.right-column[
+
+We can write write the pmf and CDF of T in a table like
+
+|   T       | 1    |  2    |  3    |  4    |  5    |  6    | 
+|----------|-------|-------|-------|-------|-------|-------|
+| **f(T)** |  1/6  |  1/6  | 1/6   | 1/6   | 1/6   | 1/6   |
+| **F(T)** |1/6    |2/6    | 3/6   |  4/6  |  5/6  |  1    | 
+
+- `\(f(3)= 1/6\)`
+
+- `\(P(3&lt; T\leq 6)= P(4\leq T\leq 6)  \\ =f(4) + f(5)+ f(6)\\= 1/6 + 1/6+ 1/6 = 3/6\)`
+
+- `\(F(3)= P(T\leq 3)= f(1)+ f(2)+ f(3)\\= 1/6 + 1/6 + 1/6= 3/6\)`
+
+- `\(F(6)= P(T\leq 6)=  \sum_{t=1}^{6} f(T) = 1\)`
+]
+---
+.left-column[
+### General Info
 ### Reminder: RVs
 ### Discrete?
 ### Terms &amp; Notation
@@ -125,7 +299,7 @@ Calculate the following probabilities:
 
 -  `\(P(Z \le 14)\)`
 
--  `\(P(Z &gt; 16)\)`
+-  `\(P(Z &gt; 12)\)`
 
 -  `\(P(Z \text{ is even})\)`
 
@@ -136,7 +310,7 @@ Calculate the following probabilities:
 ]
 ---
 .left-column[
-## General Info
+### General Info
 ### Reminder: RVs
 ### Discrete?
 ### Terms &amp; Notation
@@ -150,23 +324,28 @@ Calculate the following probabilities:
 | **Z**    |  11 |  12  | 13   | 14  | 15 | 16 | 17 | 18 | 19 | 20 |
 | **f(z)** |0.03 |0.03  | 0.03 |  0.06  |  0.26  |  0.09  |  0.12  |  0.20  |  0.15  |  0.03  |
 
--  `\(P(Z \le 14)\)`
+`\begin{align*}
+P(Z \le 14)&amp;= P(Z= 11\  \text{or}\  Z=12\  \text{or}\  Z= 13\  \text{or}\  Z=14)\\\\ 
+&amp;=P(Z=11)+ P(Z=12)+ P(Z=13)+ P(Z=14)\\\\
+&amp;=0.03+ 0.03+ 0.03 +0.06\\\\
+&amp;= 0.15 
+\end{align*}`
 
-&amp;nbsp;
+&lt;span style = "font-size: 70%"&gt;
 
-&amp;nbsp;
-
-&amp;nbsp;
-
-&amp;nbsp;
-
--  `\(P(Z &gt; 16)\)`
-
-
+`\begin{align*}
+P(Z &gt; 12)&amp;= P(Z= 13\  \text{or}\  Z=14 \  \text{or}\  Z=15\ \text{or}\  Z= 16\\
+&amp;\text{or}\  Z=17\  \text{or}\  Z= 18\  \text{or}\  Z=19 \  \text{or}\  Z=20)\\\\ 
+&amp;=P(Z=13)+ P(Z=14) +P(Z=15) +P(Z=16)\\
+&amp;+ P(Z=17)+ P(Z=18)+ P(Z=19)+ P(Z=20)\\\\
+&amp;=0.03+ 0.03 +0.06 + 0.26+ 0.09+ 0.12+ 0.2+ 0.15+ 0.03\\\\
+&amp;= 0.97 
+\end{align*}`
+&lt;/span&gt;
 ]
 ---
 .left-column[
-## General Info
+### General Info
 ### Reminder: RVs
 ### Discrete?
 ### Terms &amp; Notation
@@ -180,23 +359,57 @@ Calculate the following probabilities:
 | **Z**    |  11 |  12  | 13   | 14  | 15 | 16 | 17 | 18 | 19 | 20 |
 | **f(z)** |0.03 |0.03  | 0.03 |  0.06  |  0.26  |  0.09  |  0.12  |  0.20  |  0.15  |  0.03  |
 
--  `\(P(Z \text{ is even})\)`
+That is a very long way. A smarter way is to use **complement** probability.
 
-&amp;nbsp;
+`\begin{align*}
+P(Z &gt; 12)&amp;= 1- P(Z\leq 11)\\
+&amp;= 1- P(Z=11)\\
+&amp;= 1-0.03\\
+&amp;=0.97
+\end{align*}`
 
-&amp;nbsp;
+`\begin{align*}
+P(Z \text{ is even})&amp;= P(Z=12 \ \text{or} \ Z= 14\  \text{or}\  Z=16 \  \text{or}\  Z=18\  \text{or}\  Z=20 )\\
+&amp;= P(Z=12) + P(Z=14)+ P(Z=16)\\
+&amp;+  P(Z=18)+ P(Z=20)\\\\
+&amp;= 0.03 + 0.06 + 0.09 + 0.2 + 0.03\\
+&amp;= 0.41
+\end{align*}`
+]
+---
+.left-column[
+### General Info
+### Reminder: RVs
+### Discrete?
+### Terms &amp; Notation
+]
+.right-column[
 
-&amp;nbsp;
+**Example:** [Torque]
 
-&amp;nbsp;
+|          |     |      |      |      |      |      |      |      |      |      |
+|----------|-----|------|------|------|------|------|------|------|------|------|
+| **Z**    |  11 |  12  | 13   | 14  | 15 | 16 | 17 | 18 | 19 | 20 |
+| **f(z)** |0.03 |0.03  | 0.03 |  0.06  |  0.26  |  0.09  |  0.12  |  0.20  |  0.15  |  0.03  |
 
--  `\(P(Z \in \{15, 16, 18\})\)`
+`\begin{align*}
+P(Z \in \{15, 16, 18\})&amp;=  P(Z=15 \ \text{or} \ Z= 16\  \text{or}\  Z=18 )\\
+&amp;= P(Z= 15) + P(Z=16) + P(Z=18)\\
+&amp;= 0.26 + 0.09 + 0.2\\&amp;= 0.55
+\end{align*}`
+
 
 
 ]
 ---
+layout: true
+class: center, middle, inverse
+---
+##More on Cumulative Probability Function (CDF)
+---
+layout:false
 .left-column[
-## General Info
+### General Info
 ### Reminder: RVs
 ### Discrete?
 ### Terms &amp; Notation
@@ -1277,7 +1490,24 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     deleted = true;
   });
-})();</script>
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
 
 <script>
 (function() {
