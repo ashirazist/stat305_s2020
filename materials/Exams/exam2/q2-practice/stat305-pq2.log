@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.26)  10 OCT 2019 01:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.26)  20 FEB 2020 16:38
 entering extended mode
 **./stat305-pq2.tex
 (stat305-pq2.tex
@@ -1385,9 +1385,9 @@ delete the erroneous units; e.g., type `2' to delete
 two letters. (See Chapter 27 of The TeXbook.)
 
 [3 <./figure/red-wine-quadratic.png> <./figure/white-wine-quadratic.png>]
-[4] [5]
-This exam contains 3 questions with 2 parts, 18 subparts, and 0 subsubparts.
-This exam has a total of 65 points.
+[4]
+This exam contains 2 questions with 2 parts, 13 subparts, and 0 subsubparts.
+This exam has a total of 50 points.
 This exam has a total of 0 bonus points.
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 202.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 202.
@@ -1402,10 +1402,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 30408 strings out of 492895
- 710691 string characters out of 3124202
- 874706 words of memory out of 3000000
- 33762 multiletter control sequences out of 15000+200000
+ 30378 strings out of 492895
+ 710236 string characters out of 3124202
+ 874707 words of memory out of 3000000
+ 33739 multiletter control sequences out of 15000+200000
  26818 words of font info for 61 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,10n,96p,806b,700s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1422,9 +1422,9 @@ cm/cmr7.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmr9.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
 pe1/public/amsfonts/cm/cmsy10.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on stat305-pq2.pdf (6 pages, 757337 bytes).
+Output written on stat305-pq2.pdf (5 pages, 752592 bytes).
 PDF statistics:
- 121 PDF objects out of 1000 (max. 8388607)
- 31 named destinations out of 1000 (max. 500000)
+ 109 PDF objects out of 1000 (max. 8388607)
+ 24 named destinations out of 1000 (max. 500000)
  32 words of extra memory for PDF output out of 10000 (max. 10000000)
 
