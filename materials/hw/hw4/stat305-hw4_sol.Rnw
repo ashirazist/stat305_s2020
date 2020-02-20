@@ -150,19 +150,19 @@ out<-lm(failure_time~weight, data = dw)
 @
 \end{center}
 
-Here are some summaries of the data:
-
-$$
-\sum_{i=1}^{50} x_i = \Sexpr{round(sum(weight))} \hspace{3cm} \sum_{i=1}^{50} x_i^2 = \Sexpr{round(sum(weight^2))} \\
-$$
-
-$$
-\sum_{i=1}^{50} y_i = \Sexpr{round(sum(failure_time))} \hspace{3cm} \sum_{i=1}^{50} y_i^2 = \Sexpr{round(sum(failure_time^2))} \\
-$$
-
-$$
-\sum_{i=1}^{50} x_i y_i = \Sexpr{round(sum(failure_time*weight))}
-$$
+% Here are some summaries of the data:
+% 
+% $$
+% \sum_{i=1}^{50} x_i = \Sexpr{round(sum(weight))} \hspace{3cm} \sum_{i=1}^{50} x_i^2 = \Sexpr{round(sum(weight^2))} \\
+% $$
+% 
+% $$
+% \sum_{i=1}^{50} y_i = \Sexpr{round(sum(failure_time))} \hspace{3cm} \sum_{i=1}^{50} y_i^2 = \Sexpr{round(sum(failure_time^2))} \\
+% $$
+% 
+% $$
+% \sum_{i=1}^{50} x_i y_i = \Sexpr{round(sum(failure_time*weight))}
+% $$
 
 \begin{enumerate}
        \item  Using the summaries above, fit a linear relationship between \textbf{weight exceeding guidelines} (x) and \textbf{travel distance to failure} (y).[10 pts]\\
@@ -200,7 +200,7 @@ $$
        Since we are using a linear relationship, we can get $R^2$ from $r$ (slides 29 and 51 of chapter 4 slides):
             \begin{align*} 
             r &= \frac{\sum_{i=1}^n x_i y_i - n \bar{x} \bar{y}}{\sqrt{\left(\sum_{i=1}^n x_i^2 - n \bar{x}^2\right)\left(\sum_{i=1}^n y_i^2 - n\bar{y}^2\right)}} \\
-              &= \frac{(1982) - (50) (64/50) (1996/50) }{\sqrt{\left(107 - 50 (64/50)^2 \right)\left(94078 - (50)(1996/50)^2\right)}} \\
+              &= \frac{(1982) - (50) (64/50) (1699/50) }{\sqrt{\left(107 - 50 (64/50)^2 \right)\left(94078 - (50)(1699/50)^2\right)}} \\
               &= \Sexpr{ ( (1699) - (50) * (64/50) * (1795/50) )/(sqrt( (107 - 50 * (64/50)^2 ) *(79777 - (50) * (1795/50)^2 ))) } \\
             \end{align*} 
             So $R^2 = (r)^2 = \Sexpr{( ( (1699) - (50) * (64/50) * (1795/50) )/(sqrt( (107 - 50 * (64/50)^2 ) *(79777 - (50) * (1795/50)^2 ))) )^2}$\\
