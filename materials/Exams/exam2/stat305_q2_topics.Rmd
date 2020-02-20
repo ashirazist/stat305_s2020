@@ -4,6 +4,7 @@ output:
   pdf_document: default
   html_document: default
 ---
+The quiz will cover chapter 4 slides and chpater 5 slides up to the end of slide 32.
 
 \begin{enumerate}
 \item Relationships between variables (Ch. 4.1-4.2)
@@ -19,11 +20,6 @@ output:
             \item Probability mass functions (pmf)
             \item Cumulative distribution functions (CDF)
             \item Expected value, variance, and standard deviation
-            \item Special discrete random variables:
-                \begin{enumerate}
-                    \item Binomial($n, p$)
-                    \item Geometric($p$)
-                    \item Poisson($\lambda$)
-                \end{enumerate}
+
     \end{enumerate}            
 \end{enumerate}

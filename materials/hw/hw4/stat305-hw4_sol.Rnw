@@ -200,7 +200,7 @@ out<-lm(failure_time~weight, data = dw)
        Since we are using a linear relationship, we can get $R^2$ from $r$ (slides 29 and 51 of chapter 4 slides):
             \begin{align*} 
             r &= \frac{\sum_{i=1}^n x_i y_i - n \bar{x} \bar{y}}{\sqrt{\left(\sum_{i=1}^n x_i^2 - n \bar{x}^2\right)\left(\sum_{i=1}^n y_i^2 - n\bar{y}^2\right)}} \\
-              &= \frac{(1982) - (50) (64/50) (1699/50) }{\sqrt{\left(107 - 50 (64/50)^2 \right)\left(94078 - (50)(1699/50)^2\right)}} \\
+              &= \frac{(1699) - (50) (64/50) (1795/50) }{\sqrt{\left(107 - 50 (64/50)^2 \right)\left(79777 - (50)(1795/50)^2\right)}} \\
               &= \Sexpr{ ( (1699) - (50) * (64/50) * (1795/50) )/(sqrt( (107 - 50 * (64/50)^2 ) *(79777 - (50) * (1795/50)^2 ))) } \\
             \end{align*} 
             So $R^2 = (r)^2 = \Sexpr{( ( (1699) - (50) * (64/50) * (1795/50) )/(sqrt( (107 - 50 * (64/50)^2 ) *(79777 - (50) * (1795/50)^2 ))) )^2}$\\
