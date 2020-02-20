@@ -22,19 +22,19 @@ name: inverse
 layout: inverse
 class: center, middle, inverse
 
-## Model Diagnostics
-### A Recap of Assessing Models
+##Model Diagnostics
+###(Optional Reading)
 
 ---
 layout: false
 .left-column[
-#### Model Diagnostics
-#### Model Assumptions
+##Model Diagnostics
+##Model Assumptions
 ]
 .right-column[
 
-#### Model Diagnostics 
-#### Model Assumptions
+###Model Diagnostics 
+####Model Assumptions
 
 - There are some assumptions in fitting a linear regression (either simple or multiple) to determine any possible relationship between response variable(s) and explanatory (experimental) variable(s). Some of them will be discussed in future chapters, and in this sub-section, we will discuss some assumptions relatd to residuals. 
 
@@ -52,12 +52,12 @@ e_i = y_i - \hat{y}_i
 ]
 ---
 .left-column[
-#### Model Diagnostics
-#### Model Assumptions
+###Model Diagnostics
+###Model Assumptions
 ]
 .right-column[
 
-#### Assumptions in Linear Regression
+### Assumptions in Linear Regression
 
 If a linear model makes sense, the residuals will
 
@@ -75,13 +75,13 @@ The most useful graph for analyzing residuals is a **residual by predicted plot*
 ]
 ---
 .left-column[
-#### Model Diagnostics
-#### Model Assumptions
-#### Residual plot
+###Model Diagnostics
+###Model Assumptions
+###Residual plot
 ]
 .right-column[
 
-#### Assumptions in Linear Regression
+### Assumptions in Linear Regression
 #### Residual VS. predicted plot
 
 
@@ -103,13 +103,13 @@ After fiting a model, click on the red down arrow next to the model.
 ---
 
 .left-column[
-#### Model Diagnostics
-#### Model Assumptions
-#### Residual plot
+###Model Diagnostics
+###Model Assumptions
+###Residual plot
 ]
 .right-column[
 
-#### Assumptions in Linear Regression
+### Assumptions in Linear Regression
 #### Residual VS. predicted plot
 
 After fiting a model, click on the red down arrow next to the model
@@ -122,13 +122,13 @@ After fiting a model, click on the red down arrow next to the model
 ---
 
 .left-column[
-#### Model Diagnostics
-#### Model Assumptions
-#### Residual plot
+###Model Diagnostics
+###Model Assumptions
+###Residual plot
 ]
 .right-column[
 
-#### Assumptions in Linear Regression
+### Assumptions in Linear Regression
 #### Residual VS. predicted plot
 
 
@@ -144,13 +144,13 @@ If there is a non-random pattern, the nature of the pattern can pinpoint potenti
 ---
 
 .left-column[
-#### Model Diagnostics
-#### Model Assumptions
-#### Residual plot
+###Model Diagnostics
+###Model Assumptions
+###Residual plot
 ]
 .right-column[
 
-#### Assumptions in Linear Regression
+### Assumptions in Linear Regression
 #### Residual VS. predicted plot
 
 For example, if curvature is present in the residuals, then it is likely that there is curvature in the relationship between the response and the predictor that is not explained by our model.  A linear model does not adequately describe the relationship between the predictor and the response.
@@ -162,13 +162,13 @@ For example, if curvature is present in the residuals, then it is likely that th
 ---
 
 .left-column[
-#### Model Diagnostics
-#### Model Assumptions
-#### Residual plot
+###Model Diagnostics
+###Model Assumptions
+###Residual plot
 ]
 .right-column[
 
-#### Assumptions in Linear Regression
+### Assumptions in Linear Regression
 #### Residual VS. predicted plot
 
 
@@ -184,14 +184,14 @@ This indicates non-constant (not homogeneous) variance.
 ---
 
 .left-column[
-#### Model Diagnostics
-#### Model Assumptions
-#### Residual plot
-#### Normality
+###Model Diagnostics
+###Model Assumptions
+###Residual plot
+###Normality
 ]
 .right-column[
 
-#### Assumptions in Linear Regression
+### Assumptions in Linear Regression
 #### Normality of residuals
 - In addition to the residual versus predicted plot, there are other residual plots we can use to check regression assumptions. 
 
@@ -202,14 +202,14 @@ This indicates non-constant (not homogeneous) variance.
 ]
 ---
 .left-column[
-#### Model Diagnostics
-#### Model Assumptions
-#### Residual plot
-#### Normality
+###Model Diagnostics
+###Model Assumptions
+###Residual plot
+###Normality
 ]
 .right-column[
 
-#### Assumptions in Linear Regression
+### Assumptions in Linear Regression
 #### Normality of residuals
 
 To draw the histogram of the residuals, first save residuals of the model. 
@@ -223,14 +223,14 @@ To draw the histogram of the residuals, first save residuals of the model.
 ]
 ---
 .left-column[
-#### Model Diagnostics
-#### Model Assumptions
-#### Residual plot
-#### Normality
+###Model Diagnostics
+###Model Assumptions
+###Residual plot
+###Normality
 ]
 .right-column[
 
-#### Assumptions in Linear Regression
+### Assumptions in Linear Regression
 #### Normality of residuals
 Then draw a histogram of the residuals (review the JMP toturial for histograms)
 
@@ -243,14 +243,14 @@ It seems the residuals are not normaly distributed in this example.
 ]
 ---
 .left-column[
-#### Model Diagnostics
-#### Model Assumptions
-#### Residual plot
-#### Normality
+###Model Diagnostics
+###Model Assumptions
+###Residual plot
+###Normality
 ]
 .right-column[
 
-#### Assumptions in Linear Regression
+### Assumptions in Linear Regression
 #### Normality of residuals
 
 As the instructions on the JMP toturials (and also HW #3), you can draw **Normal QQ-plot** to evaluate if the residuals meet the assumptions of normaly distributed. 
@@ -267,14 +267,14 @@ As the instructions on the JMP toturials (and also HW #3), you can draw **Normal
 ---
 
 .left-column[
-#### Model Diagnostics
-#### Model Assumptions
-#### Residual plot
-#### Normality
+###Model Diagnostics
+###Model Assumptions
+###Residual plot
+###Normality
 ]
 
 .right-column[
-#### Assumptions in Linear Regression
+### Assumptions in Linear Regression
 #### Normality of residuals
 
 Plotting Normal QQ-plot of the same example
@@ -289,25 +289,5 @@ Plotting Normal QQ-plot of the same example
 
 ]
 
----
-.left-column[
-#### Model Diagnostics
-#### Model Assumptions
-#### Residual plot
-#### Normality
-]
-.right-column[
 
-#### Assumptions in Linear Regression
-#### Wrap up
-
-- Note that some assumptions are usually violated when it comes to work with real data (this is also based on my own experience)
-
-- As an engineer who fits a model to data to describe the relationship between the response and experimental variables in a study, you need to check these assumptions to be confident about the validity of your fit.
-
-- We will again touch these materials in following chapters.
-
-- Being aware of such diagnostics tools can help to search for the remedies. 
-
-]
 
