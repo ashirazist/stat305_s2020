@@ -1,28 +1,31 @@
-% For LaTeX-Box: root = stat105_F15_exam1B.tex 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%  File Name: stat105_F15_exam1B.tex
-%  Purpose:
-%
-%  Creation Date: 24-09-2015
-%  Last Modified: Thu Oct  1 00:18:14 2015
-%  Created By:
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% For LaTeX-Box: root = stat305-pexam1.Rnw
 \documentclass[addpoints]{examsetup}
 
 \usepackage{etoolbox}
 \usepackage{tikz,pgfplots}
 
 %\input{stat105_exam1_info.tex}
-\newcommand{\course}[1]{\ifstrempty{#1}{STAT 305}{STAT 305, Section #1}}
+\newcommand{\course}[1]{\ifstrempty{#1}{STAT 305}{STAT 305, Section #7}}
 \newcommand{\sectionNumber}{3}
-\newcommand{\examDate}{October 17, 2019}
-\newcommand{\semester}{FALL 2019}
+\newcommand{\examDate}{February 27, 2020}
+\newcommand{\semester}{Spring 2020}
 \newcommand{\examNumber}{II}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{document}
 \SweaveOpts{concordance=TRUE}
+
+%-- : R code (Code in Document)
+<<echo=FALSE, cache=FALSE, include = FALSE>>=
+   library(ggplot2)
+ #  theme_bw()
+   if(FALSE){ 
+      knitr::knit("stat305-exam1.Rnw")
+      system('pdflatex stat305-exam1.tex')
+   }
+@
+
+
+
 
 %-- : R code (Code in Document)
 <<echo=FALSE, cache=FALSE, include=FALSE>>=
@@ -67,7 +70,7 @@ Then they are given the test and get an actual score.
 
    #thug = data.frame(actual = actual, predicted = predicted)
    #write.csv(thug,file="DK.csv",row.names=FALSE)
-   link<-"C:/Users/4M1N/Box Sync/Courses/Fall 2019/STAT 305/materials/exams/exam2-f19/q2/DK.csv"
+   link<-"C:/Users/4M1N/Desktop/stat305_s2020/materials/Exams/exam2/q2/DK.csv"
    d <- read.csv(link)
    actual <- round(d$actual,2)
    predicted <- round(d$predicted,2)
@@ -105,11 +108,15 @@ $$
       \subpart[5] Write the equation of the fitted linear relationship. 
       
       \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $\hat y =$ \hspace{10cm}}
-      \vspace{7cm}
-      \subpart[5] Find and interpret the value of $R^2$ for the fitted linear relationship.
+      \vspace{3cm}
+      \subpart[3] \underline{Find}  the value of $R^2$ for the fitted linear relationship.
                   \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $R^2=$ \hspace{2cm}}
 
       \vspace{7cm}
+      \subpart[3] \underliene{Interpret} the value of $R^2$  you calculated in part (ii) for the fitted linear relationship.
+                  
+
+      \vspace{3cm}      
       \subpart[5] Using the fitted line, what do we suppose a person will guess their score will be if they actually scored a \Sexpr{actual[30]}.
       
       
@@ -134,15 +141,21 @@ $$
 
    \begin{subparts}
       \subpart[5] Write the equation of the fitted quadratic relationship.
-      
+
 \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $\hat y =$ \hspace{10cm}}
 
-      \vspace{1cm}
-      \subpart[5] Find and interpret the value of $R^2$ for the fitted quadratic relationship.
-                        \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $R^2=$ \hspace{3cm}}
 
-      \vspace{5cm}
-\pagebreak      
+\newpage  
+
+
+      \vspace{1cm}
+      \subpart[3] \underline{Find}  the value of $R^2$ for the fitted quadratic relationship.
+                        \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip-0.4cm $R^2=$ \hspace{3cm}}
+      \vspace{7cm}                  
+      \subpart[3] \underline{Interpret} the value of $R^2$ you calculated in part (ii)  for the fitted quadratic relationship..
+                                         
+
+      \vspace{4cm}
       \subpart[5] Using the fitted quadratic relationship, what do we suppose a person will guess their score will be if they actually scored a \Sexpr{actual[10]}.
       
                   \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $\hat y =$ \hspace{10cm}}
@@ -156,6 +169,8 @@ $$
       \vspace{2cm}
    \end{subparts}
 \end{parts}
+
+\pagebreak
 
 \question
 Suppose the following is the probability distribution for $X$. 
@@ -195,13 +210,20 @@ Suppose the following is the probability distribution for $X$.
 \pagebreak
 
 \question
-As the discussion in the class, King Joffrey was poisoned and Tyrion was found guilty  for his death. Tyrion then decided to let the gods decide his fate and demanded a trial by combats. Then it was supposed to have five completely independent combats to decide on his guilt or innnocence. The one who fought for him (his combatant) had $p= 0.7$ probability of success in each combat.  Let $X$ be the random variable associated with the number of combats his combatant wins out of the five combats.
+As the discussion in the class, King Joffrey was poisoned and Tyrion was found guilty  for his death. Tyrion then decided to let the gods decide his fate and demanded a trial by combats. Then it was supposed to have five completely independent combats to decide on his guilt or innnocence. The one who fought for him (his combatant) had $p= 0.7$ probability of success in each combat.  Let $X$ be the random variable associated with the number of combats his combatant wins out of the five combats. Let's assume that the probability function for this scenario is defined as 
+
+
+
+$$P(X=x) = f(x)= \frac{5!}{ x! (5-x)! } \ (0.7)^{x}\  (0.3)^{5-x} \hspace{.5cm},\hspace{.5cm} x= 0, 1, \cdots, 5 $$
+               
 
          \begin{subparts}
-               \subpart[2] Precisely specify the probability distribution associated with this trial.
-               \vspace{2cm}
-               
-               \subpart[3] What is the probability that his combatant wins all combats?
+
+               \subpart[3] What is the probability that his combatant wins \textbf{all} combats?
+               \hfill \fbox{$p=$ \hspace{3cm}}
+               \vspace{4cm}
+
+               \subpart[3] What is the probability that his combatant wins \textbf{no} combats?
                \hfill \fbox{$p=$ \hspace{3cm}}
                \vspace{4cm}
                
@@ -209,42 +231,97 @@ As the discussion in the class, King Joffrey was poisoned and Tyrion was found g
                \hfill \fbox{$p=$ \hspace{3cm}}
                \vspace{6cm}       
                
-               \subpart[2] What is the expected value of this random variable $X$?
-               \hfill \fbox{$E(X)=$ \hspace{3cm}}
-               \vspace{2cm}       
-                              
-               \subpart[2] What is the variance  of this random variable $X$?
-               \hfill \fbox{$Var(X)=$ \hspace{3cm}}
-               \vspace{2cm}          
+               % \subpart[2] What is the expected value of this random variable $X$?
+               % \hfill \fbox{$E(X)=$ \hspace{3cm}}
+               % \vspace{2cm}       
+               %                
+               % \subpart[2] What is the variance  of this random variable $X$?
+               % \hfill \fbox{$Var(X)=$ \hspace{3cm}}
+               % \vspace{2cm}          
          
          \end{subparts}
 
 \pagebreak
+
+
 \question
-Suppose that an eddy current nondestructive evaluation technique for identifying cracks in critical metal parts has a probability of about $.20$ of detecting a single crack of length $.003$in. in a certain material. Let $Y$ be the number of specimens inspected in order to obtain the first crack detection.
-\vspace{1cm}
-         \begin{subparts}
-                  \subpart[2] Precisely state the distribution of $Y$, giving the values of any parameters necessary.
-                  \vspace{2cm}
-                  
-                  \subpart[3] Find the probability that $P(Y = 5)$
-                  \hfill \fbox{$P(Y = 5)=$ \hspace{3cm}}
-                  \vspace{5cm}
-                  
-                  \subpart[3] Find the probability that $P(Y \le 4)$
-                  \hfill \fbox{$P(Y \le 4)=$ \hspace{3cm}}
-                  \vspace{5cm}
-                  
-                  \subpart[2] What is $\text{E}Y$?
-                  \hfill \fbox{$\text{E}(Y)= $ \hspace{3cm}}
-                  \vspace{2cm}
-                  
-                  
-                  \subpart[2] What is $SD{(Y)}$ (the standard deviation of $Y$)?
-                  \hfill \fbox{$\text{SD(Y)}= $ \hspace{3cm}}
-                  \vspace{2cm}                                    
-                           
-         \end{subparts}
+ Two  discrete random variab1e $X$ and  $Y$ can be described using the following probability functions:
+
+\begin{table}[ht]
+\begin{minipage}[b]{0.5\linewidth}\centering
+\begin{tabular}{c|cccc}
+%\hline
+$x$ &$-1$& 0&1&2\\
+\hline
+$f_X(x)$ & 0.2&0.3 & 0.3&0.2\\
+%\hline
+\end{tabular}
+\end{minipage}
+\hspace{0.5cm}
+\begin{minipage}[b]{0.5\linewidth}
+\centering
+\begin{tabular}{c|cccc}
+%\hline
+$y$ &1& 2&3&4\\
+\hline
+$f_Y(y)$ & 0.3&0.2 & 0.2&0.3\\
+%\hline
+\end{tabular}
+\end{minipage}
+\end{table}
+%
+\begin{subparts}
+      
+      \subpart[4] Find the mean and \textbf{standard deviation} for $X$.
+      \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm
+      $\mu_X$ = \hspace{2cm} $\sigma_X=$\hspace{2cm}}
+      \vskip 10cm \hfill
+      
+      \subpart[4] Find the cumlative distribution function (CDF) of $Y$.
+               
+               \begin{minipage}[b]{0.5\linewidth}
+               \centering
+               \begin{tabular}{c|p{2cm}p{2cm}p{2cm}p{2cm}}
+               %\hline
+               $y$ &1& 2&3&4\\
+               \hline
+               $f_Y(y)$ & 0.3&0.2 & 0.2&0.3\\
+               \hline
+               $F(Y)$ & & & &\\
+               \end{tabular}
+               \end{minipage}
+               \end{table}
+               
+
+\end{subparts}
+
+% \pagebreak
+% 
+% \question
+% Suppose that an eddy current nondestructive evaluation technique for identifying cracks in critical metal parts has a probability of about $.20$ of detecting a single crack of length $.003$in. in a certain material. Let $Y$ be the number of specimens inspected in order to obtain the first crack detection.
+% \vspace{1cm}
+%          \begin{subparts}
+%                   \subpart[2] Precisely state the distribution of $Y$, giving the values of any parameters necessary.
+%                   \vspace{2cm}
+% 
+%                   \subpart[3] Find the probability that $P(Y = 5)$
+%                   \hfill \fbox{$P(Y = 5)=$ \hspace{3cm}}
+%                   \vspace{5cm}
+% 
+%                   \subpart[3] Find the probability that $P(Y \le 4)$
+%                   \hfill \fbox{$P(Y \le 4)=$ \hspace{3cm}}
+%                   \vspace{5cm}
+% 
+%                   \subpart[2] What is $\text{E}Y$?
+%                   \hfill \fbox{$\text{E}(Y)= $ \hspace{3cm}}
+%                   \vspace{2cm}
+% 
+% 
+%                   \subpart[2] What is $SD{(Y)}$ (the standard deviation of $Y$)?
+%                   \hfill \fbox{$\text{SD(Y)}= $ \hspace{3cm}}
+%                   \vspace{2cm}
+% 
+%          \end{subparts}
 
 \end{questions}
 

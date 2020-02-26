@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.26)  15 OCT 2019 12:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7140 64-bit) (preloaded format=pdflatex 2019.8.26)  25 FEB 2020 16:59
 entering extended mode
 **./stat305_q2.tex
 (stat305_q2.tex
@@ -648,6 +648,15 @@ File: tikzlibraryplotmarks.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 libraryplotmarks.code.tex"
 File: pgflibraryplotmarks.code.tex 2019/08/03 v3.1.4b (3.1.4b)
 )))
+! Illegal parameter number in definition of \course.
+<to be read again> 
+                   7
+l.8 ...rempty{#1}{STAT 305}{STAT 305, Section #7}}
+                                                  
+You meant to type ## instead of #, right?
+Or maybe a } was forgotten somewhere earlier, and things
+are all screwed up? I'm going to assume that you meant ##.
+
 (C:/PROGRA~1/R/R-36~1.1/share/texmf/tex/latex\Sweave.sty
 Package: Sweave 
 
@@ -843,25 +852,25 @@ File: t1aer.fd 1997/11/16 Font definitions for T1/aer.
 (stat305_q2.aux)
 \openout1 = `stat305_q2.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 25.
-LaTeX Font Info:    ... okay on input line 25.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 25.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 25.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 15.
+LaTeX Font Info:    ... okay on input line 15.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 15.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 15.
 
 ("C:\Users\4M1N\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 25.
+LaTeX Font Info:    ... okay on input line 15.
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
 
@@ -943,46 +952,70 @@ G,.JBIG2,.JB2,.eps]
 Package pgfplots Warning: running in backwards compatibility mode (unsuitable t
 ick labels; missing features). Consider writing \pgfplotsset{compat=1.16} into 
 your preamble.
- on input line 25.
+ on input line 15.
 
 (stat305_q2-concordance.tex)
 
 LaTeX Font Warning: Font shape `T1/aer/bx/sc' undefined
-(Font)              using `T1/aer/bx/n' instead on input line 31.
+(Font)              using `T1/aer/bx/n' instead on input line 26.
 
-LaTeX Font Info:    Try loading font information for TS1+aer on input line 31.
+! You can't use `macro parameter character #' in horizontal mode.
+<argument> STAT 305, Section ##
+                               7
+l.26 \examCoverPage
+                   
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+LaTeX Font Info:    Try loading font information for TS1+aer on input line 26.
 (C:/PROGRA~1/R/R-36~1.1/share/texmf/tex/latex\ts1aer.fd
 File: ts1aer.fd 
 )
 LaTeX Font Info:    Font shape `TS1/aer/m/n' in size <10> not available
-(Font)              Font shape `TS1/cmr/m/n' tried instead on input line 31.
+(Font)              Font shape `TS1/cmr/m/n' tried instead on input line 26.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 31.
+(Font)              <7> on input line 26.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 31.
+(Font)              <5> on input line 26.
  [1
 
 {C:/Users/4M1N/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-<stat305_q2-003.pdf, id=13, 433.62pt x 433.62pt>
-File: stat305_q2-003.pdf Graphic file (type pdf)
-<use stat305_q2-003.pdf>
-Package pdftex.def Info: stat305_q2-003.pdf  used on input line 58.
+<stat305_q2-004.pdf, id=13, 433.62pt x 433.62pt>
+File: stat305_q2-004.pdf Graphic file (type pdf)
+<use stat305_q2-004.pdf>
+Package pdftex.def Info: stat305_q2-004.pdf  used on input line 53.
 (pdftex.def)             Requested size: 375.80544pt x 375.8238pt.
  [1
 
- <./stat305_q2-003.pdf>]
-Overfull \hbox (15.8848pt too wide) in paragraph at lines 82--84
-[]\T1/aer/m/n/10 Find and in-ter-pret the value of $\OML/cmm/m/it/10 R[]$ \T1/a
-er/m/n/10 for the fit-ted lin-ear re-la-tion-ship.  [] 
- []
+ <./stat305_q2-004.pdf>]
+! Undefined control sequence.
+l.81       \subpart[3] \underliene
+                                  {Interpret} the value of $R^2$  you calcul...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
+! You can't use `macro parameter character #' in horizontal mode.
+<argument> STAT 305, Section ##
+                               7
+l.91       \subpart[2]
+                       A person who scored a 40.14 on the test predicted tha...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
 
 [2]
-LaTeX Font Info:    Try loading font information for T1+aett on input line 104.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 103.
 
  ("C:\Users\4M1N\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ae\t1aett.fd"
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
-Overfull \hbox (1.8583pt too wide) in paragraph at lines 104--105
+Overfull \hbox (1.8583pt too wide) in paragraph at lines 103--104
 []\T1/aer/m/n/10 The JMP out-put be-low comes from fit-ting a quadratic model u
 s-ing the ac-tual score ("[][]\T1/aett/m/n/10 actual_score[]\T1/aer/m/n/10 ")
  []
@@ -990,19 +1023,39 @@ s-ing the ac-tual score ("[][]\T1/aett/m/n/10 actual_score[]\T1/aer/m/n/10 ")
 <FitDK.png, id=30, 1061.9675pt x 694.595pt>
 File: FitDK.png Graphic file (type png)
 <use FitDK.png>
-Package pdftex.def Info: FitDK.png  used on input line 106.
+Package pdftex.def Info: FitDK.png  used on input line 105.
 (pdftex.def)             Requested size: 212.38974pt x 138.91653pt.
-
-Overfull \hbox (61.26735pt too wide) in paragraph at lines 114--116
-[]\T1/aer/m/n/10 Find and in-ter-pret the value of $\OML/cmm/m/it/10 R[]$ \T1/a
-er/m/n/10 for the fit-ted quadratic re-la-tion-ship.  [] 
- []
+! You can't use `macro parameter character #' in horizontal mode.
+<argument> STAT 305, Section ##
+                               7
+l.113 \newpage
+              
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
 
 [3 <./FitDK.png>]
+Overfull \hbox (2.66827pt too wide) in paragraph at lines 117--120
+[]$[]$ \T1/aer/m/n/10 the value of $\OML/cmm/m/it/10 R[]$ \T1/aer/m/n/10 for th
+e fit-ted quadratic re-la-tion-ship.  []
+ []
+
+! You can't use `macro parameter character #' in horizontal mode.
+<argument> STAT 305, Section ##
+                               7
+l.139 
+      
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+[4]
 ! Missing number, treated as zero.
 <to be read again> 
                    \hfill 
-l.152                      \hfill
+l.159                      \hfill
                                   \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\b...
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -1011,7 +1064,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hfill 
-l.152                      \hfill
+l.159                      \hfill
                                   \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\b...
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -1023,7 +1076,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Missing number, treated as zero.
 <to be read again> 
                    \hfill 
-l.155                      \hfill
+l.162                      \hfill
                                   \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\b...
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -1032,7 +1085,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    \hfill 
-l.155                      \hfill
+l.162                      \hfill
                                   \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\b...
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -1044,7 +1097,7 @@ two letters. (See Chapter 27 of The TeXbook.)
 ! Missing number, treated as zero.
 <to be read again> 
                    {
-l.158 
+l.165 
       
 A number should have been here; I inserted `0'.
 (If you can't figure out why I needed to see a number,
@@ -1053,7 +1106,7 @@ look up `weird error' in the index to The TeXbook.)
 ! Illegal unit of measure (pt inserted).
 <to be read again> 
                    {
-l.158 
+l.165 
       
 Dimensions can be in units of em, ex, in, pt, pc,
 cm, mm, dd, cc, nd, nc, bp, or sp; but yours is a new one!
@@ -1066,55 +1119,142 @@ Runaway argument?
 ! Paragraph ended before \@vspace was complete.
 <to be read again> 
                    \par 
-l.164 
+l.171 
       
 I suspect you've forgotten a `}', causing me to apply this
 control sequence to too much text. How can we recover?
 My plan is to forget the whole thing and hope for the best.
 
-[4]
-Overfull \hbox (28.16486pt too wide) in paragraph at lines 181--184
+! You can't use `macro parameter character #' in horizontal mode.
+<argument> STAT 305, Section ##
+                               7
+l.176 
+      
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+[5]
+Overfull \hbox (28.16486pt too wide) in paragraph at lines 195--198
 []\T1/aer/m/n/10 What is the prob-a-bil-ity that his com-bat-ant wins at least 
 two com-bats?  []
  []
 
-[5]
-! Undefined control sequence.
-<recently read> \text 
-                      
-l.211                   \subpart[2] What is $\text
-                                                  {E}Y$?
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \text 
-                      
-l.212 ...hfill \fbox{$\text{E}(Y)= $ \hspace{3cm}}
-                                                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
-
-! Undefined control sequence.
-<recently read> \text 
-                      
-l.217 ...fill \fbox{$\text{SD(Y)}= $ \hspace{3cm}}
-                                                  
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
+! You can't use `macro parameter character #' in horizontal mode.
+<argument> STAT 305, Section ##
+                               7
+l.210 
+      
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
 
 [6]
-This exam contains 4 questions with 2 parts, 21 subparts, and 0 subsubparts.
-This exam has a total of 69 points.
+Overfull \hbox (18.6663pt too wide) in paragraph at lines 216--236
+[][]   [] 
+ []
+
+
+Overfull \hbox (1.60294pt too wide) in paragraph at lines 240--243
+[]\T1/aer/m/n/10 Find the mean and \T1/aer/bx/sc/10 stan-dard de-vi-a-tion \T1/
+aer/m/n/10 for $\OML/cmm/m/it/10 X$\T1/aer/m/n/10 . [] 
+ []
+
+
+Overfull \hbox (95.77747pt too wide) in paragraph at lines 249--257
+ [][] 
+ []
+
+! Extra }, or forgotten \endgroup.
+\@endfloatbox ...pagefalse \outer@nobreak \egroup 
+                                                  \color@endbox 
+l.258                \end{table}
+                                
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Extra }, or forgotten \endgroup.
+\color@endbox ->\color@endgroup \egroup 
+                                        
+l.258                \end{table}
+                                
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+
+! LaTeX Error: \begin{questions} on input line 28 ended by \end{table}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.258                \end{table}
+                                
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+
+! LaTeX Error: \begin{document} ended by \end{subparts}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.261 \end{subparts}
+                    
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.261 \end{subparts}
+                    
+Things are pretty mixed up, but I think the worst is over.
+
+
+! LaTeX Error: \begin{document} ended by \end{questions}.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.291 \end{questions}
+                     
+Your command was ignored.
+Type  I <command> <return>  to replace it with another command,
+or  <return>  to continue without it.
+
+! Extra \endgroup.
+<recently read> \endgroup 
+                          
+l.291 \end{questions}
+                     
+Things are pretty mixed up, but I think the worst is over.
+
+! You can't use `macro parameter character #' in horizontal mode.
+<argument> STAT 305, Section ##
+                               7
+l.293 \end{document}
+                    
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+[7]
+This exam contains 4 questions with 2 parts, 18 subparts, and 0 subsubparts.
+This exam has a total of 64 points.
 This exam has a total of 0 bonus points.
 (stat305_q2.aux)
 
@@ -1122,10 +1262,10 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 25313 strings out of 492895
- 634178 string characters out of 3124202
+ 25306 strings out of 492895
+ 633967 string characters out of 3124202
  826322 words of memory out of 3000000
- 28801 multiletter control sequences out of 15000+200000
+ 28794 multiletter control sequences out of 15000+200000
  22442 words of font info for 48 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,11n,96p,805b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -1140,11 +1280,12 @@ ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users
 b><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmr7.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
 /amsfonts/cm/cmsy10.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/
-type1/public/amsfonts/cm/cmti10.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on stat305_q2.pdf (7 pages, 201740 bytes).
+type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/4M1N/AppData/Local/Pro
+grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on stat305_q2.pdf (8 pages, 211589 bytes).
 PDF statistics:
- 84 PDF objects out of 1000 (max. 8388607)
+ 91 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  27 words of extra memory for PDF output out of 10000 (max. 10000000)
 
