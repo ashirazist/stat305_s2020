@@ -1,0 +1,244 @@
+```{r echo=FALSE, cache=FALSE, include=FALSE}
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+library(gridExtra)
+knitr::opts_chunk$set(
+   cache=FALSE,
+   fig.width=4,
+   fig.height=4,
+   fig.align='center',
+   out.width='.4\\linewidth',
+   out.height='.4\\linewidth',
+   echo=FALSE
+)
+theme_set(theme_bw())
+
+# Large n, known variance
+x <- round(sapply(1:50, function(i) min(rexp(1, rate=1/20.2), runif(1, 90, 100))), 2)
+write.csv(data.frame('prop_capacity'=x), file='proportional_capacity.csv', row.names=FALSE)
+
+x1 <- round(sapply(1:12, function(i) min(rexp(1, rate=1/25.2), runif(1, 90, 100))), 2)
+x2 <- round(sapply(1:10, function(i) min(rexp(1, rate=1/40.2), runif(1, 90, 100))), 2)
+write.csv(data.frame('design'=rep(c('A', 'B'), times=c(length(x1), length(x2))), 'prop_capacity'=c(x1, x2)), file='comp_capacity.csv', row.names=FALSE)
+```
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# Inference Using JMP
+---
+layout:false
+.left-column[
+## Inference W/ JMP
+]
+.right-column[
+## Inference Using JMP
+
+Of course, people rarely do statistical analyses by hand. In fact, in the case where a bonafide statistical researcher conceives of an entirely new analytical method the creation and distribution of an accompanying computational tool is essentially required.
+
+While there are common elements between the way results are presented, it is worth orienting yourself with a new software by checking that the way the software defines things matches your working definitions:
+- Ex: JMP and R use two different definitions of "quantile"
+- Ex: If $\sigma$ is unknown we use a $Z$-test if $n$ is large and a $T$-test if $n$ is small. Does the software follow the same rule of thumb on when to switch?
+
+In other words, read the docs.
+]
+---
+layout:false
+.left-column[
+## Inference W/ JMP
+## Single Sample
+]
+.right-column[
+### Inference With A Single Sample
+
+Overtime, a battery will lose its capacity to store energy. A certain phone maker collects information from user's phones on the built-in battery's capacity at certain milestones in the battery's lifetime. The dataset `max_load.csv` contains the capacity of 50 such batteries after the 5000th charge (recorded as a percentage of the battery's original capacity)
+>`r x`
+
+The mean of the 50 batteries is `r round(mean(x), 2)` and the sample standard deviation is `r round(sd(x), 2)`.
+
+The phone maker is curious if there is evidence that batteries maintain at least 20% of their original capacity.
+
+]
+---
+layout:false
+.left-column[
+## Inference W/ JMP
+## Single Sample
+### Conf Int for Mean
+]
+.right-column[
+### Inference With A Single Sample
+
+Confidence Intervals for mean percentage of original capacity in JMP:
+
+1. Load data into a table
+
+2. Select `Analyze > Distribution`
+
+3. Select the column(s) for which we would like the confidence interval(s) and click "OK"
+
+4. (<i>Optional</i>) Histogram to horizontal not vertical
+
+5. From the dropdown in the `Summary Statistics` table, select "Customize Summary Statistics" and choose your desired level of confidence. 
+
+]
+---
+layout:false
+.left-column[
+## Inference W/ JMP
+## Single Sample
+### Conf Int for Mean
+### Hyp Test for Mean
+]
+.right-column[
+### Inference With A Single Sample
+
+Hypothesis Tests for mean percentage of original capacity in JMP:
+
+1. Load data into a table
+
+2. Select `Analyze > Distribution`
+
+3. Select the column(s) for which we would like a hypothesis test and click "OK"
+
+4. (<i>Optional</i>) Histogram to horizontal not vertical
+
+5. From the dropdown with the histogram, select `Test Mean`
+
+6. From the table choose the p-value that represents your test (two-sided, reject below, reject above)
+
+]
+---
+layout:false
+.left-column[
+## Inference W/ JMP
+## Single Sample
+### Conf Int for Mean
+### Hyp Test for Mean
+### Conf Int for Std Dev
+]
+.right-column[
+### Inference With A Single Sample
+
+Confidence intervals for the true standard deviation of the percentage of original capacity in JMP:
+
+1. Load data into a table
+
+2. Select `Analyze > Distribution`
+
+3. Select the column(s) for which we would like the confidence interval(s) and click "OK"
+
+4. (<i>Optional</i>) Histogram to horizontal not vertical
+
+5. From the dropdown with the histogram, select `Confidence Interval` and select your level of confidence.
+
+6. The table with the confidence interval is returned to the report.
+
+]
+---
+layout:false
+.left-column[
+## Inference W/ JMP
+## Single Sample
+### Conf Int for Mean
+### Hyp Test for Mean
+### Conf Int for Std Dev
+### Hyp Test for Std Dev
+]
+.right-column[
+### Inference With A Single Sample
+
+Hypothesis Tests for the true standard deviation of the percentage of original capacity in JMP:
+
+1. Load data into a table
+
+2. Select `Analyze > Distribution`
+
+3. Select the column(s) for which we would like a hypothesis test and click "OK"
+
+4. (<i>Optional</i>) Histogram to horizontal not vertical
+
+5. From the dropdown with the histogram, select `Test Std Dev`
+
+6. From the table choose the p-value that represents your test (two-sided, reject below, reject above)
+
+]
+---
+layout:false
+.left-column[
+## Inference W/ JMP
+## Single Sample
+### Conf Int for Mean
+### Hyp Test for Mean
+### Conf Int for Std Dev
+### Hyp Test for Std Dev
+### Checking Assumptions
+]
+.right-column[
+### Inference With A Single Sample
+
+We occasionally perform tests where we must assume that the data is normally distributed. We can check that assumption in JMP as follows:
+
+1. Load data into a table
+
+2. Select `Analyze > Distribution`
+
+3. Select the column(s) for which we would like a hypothesis test and click "OK"
+
+4. (<i>Optional</i>) Histogram to horizontal not vertical
+
+5. From the dropdown with the histogram, select `Normal Quantile Plot`. 
+   - Points along the line indicates that it is safe to assume normality
+   - Points outside the dotted curves indicate that it is not safe to assume normality
+   - Anything else is up for debate
+
+]
+---
+layout:false
+.left-column[
+## Inference W/ JMP
+## Single Sample
+## Two Samples
+]
+.right-column[
+## Inference With Two Samples
+
+The researchers are testing two designs (A and B) to use in their next generation's phone. They have charged and discharged prototypes of each design 5000 times and have collected the following capacities (as percentages of the original capacity):
+
+>**Design A** ($\bar{x} = `r round(mean(x1), 2)`$, $s = `r round(sd(x1), 2)`$)</br></br>
+>`r x1`
+
+</br>
+
+>**Design B** ($\bar{x} = `r round(mean(x2), 2)`$, $s = `r round(sd(x2), 2)`$)</br></br>
+>`r x2`
+
+The goal is to select the design that maintains the most of its capacity.
+]
+---
+layout:false
+.left-column[
+## Inference W/ JMP
+## Single Sample
+## Two Samples
+### Comparing Means and Variances
+]
+.right-column[
+### Comparing Means and Variances From Two Samples
+
+1. Load data into a table
+
+2. Select `Analyze > Fit Y by X`
+
+3. The values to compare are the responses (Y), the group identifier is the explanatory variable (X).
+
+4. From the dropdown select `Means and Std Deviation` to get the confidence intervals for the means.
+
+5. From the dropdown select `Unequal Variances` to get the results of a hypothesis test assuming equal variances.
+
+6. From the dropdown select `Means/Anova/Pooled t` to get the results of a hypothesis tests comparing the means which assume equal variances.
+
+7. From the dropdown select `t Test` to get the results of a hypothesis tests comparing the means which do not assume equal variances.
+
+]

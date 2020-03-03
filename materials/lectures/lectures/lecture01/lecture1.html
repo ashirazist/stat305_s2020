@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+  <head>
+    <title>STAT 305: Lecture 3</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Amin Shirazi" />
+    <meta name="date" content="2019-08-19" />
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# STAT 305: Lecture 1 
+## Amin Shirazi
+.footnote[Course page: [ashirazist.github.io/stat305.github.io](https://ashirazist.github.io/stat305.github.io/)]
+
+
+
+---
+## Why Engineers Study Statistics
+### Chapter 1: Introduction
+
+
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# Section 1.1
+## Engineering Statistics: What and Why
+---
+layout: false
+.left-column[
+  ## What and Why
+  ### Engineers In General
+]
+.right-column[
+
+<center> <h2> What Do Engineers Do? </h2> </center>
+
+<center> <img src="www/figs/engineers.jpg" alt="dmc logo" height="185"> </center>
+
+-  Design/build/operate/improve some system
+
+-  Use both **quantitative theories** (i.e., mathematical) and **scientific principles** (i.e., physics, chemistry, psychology(?)) as a guide
+
+-  Obvious issue - math/science vast, no one knows everything. 
+
+-  Additionally, engineers must work outside of "lab conditions" - there is no control over the environment, the users, the timing, ...
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# So, here's the situation:
+## The "system" you want to improve is essentially unique 
+## There are competing theories that all seem equal
+## Experts disagree bitterly about what to do 
+# What's an engineer to do???
+---
+#Option 1: Just Give Up
+
+## A few drawbacks to this one
+---
+#Option 2: Gather Some Data
+
+## Figure Out What Really Matters in the System
+## Figure Out How a New System Is Gonna Work
+---
+layout: false
+.left-column[
+## What and Why
+### Engineers In General
+]
+.right-column[
+
+## But ...
+
+- Without specific training in data collection and analysis, engineers' attemps can be haphazhard and poorly conceived!
+
+- Valuable time and resources are wasted!
+
+
+- Ambiguous conclusions are reached!
+
+So, engineers need a good toolkit for best possible data collection and interpretation. 
+
+]
+
+---
+layout: false
+.left-column[
+## What and Why
+### Engineers In General
+]
+.right-column[
+
+## Engineering Statistics can help!
+
+1- Collect Engineering data.
+
+2- Summarize or describe engineering data
+
+
+3- Draw formal inferences and practical conclusions on the basis of engineering data.
+
+]
+---
+layout: false
+.left-column[
+## What and Why
+### Engineers In General
+### Data?
+]
+.right-column[
+## What Do I Mean Data?
+
+Data is **essentially just information** we can record.
+
+Examples are incredibly easy to come up with:
+
+-  Students with majors and courses they enrolled in
+```text
+student   major         course
+John      Philosophy    EASY 101
+Kate      Engineering   SMRT 500
+Mike      Mathematics   MATH 000
+```
+
+-  Amount I can bench over time
+```text
+Date     Weight
+08/01    55 lbs.
+08/02    56 lbs.
+08/03    57 lbs.
+08/04    59 lbs.
+...      ...
+12/21    345 lbs.
+```
+
+Really trivial to come up with examples
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+<center>
+   <h1> Getting Data is Easy </h1>
+   <img src="www/figs/all_this_data_orig1.jpg" alt="dmc logo" height="405"> 
+   <h1> Getting Good Data is Hard </h1>
+</center>
+---
+layout: false
+.left-column[
+## What and Why
+### Engineers In General
+### Data?
+### Example 1
+]
+.right-column[
+##Two Competing Theories
+
+###Goal: Load gears into a continuous carburizing furnace to minimize distortion during heat treating 
+
+-  **Theory 1**: Load the gears laid in a stack
+
+-  **Theory 2**: Hang the gears from a bar
+
+-  **Complications**: No two gears are exactly the same - if we test it how do we decide what was the effect of the gear and what was the effect of the loading method?
+
+-  **Good engineer**: tried it both ways and collected the distortion measures from multiple attempts
+```text
+Method    Distortion measure (.0001 in.)
+Hung      7, 8, 8, 10, 10, 10, 10, 11, 11, ..., 31, 36
+Laid      5, 8, 8,  9,  9,  9,  9, 10, 10, ..., 19, 27
+```
+]
+---
+layout: false
+.left-column[
+## What and Why
+### Engineers In General
+### Data?
+### Example 1
+]
+.right-column[
+##Two Competing Theories
+
+###Goal: minimize distortion 
+
+```text
+Method    Distortion measure (.0001 in.)
+Hung      7, 8, 8, 10, 10, 10, 10, 11, 11, ..., 31, 36
+Laid      5, 8, 8,  9,  9,  9,  9, 10, 10, ..., 19, 27
+```
+
+Plots and summary values help us see what's going on:
+
+<center>
+   <img src="www/figs/runout.png" alt="dmc logo" height="185"> 
+</center>
+
+```text
+Mean hung runout:  17.9
+Mean laid runout:  12.6
+```
+Looks like laying gears in a stack is best
+]
+---
+layout: false
+.left-column[
+## What and Why
+### Engineers In General
+### Data?
+### Example 1
+### Engineering Statistics
+]
+.right-column[
+## Engineering Statistics
+
+Collecting good data is part of what engineering statistics is concerned with, 
+but of course that's only the first part.
+**Recall:**
+> **Engineering Statistics** is the study of how *best* to
+>
+> 1. Collect engineering data
+> 2. summarize or describe engineering data, and
+> 3. draw formal inferences and practical conclusions on the basis of engineering data
+>
+> all while recognizing the reality of variation
+
+Recognizing the "reality of variation" in the distortion example led the engineer to run multiple tests.
+This helped rules out the possibility that hanging gears is better: if hanging the gears were actually the right approach, it would be astronomically unlikely that it would have led to that many comparatively large distortions.
+
+
+]
+---
+
+layout: false
+.left-column[
+## What and Why
+### Engineers In General
+### Data?
+### Example 1
+### Engineering Statistics
+]
+.right-column[
+## Example 1
+
+- If the engineer concludes that laying the gears in a stack is better in minimizing the distortion, but more expensive!
+- Now, the question is if it is really worth it to use the results based on that experiment.
+- How sure are we to use laying method?
+
+Statistics can help to reach reliable conclusions.
+
+]
+---
+name: inverse
+layout: true
+class: center, middle, inverse
+---
+# All good engineers use statistical tools
+
+# The only question is whether they will use good ones
+---
+# Section 1.2
+## Basic Terminology
+---
+layout:false
+.left-column[
+## What and Why
+## Terms
+### Types of Studies
+]
+.right-column[
+
+## Types of Statistical Studies
+
+> An **observational study** is one in which the investigator's role is basically passive. A process or phenomenon is watched and data are recorded, but there is no intervention on the part of the person conducting the study.
+
+> An **experimental study** (or, more simply, an experiment) is one in which the investigator's role is active. Process variables are manipulated, and the study environment is regulated.
+
+-  Experiments: faster, more reliable results, helps determine causal relationships.
+
+-  These are the "perfect world" scenarios - most studies blend both.
+
+-  Even under ideal circumstances, some variables can not be controlled.
+
+]
+---
+layout:false
+.left-column[
+## What and Why
+## Terms
+### Types of Studies
+]
+.right-column[
+
+## Extent to Which Results Can be Applied
+
+> An **enumerative study** is one in which there is a particular, well-defined, finite group of objects under study. Data are collected on some or all of these objects, and conclusions are intended to apply only to those objects.
+
+> A **population** is the entire group of objects about which one wishes to gather information in a statistical study.
+
+> A **sample** is a group of objects on which one actually gathers data. In the case of an enumerative investigation, the sample is a subset of the population (and can in some cases include the entire population).
+
+]
+
+---
+layout:false
+.left-column[
+## What and Why
+## Terms
+### Types of Studies
+]
+.right-column[
+
+## Extent to Which Results Can be Applied
+
+
+**Example:** 
+If I am ordering 5000 microprocessors from Intel, I may test a few to see how well they actually work. In this case, the shipment is my population and the ones I test make the sample. I hope to use the sample to make a judgement about the entire shipment (so if 3/4 don't work, I should probably send the shipment back). 
+
+
+]
+---
+layout:false
+.left-column[
+## What and Why
+## Terms
+### Types of Studies
+]
+.right-column[
+
+## Extent to Which Results Can be Applied
+
+> An **analytical study** is one in which a process or phenonmeon is investigated at one point in space and time with the hope that the data collected will be representative of a system behavior at other places and times under similar conditions. In this kind of study, there is rarely, if ever, a particular well-defined group of objects to which conclusions are thought to be limited.
+
+- **Analytical studies** tend to be the most important in engineering.The population is not well defined.
+
+-  Ex: Stock prices are dropping. I may determine if something doesn't change in the trading environment, they will continue dropping.
+
+-  Ex: The reliability test for a critical component to be used in a space shuttle
+]
+---
+layout:false
+.left-column[
+## What and Why
+## Terms
+### Types of Studies
+### Types of Data
+]
+.right-column[
+
+# Types of Data: Qualitative
+>  **Qualitative** or **categorical** data are the values of basically nonnumerical characteristics associated with items in a sample. 
+
+-  Ex: Eye color, choice of major, hometown, response to the question "have you ever been to Europe"
+
+Qualitative variables can have a natural ordering - it's just that the ordering doesn't translate to an amount of something.
+Only by aggrigation and counting can we get meaningful numerical values from qualitative variables.
+
+-  Example: Classifying parts as (1) Conforming (it works), (2) Rework (fixable) and (3) Scrap (broken forever)
+]
+---
+layout:false
+.left-column[
+## What and Why
+## Terms
+### Types of Studies
+### Types of Data
+]
+.right-column[
+
+# Types of Data: Quantitative
+>  **Quantitative** or **numerical** data are values of numerical characteristics associated with items in a sample. 
+
+-  Ex: Counts of the number of times some phenomenon occurs, measurements like weight/height
+
+We can further describe **continuous** variables (where the actual result could be any value in a continuous interval) from **discrete** variables (where the number of values the variable could take are countable).
+]
+---
+layout:false
+.left-column[
+## What and Why
+## Terms
+### Types of Studies
+### Types of Data
+### Ex: Machine Parts
+]
+.right-column[
+# Example: Machine Parts
+
+> Suppose we get a shipment of 5000 machine parts and would like to verify that the shipment meets the standards the machinist agreed to.  We take out 100 parts and examine them carefully.  To verify that the parts are as strong as we anticipated, we measure the "Rockwell hardness" with a machine that is accurate to the first decimal place. We also examine each part for scratches and record it weight.  Further, we run the part in a test machine to determine if it works correctly.
+
+**Question**: How many data values are we collecting from each part and what type of data values are they?
+]
+---
+layout:false
+.left-column[
+## What and Why
+## Terms
+### Types of Studies
+### Types of Data
+### Ex: Machine Parts
+]
+.right-column[
+# Example: Machine Parts
+
+- **Hardness**
+
+- **Scratches**
+
+- **Weight**
+
+- **Funtioning Test**
+]
+---
+layout:false
+.left-column[
+## What and Why
+## Terms
+### Types of Studies
+### Types of Data
+### Ex: Machine Parts
+### Uni/Multi/Repeat
+]
+.right-column[
+# Number of Measurements
+
+> **Univariate data** arise when only a single characteristic of each sample item is observed.
+
+> **Multivariate data** arise when observations are made on more than one characteristic of each sampled item.
+
+> **Bivariate data** are a special case of multivariate data where two characteristics are observed for each sampled item.
+
+> **Repeated measures data** arise when a sample item is being measured on the same characteristic but in multiple contexts (either with different instruments or in different scenarios).
+
+> **Paired data** are a special case of repeated measures data where the sample item is measured twice on the same characteristic.
+
+]
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
