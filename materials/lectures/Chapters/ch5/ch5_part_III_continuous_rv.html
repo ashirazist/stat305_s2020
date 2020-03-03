@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
-    <title>ch5_part_III_continuous_rv.utf8.md</title>
+    <title>ch5_part_III_continuous_rv.utf8</title>
     <meta charset="utf-8" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
   <body>
     <textarea id="source">
+
 
 
 
@@ -20,7 +21,9 @@ name: inverse
 ## STAT 305: Chapter 5 
 ### Part III
 ### Amin Shirazi
-.footnote[Course page: [ashirazist.github.io/stat305.github.io](https://ashirazist.github.io/stat305.github.io/)]  
+.footnote[Course page: [ashirazist.github.io/stat305_s2020.github.io](https://ashirazist.github.io/stat305_s2020.github.io/)]  
+
+
 ---
 layout: true
 class: center, middle, inverse
@@ -126,7 +129,7 @@ layout:false
 With continuous random variables, we use pdfs to get probabilities as follows:
 
 &gt;For a continuous random variable `\(X\)` with probability density function `\(f(x)\)`, 
-&gt;$$P(a \le X \le b) = \int_{a}^{b} f(x) dx$$`
+&gt;$$P(a \le X \le b) = \int_{a}^{b} f(x) dx$$
 &gt;for any real values `\(a, b\)` such that `\(a\le b\)`
 
 ![](ch5_part_III_continuous_rv_files/figure-html/unnamed-chunk-1-1.png)&lt;!-- --&gt;
@@ -1222,7 +1225,24 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     deleted = true;
   });
-})();</script>
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
 
 <script>
 (function() {

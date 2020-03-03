@@ -10,7 +10,7 @@ output:
 
 ---
 
-```{r setup, echo=FALSE, message=FALSE}
+```{r setup, echo=FALSE, message=FALSE, warning=FALSE}
 library(knitr)
 library(tidyverse)
 library(xtable)
@@ -20,7 +20,7 @@ theme_set(theme_bw(base_family = "serif"))
 set.seed(305)
 ```
 
-```{r wrap-hook, echo=FALSE, include=FALSE}
+```{r wrap-hook, echo=FALSE, include=FALSE, warning=FALSE, message=FALSE}
 library(knitr)
 hook_output = knit_hooks$get('output')
 knit_hooks$set(output = function(x, options) {
@@ -34,6 +34,7 @@ knit_hooks$set(output = function(x, options) {
   hook_output(x, options)
 })
 ```
+
 class: center, middle, inverse
 layout: yes
 name: inverse
@@ -41,7 +42,9 @@ name: inverse
 ## STAT 305: Chapter 5 
 ### Part III
 ### Amin Shirazi
-.footnote[Course page: [ashirazist.github.io/stat305.github.io](https://ashirazist.github.io/stat305.github.io/)]  
+.footnote[Course page: [ashirazist.github.io/stat305_s2020.github.io](https://ashirazist.github.io/stat305_s2020.github.io/)]  
+
+
 ---
 layout: true
 class: center, middle, inverse
