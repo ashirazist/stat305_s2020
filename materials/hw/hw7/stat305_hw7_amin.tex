@@ -10,7 +10,7 @@
   \fi
 }
 \makeatother
-\usepackage{pdfpages} 
+
 \definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
 \newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
 \newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
@@ -50,6 +50,7 @@
 \definecolor{errorcolor}{rgb}{1, 0, 0}
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
+\usepackage{xcolor}
 \usepackage{alltt}
 \usepackage{graphicx, fancyhdr}
 \usepackage{amsmath, amsfonts}
@@ -69,11 +70,11 @@
 
 
 \lhead{STAT 305}
-\chead{Homework \# 7} 
-\rhead{Due Thursday, Oct. $31^{st}$ in the class}
-\lfoot{Fall 2019} 
+\chead{Homework 6} 
+\rhead{Due Thursday, March $12^{th}$ in the class}
+\lfoot{Spring 2020} 
 \cfoot{\thepage} 
-\rfoot{} 
+ 
 \renewcommand{\headrulewidth}{0.4pt} 
 \renewcommand{\footrulewidth}{0.4pt} 
 
@@ -86,14 +87,53 @@
 \input{stat305_hw7_amin-concordance}
 \pagestyle{fancy} 
 
-Show \textbf{all} of your work on this assignment and answer each question fully in the given context. \\
+Show \textbf{all} of your work on this assignment and answer each question fully in the given context. 
 
+\vspace{0.3cm}
 
-\emph{Please} staple your assignment!
+\textbf{If you cannot submit your homework in the class, you can drop it at my office door in 3220 Snedecore Hall by Thursday at 03:30 PM.}
+
+\vspace{0.3cm}
+
+\emph{Please} staple your assignment and write your name !
 
 \begin{enumerate}
 	
-
+  \item \textbf{[Ch. 5.1, Exercise 9, pg. 244]} Transmission line interruptions in a telecommunication network occur at an average rate of one per day.
+    \begin{enumerate}
+      \item Use a Poisson distribution as a model for
+        $$
+        X = \text{the number of interruptions in the next five-day work week}
+        $$
+      Now, precisely specify the probability distribution.[5pts]
+      \item Find $P[X = 0]$[5pts]
+      \item Now consider the random variable
+        $$
+        Y = \text{the number of work weeks in the next four in which there are no interruptions}
+        $$
+        What is a reasonable probability model for $Y$?[5pts]\\
+        \emph{i.e. precisely specify the probability distribution.}
+        
+      \item Find $P[Y = 2]$.[5pts]
+	\end{enumerate}
+	\item Suppose a standup comedian plans to give a total of $n=5$ jokes in an entire 2-hour performance. Call a joke a success if at least one audience member laughs. If no audience member laughs, the joke is a failure.\\
+	Assume that all the jokes are equally funny, with $p= P(\text{success}) = 0.2$. Let $X$ be the random variable associated with the number of successful jokes out of the total 5. 
+	\begin{enumerate}
+	  \item Preciisely state the distribution of $X$, giving the values of any parameters necessary.[2pts]
+	  \item Calculate the probability that the whole night is a failure. i.e. find the $P(\text{no success})$. [5pts]
+	  \item Calculate the probability that the comedian tells at least $4$ successful jokes.[5pts]
+	  \item Calculate the expected number of successful jokes.[5pts]
+	  \item Calculate the \underline{standard deviation} of the successful jokes.[5pts]
+	  
+	\end{enumerate}
+	
+	\item  The  number  of  computer  shutdowns  during  any  month  has  a  Poisson  distribution,  averaging $0.25$ shutdowns per month.
+	\begin{enumerate}
+	  \item What is the probability of at least $2$ computer shutdowns during the next \emph{year}?[5pts]
+	  \item What is the probability of at most $2$ computer shutdowns during the next \emph{6 month}? [5pts]
+	  \item What is the variance of the number of computer shutdowns during the next \emph{year}? [2pts]
+	\end{enumerate}
+	
 	
 	\item Suppose that $X$ is a random variable with probability density function $$ f(x) = \begin{cases} c \cdot x^2 & - 2 \le x \le 2 \\ 0 & o.w. \end{cases} $$
  

@@ -111,7 +111,7 @@ Show \textbf{all} of your work on this assignment and answer each question fully
         Y = \text{the number of work weeks in the next four in which there are no interruptions}
         $$
         What is a reasonable probability model for $Y$?[5pts]\\
-        \emph{i.e. precisely specify the probability distribution.}
+        \emph{hint:}i.e. precisely specify the probability distribution.
         
       \item Find $P[Y = 2]$.[5pts]
 	\end{enumerate}
@@ -160,38 +160,20 @@ Show \textbf{all} of your work on this assignment and answer each question fully
 
       \end{enumerate}
 
-  \item The mileage to first failure for a model of military personnel carrier can be modeled as exponential with mean $1,000$ miles.
-  
-          \begin{enumerate}
-                \item Find the probability that a vehicle of this type gives less than $500$ miles of service before first failure.[5 pts] 
-                
-                \item Find the probability that a vehicle of this type gives less than $2000$ miles of service before first failure. [5 pts]
-                
-          \end{enumerate}
-          
-  \item (Ch. 5.2, Exercise 2, pg. 263) Suppose that $Z$ is a standard normal random variable. Evaluate the following probabilities involving $Z$: 
-  
-          \begin{enumerate}
-                \item $P[Z < -.62]$ [3 pts]
-                \item $P[Z > 1.06]$ [3 pts]
-                \item $P[-.37 < Z < .51]$ [3 pts]
-                \item $P[|Z| \le .47]$ [3 pts]
-                \item $P[|Z| > .93]$ [3 pts]
-                \item $P[-3.0 < Z < 3.0]$ [3 pts]
-          \end{enumerate}      
+  \item \textbf{[Ch. 5.2, Exercise 1, pg. 263]} The random number generator supplied on a calculator is not terribly well chosen, in that values it generates are not adequately described by a uniform distribution on the interval $(0,1)$. Suppose instead that a probability density
+    $$
+    f(x) = \begin{cases} k(5 - x) & 0 < x< 1 \\ 0 & \text{otherwise}\end{cases}
+    $$
     
-    Now find numbers $\#$ such that the following statements involving $Z$ are true:
-          \begin{enumerate}
-                    \item $P[Z \le \#] = .90$ [3 pts]
-                    \item  $P[|Z| \le \#] = .90$ [3 pts]
-                    \item $P[|Z| > \#] = .03$ [3 pts]
-          \end{enumerate}          
-
-
-
-
+    is a more appropriate model for $X =$ the next value produced by this random number generator.
+    \begin{enumerate}
+      \item Find the value of $k$.[5pts]
+      \item Evaluate $P[.25 < X < .75]$[5pts]
+      \item Compute the cumulative probability distribution function for $X$, $F(x)$. [5pts]
+      \item Calculate $\text{E}(X)$ and the standard deviation of $X$.[6pts]
+    \end{enumerate}
 \end{enumerate}
-Total: 77 pts
+[Total: 115 pts]
 
 
 

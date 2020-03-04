@@ -98,68 +98,6 @@ Show \textbf{all} of your work on this assignment and answer each question fully
 
 \begin{enumerate}
 	
-  \item \textbf{[Ch. 5.1, Exercise 9, pg. 244]} Transmission line interruptions in a telecommunication network occur at an average rate of one per day.
-    \begin{enumerate}
-      \item Use a Poisson distribution as a model for
-        $$
-        X = \text{the number of interruptions in the next five-day work week}
-        $$
-      Now, precisely specify the probability distribution.[5pts]
-      \item Find $P[X = 0]$[5pts]
-      \item Now consider the random variable
-        $$
-        Y = \text{the number of work weeks in the next four in which there are no interruptions}
-        $$
-        What is a reasonable probability model for $Y$?[5pts]\\
-        \emph{i.e. precisely specify the probability distribution.}
-        
-      \item Find $P[Y = 2]$.[5pts]
-	\end{enumerate}
-	\item Suppose a standup comedian plans to give a total of $n=5$ jokes in an entire 2-hour performance. Call a joke a success if at least one audience member laughs. If no audience member laughs, the joke is a failure.\\
-	Assume that all the jokes are equally funny, with $p= P(\text{success}) = 0.2$. Let $X$ be the random variable associated with the number of successful jokes out of the total 5. 
-	\begin{enumerate}
-	  \item Preciisely state the distribution of $X$, giving the values of any parameters necessary.[2pts]
-	  \item Calculate the probability that the whole night is a failure. i.e. find the $P(\text{no success})$. [5pts]
-	  \item Calculate the probability that the comedian tells at least $4$ successful jokes.[5pts]
-	  \item Calculate the expected number of successful jokes.[5pts]
-	  \item Calculate the \underline{standard deviation} of the successful jokes.[5pts]
-	  
-	\end{enumerate}
-	
-	\item  The  number  of  computer  shutdowns  during  any  month  has  a  Poisson  distribution,  averaging $0.25$ shutdowns per month.
-	\begin{enumerate}
-	  \item What is the probability of at least $2$ computer shutdowns during the next \emph{year}?[5pts]
-	  \item What is the probability of at most $2$ computer shutdowns during the next \emph{6 month}? [5pts]
-	  \item What is the variance of the number of computer shutdowns during the next \emph{year}? [2pts]
-	\end{enumerate}
-	
-	
-	\item Suppose that $X$ is a random variable with probability density function $$ f(x) = \begin{cases} c \cdot x^2 & - 2 \le x \le 2 \\ 0 & o.w. \end{cases} $$
- 
-        \begin{enumerate}
-               \item Find the value of $c$ that makes $f(x)$ a valid probability density function.[5 pts]
-               
-                \item Find the CDF of the random variable $X$.[5 pts]
-                
-                \item What is $P(\vert{X}\vert \ge {-1})$ [5 pts].
-                
-                \item Find the expected value of $X$.[ 5 pts]
-                
-        \end{enumerate}      
-    	
-	\item  Consider a continuously distributed random variable, $W$, with a probability density function given by 
-	$$ f(w) = \begin{cases} \frac{1}{5(1 - e^{-2})} e^{-w/5} & 0 \le w \le 10 \\ 0 & \text{otherwise} \end{cases} $$
-	
-	    \begin{enumerate}
-                  \item  Show that the function $f(w)$ is a valid probability density function (i.e., show that (i) $f(w)$ is non-negative and (ii) $\int_{-\infty}^{\infty} f(w) dw = 1$). [5 pts]
-                   \item Find $P(W \le 2)$ [5 pts]
-                   
-                   \item  Find $P(2 \le W \le 10)$ [5 pts]
-                   
-                   \item  Find $E(W)$ [5 pts]
-
-      \end{enumerate}
-
   \item The mileage to first failure for a model of military personnel carrier can be modeled as exponential with mean $1,000$ miles.
   
           \begin{enumerate}
