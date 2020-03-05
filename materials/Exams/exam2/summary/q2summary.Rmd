@@ -5,11 +5,10 @@ output: pdf_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, error = FALSE, warning = FALSE, message = FALSE)
-```
-
-```{r}
 library(tidyverse)
 ```
+
+
 ```{r echo=FALSE, cache=FALSE, include = FALSE}
    mode_values <- function(x){
       tbl <- table(x)
@@ -43,7 +42,7 @@ library(tidyverse)
 ### Exam Summary
 
 ```{r}
-df<-readr::read_csv( "C:/Users/4M1N/Desktop/stat305.github.io/materials/Exams/exam2/summary/q2_sat305-f19.csv")
+df<-readr::read_csv( "C:/Users/4M1N/Desktop/stat305_s2020/materials/Exams/exam2/summary/q2_sat305_s20.csv")
 
 df<- df %>% filter(Quiz2 > 0)
 
@@ -72,8 +71,7 @@ qp<-my_quantile(p,x =  df$Quiz2)
 
 df1<- data.frame(p, qp)
 names(df1)<- c( "p", "Q(p)")
-library(magrittr)
-library(ggplot2)
+
 p2<-df1 %>% ggplot(aes(x = p, y = `Q(p)`))+ geom_point(color= "red")+ylim(70,100)
 
 
