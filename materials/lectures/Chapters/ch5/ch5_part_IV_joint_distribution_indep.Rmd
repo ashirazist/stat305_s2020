@@ -10,7 +10,7 @@ output:
 
 ---
 
-```{r setup, echo=FALSE, message=FALSE}
+```{r setup, echo=FALSE, message=FALSE, error=FALSE, warning=FALSE}
 library(knitr)
 library(tidyverse)
 library(xtable)
@@ -21,7 +21,6 @@ set.seed(305)
 ```
 
 ```{r wrap-hook, echo=FALSE, include=FALSE}
-library(knitr)
 hook_output = knit_hooks$get('output')
 knit_hooks$set(output = function(x, options) {
   # this hook is used only when the linewidth option is not NULL
@@ -34,6 +33,7 @@ knit_hooks$set(output = function(x, options) {
   hook_output(x, options)
 })
 ```
+
 class: center, middle, inverse
 layout: yes
 name: inverse
@@ -41,7 +41,8 @@ name: inverse
 ## STAT 305: Chapter 5 
 ### Part IV
 ### Amin Shirazi
-.footnote[Course page: [ashirazist.github.io/stat305.github.io](https://ashirazist.github.io/stat305.github.io/)] 
+.footnote[Course page: [ashirazist.github.io/stat305_s2020.github.io](https://ashirazist.github.io/stat305_s2020.github.io/)] 
+
 ---
 name: inverse
 layout: true
