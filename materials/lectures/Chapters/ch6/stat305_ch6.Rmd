@@ -10,7 +10,7 @@ output:
 
 ---
 
-```{r setup, echo=FALSE, message=FALSE}
+```{r setup,  echo=FALSE, message=FALSE, error=FALSE, warning=FALSE}
 library(knitr)
 library(tidyverse)
 library(xtable)
@@ -19,6 +19,7 @@ knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, fig.height = 2)
 theme_set(theme_bw(base_family = "serif"))
 set.seed(305)
 ```
+
 class: center, middle, inverse
 layout: yes
 name: inverse
@@ -26,7 +27,7 @@ name: inverse
 ## STAT 305: Chapter 6 
 ## Introduction to formal statistical inference
 ### Amin Shirazi
-.footnote[Course page: [ashirazist.github.io/stat305.github.io](https://ashirazist.github.io/stat305.github.io/)] 
+.footnote[Course page: [ashirazist.github.io/stat305_s2020.github.io](https://ashirazist.github.io/stat305_s2020.github.io/)] 
 ---
 name: inverse
 layout: true

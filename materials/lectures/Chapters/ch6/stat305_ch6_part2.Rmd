@@ -10,7 +10,7 @@ output:
 
 ---
 
-```{r setup, echo=FALSE, message=FALSE}
+```{r setup,  echo=FALSE, message=FALSE, error=FALSE, warning=FALSE}
 library(knitr)
 library(tidyverse)
 library(xtable)
@@ -26,7 +26,7 @@ name: inverse
 ## STAT 305: Chapter 6 - Part II
 ## Hypothesis Testing
 ### Amin Shirazi
-.footnote[Course page: [ashirazist.github.io/stat305.github.io](https://ashirazist.github.io/stat305.github.io/)] 
+.footnote[Course page: [ashirazist.github.io/stat305_s2020.github.io](https://ashirazist.github.io/stat305_s2020.github.io/)] 
 ---
 class: center, middle, inverse
 layout: yes

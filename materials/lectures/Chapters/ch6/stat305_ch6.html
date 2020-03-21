@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
   <head>
-    <title>stat305_ch6.utf8.md</title>
+    <title>stat305_ch6.utf8</title>
     <meta charset="utf-8" />
     <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
     <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
   </head>
   <body>
     <textarea id="source">
+
 
 
 
@@ -18,7 +19,7 @@ name: inverse
 ## STAT 305: Chapter 6 
 ## Introduction to formal statistical inference
 ### Amin Shirazi
-.footnote[Course page: [ashirazist.github.io/stat305.github.io](https://ashirazist.github.io/stat305.github.io/)] 
+.footnote[Course page: [ashirazist.github.io/stat305_s2020.github.io](https://ashirazist.github.io/stat305_s2020.github.io/)] 
 ---
 name: inverse
 layout: true
@@ -794,11 +795,11 @@ Suppose that `\(X_1, X_2, \ldots, X_n\)` are random variables whose values will 
 &gt;- `\(Var(X_i) = \sigma^2\)` is known
 &gt;
 &gt;Then by CLT,
-&gt;$$\dfrac{\bar{X} - \mu}{\sqrt{\sigma^2/n}} \sim N(0, 1)$$`
+&gt;$$\dfrac{\bar{X} - \mu}{\sqrt{\sigma^2/n}} \sim N(0, 1)$$
 
 `\(100(1-\alpha)\%\)` Confidence interval for `\(\mu\)`: 
 
-&gt;$$\bar{x} \pm z_{1 - \alpha/2} \sqrt{\frac{\sigma^2}{n}}$$`
+&gt;$$\bar{x} \pm z_{1 - \alpha/2} \sqrt{\frac{\sigma^2}{n}}$$
 ]
 ---
 layout:false
@@ -821,10 +822,10 @@ layout:false
 &gt;- `\(Var(X_i)\)` is unknown, but sample variance `\(S^2 = \frac{1}{n-1}\sum{(X_i - \bar{X})^2}\)` can be calculated
 &gt;
 &gt;Then by CLT and convergence of sample variance
-&gt;$$\dfrac{\bar{X} - \mu}{\sqrt{S^2/n}} \sim N(0, 1)$$`
+&gt;$$\dfrac{\bar{X} - \mu}{\sqrt{S^2/n}} \sim N(0, 1)$$
 
 `\(100\cdot(1 - \alpha)\)`%-Confidence interval for `\(\mu\)`: 
-&gt;$$\bar{x} \pm z_{1 - \alpha/2} \sqrt{\frac{s^2}{n}}$$`
+&gt;$$\bar{x} \pm z_{1 - \alpha/2} \sqrt{\frac{s^2}{n}}$$
 ]
 ---
 layout:false
@@ -846,10 +847,10 @@ layout:false
 &gt;- `\(Var(X_i)\)` is unknown, but sample variance `\(S^2 = \frac{1}{n-1}\sum_{i=1}^{n}{(X_i - \bar{X})^2}\)` can be calculated
 &gt;
 &gt;Then by CLT and convergence of sample variance
-&gt;$$\dfrac{\bar{X} - \mu}{\sqrt{S^2/n}} \sim t_{n-1}$$`
+&gt;$$\dfrac{\bar{X} - \mu}{\sqrt{S^2/n}} \sim t_{n-1}$$
 
 `\(100\cdot(1 - \alpha)\)`%-Confidence interval for `\(\mu\)`: 
-&gt;$$\bar{x} \pm t_{n-1, 1 - \alpha/2} \sqrt{\frac{s^2}{n}}$$`
+&gt;$$\bar{x} \pm t_{n-1, 1 - \alpha/2} \sqrt{\frac{s^2}{n}}$$
 
 ]
 ---
@@ -925,7 +926,24 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     }
     deleted = true;
   });
-})();</script>
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
 
 <script>
 (function() {
