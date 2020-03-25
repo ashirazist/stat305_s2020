@@ -97,7 +97,22 @@
 
 \begin{questions}
 \question
+Suppose a standup comedian plans to give a total of $n= 5$ jokes in an entire 2-hour performance. Call a joke a succes if at least one audience member laughs. If no audience member laughs, the joke is a failure. Assume that all the jokes are equally funny, with $p= p(success)= 0.2$. Let $X$ be the random variable that denotes the number of jokes out of the total 5 were successes. 
+\begin{parts}
+      \subpart[3] Precisely state the distribution of $X$, giving the values of any parameters necessary.\vspace{2cm}
+      \subpart[3] Calculate the probability that the whole night is a failure: i.e., $P(no\ laughs)$\vspace{3cm}
+      
+      \subpart[3] Caculate the probability that the comedian tells at least 4 successful jokes.\vspace{3cm}
+      
+      \subpart[3] Calculate the expected number of successfull jokes. \vspace{2cm}
+      
+      \subpart[3] Calculate the standard deviation of $X$\vspace{2cm}
 
+\end{parts}
+
+\pagebreak
+
+\question
 Let $X$ be a normal random variable with a mean of 2 and a varaince of 9 (i.e., $X \sim N(2,9)$) and let $Z$ be a random variable following a standard normal distribution.
 
 \begin{parts}
