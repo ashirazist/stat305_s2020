@@ -70,8 +70,8 @@
 
 
 \lhead{STAT 305}
-\chead{Homework 6} 
-\rhead{Due Thursday, March $12^{th}$ in the class}
+\chead{Homework 7} 
+\rhead{Due Thursday, April $2^{nd}$ on Canvas}
 \lfoot{Spring 2020} 
 \cfoot{\thepage} 
  
@@ -91,11 +91,12 @@ Show \textbf{all} of your work on this assignment and answer each question fully
 
 \vspace{0.3cm}
 
-\textbf{If you cannot submit your homework in the class, you can drop it at my office door in 3220 Snedecore Hall by Thursday at 03:30 PM.}
+\textbf{Please write as legible as possible because if the TA cannot read your handwriting, it may cause confusion and ends up in deduction.}
 
 \vspace{0.3cm}
 
-\emph{Please} staple your assignment and write your name !
+\textbf{\textcolor{red}{If you are going to type your answers, submit a pdf. }\textcolor{blue}{ If you take a photo/scan your handwritten answers, submit them in a \emph{single} file.}} \\
+\textbf{You can download scanning apps for \href{https://www.cnet.com/news/how-to-use-ios-11s-notes-app-as-a-document-scanner/}{ iOS} or via \href{https://play.google.com/store/apps/details?id=com.microsoft.office.officelens&hl=en_US}{ Microsoft Office Lens|PDF Scan App} } or for \href{https://www.howtogeek.com/166610/who-needs-a-scanner-scan-a-document-to-pdf-with-your-android-phone/}{ Android}
 
 \begin{enumerate}
 	
@@ -126,11 +127,69 @@ Show \textbf{all} of your work on this assignment and answer each question fully
                     \item $P[|Z| > \#] = .03$ [3 pts]
           \end{enumerate}          
 
+	
+    \item \textbf{Ch. 5, Exercise 7, pg. 323:} In a grinding operation, there is an upper specification of $3.150$ in. on a dimensions of a certain part after grinding. Suppose that the standard deviation of this normally distributed dimension for parts of this type ground to any particular mean dimension $\mu$ is $\sigma = 0.002$ in. Suppose further that you desire to have no more than $3\%$ of the parts fail to meet specifications. What is the maximum (minimum machining cost) $\mu$ that can be used if this $3$\% requirement is to be met?[10 pts]\\
+    Hint: the question is giving you information on $P(X> 3.15)\leq 0.03$.
+    
+    \item \textbf{Ch 5, Exercise 42, pg. 332:} Suppose that engineering specifications on the shelf depth of a certain slug to be turned on a CNC lathe are from $0.0275$ in. to $0.0278$ in. and that values of this dimension produced on the lathe can be described using a normal distribution with mean $\mu$ and standard deviation $\sigma$.
+        \begin{enumerate}
+              \item If $\mu = 0.0276$ and $\sigma = 0.0001$, about what fraction of shelf depths are in specifications?[10 pts]
+              
+              \item What machine precision (as measured by $\sigma$) would be required in order to produce about $98$\% of shelf depths within engineering specifications (assuming that $\mu$ is at the midpoint of the specifications)?[10 pts]\\
+              Hint: you are looking for the value of $\sigma$ in this question.
+        \end{enumerate}
+ \item \textbf{Ch 5.4, Exercise 2, pg. 300:} Quality audit records are kept on numbers of major and minor failures of circuit packs during burn-in of large electronic switching devices. They indicate that for a device of this type, the random variables
+    $$
+    X = \text{ the number of major failures}
+    $$
+    and
+    $$
+    Y = \text{ the number of minor failures}
+    $$
+    can be described at least approximately by the accompanying joint distribution.
 
 
+
+ \begin{table}[h!]
+     \centering
+     \begin{tabular}{|l|p{1cm}|p{1cm}|p{1cm}|}
+     \hline
+         \textbf{Y | X}& \textbf{0} & \textbf{1}  & \textbf{2}  \\\hline \hline
+     0 & 0.15  & 0.05  & 0.01  \\
+     \hline
+     1 & 0.1   & 0.08  &0.01  \\
+     \hline
+     2 & 0.1   & 0.14  & 0.02  \\
+     \hline
+     3 & 0.1   & 0.08  & 0.03  \\
+     \hline
+     4 & 0.05  & 0.05  & 0.03  \\
+     \hline
+     \end{tabular}
+  \end{table}
+          \begin{enumerate}
+            \item Find the marginal probability functions for both $X$ and $Y$ ($f_x(x)$ and $f_y(y)$, respectively).[10 pts]
+            \item Are $X$ and $Y$ independent? Explain.[5pts]
+            \item Find the mean and variance of $X$ ($\text{E}X$ and $\text{Var}X$)[10 pts]
+            \item Find the mean and variance of $Y$ ($\text{E}Y$ and $\text{Var}Y$)[10 pts]
+            \item Find the conditional probability function for $Y$, given that $X = 0$ -- i.e., that there are no major circuit pack failures ($f_{Y|X}(y|0)$). What is the mean of this conditional distribution?[10 pts]
+            \end{enumerate}
+  
+  \item \textbf{Ch. 5.2, Exercise 3, pg. 263:} Suppose that $X$ is a normal random variable with mean $43$ and standard deviation $3.6$. Evaluate the following probabilities involving $X$:
+      \begin{enumerate}
+              \item $P[X < 45.2]$ [5 pts]
+              \item $P[|X - 43| \le 2]$ [5 pts]
+              \item $P[|X - 43| > 1.7]$  [5 pts]
+      
+    Now find numbers \# such that the following statements involving $X$ are true:
+    
+              \item $P[X < \#] = .95$ [5 pts]
+              \item $P[|X - 43| > \#] = .05$ [5 pts]
+
+      \end{enumerate}
 
 \end{enumerate}
-Total: 77 pts
+Total: 137 pts
 
 
 
