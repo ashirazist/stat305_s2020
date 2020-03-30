@@ -30,7 +30,7 @@
       \begin{itemize}
          \item  The quiz  is scheduled for 80 minutes, from 09:30 to 10:50 AM. At 10:50 AM the exam will end.\\
          \item  Total points for the exam is 52. Points for individual questions are given at the beginning of each problem. Show all your calculations clearly to get full credit. Put final answers in the box at the right (except for the diagrams!).
-         \item  A forumula sheet is attached to the end of the exam. Feel free to tear it off.\\
+         \item  A formula sheet is attached to the end of the exam. Feel free to tear it off.\\
 	\item Normal quantile table is attached to the end of the exam. Feel free to tear it off.\\
          \item  You may use a calculator during this exam.\\
          \item  Answer the questions in the space provided. If you run out of room, continue on the back of the page. \\
