@@ -159,8 +159,8 @@ theme_set(theme_bw(base_family = "serif"))
     Notice that the normal plot of these data given above is reasonably linear. It may thus be sensible to suppose that breaking strengths for generic towels of this type (as measured by the students) are adequately modeled as normal. Under this assumption,
           \begin{enumerate}
             \item Make and interpret 95\% two-sided and one-sided confidence intervals (one-sided of the form $(\#, \infty)$) for the mean breaking strength of generic towels.[5 pts]
-            \item Make and interpret 95\% two sided and one-sided prediction intervals for a single additional generic towel breaking strength. For the one-sided interval, give the lower prediction bound. [5 pts]
-          \end{enumerate}
+          %   \item Make and interpret 95\% two sided and one-sided prediction intervals for a single additional generic towel breaking strength. For the one-sided interval, give the lower prediction bound. [5 pts]
+          % \end{enumerate}
     
 
 %           
@@ -188,7 +188,7 @@ theme_set(theme_bw(base_family = "serif"))
 %   \end{enumerate}
 %    
  
-Total: 90 pts
+Total: 85 pts
 
 
 
