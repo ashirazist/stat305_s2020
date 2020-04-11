@@ -1,0 +1,189 @@
+% For LaTeX-Box: root = stat305-pexam1.Rnw
+\documentclass[addpoints]{examsetup}
+
+\usepackage{etoolbox}
+\usepackage{tikz,pgfplots}
+
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+\usepackage{pdfpages} 
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{ulem}
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{graphicx, fancyhdr}
+\usepackage{amsmath, amsfonts}
+\usepackage{color}
+\usepackage{hyperref}
+
+\newcommand{\blue}[1]{{\color{blue} #1}}
+
+\setlength{\topmargin}{-.5 in} 
+\setlength{\textheight}{9 in}
+\setlength{\textwidth}{6.5 in} 
+\setlength{\evensidemargin}{0 in}
+\setlength{\oddsidemargin}{0 in} 
+\setlength{\parindent}{0 in}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+
+
+%\input{stat105_exam1_info.tex}
+\newcommand{\course}[1]{\ifstrempty{#1}{STAT 305}{STAT 305, Section #1}}
+\newcommand{\sectionNumber}{7}
+\newcommand{\examDate}{April 23 , 2020}
+\newcommand{\semester}{SPRING 2020}
+\newcommand{\examNumber}{IV}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+%-- : R code (Code in Document)
+<<echo=FALSE, cache=FALSE, include = FALSE>>=
+   library(ggplot2)
+   #theme_bw()
+   if(FALSE){ 
+      knitr::knit("stat305-exam1.Rnw")
+      system('pdflatex stat305-exam1.tex')
+   }
+@
+
+
+\examCoverPage
+
+\begin{questions}
+ 
+
+\question
+A small military subcontractor has secured a contract to develop drones capable of providing light air support for smaller naval vessels. Successfully fulfilling the contract requires that the drone be able to takeoff with a minimum runway of 10 meters. However, late changes in the prototype's weight distribution have led to concerns that they are no longer satisfying this requirement. Using 100 takeoffs, they found the average distance before takeoff was 9.92 meters with a standard deviation of 0.4 meters. 
+\begin{parts}
+\part[4] Provide a two-sided 95\% confidence interval for the true average distance before takeoff.
+\part[4] Provide a  90\% lower bound confidence interval for the true average distance before takeoff.
+\part[10] Conduct a hypothesis test at the $\alpha = 0.01$ significance level for $\mu$, the true average distance before takeoff with the null hypothesis $\mu \ge 10$ against the alternative hypothesis of $\mu < 10$. Include the hypothesis statement, the test statistic, the p-value, and the conclusion. \\
+\emph{Note: Write down all six steps for full credit.}
+
+\end{parts}
+
+
+
+
+
+
+
+\question
+
+An inspector examining the dependability of a certain gas pump fills 50 containers until the pump reads 1.00 gallons. 
+If the pump is completely accurate, then each container should have 1.00 gallons of gasoline.
+However, since nothing is completely consistent, there will be differences from one container to the next.
+
+Suppose that it is known that the true standard deviation of the amount of gasoline the pump recognizes as 1.00 gallons is $\sigma = 0.2$ gallons.
+
+The average of the 50 gallon samples is $\bar{x} = 0.992$ gallons
+
+The following table may be useful:
+
+\begin{table}[h]
+   \centering
+   \caption{z's for use in Two-sided Large-$n$ intervals for the mean}
+   \begin{tabular}{cc}
+      \hline \\
+      Desired Confidence & $z$ \\
+      \hline 
+      80\% & 1.28 \\
+      90\% & 1.645 \\
+      95\% & 1.96 \\
+      98\% & 2.33 \\
+      99\% & 2.58 \\
+      \hline 
+   \end{tabular}
+\end{table}
+
+\begin{parts}
+\part[4] Provide a two-sided 90\% confidence interval for the mean volume of gasoline recognized by the pump to be 1.00 gallons. 
+\part[4] Provide a one-sided upper bound 95\% confidence interval for the mean volume of gasoline recognized by the pump to be 1.00 gallons.
+\part[10] Conduct a hypothesis test at the $\alpha = 0.05$ significance level for $\mu$, the true mean volume of gasoline recognized by the pump  with the null hypothesis $\mu = 1$ against the alternative hypothesis of $\mu \neq 1$. Include the hypothesis statement, the test statistic, the p-value, and the conclusion. \\
+\emph{Note: Write down all six steps for full credit.}
+\end{parts}
+
+
+\question
+O-rings are elastomer loops designed to create a seal between the interface of two parts of a mechanical device.
+Because the elasticity of the material used to make them can be impacted by temperature (which can lead to the seal being broken) it is important to make sure that the O-ring is functional at the temperatures the part they are used in will be exposed to.
+Two composites (Composite X and Composite Y) are being tested in an O-ring that will be used in a part of a satellite that will be exposed to very low temperatures.
+A sample of 50 O-rings from each composite are placed in a chamber, where the temperature is gradually reduced until the seal is broken.
+Suppose that each composite has some mean failure temperature, $\mu_X$ for Composite X and $\mu_Y$ for Composite Y, and some variance in failure temperature, 
+$\sigma_X^2$ for Composite X and $\sigma_Y^2$ for Composite Y. 
+Before any observations are recorded, we can consider the sampled values from Composite X to be random variables $X_1, X_2, \ldots, X_{50}$ with $\mathbb{E}(X_i) = \mu_X$ and $Var(X_i) = \sigma_X^2$.
+We can also consider the sampled values from Composite Y to be random variables $Y_1, Y_2, \ldots, Y_{50}$ with $\mathbb{E}(Y_i) = \mu_Y$ and $Var(Y_i) = \sigma_Y^2$.
+
+Let $\bar{X} = \frac{1}{50} X_1 + \frac{1}{50} X_2 + \ldots + \frac{1}{50} X_{50}$ and let $\bar{Y} = \frac{1}{50} Y_1 + \frac{1}{50} Y_2 + \ldots + \frac{1}{50} Y_{50}$.
+
+
+
+
+   After running the O-ring experiment, the researchers found $\bar{x} = 50$ K and $\bar{y} = 53$ K. 
+   Suppose that $\sigma_X^2 = 10$ and $\sigma_Y = 20$.
+\begin{parts}
+   \part[4] Provide a two-sided 90\% confidence interval for $\mu_X$.
+   
+   \part[4] Provide a one-sided lower bound 99\% confidence interval for $\mu_X$.
+   
+   \part[4] Provide a two-sided 95\% confidence interval for $\mu_Y$.
+   
+   \part[6] Provide a two-sided 95\% confidence interval for $\mu_X - \mu_Y$ . Does this provide any evidence that one O-ring is better than the other?
+   
+   \part[10] Conduct a hypothesis test at the $\alpha = 0.05$ significance level for the claim that the true difference between the true means of the two O-rings ($\mu_X- \mu_Y$)  are significantly different.\\
+\emph{Note: Write down all six steps for full credit.}
+\end{parts}
+
+\newpage
+
+
+
+
+\end{questions}
+\end{document}

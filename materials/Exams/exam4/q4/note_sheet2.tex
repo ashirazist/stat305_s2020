@@ -1,0 +1,328 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{hyperref}
+
+% To make this come out properly in landscape mode, do one of the following
+% 1.
+%  pdflatex latexsheet.tex
+%
+% 2.
+%  latex latexsheet.tex
+%  dvips -P pdf  -t landscape latexsheet.dvi
+%  ps2pdf latexsheet.ps
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {2ex} %{-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries\underline}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {1ex} %{-1ex plus -.5ex minus -.2ex}%
+                                {0.8ex} %{0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{2}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+   \Large{\textbf{STAT 305 Quiz III}} \\
+   \Large{\textbf{Reference Sheet}} \\
+\end{center}
+
+\section{Basic Probability}
+
+\subsection{Definitions}
+\begin{tabular}{@{}ll@{}}
+   Random experiment & A series of actions that lead to an observable result. \\
+        & The result may change each time we perform the experiment. \\
+        & \\
+   Outcome & The result(s) of a random experiment. \\
+        & \\
+   Sample Space ($S$) & A set of all possible results of a random experiment. \\
+        & \\
+   Event ($A$) & Any subset of sample space. \\
+        & \\
+   Probability of an event ($P(A)$) & the likelihood that the observed outcome of \\
+    & a random experiment is one of the outcomes in the event. \\
+        & \\
+   $A^C$ & The outcomes that are not in $A$. \\
+   $A \cap B$ & The outcomes that are both in $A$ and in $B$. \\
+   $A \cup B$ & The outcomes that are either $A$ or $B$. \\
+\end{tabular}
+
+\subsection{General Rules}
+
+\begin{tabular}{@{}ll@{}}
+   Probability $A$ given $B$ & $P(A | B) = P(A \cap B)/P(B)$ \\
+        & \\
+   Probability $A$ and $B$ & $P(A \cap B) = P(A | B) P(B) = P(B | A) P(A)$ \\
+        & \\
+   Probability $A$ or $B$ & $P(A \text{ or } B) = P(A) + P(B) - P(A, B)$ \\
+        & \\
+\end{tabular}
+
+\subsection{Independence}
+Two events are called independent if $P(A, B) = P(A) \cdot P(B)$. Clever students will realize this also means that if $A$ and $B$ are independent then $P(A|B) = P(A)$ and $P(B|A) = P(B)$.
+
+\subsection{Joint Probability}
+
+\begin{tabular}{@{}ll@{}}
+        & \\
+   Joint Probability & The probability an outcome is in event $A$ and in event $B$ = $P(A, B)$. \\
+        & \\
+   Marginal Probability & If $A \subseteq B \cup C$ then $P(A) = P(A \cap B) + P(A \cap C)$. \\
+        & \\
+   Conditional Probability & For events $A$ and $B$, if $P(B) \ne 0$ then $P(A|B) = P(A \cap B)/P(B)$. \\
+        & \\
+\end{tabular}
+
+\section{Discrete Random Variables}
+
+\subsection{General Rules}
+
+\begin{tabular}{@{}ll@{}}
+        & \\
+   Probability function &  $f_X(x) = P(X = x)$ \\
+        & \\
+   Cumulative probability function &  $F_X(x) = P(X \le x)$ \\
+        & \\
+   Expected Value & $\mu = E(X) = \sum_{x} x f_X(x)$ \\
+        & \\
+   Variance & $\sigma^2 = Var(X) = \sum_{x} (x - \mu)^2 f_X(x)$ \\
+        & \\
+   Standard Deviation & $\sigma = \sqrt{Var(X)}$ \\
+        & \\
+\end{tabular}
+
+\subsection{Joint Probability Functions}
+
+\begin{tabular}{@{}ll@{}}
+        & \\
+   Joint Probability Function & $ f_{XY}(x,y) = P[X = x, Y = y] $ \\
+        & \\
+   Marginal Probability Function & $f_X(x) = \sum_{y} f_{XY}(x,y)$ \\
+                                 & $f_Y(y) = \sum_{x} f_{XY}(x,y)$ \\
+        & \\
+   Conditional Probability Function & $f_{X|Y}(x|y) = f_{XY}(x,y)/f_{Y}(y)$ \\
+                                    & $f_{Y|X}(y|x) = f_{XY}(x,y)/f_{X}(x)$ \\
+        & \\
+\end{tabular}
+
+\subsection{Geometric Random Variables}
+
+$X$ is the trial count upon which the first successful outcome is observed performing independent trials with probability of success $p$.
+
+\begin{tabular}{@{}ll@{}}
+        & \\
+   Possible Values & $x = 1, 2, 3, \ldots$ \\
+        & \\
+   Probability function &  $P[X = x] = f_X(x) = p (1-p)^{x-1}$ \\
+        & \\
+   Expected Value & $\mu = E(X) = \frac{1}{p} $ \\
+        & \\
+   Variance & $\sigma^2 = Var(X) = \frac{1 - p}{p^2}$ \\
+        & \\
+   CDF  &  $F(x)= 1-(1-p)^x $\\
+   		& \\
+\end{tabular}
+
+\subsection{Binomial Random Variables}
+
+$X$ is the number of successful outcomes observed in $n$ independent trials with probability of success $p$.
+
+\begin{tabular}{@{}ll@{}}
+        & \\
+   Possible Values & $x = 0, 1, 2, \ldots, n$ \\
+        & \\
+   Probability function &  $P[X = x] = f_X(x) = \frac{n!}{(n-x)!x!} p^x (1-p)^{n-x}$ \\
+        & \\
+   Expected Value & $\mu = E(X) = n p $ \\
+        & \\
+   Variance & $\sigma^2 = Var(X) = n p (1-p)$ \\
+        & \\
+\end{tabular}
+
+\subsection{Poisson Random Variables}
+
+$X$ is the number of times a rare event occurs over a predetermined interval (an area, an amount of time, etc.) where the number of events we expect is $\lambda$.
+
+\begin{tabular}{@{}ll@{}}
+        & \\
+   Possible Values & $x = 0, 1, 2, 3, \ldots$ \\
+        & \\
+   Probability function &  $P[X = x] = f_X(x) = \frac{e^{-\lambda} \lambda^x}{x!}$ \\
+        & \\
+   Expected Value & $E(X) = \lambda $ \\
+        & \\
+   Variance & $Var(X) = \lambda$ \\
+        & \\
+\end{tabular}
+
+\newpage
+
+\section{Continuous Random Variables}
+
+\subsection{General Rules}
+
+\begin{tabular}{@{}ll@{}}
+        & \\
+   Probability density function &  $P[a \le X \le b] = \int_a^b f_X(x) dx$ \\
+        & \\
+   Cumulative density function &  $P[X \le x] = F_X(x) = \int_{-\infty}^x f_X(t)dt$ \\
+        & \\
+   Expected Value & $\mu = E(X) = \int_{-\infty}^{\infty} x f_X(x) dx$ \\
+        & \\
+   Variance & $\sigma^2 = Var(X) = \int_{-\infty}^{\infty} (x - \mu)^2 f_X(x) dx$ \\
+        & \\
+   Standard Deviation & $\sigma = \sqrt{Var(X)}$ \\
+        & \\
+\end{tabular}
+
+\subsection{Joint Probability Density Functions}
+
+\begin{tabular}{@{}ll@{}}
+        & \\
+   Joint Probability Density Function & $f_{XY}(x, y)$ is the joint density of both $X$ and $Y$. \\
+        & \\
+                              & $ P(a \le X \le b, c \le Y \le d) = \int_{a}^{b} \int_{c}^{d} f_{XY}(x,y) dy dx $\\
+        & \\
+   Marginal Probability Density Function & $f_X(x) = \int_{-\infty}^{\infty} f_{XY}(x,y) dy$ \\
+        & \\
+                                         & $f_Y(y) = \int_{-\infty}^{\infty} f_{XY}(x,y) dx$ \\
+        & \\
+   Conditional Probability Density Function & $f_{X|Y}(x|y) = f_{XY}(x,y)/f_{Y}(y)$ \\
+        & \\
+                                    & $f_{Y|X}(y|x) = f_{XY}(x,y)/f_{X}(x)$ \\
+        & \\
+\end{tabular}
+
+
+\subsection{Uniform Random Variables}
+
+Used when we believe an outcome could be anywhere between two values $a$ and $b$ but have no other beliefs.
+
+\begin{tabular}{@{}ll@{}}
+        & \\
+   Probability density function & $f_X(x) = \begin{cases} \frac{1}{b-a} & a \le x \le b \\ 0 & o.w. \end{cases}$ \\
+        & \\
+      Cumulative density function & $F_X(x) = \begin{cases} 0 & x \le a \\ \frac{1}{b-a} x - \frac{a}{b-a} & a \le x \le b \\ 1 & x > b \end{cases}$ \\
+        & \\
+      Expected Value & $E(X) = \frac{1}{2}(b+a)$ \\
+        & \\
+      Variance & $Var(X) = \frac{1}{12}(b-a)^2$ \\
+        & \\
+\end{tabular}
+
+\vspace{2cm}
+
+\subsection{Exponential Random Variables}
+
+Used when we an outcome could be anything greater than 0 but the likelihood is concentrated on smaller values.
+
+\begin{tabular}{@{}ll@{}}
+        & \\
+      Probability density function & $f_X(x) = \begin{cases} \frac{1}{\alpha} \exp\left(-\frac{x}{\alpha}\right) & x \ge 0 \\ 0 & o.w. \end{cases} $ \\
+        & \\
+      Cumulative density function & $F_X(x) = \begin{cases} 0 & x < 0 \\ 1 - \exp\left(-\frac{x}{\alpha}\right) & x \ge 0 \end{cases} $ \\
+        & \\
+      Expected Value & $E(X) = \alpha$ \\
+        & \\
+      Variance & $Var(X) = (\alpha)^2 $\\
+        & \\
+\end{tabular}
+
+
+\subsection{Normal Random Variables}
+
+Used when we believe an outcome could be above or below a certain value $\mu$ but we also believe it is more likely to be close to $\mu$ than it is to be far away.
+
+\begin{tabular}{@{}ll@{}}
+        & \\
+   Probability density function &  $f_X(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} e^{-\frac{1}{2} \left( \frac{x - \mu}{\sigma} \right)^2}$ \\
+        & \\
+   Cumulative density function &  There is no general formula. \\
+        & \\
+   Expected Value & $E(X) = \mu $ \\
+        & \\
+   Variance & $Var(X) = \sigma^2$ \\
+        & \\
+\end{tabular}
+
+\subsection{Standard Normal Random Variables ($Z$)}
+
+A normal random variable with mean $0$ and variance $\sigma^2$.
+
+\begin{tabular}{@{}ll@{}}
+        & \\
+   Probability density function &  $f_Z(z) = \frac{1}{\sqrt{2 \pi}} e^{-\frac{1}{2} z^2}$ \\
+        & \\
+   Cumulative density function & There is no general formula. \\
+        & \\
+   Expected Value & $E(Z) = 0 $ \\
+        & \\
+   Variance & $Var(Z) = 1$ \\
+        & \\
+   Relationship with $X \sim N(\mu, \sigma^2)$ & If $X$ is normal($\mu$,$\sigma^2$) then $P[a \le X \le b] = P\left[\frac{a - \mu}{\sigma} \le Z \le \frac{b - \mu}{\sigma} \right]$ \\
+        & \\
+\end{tabular}
+
+\section{Functions of Random Variables}
+
+\subsection{Linear Combinations of Independent Random Variables}
+For $X_1, X_2, \ldots, X_n$ independent random variables and $a_0, a_1, a_2, \ldots, a_n$ constants if $U = a_0 + a_1 X_1 + \ldots + a_n X_n$:
+\begin{itemize}
+\item $E(U) = a_0 + a_1 E(X_1) + a_2 E(X_2) + \ldots + a_n E(X_n)$ \\
+\item $Var(U) = a_1^2 Var(X_1) + a_2^2 Var(X_2) + \ldots + a_n^2 Var(X_n)$ \\
+\end{itemize}
+
+\end{multicols}
+\end{document}

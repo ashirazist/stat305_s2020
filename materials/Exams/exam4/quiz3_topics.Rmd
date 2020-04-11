@@ -1,0 +1,41 @@
+---
+title: "Stat 305 - Section 7  - Quiz 3 Topic Outline"
+output:
+  pdf_document: default
+---
+\begin{enumerate}
+
+  \item Special discrete random variables (Part II)
+      \begin{enumerate}
+          \item Binomial($n, p$)
+          \item Geometric($p$)
+          \item Poisson($\lambda$)
+      \end{enumerate}
+
+\item  Continuous random variables (Part III)
+      \begin{enumerate}
+        \item Probability density functions (pdf)
+        \item Cumulative distribution functions (cdf)
+        \item Normal quantiles
+        \item Expected value, variance, and standard deviation
+        \item Special continuous random variables:
+                \begin{enumerate}
+                  \item Exponential($\alpha$)
+                  \item Normal($\mu, \sigma^2$)
+                \end{enumerate}
+      \end{enumerate}          
+\item Joint distributions and independence (Part IV)
+  \begin{enumerate}
+    \item Joint distributions (discrete random variables)
+    \item Marginal distributions (discrete random variables)
+    \item Conditional distributions (discrete random variables)
+    \item Independence (discrete random variables)
+  \end{enumerate}
+\item Functions of several random variables (Part IV)
+  \begin{enumerate}
+    \item Distributions of functions of random variables.
+    \item Expectations and variances of linear combinations.
+    \item The Central Limit Theorem
+  \end{enumerate}  
+  
+  \end{enumerate}    

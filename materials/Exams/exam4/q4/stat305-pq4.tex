@@ -1,0 +1,165 @@
+% For LaTeX-Box: root = stat305-pexam1.Rnw
+\documentclass[addpoints]{examsetup}
+
+\usepackage{etoolbox}
+\usepackage{tikz,pgfplots}
+
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+\usepackage{pdfpages} 
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{ulem}
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage{graphicx, fancyhdr}
+\usepackage{amsmath, amsfonts}
+\usepackage{color}
+\usepackage{hyperref}
+
+\newcommand{\blue}[1]{{\color{blue} #1}}
+
+\setlength{\topmargin}{-.5 in} 
+\setlength{\textheight}{9 in}
+\setlength{\textwidth}{6.5 in} 
+\setlength{\evensidemargin}{0 in}
+\setlength{\oddsidemargin}{0 in} 
+\setlength{\parindent}{0 in}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+
+
+%\input{stat105_exam1_info.tex}
+\newcommand{\course}[1]{\ifstrempty{#1}{STAT 305}{STAT 305, Section #1}}
+\newcommand{\sectionNumber}{3}
+\newcommand{\examDate}{December , 2018}
+\newcommand{\semester}{FALL 2019}
+\newcommand{\examNumber}{IV}
+
+\usepackage{Sweave}
+\begin{document}
+\input{stat305-pq4-concordance}
+
+%-- : R code (Code in Document)
+
+
+\examCoverPage
+
+\begin{questions}
+\question
+In an effort to understand smartphone use, the American Association of Psychologists gained access to a single day's data on 625 smartphone users. They found that the smartphone users sampled spent an average of 270 minutes using their phone on that day with a standard deviation of phone use was 32.15 minutes.
+
+The following table may be useful:
+
+\begin{table}[h]
+   \centering
+   \caption{z's for use in Two-sided Large-$n$ intervals for the mean}
+   \begin{tabular}{cc}
+      \hline \\
+      Desired Confidence & $z$ \\
+      \hline 
+      80\% & 1.28 \\
+      90\% & 1.645 \\
+      95\% & 1.96 \\
+      98\% & 2.33 \\
+      99\% & 2.58 \\
+      \hline 
+   \end{tabular}
+\end{table}
+\begin{parts}
+\part[4] Provide a two-sided 95\% confidence interval for true number of minutes smartphone users spend using thier phones on average. \vspace{4cm}
+\part[4] Provide a one-sided lower bound 99\% confidence lower bound for the number of minutes smartphone users spend using thier phones on average. \vspace{4cm}
+\part[10] A similar study two years ago determined that smartphone users spend an average of 4 hours per day using their phones. Perform a hypothesis test at the $\alpha = 0.05$ significance level for the claim that this is no longer the case.\\
+\emph{Note: Write down all six steps for full credit.}
+
+\end{parts}
+
+\newpage\null\thispagestyle{empty}\newpage
+\newpage
+
+ 
+
+\question A group of scientists are trying to understand the effects of temperature on two O-ring designs for a rocket. By placing the O-ring (attached to a valve) in a chamber and slowly lowering the chamber's temperature, the scientists are able to record the temperature at which the O-ring fails by monitoring when the valve begins to leak.
+After testing 10 O-rings for each type, the scientists find the mean failure temperature for the first O-ring design sample to be $50$ K with a sample variance of 10 and the mean failure temperature of the second O-ring sample to be $53$ K with a sample variance of $20$.
+\begin{parts}
+\part[4] Provide a one-sided lower bound 95\% confidence interval for the true failure temperature of the \textbf{first} O-ring design. \vspace{3cm}
+\part[4] Provide a two-sided 95\% confidence interval for the true failure temperature of the \textbf{second} O-ring design. \vspace{3cm}
+\part[6] Assume that the failure temperatures for both O-ring designs is normally distributed. Provide a one-sided upper bound 95\% confidence interval for \textbf{difference in the two designs}. \vspace{4cm}
+
+\part[10] Conduct a hypothesis test at the $\alpha = 0.05$ significance level for the claim that the true difference between the population means of the two O-rings ($\mu_X- \mu_Y$)  are significantly different.\\
+\emph{Note: Write down all six steps for full credit.}
+\end{parts}
+\newpage\null\thispagestyle{empty}\newpage
+
+\newpage
+
+\question
+An arctic research station recently did a major overhaul to their server system hardware and the technicians are checking to make sure that there has been no loss in download speed.
+The previous download speed had an average of 63.4 Mbps.
+A systems analyst took 10 readings on the download speeds during the course of a day to check. 
+Her results are below (in Mbps):
+
+
+\begin{center}
+62.87, 63.04, 62.83, 63.32, 63.07, 62.84, 63.1, 63.15, 63.12, 62.94
+\end{center}
+
+
+The sample average is 63.03 and the sample variance is 0.025.
+
+\begin{parts}
+\part[4] Provide a two-sided 90\% confidence interval for the mean download speed. \vspace{3cm}
+\part[4] Provide a one sided 95\% lower confidence bound for the mean download speed. \vspace{3cm}
+\part[10] Conduct a hypothesis test at the 95\% confidence level for the null hypothesis $\mu \ge 63.4$ against the alternative $\mu < 63.4$. Include your hypothesis statement, the choice of test statistic, the p-value, and your conclusion.\\
+\emph{Note: Write down all six steps for full credit.}
+
+\end{parts}
+
+
+\newpage\null\thispagestyle{empty}\newpage
+
+\end{questions}
+\end{document}

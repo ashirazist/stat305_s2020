@@ -137,9 +137,11 @@ theme_set(theme_bw(base_family = "serif"))
           \item Interpret your interval from b) for someone with little statistical background.[ 5 pts]
     \end{enumerate}
     
-\item\textbf {[Ch. 6.2, Exercise 1, pg. 361]} In the aluminum containment study from Homework 10 Exercise 1, it was desirable to have mean aluminum content for samples of rexycled plastic below 200 ppm. Use the six-step significance testing format and determine the strengths of the evidence in the data that in fact this contamination goal has been violated. (You will want to begin with $\text{H}_0: \mu = 200$ ppm and use $\text{H}_A: \mu > 200$ ppm.) [10 pts]
+\item\textbf {[Ch. 6.2, Exercise 1, pg. 361]} In the aluminum containment study from exercise 1, it was desirable to have mean aluminum content for samples of rexycled plastic below 200 ppm. Use the six-step significance testing format and determine the strengths of the evidence in the data that in fact this contamination goal has been violated. (You will want to begin with $\text{H}_0: \mu = 200$ ppm and use $\text{H}_A: \mu > 200$ ppm.) [10 pts]\\
+\emph{Hint: In this exercise, you do not need any significance level to decide whether to reject or fail to reject the null hypothesis.}
 
-\item\textbf {[Ch. 6.2, Exercise 4, pg. 361]} In the context of the machine screw diameter study of Exercise 2 from Homework 10, suppose that the nominal diameter of such screws is 4.70 mm. Use the six-step significance-testing format and assess the strength of the evidence provided by the data that the long-run mean measured diameter differs from nominal. (You will want to begin with $\text{H}_0: \mu = 4.70$ mm and use $\text{H}_A: \mu \not= 4.70$ mm.) [10 pts]
+\item\textbf {[Ch. 6.2, Exercise 4, pg. 361]} In the context of the machine screw diameter study of exercise 2 from, suppose that the nominal diameter of such screws is 4.70 mm. Use the six-step significance-testing format and assess the strength of the evidence provided by the data that the long-run mean measured diameter differs from nominal. (You will want to begin with $\text{H}_0: \mu = 4.70$ mm and use $\text{H}_A: \mu \not= 4.70$ mm.) [10 pts]\\
+\emph{Hint: In this exercise, you do not need any significance level to decide whether to reject or fail to reject the null hypothesis.}
   
     
  \item \textbf{[Ch 6, Exercise 1, pg. 427]} Consider the breaking strengths of paper towels.
