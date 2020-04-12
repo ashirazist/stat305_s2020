@@ -1,0 +1,25 @@
+---
+title: "Stat 305 - Section 7  - Quiz 4 Topic Outline"
+output:
+  pdf_document: default
+---
+
+### Random intervals
+
+\begin{enumerate}
+
+\item One-sample inference (confidence intervals and hypothesis testing) on the mean (Ch. 6.1, 6.2) under each of the following conditions: \begin{enumerate}
+\item  When $n \ge 25$ and $\sigma^2$ is known.
+\item  When $n \ge 25$ and $\sigma^2$ is unknown.
+\item  When $n < 25$ and $\sigma^2$ is unknown.
+\end{enumerate}     
+  
+\item All the above using:
+\begin{enumerate}
+\item Confidence intervals
+\item Critical values and p-values
+\end{enumerate}    
+\item Inference for paired data under all the conditions in pt 2. (Ch. 6.3)
+\item Inference for 2-sample data under all the conditions in pt 2 for each sample (Ch. 6.3)
+
+\end{enumerate}    
