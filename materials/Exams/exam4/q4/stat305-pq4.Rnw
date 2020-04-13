@@ -103,7 +103,7 @@ The following table may be useful:
 
 \begin{table}[h]
    \centering
-   \caption{z's for use in Two-sided Large-$n$ intervals for the mean}
+   \caption{z's for use in \textbf{Two-sided} Large-$n$ intervals for the mean}
    \begin{tabular}{cc}
       \hline \\
       Desired Confidence & $z$ \\

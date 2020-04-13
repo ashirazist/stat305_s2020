@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.3)  11 APR 2020 18:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.3)  13 APR 2020 00:28
 entering extended mode
 **./stat305-q4.tex
 (stat305-q4.tex
@@ -1168,15 +1168,27 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 {C:/Users/4M1N/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [1
 
 ]
-[2]
+[2] [3] [4]
+Overfull \hbox (37.20006pt too wide) in paragraph at lines 172--175
+[]\T1/aer/m/n/10 Provide a two-sided 90% con-fi-dence in-ter-val for $\OML/cmm/
+m/it/10 []$\T1/aer/m/n/10 .  []
+ []
+
+
+Overfull \hbox (36.5209pt too wide) in paragraph at lines 179--182
+[]\T1/aer/m/n/10 Provide a two-sided 95% con-fi-dence in-ter-val for $\OML/cmm/
+m/it/10 []$\T1/aer/m/n/10 .  []
+ []
+
+[5] [6]
 This exam contains 3 questions with 11 parts, 0 subparts, and 0 subsubparts.
-This exam has a total of 60 points.
+This exam has a total of 64 points.
 This exam has a total of 0 bonus points.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 182.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 182.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 196.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 196.
 (stat305-q4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 182.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 182.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 196.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 196.
 Package rerunfilecheck Info: File `stat305-q4.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
@@ -1185,26 +1197,27 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 30225 strings out of 481277
- 713337 string characters out of 2907010
- 1059240 words of memory out of 3000000
- 45163 multiletter control sequences out of 15000+200000
+ 30241 strings out of 481277
+ 713541 string characters out of 2907010
+ 1054333 words of memory out of 3000000
+ 45175 multiletter control sequences out of 15000+200000
  548550 words of font info for 58 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,10n,98p,805b,609s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\4M1N\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknappen/ec/dpi600\t
 crm1000.pk><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
 amsfonts/cm/cmb10.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 
-2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/4M1N/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/4M1N/AppData/
-Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/4M1
-N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
-C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/sym
-bols/msbm10.pfb>
-Output written on stat305-q4.pdf (3 pages, 90496 bytes).
+pe1/public/amsfonts/cm/cmex10.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/4M1N/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/4M1N/AppData
+/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/4
+M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><
+C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmsy10.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/
+amsfonts/symbols/msbm10.pfb>
+Output written on stat305-q4.pdf (7 pages, 102954 bytes).
 PDF statistics:
- 75 PDF objects out of 1000 (max. 8388607)
- 19 named destinations out of 1000 (max. 500000)
+ 97 PDF objects out of 1000 (max. 8388607)
+ 23 named destinations out of 1000 (max. 500000)
  17 words of extra memory for PDF output out of 10000 (max. 10000000)
 

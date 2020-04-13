@@ -102,13 +102,17 @@
 A small military subcontractor has secured a contract to develop drones capable of providing light air support for smaller naval vessels. Successfully fulfilling the contract requires that the drone be able to takeoff with a minimum runway of 10 meters. However, late changes in the prototype's weight distribution have led to concerns that they are no longer satisfying this requirement. Using 100 takeoffs, they found the average distance before takeoff was 9.92 meters with a standard deviation of 0.4 meters. 
 \begin{parts}
 \part[4] Provide a two-sided 95\% confidence interval for the true average distance before takeoff.
-\part[4] Provide a  90\% lower bound confidence interval for the true average distance before takeoff.
+\hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $(\hspace{3cm},\hspace{3cm} )$ }
+\vspace{9cm}
+\part[4] Provide a  90\% lower bound confidence interval for the true average distance before takeoff.\hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $(\hspace{3cm},\hspace{3cm} )$ }
+\vspace{5cm}
+\newpage
 \part[10] Conduct a hypothesis test at the $\alpha = 0.01$ significance level for $\mu$, the true average distance before takeoff with the null hypothesis $\mu \ge 10$ against the alternative hypothesis of $\mu < 10$. Include the hypothesis statement, the test statistic, the p-value, and the conclusion. \\
 \emph{Note: Write down all six steps for full credit.}
 
 \end{parts}
 
-
+\newpage
 
 
 
@@ -128,7 +132,7 @@ The following table may be useful:
 
 \begin{table}[h]
    \centering
-   \caption{z's for use in Two-sided Large-$n$ intervals for the mean}
+   \caption{z's for use in \textbf{Two-sided} Large-$n$ intervals for the mean}
    \begin{tabular}{cc}
       \hline \\
       Desired Confidence & $z$ \\
@@ -143,12 +147,16 @@ The following table may be useful:
 \end{table}
 
 \begin{parts}
-\part[4] Provide a two-sided 90\% confidence interval for the mean volume of gasoline recognized by the pump to be 1.00 gallons. 
-\part[4] Provide a one-sided upper bound 95\% confidence interval for the mean volume of gasoline recognized by the pump to be 1.00 gallons.
+\part[4] Provide a two-sided 90\% confidence interval for the mean volume of gasoline recognized by the pump to be 1.00 gallons. \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $(\hspace{3cm},\hspace{3cm} )$ }
+\vspace{7cm}
+
+\part[4] Provide a one-sided upper bound 95\% confidence interval for the mean volume of gasoline recognized by the pump to be 1.00 gallons.\hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $(\hspace{3cm},\hspace{3cm} )$ }
+\vspace{5cm}
+\newpage
 \part[10] Conduct a hypothesis test at the $\alpha = 0.05$ significance level for $\mu$, the true mean volume of gasoline recognized by the pump  with the null hypothesis $\mu = 1$ against the alternative hypothesis of $\mu \neq 1$. Include the hypothesis statement, the test statistic, the p-value, and the conclusion. \\
 \emph{Note: Write down all six steps for full credit.}
 \end{parts}
-
+\newpage
 
 \question
 O-rings are elastomer loops designed to create a seal between the interface of two parts of a mechanical device.
@@ -169,13 +177,19 @@ Let $\bar{X} = \frac{1}{50} X_1 + \frac{1}{50} X_2 + \ldots + \frac{1}{50} X_{50
    Suppose that $\sigma_X^2 = 10$ and $\sigma_Y = 20$.
 \begin{parts}
    \part[4] Provide a two-sided 90\% confidence interval for $\mu_X$.
-   
-   \part[4] Provide a one-sided lower bound 99\% confidence interval for $\mu_X$.
-   
+   \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $(\hspace{3cm},\hspace{3cm} )$ }
+\vspace{5cm}
+
+   \part[4] Provide a one-sided lower bound 99\% confidence interval for $\mu_X$.\\
+   \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $(\hspace{3cm},\hspace{3cm} )$ }
+\vspace{5cm}
    \part[4] Provide a two-sided 95\% confidence interval for $\mu_Y$.
-   
+   \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $(\hspace{3cm},\hspace{3cm} )$ }
+\vspace{5cm}
    \part[6] Provide a two-sided 95\% confidence interval for $\mu_X - \mu_Y$ . Does this provide any evidence that one O-ring is better than the other?
-   
+   \hfill \fbox{ \textcolor[rgb]{1.00,1.00,1.00}{$\bigcap$} \hskip -0.4cm $(\hspace{3cm},\hspace{3cm} )$ }
+\vspace{6cm}
+
    \part[10] Conduct a hypothesis test at the $\alpha = 0.05$ significance level for the claim that the true difference between the true means of the two O-rings ($\mu_X- \mu_Y$)  are significantly different.\\
 \emph{Note: Write down all six steps for full credit.}
 \end{parts}
