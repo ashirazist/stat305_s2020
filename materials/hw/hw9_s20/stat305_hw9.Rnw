@@ -1,0 +1,237 @@
+\documentclass[11pt]{article}\usepackage[]{graphicx}\usepackage[]{color}
+%% maxwidth is the original width if it is less than linewidth
+%% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlstr}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hlstd}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{ulem}
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{xcolor}
+\usepackage{alltt}
+\usepackage{graphicx, fancyhdr}
+\usepackage{amsmath, amsfonts}
+\usepackage{color}
+\usepackage{hyperref}
+
+\newcommand{\blue}[1]{{\color{blue} #1}}
+
+\setlength{\topmargin}{-.5 in} 
+\setlength{\textheight}{9 in}
+\setlength{\textwidth}{6.5 in} 
+\setlength{\evensidemargin}{0 in}
+\setlength{\oddsidemargin}{0 in} 
+\setlength{\parindent}{0 in}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+
+\lhead{STAT 305}
+\chead{Homework 9} 
+\rhead{Due Thursday, April $30^{th}$ on Canvas}
+\lfoot{Spring 2020} 
+\cfoot{\thepage} 
+ 
+\renewcommand{\headrulewidth}{0.4pt} 
+\renewcommand{\footrulewidth}{0.4pt} 
+
+\def\Exp#1#2{\ensuremath{#1\times 10^{#2}}}
+\def\Case#1#2#3#4{\left\{ \begin{tabular}{cc} #1 & #2 \phantom
+{\Big|} \\ #3 & #4 \phantom{\Big|} \end{tabular} \right.}
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\pagestyle{fancy} 
+
+Show \textbf{all} of your work on this assignment and answer each question fully in the given context. 
+
+\vspace{0.3cm}
+
+\textbf{Please write as legible as possible because if the TA cannot read your handwriting, it may cause confusion and ends up in deduction.}
+
+\vspace{0.3cm}
+
+\textbf{\textcolor{red}{If you are going to type your answers, submit a pdf. }\\
+\textcolor{blue}{ If you take a photo/scan your handwritten answers, submit them in a \emph{single} file.}} \\
+You can download scanning apps for \href{https://www.cnet.com/news/how-to-use-ios-11s-notes-app-as-a-document-scanner/}{ iOS} or via \href{https://play.google.com/store/apps/details?id=com.microsoft.office.officelens&hl=en_US}{ Microsoft Office Lens|PDF Scan App} } or for \href{https://www.howtogeek.com/166610/who-needs-a-scanner-scan-a-document-to-pdf-with-your-android-phone/}{ Android
+
+\begin{enumerate}
+<<echo=FALSE>>=
+library(knitr)
+library(tidyverse)
+library(xtable)
+library(magrittr)
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, fig.height = 2)
+theme_set(theme_bw(base_family = "serif"))
+@
+	
+    \item \textbf{[Ch 6, Exercise 2, pg. 427]} Consider the situation of Example 1.1 in Chapter 1 in the notes (involving the heat treatment of gears):
+
+<<echo=FALSE>>=
+gears <- read_csv("../../data/gears.csv")
+
+@
+
+
+A process engineer is faced with the question, "How should gears be loaded into a continuous carburizing furnace in order to minimize distortion during heat treating?" The engineer conducts a well-thought-out study and obtains the runout values for \Sexpr{gears %>% filter(Arrangement == "laid") %>% nrow()} gears laid and \Sexpr{gears %>% filter(Arrangement == "hung") %>% nrow()} gears hung.
+
+<<echo=FALSE, include=FALSE, eval=FALSE>>=
+gears %>%
+  group_by(Arrangement) %>%
+  summarise(Values = paste(Runout, collapse = ", ")) %>%
+  spread(Arrangement, Values) %>%
+  xtable(align = c("c", "p{1in}", "p{1in}"), caption = "Thrust face runouts (.0001 in.)") 
+
+@
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{p{1in}p{1in}}
+\hline
+hung & laid \\
+\hline
+7, 8, 8, 10, 10, 10, 10, 11, 11, 11, 12, 13, 13, 13, 15, 17, 17, 17, 17, 18, 19, 19, 20, 21, 21, 21, 22, 22, 22, 23, 23, 23, 23, 24, 27, 27, 28, 31, 36 & 5, 8, 8, 9, 9, 9, 9, 10, 10, 10, 11, 11, 11, 11, 11, 11, 11, 12, 12, 12, 12, 13, 13, 13, 13, 14, 14, 14, 15, 15, 15, 15, 16, 17, 17, 18, 19, 27 \\
+\hline
+\end{tabular}
+\caption{Thrust face runouts (.0001 in.)}
+\end{table}
+
+\begin{enumertae}     
+  \item Use the six-step significance-testing format to assess the strength of the evidence collected in this study to the effect that the laying method is superior to the hanging method in terms of mean runouts produced.[5 pts]
+    
+  \item Make and interpret $90 \%$ two-sided and one-sided condifence intervals for the improvement in mean runout produced by the laying method over the hanging method (for the one-sided interval, give a lower bound for $\mu_{\text{hung}} - \mu_{\text{laid}}$).[5 pts]
+    
+  \item Make and interpret a $90 \%$ two-sided confidence interval for the mean runout for laid gears.[5 pts]
+\end{enumerate}
+
+\item \textbf{[Ch. 6, Exercise 6, pg. 428]} Losen, Cahoy, and Lewis measured the lengths of some spanner bushings of a particular type purchased from a local machine shop. Two students measures each ff the outside diameters of each of the sixteen bushings, with the results below.
+
+
+<<echo=FALSE>>=
+    bushings <- data.frame(Bushing = 1:16,
+                           Student_A = c(.369, .369, .369, .370, .3695, .370, .3695, .369, .369, .3695, .369, .369, .3695, .37, .369, .369),
+                           Student_B = c(.369, .3695, .3695, .3695, .3695, .37, .37, .369, .37, .369, .3695, .3695, .369, .3695, .369, .369))   
+    # knitr::kable(t(bushings)[, 1:8], format = "latex")
+    # knitr::kable(t(bushings)[, 9:16], format= "latex")
+@
+
+\begin{tabular}{l|r|r|r|r|r|r|r|r}
+\centering
+\hline
+Bushing & 1.000 & 2.0000 & 3.0000 & 4.0000 & 5.0000 & 6.00 & 7.0000 & 8.000\\
+\hline
+Student\_A & 0.369 & 0.3690 & 0.3690 & 0.3700 & 0.3695 & 0.37 & 0.3695 & 0.369\\
+\hline
+Student\_B & 0.369 & 0.3695 & 0.3695 & 0.3695 & 0.3695 & 0.37 & 0.3700 & 0.369\\
+\hline
+\end{tabular}
+
+\begin{tabular}{l|r|r|r|r|r|r|r|r}
+\centering
+\hline
+Bushing & 9.000 & 10.0000 & 11.0000 & 12.0000 & 13.0000 & 14.0000 & 15.000 & 16.000\\
+\hline
+Student\_A & 0.369 & 0.3695 & 0.3690 & 0.3690 & 0.3695 & 0.3700 & 0.369 & 0.369\\
+\hline
+Student\_B & 0.370 & 0.3690 & 0.3695 & 0.3695 & 0.3690 & 0.3695 & 0.369 & 0.369\\
+\hline
+\end{tabular}
+
+\begin{enumerate}
+\item If you want to compare the two students' average measurements, the methods of Two-sample data are inappropriate. Why?[5 pts]
+    
+\item Make a 90\% two-sided confidence interval for the mean difference in outside diameter measurements for the two students.[5 pts]
+    
+\end{enumerate}
+
+\item \textbf{[Ch. 9.1, Exercise 1, pg. 674] }Return to the data from Homework 4, Exercise 1. The article "Polyglycol Modified Poly (Ethylene EtherCarbonate) Polyols by Molecular Weight Advancement" by R. Harris (*Journal of Applied Polymer Science*, 1990) contains some data on the effect of reaction temperature on the molecular weight of resulting poly polyols. The data for eight experimental runs at temperature 165°C and above are as follows (see website for `polyols.csv`):
+
+<<echo=FALSE, eval=FALSE>>=
+    polyols <- read.csv("./materials/data/polyols.csv")
+    
+    knitr::kable(polyols, col.names = c("Pot temperature (°C)", "Average molecular weight"), format = "latex")
+@
+\begin{centering}
+\begin{tabular}{r|r}
+
+\hline
+Pot temperature (°C) & Average molecular weight\\
+\hline
+165 & 808\\
+\hline
+176 & 940\\
+\hline
+188 & 1183\\
+\hline
+205 & 1545\\
+\hline
+220 & 2012\\
+\hline
+235 & 2362\\
+\hline
+250 & 2742\\
+\hline
+260 & 2935\\
+\hline
+\end{tabular}
+
+\begin{enumerate}
+    
+    \item Find $s_{LF}$ for these data. What does this intend to measure in the context of the engineering problem?[5 pts]
+    
+    \item Give a 90\% two-sided confidence interval for the increase in mean average molecular weight that accompanies a 1°C increase in temperature here.[5 pts]
+    
+    \item Give individual two-sided confidence intervals for the mean average molecular weight at 212°C and also at 250°C.[5 pts]
+\end{enumerate}        
+\end{centering}
+    
+
+  
+Total: 85 pts
+
+
+\end{enumerate}
+\end{document}
