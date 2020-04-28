@@ -71,7 +71,7 @@
 \lhead{STAT 305}
 \chead{Chapter 9} 
 \rhead{Handout }
-\lfoot{Fall 2019} 
+\lfoot{Spring 2020} 
 \cfoot{\thepage} 
 \rfoot{} 
 \renewcommand{\headrulewidth}{0.4pt} 
