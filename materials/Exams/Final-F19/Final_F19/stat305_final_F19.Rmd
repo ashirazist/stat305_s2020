@@ -1,14 +1,14 @@
 ---
 title: 'Final Exam'
 course: STAT 305
-section: 3
-semester: Fall 2019
-date: December 18, 2019 # April 11, 2019
+section: 7
+semester: Spring 2020
+date: May 5, 2020 # April 11, 2019
 number: "Final"
 time:
-  start: '09:45 AM'
-  stop: '11:45 AM'
-  length: 120 minutes
+  start: '12:00 PM'
+  stop: '04:00 PM'
+  length: 150 minutes
 output:
   pdf_document:
     keep_tex: true
@@ -47,21 +47,21 @@ IQRange <- function(x) Qfun(x,.75) - Qfun(x,.25)
 samp <- round(rgamma(24, .1*10, .1),0)
 ```
 
-\question[2]
-A random sample of 1000 students' Statistics exam scores was drawn from the population of all possible comparable Stat exam scores (an unknown population/distribution). The sample mean, once computed, has the exact value of the distribution/population mean.
-\begin{oneparchoices}
-\choice True
-\choice False
-\end{oneparchoices}
-\vspace{0.5cm}
+<!-- \question[2] -->
+<!-- A random sample of 1000 students' Statistics exam scores was drawn from the population of all possible comparable Stat exam scores (an unknown population/distribution). The sample mean, once computed, has the exact value of the distribution/population mean. -->
+<!-- \begin{oneparchoices} -->
+<!-- \choice True -->
+<!-- \choice False -->
+<!-- \end{oneparchoices} -->
+<!-- \vspace{0.5cm} -->
 
-\question[2]
-While trying to figure out the probability that the sample mean for a data of size 10 would exceed a value, we can apply the central limit theorem.
-\begin{oneparchoices}
-\choice True
-\choice False
-\end{oneparchoices}
-\vspace{0.5cm}
+<!-- \question[2] -->
+<!-- While trying to figure out the probability that the sample mean for a data of size 10 would exceed a value, we can apply the central limit theorem. -->
+<!-- \begin{oneparchoices} -->
+<!-- \choice True -->
+<!-- \choice False -->
+<!-- \end{oneparchoices} -->
+<!-- \vspace{0.5cm} -->
 
 \question
 An agriculturist is attempting to determine which of three species of corn (A, B, and C) yield the most grain per acre.
