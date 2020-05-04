@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.3)  22 APR 2020 13:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.3)  3 MAY 2020 20:09
 entering extended mode
 **./stat305_hw9.tex
 (stat305_hw9.tex
@@ -469,19 +469,6 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 113
 ("C:\Users\4M1N\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-
-! LaTeX Error: Environment enumertae undefined.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.123 \begin{enumertae}
-                       
-Your command was ignored.
-Type  I <command> <return>  to replace it with another command,
-or  <return>  to continue without it.
-
 ! Misplaced \noalign.
 \hline ->\noalign 
                   {\ifnum 0=`}\fi \hrule \@height \arrayrulewidth \futurelet...
@@ -594,7 +581,7 @@ Here is how much of TeX's memory you used:
  22742 multiletter control sequences out of 15000+200000
  546794 words of font info for 57 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,13n,45p,561b,492s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,13n,45p,561b,496s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\4M1N\AppData\Local\MiKTeX\2.9\fonts/pk/ljfour/jknapp
 en/ec/dpi600\tcrm1095.pk><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmb10.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTe
@@ -604,7 +591,7 @@ ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users
 /4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb
 ><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
 m/cmsy10.pfb>
-Output written on stat305_hw9.pdf (2 pages, 83498 bytes).
+Output written on stat305_hw9.pdf (2 pages, 83566 bytes).
 PDF statistics:
  62 PDF objects out of 1000 (max. 8388607)
  15 named destinations out of 1000 (max. 500000)
