@@ -469,26 +469,7 @@ layout:false
 
 
 ]
----
-layout:false
-.left-column[
-#### Outline
-#### Introduction
-#### Major League Soccer
-#### Data set
-#### Methods
-#### Results
-]
-.right-column[
 
-### Results
-
-- A comparison of the $\sigma_1$ and $\sigma_2$ priors and posterios.
-
-![](sigmas.jpg)
-
-
-]
 ---
 layout:false
 .left-column[
