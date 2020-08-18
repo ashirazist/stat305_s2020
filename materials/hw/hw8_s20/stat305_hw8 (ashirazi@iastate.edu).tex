@@ -82,31 +82,24 @@
 \def\Case#1#2#3#4{\left\{ \begin{tabular}{cc} #1 & #2 \phantom
 {\Big|} \\ #3 & #4 \phantom{\Big|} \end{tabular} \right.}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\usepackage{Sweave}
 \begin{document}
-\SweaveOpts{concordance=TRUE}
+\input{stat305_hw8-concordance}
 \pagestyle{fancy} 
 
 Show \textbf{all} of your work on this assignment and answer each question fully in the given context. 
 
 \vspace{0.3cm}
 
-\textbf{Please write as legibly as possible because if the TA cannot read your handwriting, it may cause confusion and ends up in deduction.}
+\textbf{Please write as legible as possible because if the TA cannot read your handwriting, it may cause confusion and ends up in deduction.}
 
 \vspace{0.3cm}
 
 \textbf{\textcolor{red}{If you are going to type your answers, submit a pdf. }\\
 \textcolor{blue}{ If you take a photo/scan your handwritten answers, submit them in a \emph{single} file.}} \\
-You can download scanning apps for \href{https://www.cnet.com/news/how-to-use-ios-11s-notes-app-as-a-document-scanner/}{ iOS} or via \href{https://play.google.com/store/apps/details?id=com.microsoft.office.officelens&hl=en_US}{ Microsoft Office Lens|PDF Scan App}  or for \href{https://www.howtogeek.com/166610/who-needs-a-scanner-scan-a-document-to-pdf-with-your-android-phone/}{ Android}
+You can download scanning apps for \href{https://www.cnet.com/news/how-to-use-ios-11s-notes-app-as-a-document-scanner/}{ iOS} or via \href{https://play.google.com/store/apps/details?id=com.microsoft.office.officelens&hl=en_US}{ Microsoft Office Lens|PDF Scan App} } or for \href{https://www.howtogeek.com/166610/who-needs-a-scanner-scan-a-document-to-pdf-with-your-android-phone/}{ Android}
 
 \begin{enumerate}
-<<echo=FALSE>>=
-library(knitr)
-library(tidyverse)
-library(xtable)
-library(magrittr)
-knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, fig.height = 2)
-theme_set(theme_bw(base_family = "serif"))
-@
 	
     \item \textbf{[Ch. 6.1, Exercise 2, pg. 344]} We have a data set consisting of the aluminum contents of 26 bihourly samples of recycled PET plastic from a recycling facility. Those 26 measurements have $\overline{y} = 142.77$ ppm and $s \approx 98.2$ ppm. Use these facts to respond to the following.
     
@@ -122,11 +115,20 @@ theme_set(theme_bw(base_family = "serif"))
 
 
 
-<<echo=FALSE>>=
-    freq <- data.frame(Diameter = c(4.52, 4.66, 4.67, 4.68, 4.69, 4.70, 4.71, 4.72),
-                       Frequency = c(1, 4, 7, 7, 14, 9, 4, 4))
-    kable(freq)
-@
+\begin{Schunk}
+\begin{Soutput}
+| Diameter| Frequency|
+|--------:|---------:|
+|     4.52|         1|
+|     4.66|         4|
+|     4.67|         7|
+|     4.68|         7|
+|     4.69|        14|
+|     4.70|         9|
+|     4.71|         4|
+|     4.72|         4|
+\end{Soutput}
+\end{Schunk}
   
       \begin{enumerate}
           \item Compute the sample mean and standard deviation for these data. [5 pts]
@@ -146,17 +148,15 @@ theme_set(theme_bw(base_family = "serif"))
     
  \item \textbf{[Ch 6, Exercise 1, pg. 427]} Consider the breaking strengths of paper towels.
  
-<<fig=TRUE, echo=FALSE, fig.cap="Normal Q-Q Plot for breaking strengths of towels.", height=2>>=
-    paper <- data.frame(Test = 1:10,
-                        Breaking_Strength = c(8577, 9471, 9011, 7583, 8572, 10688, 9614, 9614, 8527, 9165))
-    
-    kable(t(paper))
-    
-   p<- paper %>%
-    ggplot(aes(sample=Breaking_Strength)) +
-      stat_qq()
-   p
-@
+\begin{Schunk}
+\begin{Soutput}
+|                  |     |     |     |     |     |      |     |     |     |     |
+|:-----------------|----:|----:|----:|----:|----:|-----:|----:|----:|----:|----:|
+|Test              |    1|    2|    3|    4|    5|     6|    7|    8|    9|   10|
+|Breaking_Strength | 8577| 9471| 9011| 7583| 8572| 10688| 9614| 9614| 8527| 9165|
+\end{Soutput}
+\end{Schunk}
+\includegraphics{stat305_hw8-003}
 
     Notice that the normal plot of these data given above is reasonably linear. It may thus be sensible to suppose that breaking strengths for generic towels of this type (as measured by the students) are adequately modeled as normal. Under this assumption,
           \begin{enumerate}
