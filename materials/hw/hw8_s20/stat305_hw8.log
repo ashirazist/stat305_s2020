@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.3)  11 APR 2020 13:35
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 2.9.7300 64-bit) (preloaded format=pdflatex 2020.3.3)  17 AUG 2020 23:09
 entering extended mode
 **./stat305_hw8.tex
 (stat305_hw8.tex
@@ -330,7 +330,7 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 "
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verba
 tim
-) (C:/PROGRA~1/R/R-36~1.1/share/texmf/tex/latex\Sweave.sty
+) (C:/PROGRA~1/R/R-40~1.0/share/texmf/tex/latex\Sweave.sty
 Package: Sweave 
 
 ("C:\Users\4M1N\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\ifthen.sty"
@@ -447,17 +447,6 @@ l.100 ...S}{ Microsoft Office Lens|PDF Scan App} }
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-Runaway argument?
-{ Android 
-! Paragraph ended before \href@split was complete.
-<to be read again> 
-                   \par 
-l.101 
-      
-I suspect you've forgotten a `}', causing me to apply this
-control sequence to too much text. How can we recover?
-My plan is to forget the whole thing and hope for the best.
-
 LaTeX Font Info:    Trying to load font information for U+msa on input line 104
 .
 ("C:\Users\4M1N\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
@@ -490,14 +479,6 @@ LaTeX Font Info:    Trying to load font information for T1+aett on input line 1
 ("C:\Users\4M1N\AppData\Local\Programs\MiKTeX 2.9\tex/latex/ae\t1aett.fd"
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 )
-! You can't use `macro parameter character #' in horizontal mode.
-l.137 ...ce bound for the mean diameter. (Find a #
-                                                   such that $(\#, \infty)$ ...
-Sorry, but I'm not programmed to handle this case;
-I'll just pretend that you didn't ask for it.
-If you're in the wrong mode, you might be able to
-return to the right one by typing `I}' or `I$' or `I\par'.
-
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
 Make it at least 13.60925pt.
@@ -507,12 +488,19 @@ This may cause the page layout to be inconsistent, however.
 [1{C:/Users/4M1N/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}
 
 ]
-<stat305_hw8-003.pdf, id=26, 433.62pt x 144.54pt>
+! You can't use `macro parameter character #' in horizontal mode.
+l.137 ...ce bound for the mean diameter. (Find a #
+                                                   such that $(\#, \infty)$ ...
+Sorry, but I'm not programmed to handle this case;
+I'll just pretend that you didn't ask for it.
+If you're in the wrong mode, you might be able to
+return to the right one by typing `I}' or `I$' or `I\par'.
+
+<stat305_hw8-003.pdf, id=28, 433.62pt x 144.54pt>
 File: stat305_hw8-003.pdf Graphic file (type pdf)
 <use stat305_hw8-003.pdf>
 Package pdftex.def Info: stat305_hw8-003.pdf  used on input line 159.
 (pdftex.def)             Requested size: 375.80542pt x 125.27458pt.
-
 
 ! LaTeX Error: \begin{enumerate} on input line 162 ended by \end{document}.
 
@@ -536,20 +524,19 @@ Package rerunfilecheck Info: File `stat305_hw8.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 197.
  )
-(\end occurred inside a group at level 3)
+(\end occurred inside a group at level 2)
 
-### semi simple group (level 3) entered at line 162 (\begingroup)
-### semi simple group (level 2) entered at line 102 (\begingroup)
-### semi simple group (level 1) entered at line 100 (\begingroup)
+### semi simple group (level 2) entered at line 162 (\begingroup)
+### semi simple group (level 1) entered at line 102 (\begingroup)
 ### bottom level 
 Here is how much of TeX's memory you used:
  7428 strings out of 481277
- 111558 string characters out of 2907010
+ 111637 string characters out of 2907010
  384006 words of memory out of 3000000
  22746 multiletter control sequences out of 15000+200000
  546290 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,13n,45p,494b,512s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 34i,13n,45p,494b,498s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
 blic/amsfonts/cm/cmb10.pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/4M1N/AppData/Local/Programs/Mi
@@ -559,9 +546,9 @@ Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/User
 s/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.
 pfb><C:/Users/4M1N/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfont
 s/cm/cmtt10.pfb>
-Output written on stat305_hw8.pdf (2 pages, 103009 bytes).
+Output written on stat305_hw8.pdf (2 pages, 103594 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
+ 75 PDF objects out of 1000 (max. 8388607)
  20 named destinations out of 1000 (max. 500000)
  10 words of extra memory for PDF output out of 10000 (max. 10000000)
 
